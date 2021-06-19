@@ -1,4 +1,6 @@
 node_modules
 .temp
 .cache
-/dist
+/docs/.vuepress/dist/.server
+/docs/.vuepress/dist/.server
+.DS_Store
