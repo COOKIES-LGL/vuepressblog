@@ -1,4 +1,4 @@
 ---
 home: true
-heroImage: https://vuejs.org/images/logo.png
+heroImage: '../images/FE.jpeg'
 ---

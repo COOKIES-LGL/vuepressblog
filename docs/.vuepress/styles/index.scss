@@ -1,0 +1,14 @@
+// 可以在此修改覆盖默认主题
+:root {
+  scroll-behavior: smooth;
+}
+.home .hero {
+  margin-top: 100px;
+  img {
+      border-radius: 20px;
+      box-shadow: 10px 10px 10px #333;
+  }
+}
+.home .hero .description {
+    max-width: 45rem;
+}

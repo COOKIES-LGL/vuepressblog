@@ -5,9 +5,10 @@ const { path } = require('@vuepress/utils');
 export default defineUserConfig<DefaultThemeOptions>({
   lang: 'zh-CN',
   title: '归零@you',
-  description: '带着疑问抬头望天,繁星点点',
+  description: '带着疑问抬头望天,繁星点点. 就像我曾追逐的梦,忽隐忽现.',
+  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   themeConfig: {
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: '../images/FE.jpeg',
     navbar: [
       {
         text: '首页',
@@ -38,12 +39,12 @@ export default defineUserConfig<DefaultThemeOptions>({
         text: '实用收藏',
         children: [
           {
-            text: '摸鱼棋盘',
-            link: 'http://html5.huceo.com/wzq/',
+            text: '站长工具',
+            link: 'https://tool.chinaz.com/',
           },
           {
-            text: '摸鱼棋盘',
-            link: 'http://html5.huceo.com/wzq/',
+            text: '牛客练习',
+            link: 'https://www.nowcoder.com/intelligentTest',
           },
         ],
       },
@@ -61,6 +62,18 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: 'Vue Router4中文文档',
             link: 'https://next.router.vuejs.org/zh/guide/index.html',
+          },
+          {
+            text: 'Vue Router4中文文档',
+            link: 'https://next.router.vuejs.org/zh/guide/index.html',
+          },
+          {
+            text: 'webpack中文文档',
+            link: 'https://www.webpackjs.com/concepts/',
+          },
+          {
+            text: 'uni-app文档',
+            link: 'https://uniapp.dcloud.io/',
           },
         ],
       },
