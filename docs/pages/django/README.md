@@ -1,0 +1,4 @@
+---
+sideBar: false;
+---
+### Django Model
