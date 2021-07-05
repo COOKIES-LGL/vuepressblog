@@ -11,7 +11,6 @@ home: false
 * [Charles 使用指南](./blog-daily/node-mock-serve)  <span style="color:#bbb; float:right">2021-07-02</span>
 * [Yapi Mock 使用指南](./blog-daily/node-mock-serve)  <span style="color:#bbb; float:right">2021-07-05</span>
 * [Node mock serve](./blog-daily/node-mock-serve)  <span style="color:#bbb; float:right">2021-07-07</span>
-* [Node bash命令操作](./blog-daily/nodejs-for-bash)  <span style="color:#bbb; float:right">2021-07-08</span>
 --- ---
 ### 人生随笔列表
 *  [余忆童稚时](./self-daily/remind-self)  <span style="color:#bbb; float:right">2021-06-20</span>
