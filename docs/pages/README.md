@@ -6,6 +6,7 @@ home: false
 * [Vuex4](./vue/vuex)  <span style="color:#bbb; float:right">2021-06-10</span>
 * [Vue-router4](./vue/vue-router)  <span style="color:#bbb; float:right">2021-06-13</span>
 * [Vuepress](./blog-daily/use-vuepress)  <span style="color:#bbb; float:right">2021-06-15</span>
+* [Typescript](./typescript)  <span style="color:#bbb; float:right">2021-06-15</span>
 * [Node](./node)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Make a cli](./blog-daily/make-self-cli)  <span style="color:#bbb; float:right">2021-06-25</span>
 * [Charles 使用指南](./blog-daily/node-mock-serve)  <span style="color:#bbb; float:right">2021-07-02</span>

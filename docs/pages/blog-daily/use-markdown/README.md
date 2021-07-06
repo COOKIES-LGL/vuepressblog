@@ -123,3 +123,12 @@ npm install
 
   </CodeGroupItem>
 </CodeGroup>
+
+``` html
+<head> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js"></script> 
+</head> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+```
+[图标搜索](https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free)
