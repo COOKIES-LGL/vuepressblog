@@ -12,8 +12,12 @@
 .home .hero .description {
   max-width: 45rem;
 }
+
 @media screen and (min-width: 400px) {
   .theme-default-content:not(.custom) {
+    margin-left: 240px;
+  }
+  .page-meta, .page-nav {
     margin-left: 240px;
   }
 }
