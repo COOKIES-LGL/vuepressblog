@@ -1,6 +1,14 @@
 ---
-sidebar: false
+sidebar: auto
 ---
+
+### New Knowledge
+* [Make a cli](./make-self-cli)  <span style="color:#bbb; float:right">2021-06-25</span>
+* [Charles 使用指南](./node-mock-serve)  <span style="color:#bbb; float:right">2021-07-02</span>
+* [Yapi Mock 使用指南](./node-mock-serve)  <span style="color:#bbb; float:right">2021-07-05</span>
+* [Node mock serve](./node-mock-serve)  <span style="color:#bbb; float:right">2021-07-07</span>
+* [Chrom-plugin](./chrome-plugin)  <span style="color:#bbb; float:right">2021-07-09</span>
+
 ``` javascript
 function var() {
     console.log(1)

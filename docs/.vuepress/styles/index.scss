@@ -13,6 +13,17 @@
   max-width: 45rem;
 }
 
+.show-in-center { // 居中
+  display: block;
+  margin: 0 auto;
+}
+
+.show-small-in-center { // 居中小尺寸展示
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+}
+
 @media screen and (min-width: 400px) {
   .theme-default-content:not(.custom) {
     margin-left: 240px;

@@ -8,10 +8,7 @@ home: false
 * [Vuepress](./blog-daily/use-vuepress)  <span style="color:#bbb; float:right">2021-06-15</span>
 * [Typescript](./typescript)  <span style="color:#bbb; float:right">2021-06-15</span>
 * [Node](./node)  <span style="color:#bbb; float:right">2021-06-30</span>
-* [Make a cli](./blog-daily/make-self-cli)  <span style="color:#bbb; float:right">2021-06-25</span>
-* [Charles 使用指南](./blog-daily/node-mock-serve)  <span style="color:#bbb; float:right">2021-07-02</span>
-* [Yapi Mock 使用指南](./blog-daily/node-mock-serve)  <span style="color:#bbb; float:right">2021-07-05</span>
-* [Node mock serve](./blog-daily/node-mock-serve)  <span style="color:#bbb; float:right">2021-07-07</span>
+* [Blog-Daily](./blog-daily) <span style="color:#bbb; float:right">2021-07-01</span>
 --- ---
 ### 人生随笔列表
 *  [余忆童稚时](./self-daily/remind-self)  <span style="color:#bbb; float:right">2021-06-20</span>
