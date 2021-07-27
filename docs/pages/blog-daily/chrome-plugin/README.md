@@ -1,8 +1,7 @@
 <img :src="$withBase('./pages-assets/logo.png')" class="show-in-center">
 
 ## 开发与调试
-Chrome插件没有严格的项目结构要求，只要保证本目录有一个**manifest.json**即可，  
-从右上角菜单->更多工具->扩展程序可以进入插件管理页面，或在地址栏输入<u>chrome://extensions</u> 访问。  
+Chrome插件没有严格的项目结构要求，只要保证本目录有一个**manifest.json**即可，
 勾选开发者模式即可以文件夹的形式直接加载插件，否则只能安装.crx格式的文件。因为Chrome要求插件必须从它的Chrome应用商店安装，其它任何网站下载的都无法直接安装，所以我们可以把crx文件解压，然后通过开发者模式直接加载。
 
 ## 核心介绍
@@ -61,7 +60,8 @@ Chrome插件没有严格的项目结构要求，只要保证本目录有一个**
    "js": ["js/jquery-1.8.3.js", "js/content-script.js"],
    // JS的注入可以随便一点，但是CSS的注意就要千万小心了，因为一不小心就可能影响全局样式
    "css": ["css/custom.css"],
-   // 代码注入的时间，可选值： "document_start", "document_end", or "document_idle"，最后一个表示页面空闲时，默认document_idle
+   // 代码注入的时间，可选值： "document_start", "document_end", 
+   // or "document_idle", 最后一个表示页面空闲时，默认document_idle
    "run_at": "document_start"
   },
   // 这里仅仅是为了演示content-script可以配置多个规则
@@ -132,20 +132,21 @@ Chrome插件没有严格的项目结构要求，只要保证本目录有一个**
  ],
 }
 ```
-特别注意，如果没有主动指定run_at为**document_start**（默认为**document_idle**），下面这种代码是不会生效的：
+特别注意，因此如果没有主动指定run_at为**document_start**（默认为**document_idle**），  
+下面这种代码是不会生效的：
 ``` javascript
 document.addEventListener('DOMContentLoaded', function(){
  console.log('我被执行了！');
 });
 ```
-content-scripts和原始页面共享DOM，但是不共享JS，如要访问页面JS（例如某个JS变量），只能通过injected js来实现。content-scripts能访问下面这4种API:
+content-scripts和原始页面共享DOM，但是不共享JS，如要访问页面JS（例如某个JS变量,或函数）,只能通过injected scripts来实现。content-scripts能访问下面这4种API:
 * chrome.extension(getURL , inIncognitoContext , lastError , onRequest , sendRequest)
 * chrome.i18n
 * chrome.runtime(connect , getManifest , getURL , id , onConnect , onMessage , sendMessage)
 * chrome.storage  
 非要调用其它API的话，你还可以让background来帮你调用然后通过通信来实现
 ### background
-后台（姑且这么翻译吧），是一个常驻的页面，它的生命周期是插件中所有类型页面中最长的，它随着浏览器的打开而打开，随着浏览器的关闭而关闭，所以通常把需要一直运行的、启动就运行的、全局的代码放在background里面。
+后台脚本，是一个常驻的页面，它的生命周期是插件所有类型脚本中最长的，它随着浏览器的打开而打开，随着浏览器的关闭而关闭，所以把需要一直运行的、启动就运行的、全局代码放在background里面。
 
 background的权限非常高，几乎可以调用所有的Chrome扩展API（除了devtools），而且它可以无限制跨域,
 配置中，background可以通过page指定一张网页，也可以通过scripts直接指定一个JS，Chrome会自动为这个JS生成一个默认的网页：
@@ -164,7 +165,7 @@ background的权限非常高，几乎可以调用所有的Chrome扩展API（除�
 虽然你可以通过chrome-extension://xxx/background.html直接打开后台页，但是你打开的后台页和真正一直在后台运行的那个页面不是同一个，换句话说，你可以打开无数个background.html，但是真正在后台常驻的只有一个，而且这个你永远看不到它的界面，只能调试它的代码。
 :::
 ### event-pages
-鉴于background生命周期太长，长时间挂载后台可能会影响性能，所以Google又弄一个event-pages，在配置文件上，它与background的唯一区别就是多了一个persistent参数：
+鉴于background生命周期太长，长时间挂载后台可能会影响性能，又弄一个event-pages，在配置文件上,它的使用方式和background一样,唯一区别就是多了一个persistent参数,将其配置成非持续存在
 ``` javascript
 {
  "background":
@@ -174,7 +175,7 @@ background的权限非常高，几乎可以调用所有的Chrome扩展API（除�
  },
 }
 ```
-它的生命周期是：在被需要时加载，在空闲时被关闭，什么叫被需要时呢？比如第一次安装、插件更新、与content-script进行通信时，等等。除了配置文件的变化，代码上也有一些细微变化，个人这个简单了解一下就行了，一般情况下background也不会很消耗性能的。 
+它的生命周期是：在被需要时加载，在空闲时被关闭，什么叫被需要时呢？比如第一次安装、插件更新、与content-script进行通信时，等等。
 ### popup
 popup是点击browser_action或者page_action图标时打开的一个小窗口网页，焦点离开网页就立即关闭，一般用来做一些临时性的交互。   
 <img :src="$withBase('./pages-assets/popup.png')" class="show-small-in-center">  
@@ -192,8 +193,8 @@ popup可以包含任意你想要的HTML内容，并且会自适应大小。可�
  }
 }
 ```
-所以popup页面的生命周期很短，需要长时间运行的代码不能写在popup里面。
-权限上，和background非常类似，popup通过chrome.extension.getBackgroundPage()可以直接获取background的window对象。
+所以popup页面的生命周期很短,权限上和background非常类似，  
+popup通过chrome.extension.getBackgroundPage()可以直接获取background的window对象。
 
 ### injected-script
 指的是通过DOM操作的方式向页面注入的一种JS。为什么需要通过这种方式注入JS呢？
@@ -208,7 +209,7 @@ function injectCustomJs(jsPath)
  jsPath = jsPath || 'js/inject.js';
  var temp = document.createElement('script');
  temp.setAttribute('type', 'text/javascript');
- // 获得的地址类似：chrome-extension://ihcokhadfjfchaeagdoclpnjdiokfakg/js/inject.js
+ // 获得的地址类似：chrome-extension://demo/js/inject.js
  temp.src = chrome.extension.getURL(jsPath);
  temp.onload = function()
  {
@@ -220,7 +221,7 @@ function injectCustomJs(jsPath)
 ```
 执行一下你会看到如下报错：
 ::: danger
-Denying load of chrome-extension://efbllncjkjiijkppagepehoekjojdclc/js/inject.js. Resources must be listed in the web_accessible_resources manifest key in order to be loaded by pages outside the extension.
+Denying load of chrome-extension:/demo/js/inject.js. Resources must be listed in the web_accessible_resources manifest key in order to be loaded by pages outside the extension.
 :::
 意思就是你想要在web中直接访问插件中的资源的话必须显示声明才行，配置文件中增加如下：
 ``` javascript
@@ -242,7 +243,7 @@ options页，是插件的设置页面，有2个入口,一个是右键图标有�
  },
 }
 ```
-这个页面里面的内容就随你自己发挥了，配置之后在插件管理页就会看到一个选项按钮入口，点进去就是打开一个网页, 这里可以对你的插件进行配置并保存在本地。
+配置之后在插件管理页就会看到一个选项按钮入口，点进去就是打开一个网页, 这里可以对你的插件进行配置并保存在本地。
 <img :src="$withBase('./pages-assets/option1.png')" class="show-small-in-center">
 
 * 新版options中不能使用alert；
@@ -493,7 +494,14 @@ Chrome插件的JS主要可以分为这5类：
 ::: warning
 注：-表示不存在或者无意义，或者待验证。
 ::: 
-<img :src="$withBase('./pages-assets/sendMessage.png')" class="show-in-center"> 
+
+|   js类型   | injected-script | content-script |	popup-js | background-js  | 
+| ------ | ------ |------ | ------ |------ |
+| injected-script | -- | window.postMessage | -- | -- |
+| content-script | window.postMessage | -- | chrome.runtime.sendMessage chrome.runtime.connect | chrome.runtime.sendMessage chrome.runtime.connect
+| popup-js | -- | chrome.tabs.sendMessage chrome.tabs.connect | -- | chrome.extension. getBackgroundPage() |
+| background-js | -- | chrome.tabs.sendMessage chrome.tabs.connect | chrome.extension.getViews | -- |
+| devtools-js | chrome.devtools. inspectedWindow.eval | -- | chrome.runtime.sendMessage | chrome.runtime.sendMessage|
 
 ### 通信详细介绍
 popup和background
