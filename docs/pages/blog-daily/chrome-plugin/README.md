@@ -622,7 +622,7 @@ chrome.runtime.onConnect.addListener(function(port) {
  if(port.name == 'test-connect') {
   port.onMessage.addListener(function(msg) {
    console.log('收到长连接消息：', msg);
-   if(msg.question == '你是谁啊？') port.postMessage({answer: '我是你爸！'});
+   if(msg.question == '你是谁啊？') port.postMessage({answer: '我是小明！'});
   });
  }
 });
@@ -666,7 +666,10 @@ chrome.storage.sync.set({color: 'blue'}, function() {
 ```
 
 ### webRequest
-通过webRequest系列API可以对HTTP请求进行任性地修改、定制，这里通过beforeRequest来简单演示一下它的冰山一角：
+通过webRequest系列API可以对HTTP请求进行任性地修改、定制，
+<img :src="$withBase('./pages-assets/webrequest.png')" class="show-in-center">
+
+这里通过beforeRequest来简单演示一下它的冰山一角：
 ``` json
 //manifest.json
 {
@@ -683,8 +686,7 @@ chrome.storage.sync.set({color: 'blue'}, function() {
 ```
 ``` javascript
 // background.js
-// 是否显示图片
-var showImage;
+var showImage; // 是否显示图片
 chrome.storage.sync.get({showImage: true}, function(items) {
  showImage = items.showImage;
 });
@@ -693,7 +695,7 @@ chrome.webRequest.onBeforeRequest.addListener(details => {
  // cancel 表示取消本次请求
  if(!showImage && details.type == 'image') return {cancel: true};
  // 简单的音视频检测
- // 大部分网站视频的type并不是media，且视频做了防下载处理，所以这里仅仅是为了演示效果，无实际意义
+ // 大部分网站视频的type并不是media，所以这里仅仅是为了演示效果，无实际意义
  if(details.type == 'media') {
   chrome.notifications.create(null, {
    type: 'basic',
@@ -712,3 +714,4 @@ chrome.webRequest.onBeforeRequest.addListener(details => {
 
 参考链接:
 * [https://developer.chrome.com/docs/extensions/](https://developer.chrome.com/docs/extensions/)
+* [https://crxdoc-zh.appspot.com/extensions/webRequest](https://crxdoc-zh.appspot.com/extensions/webRequest)
