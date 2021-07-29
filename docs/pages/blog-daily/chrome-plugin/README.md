@@ -1,8 +1,10 @@
 <img :src="$withBase('./pages-assets/logo.png')" class="show-in-center">
 
 ## 开发与调试
-Chrome插件没有严格的项目结构要求，只要保证本目录有一个**manifest.json**即可，
-勾选开发者模式即可以文件夹的形式直接加载插件，否则只能安装.crx格式的文件。因为Chrome要求插件必须从它的Chrome应用商店安装，其它任何网站下载的都无法直接安装，所以我们可以把crx文件解压，然后通过开发者模式直接加载。
+Chrome插件没有严格的项目结构要求，只要保证本目录有一个**manifest.json**即可，  
+勾选开发者模式即可以文件夹的形式直接加载插件，否则只能安装.crx格式的文件。  
+因为Chrome要求插件必须从它的Chrome应用商店安装，其它任何网站下载的都无法直接安装，  
+所以我们可以把crx文件解压，然后通过开发者模式直接加载。
 
 ## 核心介绍
 ### manifest.json
@@ -110,7 +112,7 @@ Chrome插件没有严格的项目结构要求，只要保证本目录有一个**
 }
 ```
 ### content-scripts
-所谓**content-scripts**，其实就是Chrome插件中向页面注入脚本的一种形式（同时还可以包括css的），借助**content-scripts**我们可以实现通过配置的方式轻松向指定页面注入JS和CSS（如果需要动态注入，可以参考下文），最常见的比如：广告屏蔽、页面CSS定制，等等。
+所谓**content-scripts**，其实就是Chrome插件中向页面注入脚本的一种形式（同时还可以包括css），借助**content-scripts**我们可以实现通过配置的方式轻松向指定页面注入JS和CSS。
 
 示例配置：
 ``` javascript
@@ -126,20 +128,14 @@ Chrome插件没有严格的项目结构要求，只要保证本目录有一个**
    "js": ["js/jquery-1.8.3.js", "js/content-script.js"],
    // JS的注入可以随便一点，但是CSS的注意就要千万小心了，因为一不小心就可能影响全局样式
    "css": ["css/custom.css"],
-   // 代码注入的时间，可选值： "document_start", "document_end", or "document_idle"，最后一个表示页面空闲时，默认document_idle
+   // 代码注入的时间，可选值： "document_start", "document_end", 
+   // or "document_idle"，最后一个表示页面空闲时，默认document_idle
    "run_at": "document_start"
   }
  ],
 }
 ```
-特别注意，因此如果没有主动指定run_at为**document_start**（默认为**document_idle**），  
-下面这种代码是不会生效的：
-``` javascript
-document.addEventListener('DOMContentLoaded', function(){
- console.log('我被执行了！');
-});
-```
-content-scripts和原始页面共享DOM，但是不共享JS，如要访问页面JS（例如某个JS变量,或函数）,只能通过injected scripts来实现。content-scripts能访问下面这4种API:
+content-scripts和原始页面共享DOM但是不共享JS，如要访问页面JS（例如某个JS变量,或函数）,只能通过injected scripts来实现。content-scripts能访问下面这4种API:
 * chrome.extension(getURL , inIncognitoContext , lastError , onRequest , sendRequest)
 * chrome.i18n
 * chrome.runtime(connect , getManifest , getURL , id , onConnect , onMessage , sendMessage)
@@ -165,7 +161,7 @@ background的权限非常高，几乎可以调用所有的Chrome扩展API（除�
 虽然你可以通过chrome-extension://xxx/background.html直接打开后台页，但是你打开的后台页和真正一直在后台运行的那个页面不是同一个，换句话说，你可以打开无数个background.html，但是真正在后台常驻的只有一个，而且这个你永远看不到它的界面，只能调试它的代码。
 :::
 ### event-pages
-鉴于background生命周期太长，长时间挂载后台可能会影响性能，又弄一个event-pages，在配置文件上,它的使用方式和background一样,唯一区别就是多了一个persistent参数,将其配置成非持续存在
+鉴于background生命周期太长，长时间挂载后台可能会影响性能，因此有了event-pages(事件页面)，在配置文件上,它的使用方式和background一样,唯一区别就是多了一个persistent参数,配置成非持续存在。
 ``` javascript
 {
  "background":
@@ -175,13 +171,13 @@ background的权限非常高，几乎可以调用所有的Chrome扩展API（除�
  },
 }
 ```
-它的生命周期是：在被需要时加载，在空闲时被关闭，什么叫被需要时呢？比如第一次安装、插件更新、与content-script进行通信时，等等。
+它的生命周期是：在被需要时加载，在空闲时被关闭，什么叫被需要时呢？  
+比如第一次安装、插件更新、与content-script进行通信时，所监听的事件被触发等。
 ### popup
 popup是点击browser_action或者page_action图标时打开的一个小窗口网页，焦点离开网页就立即关闭，一般用来做一些临时性的交互。   
 <img :src="$withBase('./pages-assets/popup.png')" class="show-small-in-center">  
-博客园网摘插件popup效果
 
-popup可以包含任意你想要的HTML内容，并且会自适应大小。可以通过default_popup字段来指定popup页面，也可以调用setPopup()动态注册。
+可以通过default_popup字段来指定popup页面，也可以调用setPopup()动态注册。
 ``` javascript
 {
  "browser_action":
@@ -193,13 +189,11 @@ popup可以包含任意你想要的HTML内容，并且会自适应大小。可�
  }
 }
 ```
-所以popup页面的生命周期很短,权限上和background非常类似，  
-popup通过chrome.extension.getBackgroundPage()可以直接获取background的window对象。
-
+::: tip
+所以popup页面的生命周期很短,权限上和background非常类似，popup通过chrome.extension.getBackgroundPage()可以直接获取background的window对象。
+:::
 ### injected-script
-指的是通过DOM操作的方式向页面注入的一种JS。为什么需要通过这种方式注入JS呢？
-
-这是因为content-script有一个很大的“缺陷”，也就是**无法访问页面中的JS**，虽然它可以操作DOM，但是DOM却不能调用它，也就是无法在DOM中通过绑定事件的方式调用content-script中的代码.
+通过DOM操作的方式向页面注入的一种JS。因为content-script有一个很大的“缺陷”，也就是**无法访问页面中的JS**，虽然它可以操作DOM，但是DOM却不能调用它，也就是无法在DOM中通过绑定事件的方式调用content-script中的代码.
 
 在content-script中通过DOM方式向页面注入inject-script代码示例：
 ``` javascript
@@ -244,10 +238,9 @@ options页，是插件的设置页面，有2个入口,一个是右键图标有�
 }
 ```
 配置之后在插件管理页就会看到一个选项按钮入口，点进去就是打开一个网页, 这里可以对你的插件进行配置并保存在本地。
+ 数据存储建议用chrome.storage，因为会随用户自动同步.
 <img :src="$withBase('./pages-assets/option1.png')" class="show-small-in-center">
 
-* 新版options中不能使用alert；
-* 数据存储建议用chrome.storage，因为会随用户自动同步；
 
 ## Chrome插件的6种展示形式
 * browserAction(地址栏右侧)
@@ -258,7 +251,8 @@ options页，是插件的设置页面，有2个入口,一个是右键图标有�
 * omnibox (搜索建议扩展)
 
 ### browserAction(地址栏右侧)
-通过配置browser_action可以在浏览器的右上角增加一个图标，一个browser_action可以拥有一个图标，一个tooltip，一个badge和一个popup。
+通过配置browser_action可以在浏览器的右上角增加一个图标，  
+一个browser_action可以拥有一个图标，一个tooltip，一个badge和一个popup。
 
 示例配置如下：
 ``` javascript
@@ -269,8 +263,8 @@ options页，是插件的设置页面，有2个入口,一个是右键图标有�
  "default_popup": "popup.html"
 }
 ```
-图标
-browser_action图标推荐使用宽高都为19像素的图片，更大的图标会被缩小，格式随意，一般推荐png，可以通过manifest中default_icon字段配置，也可以调用setIcon()方法。
+图标  
+browser_action图标推荐使用宽高都为19像素的图片，更大的图标会被缩小，可以通过manifest中default_icon字段配置，也可以调用setIcon()方法。  
 tooltip  
 修改browser_action的manifest中default_title字段，或者调用setTitle()方法。  
 <img :src="$withBase('./pages-assets/tooltip.png')" class="show-small-in-center"> 
@@ -288,67 +282,76 @@ chrome.browserAction.setBadgeBackgroundColor({color: [255, 0, 0, 255]});
 ### pageAction(地址栏右侧)
 pageAction和普通的browserAction一样也是放在浏览器右上角，只不过没有点亮时是灰色的，点亮了才是彩色的，灰色时无论左键还是右键单击都是弹出选项：  
 示例(只有打开百度才点亮图标)：
-``` javascript
-// manifest.json
-{
- "page_action":
- {
-  "default_icon": "img/icon.png",
-  "default_title": "我是pageAction",
-  "default_popup": "popup.html"
- },
- "permissions": ["declarativeContent"]
-}
-
-// background.js
-chrome.runtime.onInstalled.addListener(function(){
- chrome.declarativeContent.onPageChanged.removeRules(undefined, function(){
-  chrome.declarativeContent.onPageChanged.addRules([
-   {
-    conditions: [
-     // 只有打开百度才显示pageAction
-     new chrome.declarativeContent.PageStateMatcher({pageUrl: {urlContains: 'baidu.com'}})
-    ],
-    actions: [new chrome.declarativeContent.ShowPageAction()]
-   }
-  ]);
- });
-});
-```
 <img :src="$withBase('./pages-assets/pageAction.gif')" class="show-small-in-center">
+
+<CodeGroup>
+  <CodeGroupItem title="manifest.json" active>
+
+   ``` javascript
+   {
+   "page_action":
+   {
+   "default_icon": "img/icon.png",
+   "default_title": "我是pageAction",
+   "default_popup": "popup.html"
+   },
+   "permissions": ["declarativeContent"]
+   }
+   ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="background.js">
+
+   ``` javascript
+   chrome.runtime.onInstalled.addListener(function(){
+      chrome.declarativeContent.onPageChanged.removeRules(undefined, function(){
+         chrome.declarativeContent.onPageChanged.addRules([
+            {
+            conditions: [
+            // 只有打开百度才显示pageAction
+            new chrome.declarativeContent.PageStateMatcher({pageUrl: {urlContains: 'baidu.com'}})
+            ],
+            actions: [new chrome.declarativeContent.ShowPageAction()]
+            }
+         ]);
+      });
+   });
+   ```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 
 ### contextMenus(右键菜单)
 通过开发Chrome插件可以自定义浏览器的右键菜单，主要是通过**chrome.contextMenusAPI**实现，右键菜单可以出现在不同的上下文，比如普通页面、选中的文字、图片、链接，等等  
-最简单的右键菜单示例:    
-``` javascript
-// manifest.json
-{"permissions": ["contextMenus"]}
+添加右键百度搜索:  
+<CodeGroup>
+  <CodeGroupItem title="manifest.json" active>
 
-// background.js
-chrome.contextMenus.create({
- title: "测试右键菜单",
- onclick: function(){alert('您点击了右键菜单！');}
-});
+   ``` javascript
+   {"permissions": ["contextMenus"， "tabs"]}
+   ```
 
-```
-<img :src="$withBase('./pages-assets/contextMenu.png')" class="show-small-in-center">
+  </CodeGroupItem>
 
-添加右键百度搜索  
-``` javascript
-// manifest.json
-{"permissions": ["contextMenus"， "tabs"]}
+  <CodeGroupItem title="background.js">
 
-// background.js
-chrome.contextMenus.create({
- title: '使用度娘搜索：%s', // %s表示选中的文字
- contexts: ['selection'], // 只有当选中文字时才会出现此右键菜单
- onclick: function(params)
- {
-  // 注意不能使用location.href，因为location是属于background的window对象
-  chrome.tabs.create({url: 'https://www.baidu.com/s?ie=utf-8&wd=' + encodeURI(params.selectionText)});
- }
-});
-```
+   ``` javascript
+   chrome.contextMenus.create({
+      title: '使用度娘搜索：%s', // %s表示选中的文字
+      contexts: ['selection'], // 只有当选中文字时才会出现此右键菜单
+      onclick: function(params)
+      {
+      // 注意不能使用location.href，因为location是属于background的window对象
+      chrome.tabs.create({url: 'https://www.baidu.com/s?ie=utf-8&wd=' + encodeURI(params.selectionText)});
+      }
+   });
+   ```
+
+  </CodeGroupItem>
+</CodeGroup>  
+
 <img :src="$withBase('./pages-assets/contextbaidu.png')" class="show-small-in-center">
 
 ### override(覆盖特定页面)
@@ -356,9 +359,9 @@ chrome.contextMenus.create({
 
 扩展可以替代如下页面：
 
-历史记录：从工具菜单上点击历史记录时访问的页面，或者从地址栏直接输入 chrome://history  
-新标签页：当创建新标签的时候访问的页面，或者从地址栏直接输入 chrome://newtab  
-书签：浏览器的书签，或者直接输入 chrome://bookmarks    
+* 历史记录：从工具菜单上点击历史记录时访问的页面，或者从地址栏直接输入 chrome://history  
+* 新标签页：当创建新标签的时候访问的页面，或者从地址栏直接输入 chrome://newtab  
+* 书签：浏览器的书签，或者直接输入 chrome://bookmarks    
 ::: warning
 * 一个扩展只能替代一个页面；
 * 不能替代隐身窗口的新标签页；
@@ -367,122 +370,154 @@ chrome.contextMenus.create({
 :::  
 下面的截图是默认的新标签页和被扩展替换掉的新标签页。
 <img :src="$withBase('./pages-assets/override.png')" class="show-small-in-center">
-``` json
+``` javascript
+// manifest.json
 "chrome_url_overrides":{
- "newtab": "newtab.html",
-//  "history": "history.html",
-//  "bookmarks": "bookmarks.html"
+ "newtab": "newtab.html", // 替换新标签页
+// "history": "history.html", // 替换历史记录页
+// "bookmarks": "bookmarks.html" // 替换书签页
 }
 ```
 ### devtools(开发者工具)
-每打开一个开发者工具窗口，都会创建devtools页面的实例，F12窗口关闭，页面也随着关闭，所以devtools页面的生命周期和devtools窗口是一致的。devtools页面可以访问一组特有的DevTools API以及有限的扩展API，这组特有的DevTools **API只有devtools页面才可以访问**，这些API包括：  
+每打开一个开发者工具窗口，都会创建devtools页面的实例，窗口关闭，页面也随着关闭，所以devtools页面的生命周期和devtools窗口是一致的。devtools页面可以访问一组特有的DevTools API以及有限的扩展API，这组特有的**DevTools API只有devtools页面才可以访问**，这些API包括：  
 * chrome.devtools.panels：面板相关；
 * chrome.devtools.inspectedWindow：获取被审查窗口的有关信息；
 * chrome.devtools.network：获取有关网络请求的信息；
+
 大部分扩展API都无法直接被DevTools页面调用，但它可以像content-script一样直接调用chrome.extension和chrome.runtimeAPI，同时它也可以像content-script一样使用Message交互的方式与background页面进行通信。
 
 实例：创建一个devtools扩展
 首先，要针对开发者工具开发插件，需要在清单文件声明如下：
-``` json
-{
- // 只能指向一个HTML文件，不能是JS文件
- "devtools_page": "devtools.html"
-}
-```
-``` html
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>
- <script type="text/javascript" src="js/devtools.js"></script>
-</body>
-</html>
-```
-里面一般什么都没有，就引入一个js , 可以看出来，其实真正代码是devtools.js
-``` javascript
-// 几个参数依次为：panel标题、图标（其实设置了也没地方显示）、要加载的页面、加载成功后的回调
-chrome.devtools.panels.create('MyPanel', 'img/icon.png', 'mypanel.html', function(panel)
-{
- console.log('自定义面板创建成功！'); // 注意这个log一般看不到
-});
+<CodeGroup>
+  <CodeGroupItem title="manifest.json" active>
 
-// 创建自定义侧边栏
-chrome.devtools.panels.elements.createSidebarPane("Images", function(sidebar)
-{
- // sidebar.setPage('../sidebar.html'); // 指定加载某个页面
- sidebar.setExpression('document.querySelectorAll("img")', 'All Images'); // 通过表达式来指定
- //sidebar.setObject({aaa: 111, bbb: 'Hello World!'}); // 直接设置显示某个对象
-});
-```
+   ``` json
+   {
+   // 只能指向一个HTML文件，不能是JS文件
+   "devtools_page": "devtools.html"
+   }
+   ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="devtools.html">
+
+   ``` html
+   <!DOCTYPE html>
+   <html>
+   <head></head>
+   <body>
+   <script type="text/javascript" src="js/devtools.js"></script>
+   </body>
+   </html>
+   ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="devtools.js">
+
+   ``` javascript
+   // 几个参数依次为：panel标题、图标（其实设置了也没地方显示）、要加载的页面、加载成功后的回调
+   chrome.devtools.panels.create('MyPanel', 'img/icon.png', 'mypanel.html', function(panel)
+   {
+   console.log('自定义面板创建成功！'); // 注意这个log一般看不到
+   });
+
+   // 创建自定义侧边栏
+   chrome.devtools.panels.elements.createSidebarPane("Images", function(sidebar)
+   {
+   // sidebar.setPage('../sidebar.html'); // 指定加载某个页面
+   sidebar.setExpression('document.querySelectorAll("img")', 'All Images'); // 通过表达式来指定
+   //sidebar.setObject({aaa: 111, bbb: 'Hello World!'}); // 直接设置显示某个对象
+   });
+   ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="mypanel.html">
+
+   ``` html
+   <!DOCTYPE html>
+   <html>
+   <head></head>
+   <body>
+   <h1>这是一个自定义的侧边栏</h1>
+   </body>
+   </html>
+   ```
+
+  </CodeGroupItem>
+</CodeGroup> 
+
 <img :src="$withBase('./pages-assets/devtool.png')" class="show-small-in-center">
 
 ### omnibox (搜索建议)
 
 注册某个关键字以触发插件自己的搜索建议界面，然后可以任意发挥了。
-<img :src="$withBase('./pages-assets/search.gif')" class="show-small-in-center">
-首先，配置文件如下：
-``` json
-{
- // 向地址栏注册一个关键字以提供搜索建议，只能设置一个关键字
- "omnibox": { "keyword" : "go" },
-}
-```
-``` javascript
-// omnibox 演示
-chrome.omnibox.onInputChanged.addListener((text, suggest) => {
- console.log('inputChanged: ' + text);
- if(!text) return;
- if(text == '美女') {
-  suggest([
-   {content: '中国' + text, description: '你要找“中国美女”吗？'},
-   {content: '日本' + text, description: '你要找“日本美女”吗？'},
-   {content: '泰国' + text, description: '你要找“泰国美女或人妖”吗？'},
-   {content: '韩国' + text, description: '你要找“韩国美女”吗？'}
-  ]);
- }
- else if(text == '微博') {
-  suggest([
-   {content: '新浪' + text, description: '新浪' + text},
-   {content: '腾讯' + text, description: '腾讯' + text},
-   {content: '搜狐' + text, description: '搜索' + text},
-  ]);
- }
- else {
-  suggest([
-   {content: '百度搜索 ' + text, description: '百度搜索 ' + text},
-   {content: '谷歌搜索 ' + text, description: '谷歌搜索 ' + text},
-  ]);
- }
-});
+<img :src="$withBase('./pages-assets/search.png')" class="show-small-in-center">
+<CodeGroup> 
+  <CodeGroupItem title="manifest.json">
 
-// 当用户接收关键字建议时触发
-chrome.omnibox.onInputEntered.addListener((text) => {
-    console.log('inputEntered: ' + text);
- if(!text) return;
- var href = '';
-    if(text.endsWith('美女')) href = 'http://image.baidu.com/search/index?tn=baiduimage&ie=utf-8&word=' + text;
- else if(text.startsWith('百度搜索')) href = 'https://www.baidu.com/s?ie=UTF-8&wd=' + text.replace('百度搜索 ', '');
- else if(text.startsWith('谷歌搜索')) href = 'https://www.google.com.tw/search?q=' + text.replace('谷歌搜索 ', '');
- else href = 'https://www.baidu.com/s?ie=UTF-8&wd=' + text;
- openUrlCurrentTab(href);
-});
-// 获取当前选项卡ID
-function getCurrentTabId(callback)
-{
- chrome.tabs.query({active: true, currentWindow: true}, function(tabs)
- {
-  if(callback) callback(tabs.length ? tabs[0].id: null);
- });
-}
+   ``` json
+   {
+   // 向地址栏注册一个关键字以提供搜索建议，只能设置一个关键字
+   "omnibox": { "keyword" : "go" },
+   }
+   ```
 
-// 当前标签打开某个链接
-function openUrlCurrentTab(url)
-{
- getCurrentTabId(tabId => {
-  chrome.tabs.update(tabId, {url: url});
- })
-}
-```
+  </CodeGroupItem>
+
+  <CodeGroupItem title="background.js">
+
+   ```  javascript
+   // omnibox 演示
+   chrome.omnibox.onInputChanged.addListener((text, suggest) => {
+      if(!text) return;
+      if(text == '微博') {
+         suggest([
+            {content: '新浪' + text, description: '新浪' + text},
+            {content: '腾讯' + text, description: '腾讯' + text},
+            {content: '搜狐' + text, description: '搜索' + text},
+         ]);
+      } else {
+         suggest([
+            {content: '百度搜索 ' + text, description: '百度搜索 ' + text},
+            {content: '谷歌搜索 ' + text, description: '谷歌搜索 ' + text},
+         ]);
+      }
+   });
+
+   // 当用户接收关键字建议时触发
+   chrome.omnibox.onInputEntered.addListener((text) => {
+      if(!text) return;
+      var href = '';
+      if(text.startsWith('百度搜索')) href = 'https://www.baidu.com/s?ie=UTF-8&wd=' + text.replace('百度搜索 ', '');
+      else if(text.startsWith('谷歌搜索')) href = 'https://www.google.com.tw/search?q=' + text.replace('谷歌搜索 ', '');
+      else href = 'https://www.baidu.com/s?ie=UTF-8&wd=' + text;
+      openUrlCurrentTab(href);
+   });
+
+   // 获取当前选项卡ID
+   function getCurrentTabId(callback)
+   {
+   chrome.tabs.query({active: true, currentWindow: true}, function(tabs)
+   {
+   if(callback) callback(tabs.length ? tabs[0].id: null);
+   });
+   }
+
+   // 当前标签打开某个链接
+   function openUrlCurrentTab(url)
+   {
+   getCurrentTabId(tabId => {
+   chrome.tabs.update(tabId, {url: url});
+   })
+   }
+   ```
+
+  </CodeGroupItem>
+</CodeGroup> 
+
 ## 五种类型的JS对比
 Chrome插件的JS主要可以分为这5类：  
 **injected script、content-script、popup js、background js、devtools js**，
@@ -490,9 +525,9 @@ Chrome插件的JS主要可以分为这5类：
 <img :src="$withBase('./pages-assets/jsType.png')" class="show-in-center">
 
 ### 消息通信
-前面我们介绍了Chrome插件中存在的5种JS，那么它们之间如何互相通信呢？
+
 ::: warning
-注：-表示不存在或者无意义，或者待验证。
+注：--表示不存在或者无意义，或者待验证。
 ::: 
 
 |   js类型   | injected-script | content-script |	popup-js | background-js  | 
@@ -506,18 +541,29 @@ Chrome插件的JS主要可以分为这5类：
 ### 通信详细介绍
 popup和background
 popup可以直接调用background中的JS方法，也可以直接访问background的DOM：
-``` javascript
-// background.js
-function test()
-{
- alert('我是background！');
-}
+<CodeGroup> 
+  <CodeGroupItem title="background.js" active>
 
-// popup.js
-var bg = chrome.extension.getBackgroundPage();
-bg.test(); // 访问bg的函数
-alert(bg.document.body.innerHTML); // 访问bg的DOM
-```
+   ``` javascript
+   function xipi()
+   {
+      alert('我是background.js！的xipi方法');
+   }
+   ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="popup.js">
+
+   ``` javascript
+   var bg = chrome.extension.getBackgroundPage();
+   bg.test(); // 访问bg的函数
+   alert(bg.document.body.innerHTML); // 访问bg的DOM
+   ```
+
+  </CodeGroupItem>
+</CodeGroup> 
+
 至于background访问popup如下（前提是popup已经打开）：
 ``` javascript
 var views = chrome.extension.getViews({type:'popup'});
@@ -525,55 +571,70 @@ if(views.length > 0) {
  console.log(views[0].location.href);
 }
 ```
-popup或者bg向content主动发送消息
-background.js或者popup.js：
-``` javascript
-function sendMessageToContentScript(message, callback)
-{
- chrome.tabs.query({active: true, currentWindow: true}, function(tabs)
- {
-  chrome.tabs.sendMessage(tabs[0].id, message, function(response)
-  {
-   if(callback) callback(response);
-  });
- });
-}
-sendMessageToContentScript({cmd:'test', value:'你好，我是popup！'}, function(response)
-{
- console.log('来自content的回复：'+response);
-});
-```
-content-script.js接收：
-``` javascript
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
-{
- // console.log(sender.tab ?"from a content script:" + sender.tab.url :"from the extension");
- if(request.cmd == 'test') alert(request.value);
- sendResponse('我收到了你的消息！');
-});
-```
-双方通信直接发送的都是JSON对象，不是JSON字符串，所以无需解析，很方便（当然也可以直接发送字符串）。
+popup或者bg向content主动发送消息:
+  
+<CodeGroup>
+  <CodeGroupItem title="background.js||popup.js"> 
+
+   ``` javascript
+   function sendMessageToContentScript(message, callback) {
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+         chrome.tabs.sendMessage(tabs[0].id, message, function(response){
+            if(callback) callback(response);
+         });
+      });
+   }
+   sendMessageToContentScript({cmd:'test', value:'你好，我是popup！'}, function(response){
+      console.log('来自content的回复：'+response);
+   });
+   ```
+
+  </CodeGroupItem>
+  <CodeGroupItem title="content-script.js"> 
+
+   ``` javascript
+   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
+   {
+      // console.log(sender.tab ?"from a content script:" + sender.tab.url :"from the extension");
+      if(request.cmd == 'test') alert(request.value);
+      sendResponse('我收到了你的消息！');
+   });
+   ```
+
+  </CodeGroupItem>
+</CodeGroup> 
+
 
 ### content-script主动发消息给后台
-content-script.js：
-``` javascript
-chrome.runtime.sendMessage({greeting: '你好，我是content-script呀，我主动发消息给后台！'}, function(response) {
- console.log('收到来自后台的回复：' + response);
-});
-```
-background.js 或者 popup.js：
-``` javascript
-// 监听来自content-script的消息
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
-{
- console.log('收到来自content-script的消息：');
- console.log(request, sender, sendResponse);
- sendResponse('我是后台，我已收到你的消息：' + JSON.stringify(request));
-});
-```
+
+<CodeGroup>
+  <CodeGroupItem title="content-script.js"> 
+
+   ``` javascript
+   chrome.runtime.sendMessage({greeting: '你好，我是content-script呀，我主动发消息给后台！'}, 
+   function(response) {
+      console.log('收到来自后台的回复：' + response);
+   });
+   ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="background.js||popup.js"> 
+
+   ``` javascript
+   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
+      console.log('收到来自content-script的消息：');
+      console.log(request, sender, sendResponse);
+      sendResponse('我是后台，我已收到你的消息：' + JSON.stringify(request));
+   });
+   ```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 注意事项：
 ::: warning
-* content_scripts向popup主动发消息的前提是popup必须打开！否则需要利用background作中转；
+* content_scripts向popup主动发消息的前提是popup必须打开！否则需要利用background中转；
 * 如果background和popup同时监听，那么它们都可以同时收到消息，但是只有一个可以sendResponse，一个先发送了，那么另外一个再发送就无效；  
 ::: 
 ### injected script和content-script  
@@ -581,27 +642,38 @@ content-script和页面内的脚本（injected-script自然也属于页面内的
 
 可以通过window.postMessage和window.addEventListener来实现二者消息通讯；
 通过自定义DOM事件来实现；
-injected-script中：
-``` javascript
-window.postMessage({"test": '你好！'}, '*');
-```
-content script中：
-``` javascript
-window.addEventListener("message", function(e)
-{
- console.log(e.data);
-}, false);
-```
+<CodeGroup>
+  <CodeGroupItem title="injected-script.js"> 
+
+   ``` javascript
+   window.postMessage({"test": '你好！'}, '*');
+   ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="content-script.js"> 
+
+   ``` javascript
+   window.addEventListener("message", function(e)
+   {
+      console.log(e.data);
+   }, false);
+   ```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ### 长连接和短连接
-其实上面已经涉及到了，这里再单独说明一下。Chrome插件中有2种通信方式，
+Chrome插件中有2种通信方式:
 * 一个是短连接（chrome.tabs.sendMessage和chrome.runtime.sendMessage），
 * 一个是长连接（chrome.tabs.connect和chrome.runtime.connect）。
 
-短连接的话就是挤牙膏一样，我发送一下，你收到了再回复一下，如果对方不回复，你只能重新发，而长连接类似WebSocket会一直建立连接，
+短连接的话就类似ajax通信上面就是, 而长连接类似WebSocket会建立连接，
 双方可以随时互发消息。
-短连接上面已经有代码示例了，这里只讲一下长连接。
+<CodeGroup>
+  <CodeGroupItem title="popup.js">
+
 ``` javascript
-//popup.js：
 getCurrentTabId((tabId) => {
  var port = chrome.tabs.connect(tabId, {name: 'test-connect'});
  port.postMessage({question: '你是谁啊？'});
@@ -614,9 +686,12 @@ getCurrentTabId((tabId) => {
  });
 });
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="content-script.js" active>
+
 ``` javascript
-//content-script.js：
-// 监听长连接
 chrome.runtime.onConnect.addListener(function(port) {
  console.log(port);
  if(port.name == 'test-connect') {
@@ -627,26 +702,67 @@ chrome.runtime.onConnect.addListener(function(port) {
  }
 });
 ```
-## 其它补充
 
-### 获取当前窗口ID
+  </CodeGroupItem>
+</CodeGroup>
+
+### 跨扩展程序消息传递
+除了在您的扩展程序的不同组成部分间发送消息以外，您也可以使用消息传递 API 与其他扩展程序通信。这样您可以提供一个公共的 API，让其他扩展程序使用。
+
+监听传入的请求和连接与处理内部的消息类似，  
+唯一的区别是您分别使用 runtime.onMessageExternal 和 runtime.onConnectExternal 事件。  
+如下是分别处理这两个事件的例子：同样，向另一个扩展程序发送消息与在您的扩展程序中发送消息类似，唯一的区别是您必须传递您需要与之通信的扩展程序的标识符。
+
+<CodeGroup>
+  <CodeGroupItem title="发送消息" active>
+
 ``` javascript
-chrome.windows.getCurrent(function(currentWindow)
-{
- console.log('当前窗口ID：' + currentWindow.id);
+// 我们需要与之通信的扩展程序的标识符。
+var laserExtensionId = "abcdefghijklmnoabcdefhijklmnoabc";
+
+// 发出一个简单请求：
+chrome.runtime.sendMessage(laserExtensionId, {getTargetData: true},
+  function(response) {
+    if (targetInRange(response.targetData))
+      chrome.runtime.sendMessage(laserExtensionId, {activateLasers: true});
+  });
+
+// 建立一个长时间的连接：
+var port = chrome.runtime.connect(laserExtensionId);
+port.postMessage(...);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="接收消息">
+
+```javascript
+// 用于简单的请求：
+chrome.runtime.onMessageExternal.addListener(
+  function(request, sender, sendResponse) {
+    if (sender.id == blacklistedExtension)
+      return;  // 不允许这一扩展程序访问
+    else if (request.getTargetData)
+      sendResponse({targetData: targetData});
+    else if (request.activateLasers) {
+      var success = activateLasers();
+      sendResponse({activateLasers: success});
+    }
+  });
+
+// 用于长时间的连接：
+chrome.runtime.onConnectExternal.addListener(function(port) {
+  port.onMessage.addListener(function(msg) {
+    // 有关处理 onMessage 事件的示例请参见其他例子
+  });
 });
 ```
-### 获取当前标签页ID
-``` javascript
-// 获取当前选项卡ID
-function getCurrentTabId(callback)
-{
- chrome.tabs.query({active: true, currentWindow: true}, function(tabs)
- {
-  if(callback) callback(tabs.length ? tabs[0].id: null);
- });
-}
-```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+## 其它补充
+
 ### 本地存储
 
 本地存储建议用chrome.storage而不是普通的localStorage，最重要的2点区别是：
@@ -670,46 +786,53 @@ chrome.storage.sync.set({color: 'blue'}, function() {
 <img :src="$withBase('./pages-assets/webrequest.png')" class="show-in-center">
 
 这里通过beforeRequest来简单演示一下它的冰山一角：
-``` json
-//manifest.json
-{
- // 权限申请
- "permissions":
- [
-  "webRequest", // web请求
-  "webRequestBlocking", // 阻塞式web请求
-  "storage", // 插件本地存储
-  "http://*/*", // 可以通过executeScript或者insertCSS访问的网站
-  "https://*/*" // 可以通过executeScript或者insertCSS访问的网站
- ],
-}
-```
-``` javascript
-// background.js
-var showImage; // 是否显示图片
-chrome.storage.sync.get({showImage: true}, function(items) {
- showImage = items.showImage;
-});
-// web请求监听，最后一个参数表示阻塞式，需单独声明权限：webRequestBlocking
-chrome.webRequest.onBeforeRequest.addListener(details => {
- // cancel 表示取消本次请求
- if(!showImage && details.type == 'image') return {cancel: true};
- // 简单的音视频检测
- // 大部分网站视频的type并不是media，所以这里仅仅是为了演示效果，无实际意义
- if(details.type == 'media') {
-  chrome.notifications.create(null, {
-   type: 'basic',
-   iconUrl: 'img/icon.png',
-   title: '检测到音视频',
-   message: '音视频地址：' + details.url,
-  });
- }
-}, {urls: ["<all_urls>"]}, ["blocking"]);
 
-```
+<CodeGroup>
+  <CodeGroupItem title="content-script.js"> 
 
+   ``` json
+   {
+   // 权限申请
+   "permissions":
+   [
+   "webRequest", // web请求
+   "webRequestBlocking", // 阻塞式web请求
+   "storage", // 插件本地存储
+   "http://*/*", // 可以通过executeScript或者insertCSS访问的网站
+   "https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+   ],
+   }
+   ```
 
+  </CodeGroupItem>
 
+  <CodeGroupItem title="background.js||popup.js"> 
+
+   ``` javascript
+   var showImage; // 是否显示图片
+   chrome.storage.sync.get({showImage: true}, function(items) {
+   showImage = items.showImage;
+   });
+   // web请求监听，最后一个参数表示阻塞式，需单独声明权限：webRequestBlocking
+   chrome.webRequest.onBeforeRequest.addListener(details => {
+   // cancel 表示取消本次请求
+   if(!showImage && details.type == 'image') return {cancel: true};
+   // 简单的音视频检测
+   // 大部分网站视频的type并不是media，所以这里仅仅是为了演示效果，无实际意义
+   if(details.type == 'media') {
+   chrome.notifications.create(null, {
+      type: 'basic',
+      iconUrl: 'img/icon.png',
+      title: '检测到音视频',
+      message: '音视频地址：' + details.url,
+   });
+   }
+   }, {urls: ["<all_urls>"]}, ["blocking"]);
+
+   ```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 
 参考链接:
