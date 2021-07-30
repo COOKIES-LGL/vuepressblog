@@ -1,10 +1,8 @@
 <img :src="$withBase('./pages-assets/logo.png')" class="show-in-center">
 
 ## 开发与调试
-Chrome插件没有严格的项目结构要求，只要保证本目录有一个**manifest.json**即可，  
-勾选开发者模式即可以文件夹的形式直接加载插件，否则只能安装.crx格式的文件。  
-因为Chrome要求插件必须从它的Chrome应用商店安装，其它任何网站下载的都无法直接安装，  
-所以我们可以把crx文件解压，然后通过开发者模式直接加载。
+Chrome插件没有严格的项目结构要求，只要保证根目录有一个**manifest.json**即可， 
+在扩展程序管理页面,可以将包含扩展程序的文夹s打包成crx文件.因为Chrome要求插件必须从它的Chrome应用商店安装，其它任何网站下载的都无法直接安装，所以我们可以把crx文件解压，然后通过开发者模式直接加载。点击扩展程序的**查看视图**即可进入调试页面。
 
 ## 核心介绍
 ### manifest.json
@@ -242,7 +240,7 @@ options页，是插件的设置页面，有2个入口,一个是右键图标有�
 <img :src="$withBase('./pages-assets/option1.png')" class="show-small-in-center">
 
 
-## Chrome插件的6种展示形式
+## Chrome插件的六种展示形式
 * browserAction(地址栏右侧)
 * pageAction(地址栏右侧)
 * contextMenus(右键菜单)
@@ -518,7 +516,7 @@ pageAction和普通的browserAction一样也是放在浏览器右上角，只不
   </CodeGroupItem>
 </CodeGroup> 
 
-## 五种类型的JS对比
+## 五种JS类型的对比
 Chrome插件的JS主要可以分为这5类：  
 **injected script、content-script、popup js、background js、devtools js**，
 ### 权限对比
