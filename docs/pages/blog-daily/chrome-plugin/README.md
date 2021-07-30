@@ -1,10 +1,10 @@
 <img :src="$withBase('./pages-assets/logo.png')" class="show-in-center">
 
 ## 开发与调试
-Chrome插件没有严格的项目结构要求，只要保证根目录有一个**manifest.json**即可， 
-在扩展程序管理页面,可以将包含扩展程序的文夹s打包成crx文件.因为Chrome要求插件必须从它的Chrome应用商店安装，其它任何网站下载的都无法直接安装，所以我们可以把crx文件解压，然后通过开发者模式直接加载。点击扩展程序的**查看视图**即可进入调试页面。
+Chrome插件是一个由HTML、CSS、JS、图片等资源组成的压缩包,保证根目录有**manifest.json**即可。   
+在扩展程序管理页面,可以将包含扩展程序的文夹打包成crx文件.因为Chrome要求插件必须从它的Chrome应用商店安装，其它任何网站下载的都无法直接安装，所以我们可以把crx文件解压，然后通过开发者模式直接加载,点击扩展程序的**查看视图**即可进入调试页面。
 
-## 核心介绍
+## 基础介绍
 ### manifest.json
 这是一个Chrome插件最重要也是必不可少的文件，用来配置所有和插件相关的配置，必须放在根目录。其中，
 **manifest_version**、**name**、**version**3个是必不可少的，**description**和**icons**是推荐的。
@@ -142,7 +142,7 @@ content-scripts和原始页面共享DOM但是不共享JS，如要访问页面JS�
 ### background
 后台脚本，是一个常驻的页面，它的生命周期是插件所有类型脚本中最长的，它随着浏览器的打开而打开，随着浏览器的关闭而关闭，所以把需要一直运行的、启动就运行的、全局代码放在background里面。
 
-background的权限非常高，几乎可以调用所有的Chrome扩展API（除了devtools），而且它可以无限制跨域,
+background的权限非常高，几乎可以调用（除了devtools）所有的Chrome扩展API，而且它可以无限制跨域,
 配置中，background可以通过page指定一张网页，也可以通过scripts直接指定一个JS，Chrome会自动为这个JS生成一个默认的网页：
 ``` json
 {
