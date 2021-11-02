@@ -3,10 +3,10 @@ home: false
 ---
 ## 我的博客
 ### 技术文档列表
-<!-- * [Vuex4](./vue/vuex)  <span style="color:#bbb; float:right">2021-06-10</span>
+* [Vuex4](./vue/vuex)  <span style="color:#bbb; float:right">2021-06-10</span>
 * [Vue-router4](./vue/vue-router)  <span style="color:#bbb; float:right">2021-06-13</span>
 * [Vuepress](./blog-daily/use-vuepress)  <span style="color:#bbb; float:right">2021-06-15</span>
-* [Typescript](./typescript)  <span style="color:#bbb; float:right">2021-06-15</span> -->
+* [Typescript](./typescript)  <span style="color:#bbb; float:right">2021-06-15</span>
 * [Node](./node)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Blog-Daily](./blog-daily) <span style="color:#bbb; float:right">2021-07-01</span>
 --- ---
