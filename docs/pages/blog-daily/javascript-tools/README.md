@@ -94,3 +94,18 @@ ES6为new命令引入了new.target属性，该属性用在构造函数之中，�
         </tr>
     </table>
 </details>
+----------------
+创建一个挂在到vue实例上的组件
+const install = function(vueInstance: VueConstructor, options: any) {
+  const AdModalConstructor = vueInstance.extend(AdModal);
+  const instance = new AdModalConstructor({
+    i18n: options.i18n
+  });
+  instance.$mount(document.createElement('div'));
+  document.body.appendChild(instance.$el);
+  vueInstance.prototype.$adModal = function(base: RegionUrl, to?: string) {
+    instance.$data.visible = true;
+    instance.$data.base = base;
+    instance.$data.to = to;
+  };
+};
