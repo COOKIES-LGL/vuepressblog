@@ -68,10 +68,6 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: 'https://next.router.vuejs.org/zh/guide/index.html',
           },
           {
-            text: 'Vue Router4中文文档',
-            link: 'https://next.router.vuejs.org/zh/guide/index.html',
-          },
-          {
             text: 'webpack中文文档',
             link: 'https://www.webpackjs.com/concepts/',
           },

@@ -1,8 +1,7 @@
 ---
 home: false
 ---
-## 你好vue-router
-<!-- <span v-for="i in 3">{{ i }} </span> -->
+## 你好Vue3
 <style>
 @media screen and (min-width: 400px) {
   .theme-default-content:not(.custom) {

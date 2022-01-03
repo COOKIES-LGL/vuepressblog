@@ -225,7 +225,7 @@ class Greeter {
 // console output: The parameter in position 0 
 // at Greeter has been decorated
 ```
-### #✖️私有字段
+### #私有字段
 
 在 TypeScript 3.8 版本就开始支持 ECMAScript 私有字段，使用方式如下：
 ``` typescript

@@ -1,3 +1,6 @@
+---
+sideBar: false;
+---
 ### class Meta
 通过一个内嵌类 "class Meta" 给你的 model 定义元数据, 类似下面这样:
 
