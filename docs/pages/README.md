@@ -12,6 +12,7 @@ home: false
 * [Django](./django)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Css高级使用技巧](./css)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Javascript高级使用技巧](./javascript)  <span style="color:#bbb; float:right">2021-06-30</span>
+* [前端前沿技术](./frontier-technology)  <span style="color:#bbb; float:right">2021-08-30</span>
 * [前端基础设施](./fe-sre)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [面试日常记录](./fe-interview)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [计算机网络](./computer-network)  <span style="color:#bbb; float:right">2021-06-30</span>
