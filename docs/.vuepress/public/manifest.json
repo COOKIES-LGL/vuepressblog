@@ -3,7 +3,7 @@
   "short_name": "归lin",
   "display": "standalone",
   "background_color": "#fff",
-  "start_url": "/vuepressblog/",
+  "start_url": "https://cookies-lgl.github.io/",
   "scope": ".",
   "description": "guilin的个人博客",
   "icons": [
