@@ -81,5 +81,17 @@ export default defineUserConfig<DefaultThemeOptions>({
     sidebar: 'auto',
     sidebarDepth: 2,
   },
+  plugins: [
+    [
+      '@vuepress/pwa',
+      {
+        serviceWorker: true,
+        updatePopup: {
+            message: "发现新内容可用",
+            buttonText: "刷新"
+        }
+     }
+    ]
+  ]
   // theme: path.resolve(__dirname, './theme'),
 });

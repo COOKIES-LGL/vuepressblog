@@ -1,0 +1,21 @@
+{
+  "name": "归零的博客",
+  "short_name": "归lin",
+  "display": "standalone",
+  "background_color": "#fff",
+  "start_url": "https://github.com/COOKIES-LGL/vuepressblog/",
+  "scope": ".",
+  "description": "guilin的个人博客",
+  "icons": [
+    {
+      "src": "image/FE.jpeg",
+      "sizes": "52x52",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "image/FE.jpeg",
+      "sizes": "288x288",
+      "type": "image/jpeg"
+    }
+  ]
+}
