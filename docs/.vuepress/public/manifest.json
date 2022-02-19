@@ -3,19 +3,19 @@
   "short_name": "归lin",
   "display": "standalone",
   "background_color": "#fff",
-  "start_url": "https://github.com/COOKIES-LGL/vuepressblog/",
+  "start_url": "/vuepressblog/",
   "scope": ".",
   "description": "guilin的个人博客",
   "icons": [
     {
-      "src": "images/FE.jpeg",
+      "src": "images/card1.png",
       "sizes": "52x52",
-      "type": "image/jpeg"
+      "type": "image/png"
     },
     {
-      "src": "images/FE.jpeg",
+      "src": "images/card1.png",
       "sizes": "288x288",
-      "type": "image/jpeg"
+      "type": "image/png"
     }
   ]
 }
