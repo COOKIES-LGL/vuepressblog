@@ -3,6 +3,7 @@
   "short_name": "归lin",
   "display": "standalone",
   "background_color": "#fff",
+  "start_url": "/index.html",
   "description": "guilin的个人博客",
   "icons": [
     {
