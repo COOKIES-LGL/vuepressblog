@@ -3,8 +3,6 @@
   "short_name": "归lin",
   "display": "standalone",
   "background_color": "#fff",
-  "start_url": "/vuepressblog/",
-  "scope": "/vuepressblog/",
   "description": "guilin的个人博客",
   "icons": [
     {
