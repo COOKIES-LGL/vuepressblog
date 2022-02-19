@@ -8,12 +8,12 @@
   "description": "guilin的个人博客",
   "icons": [
     {
-      "src": "image/FE.jpeg",
+      "src": "images/FE.jpeg",
       "sizes": "52x52",
       "type": "image/jpeg"
     },
     {
-      "src": "image/FE.jpeg",
+      "src": "images/FE.jpeg",
       "sizes": "288x288",
       "type": "image/jpeg"
     }
