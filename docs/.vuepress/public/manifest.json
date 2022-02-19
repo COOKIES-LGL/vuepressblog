@@ -8,8 +8,8 @@
   "description": "guilin的个人博客",
   "icons": [
     {
-      "src": "images/card1.png",
-      "sizes": "220x172",
+      "src": "images/instagram.png",
+      "sizes": "62x62",
       "type": "image/png"
     }
   ]
