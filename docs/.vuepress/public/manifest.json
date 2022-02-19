@@ -9,12 +9,7 @@
   "icons": [
     {
       "src": "images/card1.png",
-      "sizes": "52x52",
-      "type": "image/png"
-    },
-    {
-      "src": "images/card1.png",
-      "sizes": "288x288",
+      "sizes": "220x172",
       "type": "image/png"
     }
   ]
