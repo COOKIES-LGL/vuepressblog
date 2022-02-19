@@ -6,7 +6,10 @@ export default defineUserConfig<DefaultThemeOptions>({
   lang: 'zh-CN',
   title: '归零@you',
   description: '带着疑问抬头望天,繁星点点. 就像我曾追逐的梦,忽隐忽现.',
-  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
+  ],
   themeConfig: {
     logo: '../images/FE.jpeg',
     navbar: [
@@ -87,11 +90,11 @@ export default defineUserConfig<DefaultThemeOptions>({
       {
         serviceWorker: true,
         updatePopup: {
-            message: "发现新内容可用",
-            buttonText: "刷新"
-        }
-     }
-    ]
-  ]
+          message: '发现新内容可用',
+          buttonText: '刷新',
+        },
+      },
+    ],
+  ],
   // theme: path.resolve(__dirname, './theme'),
 });
