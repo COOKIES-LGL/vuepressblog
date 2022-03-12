@@ -32,3 +32,12 @@
 加载图片时出现了错误，那么我们可以通过 onerror事件给该元素添加一个样式，并使用404图片。 -->
 <img src="https://miro.medium.com/xxx.jpg" alt='fireworks picture' onerror="this.classList.add('error');">
 ```
+
+## 固定定位元素
+``` HTML
+<!-- 给固定定位元素的父元素设置 transform: scale(1), 可让固定定位相较于父元素定位 -->
+transform: scale(1);
+<!-- 设置固定定位后元素的宽度会不确定, 设置100%时会溢出,因此设置left:0 right:0 可以解决 -->
+left: 0;
+right: 0;
+```
