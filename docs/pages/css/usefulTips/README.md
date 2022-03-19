@@ -41,3 +41,7 @@ transform: scale(1);
 left: 0;
 right: 0;
 ```
+``` html
+<span>打印自动分页</span>
+    <hr style="page-break-before:always; visibility:hidden" />
+```

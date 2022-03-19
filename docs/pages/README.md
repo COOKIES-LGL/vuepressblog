@@ -23,5 +23,8 @@ home: false
 *  [余忆年少时](./self-daily/school)  <span style="color:#bbb; float:right">2021-06-20</span>
 *  [余忆近日时](./self-daily/daily-log)  <span style="color:#bbb; float:right">2022-01-02</span>
 --- ---
+### 读书笔记
+*  [《斯坦福大学人生设计课》](./book-reading/design-your-life)  <span style="color:#bbb; float:right">2021-05-20</span>
+--- ---
 ### MarkDown使用指南
 *  [MarkDown](./blog-daily/use-markdown)  <span style="color:#bbb; float:right">2021-06-24</span>
