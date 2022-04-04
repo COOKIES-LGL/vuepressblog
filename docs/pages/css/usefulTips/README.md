@@ -1,4 +1,4 @@
-## 增加按钮可点击区域
+### 增加按钮可点击区域
 ``` CSS
 /*增加按钮可点击区域*/
 #btn::before {
@@ -11,7 +11,7 @@
 }
 
 ```
-## 用户选择文本
+### 用户选择文本
 ``` CSS
 /*
 用户选择的CSS属性控制用户是否可以选择文本。如果它的值是all，意味着一个元素的所有内容都将被原子化地选择。
@@ -26,14 +26,14 @@
   color: red;
 }
 ```
-## 充分利用onerror事件
+### 充分利用onerror事件
 ``` HTML
 <!-- 我们可以给img元素添加一个onerror事件。
 加载图片时出现了错误，那么我们可以通过 onerror事件给该元素添加一个样式，并使用404图片。 -->
 <img src="https://miro.medium.com/xxx.jpg" alt='fireworks picture' onerror="this.classList.add('error');">
 ```
 
-## 固定定位元素
+### 固定定位元素
 ``` HTML
 <!-- 给固定定位元素的父元素设置 transform: scale(1), 可让固定定位相较于父元素定位 -->
 transform: scale(1);
@@ -41,7 +41,18 @@ transform: scale(1);
 left: 0;
 right: 0;
 ```
+### 固定定位元素相对父标签
+``` HTML
+因为position： fixed 的是相对于浏览器视图窗口定位的，并且宽度是继承自浏览器视图窗口的总宽度，无法达到宽度自适应的效果
+可以使用 position: sticky; 替换fixed 达到相对于父标签固定定位的功能
+
+```
+### 打印自动分页
 ``` html
 <span>打印自动分页</span>
     <hr style="page-break-before:always; visibility:hidden" />
+```
+### 固定文本字符宽度
+``` html
+font-feature-setting:'tunm', 可以用来固定文本字符的宽度，
 ```
