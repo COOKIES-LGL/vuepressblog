@@ -3,9 +3,12 @@ sidebar: false
 ---
 
 ### 童稚
-    
+<img :src="$withBase('./images/self-daily/home.jpeg')">
+
 余忆童稚时，能张目对日，明察秋毫，  
 见藐小之物必细察其纹理，故时有物外之趣。
+
+<img :src="$withBase('./images/self-daily/home1.jpeg')">    
 
 夏蚊成雷，私拟作群鹤舞于空中，心之所向，则或千或百，果然鹤也；  
 昂首观之，项为之强。  
