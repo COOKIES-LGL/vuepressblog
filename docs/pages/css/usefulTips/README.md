@@ -56,3 +56,34 @@ right: 0;
 ``` html
 font-feature-setting:'tunm', 可以用来固定文本字符的宽度，
 ```
+### clamp() 函数
+
+::: tip
+clamp() 函数的作用是把一个值限制在一个上限和下限之间，当这个值超过最小值和最大值的范围时，在最小值和最大值之间选择一个值使用。它接收三个参数：最小值、首选值、最大值。
+:::
+``` css
+h1{
+  font-size: clamp(5.25rem,8vw,8rem);
+}
+```
+
+### hyphens
+
+::: tip
+hyphens 告知浏览器在换行时如何使用连字符连接单词。可以完全阻止使用连字符，也可以控制浏览器什么时候使用，或者让浏览器决定什么时候使用。
+hyphens: none | manual | auto
+:::
+
+### column count
+
+::: tip
+使用列属性为文本元素制作漂亮的列布局。
+:::
+
+``` CSS
+p{
+  column-count: 3;
+  column-gap: 5rem;          
+  column-rule: 1px solid salmon; /* border between columns */
+}
+```

@@ -249,3 +249,20 @@ function base64dataURLtoBlob(dataUrl: string) {
   });
 }
 ```
+
+``` javascript
+// qs库应该是axios安装时会自带的  get 请求处理数组传递
+const qs = require('qs');
+
+axios.get(url, {
+    params:{
+        arr: [1,2,3]
+    },
+    paramsSerializer: function(params) {
+        return Qs.stringify(params, {
+          arrayFormat: 'repeat'
+          skipNull: true, //  移除空值
+        })
+    }
+})
+```
