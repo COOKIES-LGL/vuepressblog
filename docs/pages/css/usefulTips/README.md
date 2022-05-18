@@ -87,3 +87,12 @@ p{
   column-rule: 1px solid salmon; /* border between columns */
 }
 ```
+
+### column count
+
+::: tip
+1、textContent innerText 都可以用来获取元素内文本,但textConten 可以获取隐藏但元素. 一般使用textContent
+2、border-sizing: border-box; 在设置了宽 高才会生效
+3、table 设置了border-collapse:collapse之后，设置border-radius没效果
+4、tr、无法这是padding td 、无法设置margin
+:::
