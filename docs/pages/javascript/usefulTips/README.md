@@ -71,3 +71,18 @@ requestAnimationFrame 比起 setTimeout、setInterval的优势主要有两点：
 2、在隐藏或不可见的元素中，requestAnimationFrame将不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。
 3、requestAnimationFrame默认返回一个id，cancelAnimationFrame只需要传入这个id就可以停止了.
 :::
+
+### Void
+由于 void 总是返回 undefined，而 void 总是计算它旁边的表达式，你有一个非常简洁的方法从函数返回而不返回一个值，但仍然调用一个回调例如：
+``` javascript
+// 返回除 undefined 以外的其他内容会使程序崩溃 
+function middleware(nextCallback) { 
+  if(conditionApplies()) { 
+    return void nextCallback(); 
+  } 
+} 
+
+这让我想到了 void 最重要的通途：它是你程序的安全门。当你的函数总是应该返回 undefined 时，你可以确保始终如此。
+
+button.onclick = () => void doSomething(); 
+```
