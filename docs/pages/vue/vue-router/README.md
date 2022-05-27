@@ -1,8 +1,13 @@
 ---
 home: false
 ---
-## 你好vue-router
+
+## 你好 vue-router
+
 <!-- <span v-for="i in 3">{{ i }} </span> -->
+
+### 别名用在 path 为’/’中，别名是不起作用的
+
 <style>
 @media screen and (min-width: 400px) {
   .theme-default-content:not(.custom) {
