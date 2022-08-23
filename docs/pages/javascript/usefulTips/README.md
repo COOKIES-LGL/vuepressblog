@@ -215,3 +215,26 @@ observer.unobserve(target);
 // 停止所有的监听
 observer.disconnect();
 ```
+
+### 获取链接中的参数
+``` javascript
+let type = new URLSearchParams(location.search).get('type');
+```
+
+### 全屏展示Dom元素
+
+``` javascript
+// requestFullscreen：系统上以全屏模式显示所选元素，会关闭其他应用程序以及浏览器和系统 UI 元素。
+// exitFullscreen：退出全屏模式并切换到正常模式。
+// 鲜为人知但很实用的Web API
+// https://juejin.cn/post/7133096500753596446#heading-2
+```
+
+### Event EventTarget Node Document HTMLElement 区别
+
+*** HTMLElement extends Element
+1. Element extends Node ， Document extends Node
+2. Node extends EventTarget
+3. Event是发生在dom的事件，其中target属性为 EventTarget | null
+4. Node有很多dom的API，Document 与Element又进行扩充，像className就是Element特有的，document有cookie,domain之类特有的。
+5. 而HTMLElement就是扩充自Element，比Element多了offsetHeight之类属性。
