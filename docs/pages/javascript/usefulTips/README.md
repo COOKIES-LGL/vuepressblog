@@ -238,3 +238,31 @@ let type = new URLSearchParams(location.search).get('type');
 3. Event是发生在dom的事件，其中target属性为 EventTarget | null
 4. Node有很多dom的API，Document 与Element又进行扩充，像className就是Element特有的，document有cookie,domain之类特有的。
 5. 而HTMLElement就是扩充自Element，比Element多了offsetHeight之类属性。
+
+
+### 深入Try Catch
+
+``` javascript
+try {
+    setTimeout(() => {
+        throw new Error('test');
+    }, 0);
+} catch (e) {
+    console.error('error');
+}
+// 这里的错误将无法被捕获，try-catch 只能捕获到当前调用栈中的错误，而 setTimeout 作为一个宏任务将会脱离外层 try-catch 调用栈运行，导致无法被外层 try-catch 所捕获。
+```
+``` Javascript
+console.log(
+    (() => {
+        try {
+            throw new Error('test');
+        } catch (e) {
+            return 'catch';
+        } finally {
+            return 'finally';
+        }
+    })()
+);
+// 打印出 finally.在你想要跳出代码块时：如 try、catch 中存在 return、break 等等语句时，finally 将会霸道的拦截跳出语句，这就导致如果你在 try 或 catch 中存在跳出语句，而在 finally 中同样存在跳出语句，那你的 try、catch 块中的跳出语句将永远无法运行。
+```
