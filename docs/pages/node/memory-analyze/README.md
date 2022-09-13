@@ -1,31 +1,23 @@
 
 
-https://juejin.cn/post/6844904167534805005
+## Vue SSR 内存泄漏排查
 
-https://zhuanlan.zhihu.com/p/461945753
-
-https://www.cnblogs.com/rongfengliang/p/12151626.html
-
-https://www.cnblogs.com/rongfengliang/p/12151626.html 火焰图工具使用
-
-mac自带的apache中的ab是有最大并发限制的，您可以重新下载一个apache并且编译（可以参考这篇文章），安装之前记得卸载原来的哦。
-
-Mac下自带apache，查看版本：
-
+mac自带的apache中的ab是有最大并发限制的，您可以重新下载一个apache并且编译。
+Mac下自带apache，查看版本：  
+``` bash
 apachectl -v
 Server version: Apache/2.4.34 (Unix)
-Server built:   Feb 22 2019 20:20:11
-查看ab版本:
-
+Server built:   Feb 22 2019 20:20:11  
+```
+查看ab版本:  
+``` bash
 ab -V
 ab压力测试工具的用法，查看：
-
 ab --help
 或者
 man ab
-# 按Ctrl+z组合键，或者按q键退出
+```
 例如：
-
 ab -c 并发数 -n 请求数 URL
 ab工具常用参数：
 -n ：总共的请求执行数，缺省是1；
@@ -36,12 +28,12 @@ ab工具常用参数：
 -r: 跳过异常接口错误
 -k: 让连接KeepAlive避免The timeout specified has expired (70007)
 ab -n 100 -c 10 -w http://www.baidu.com/ >> baidu.html
-# 结果界面和下面例子是一样的，只是以html文件形式保存而已。
-下面，我们以请求百度为例：
+
+结果界面和下面例子是一样的，只是以html文件形式保存而已。下面，我们以请求百度为例：
 
 ab -n 100 -c 10 https://www.baidu.com/
 
-``` text
+``` cmd
 -n 在测试会话中所执行的请求个数（总数）
  
 -c 一次产生的请求个数（单次请求次数）
@@ -89,18 +81,23 @@ ab -n 100 -c 10 https://www.baidu.com/
 -k 启用HTTP KeepAlive功能，即在一个HTTP会话中执行多个请求。默认时，不启用KeepAlive功能。
  
 -q 如果处理的请求数大于150，ab每处理大约10%或者100个请求时，会在stderr输出一个进度计数。此-q标记可以抑制这些信息。
+
 ```
+### 火焰图的基本含义
+<img :src="$withBase('./images/daily-blog/memory.jpg')">
+1、每一个小块代表了一个函数在栈中的位置（即一个栈帧）。  
+2、y 轴表示调用栈，每一层都是一个函数。调用栈越深，火焰就越高，顶部就是正在执行的函数，下方都是它的父函数。  
+3、x 轴表示抽样数，如果一个函数在 x 轴占据的宽度越宽，就表示它被抽到的次数多，即执行的时间长。注意，x 轴不代表时间，而是所有的调用栈合并后，按字母顺序排列的。  
+4、小块的宽度代表 CPU 的使用时间，或者说相对于父函数而言使用 CPU 的比例（基于所有样例），越宽则代表占用 CPU 的时间越长，或者使用 CPU 很频繁。如果一个函数在顶层占据的宽度最大，就表示该函数可能存在性能问题。  
+
+[github 0x](https://github.com/davidmarkclements/0x/blob/master/docs/ui.md)
+
 
 ### 总结
-对于 vue/react ssr，除了要注意在服务端 ssr 生命周期能触发的钩子内不要创建资源属性的内容防止内存泄露，
-也要尤其注意到这类的执行错误可能引发公共模块重复编译导致的闭包泄露。
+- 对于 vue/react ssr，除了要注意在服务端 ssr 生命周期能触发的钩子内不要创建资源属性的内容防止内存泄露，
+- 也要注意到这类的执行错误可能引发公共模块重复编译导致的闭包泄露。
 
-
-### 火焰图的基本含义
-
-<!-- <img :src="https://pic2.zhimg.com/80/v2-7194a798ac94709936f1ec60ae73bc71_1440w.jpg"> -->
-1、每一个小块代表了一个函数在栈中的位置（即一个栈帧）。
-2、y 轴表示调用栈，每一层都是一个函数。调用栈越深，火焰就越高，顶部就是正在执行的函数，下方都是它的父函数。
-3、x 轴表示抽样数，如果一个函数在 x 轴占据的宽度越宽，就表示它被抽到的次数多，即执行的时间长。注意，x 轴不代表时间，而是所有的调用栈合并后，按字母顺序排列的。
-4、小块的宽度代表 CPU 的使用时间，或者说相对于父函数而言使用 CPU 的比例（基于所有样例），越宽则代表占用 CPU 的时间越长，或者使用 CPU 很频繁。如果一个函数在顶层占据的宽度最大，就表示该函数可能存在性能问题。
-https://github.com/davidmarkclements/0x/blob/master/docs/ui.md
+参考链接:   
+1、[使用heapdump](https://www.bookstack.cn/read/node-in-debugging/2.2heapdump.md)  
+2、[火焰图工具使用](https://github.com/davidmarkclements/0x)  
+3、[参考案例](https://zhuanlan.zhihu.com/p/461945753)

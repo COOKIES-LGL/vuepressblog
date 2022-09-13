@@ -11,7 +11,7 @@ sidebar: auto
 * [Javascript高级指南](./javascript-tools)  <span style="color:#bbb; float:right">2021-07-02</span>
 * [webpack4迁移webpack5指南](./webpack-four-to-five)  <span style="color:#bbb; float:right">2021-07-12</span>
 * [localhost调试Live等环境代码指南](./live-code-debug)  <span style="color:#bbb; float:right">2022-01-12</span>
+* [代理开发解决最新版chrome samesite问题](./use-test-dev-for-chrome)  <span style="color:#bbb; float:right">2022-06-12</span>
 * [常用设计模式](./design-mode)  <span style="color:#bbb; float:right">2022-07-12</span>
-* [解决前端的竞态问题](./live-code-debug)  <span style="color:#bbb; float:right">2022-05-12</span>
-https://juejin.cn/post/7127953386514677790
+* [解决前端的竞态问题](./solve-fe-complete-question)  <span style="color:#bbb; float:right">2022-05-12</span>
 
