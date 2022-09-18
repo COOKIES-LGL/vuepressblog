@@ -36,6 +36,7 @@ w2 stop //启动
 ```
 
 **whistle配置:**
+[(官方教程)](https://wproxy.org/whistle/quickstart.html)
 访问 127.0.0.1:8899 -> Rules -> Default -> 粘贴下面的配置信息
 
 匹配规则（以下规则为seller center项目联调时的配置）

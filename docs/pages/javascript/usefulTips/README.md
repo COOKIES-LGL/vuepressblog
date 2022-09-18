@@ -266,3 +266,18 @@ console.log(
 );
 // 打印出 finally.在你想要跳出代码块时：如 try、catch 中存在 return、break 等等语句时，finally 将会霸道的拦截跳出语句，这就导致如果你在 try 或 catch 中存在跳出语句，而在 finally 中同样存在跳出语句，那你的 try、catch 块中的跳出语句将永远无法运行。
 ```
+
+### 创建不继承Object.prototype的对象
+我们可以通过使用 Object.create(null) 来解决这个问题，它可以生成一个不继承Object.prototype的对象。
+
+### 获取指定长度的随机数组
+``` javascript
+function createData(length) {
+  return Array.from({ length }, (val, i) => {
+    return ~~(Math.random() * length);
+  });
+}
+createData(100);
+// Aray.map() 方法会跳过空项
+// (100) [43, 14, 70, 85, 74, 35, 19, 50, 63, 5, 27, 22, 36, 34, 25, 33, 40, 26, ...
+```

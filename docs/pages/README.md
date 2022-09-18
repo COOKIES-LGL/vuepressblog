@@ -9,6 +9,7 @@ home: false
 * [Typescript](./typescript)  <span style="color:#bbb; float:right">2021-06-15</span>
 * [Webpack](./webpack)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Node](./node)  <span style="color:#bbb; float:right">2021-06-30</span>
+* [Redis Kafaka Elastic](./redis-kafaka-elastic)  <span style="color:#bbb; float:right">2021-06-20</span>
 * [Django](./django)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Css高级使用技巧](./css)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Javascript高级使用技巧](./javascript)  <span style="color:#bbb; float:right">2021-06-30</span>

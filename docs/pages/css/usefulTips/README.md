@@ -221,3 +221,33 @@ drop-shadow 的工作方式是，其遵循给给定图片的 Alpha 通道。因�
 }
 
 ```
+
+### 延迟hover执行&实现长按效果
+
+现在转折来了，如果借用 CSS 就可以有效地避免上述问题，如下，先给需要触发的元素加一个有延时的transition
+``` CSS
+button:hover{
+  opacity: 0.999; /*无关紧要的样式*/
+  transition: 0s 1s opacity; /*延时 1s */
+}
+```
+这里只需一个无关紧要的样式就行，如果opacity已经使用过了，可以使用其他的，比如transform:translateZ(.1px)，也是可行的。然后添加监听transitionend方法
+``` javascript
+GlobalEventHandlers.ontransitionend - Web API 接口参考 | MDN (mozilla.org)
+
+el.addEventListener('transitionend', () => {
+  // 具体逻辑
+})
+```
+----------------------------------------------------------------
+``` Css
+button:hover:active{
+  opacity: .999; /*无关紧要的样式*/
+  transition: opacity 1s; /*延时 1s */
+}
+```
+``` Javascript
+el.addEventListener('transitionend', () => {
+  // 具体逻辑
+})
+```
