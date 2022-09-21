@@ -3,6 +3,13 @@ home: false
 ---
 ## 我的博客
 ### 技术文档列表
+* [Css高级使用技巧](./css)  <span style="color:#bbb; float:right">2021-06-30</span>
+* [Javascript高级使用技巧](./javascript)  <span style="color:#bbb; float:right">2021-06-30</span>
+* [前端前沿技术](./frontier-technology)  <span style="color:#bbb; float:right">2021-08-30</span>
+* [前端基础设施](./fe-sre)  <span style="color:#bbb; float:right">2021-06-30</span>
+* [面试日常记录](./fe-interview)  <span style="color:#bbb; float:right">2021-06-30</span>
+* [计算机网络](./computer-network)  <span style="color:#bbb; float:right">2021-06-30</span>
+* [日常技术随笔](./blog-daily) <span style="color:#bbb; float:right">2021-07-01</span>
 * [Vue](./vue)  <span style="color:#bbb; float:right">2021-06-10</span>
 * [React](./react)  <span style="color:#bbb; float:right">2021-06-13</span>
 * [React-Native](./react-native)  <span style="color:#bbb; float:right">2021-06-13</span>
@@ -11,13 +18,6 @@ home: false
 * [Node](./node)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Redis Kafaka Elastic](./redis-kafaka-elastic)  <span style="color:#bbb; float:right">2021-06-20</span>
 * [Django](./django)  <span style="color:#bbb; float:right">2021-06-30</span>
-* [Css高级使用技巧](./css)  <span style="color:#bbb; float:right">2021-06-30</span>
-* [Javascript高级使用技巧](./javascript)  <span style="color:#bbb; float:right">2021-06-30</span>
-* [前端前沿技术](./frontier-technology)  <span style="color:#bbb; float:right">2021-08-30</span>
-* [前端基础设施](./fe-sre)  <span style="color:#bbb; float:right">2021-06-30</span>
-* [面试日常记录](./fe-interview)  <span style="color:#bbb; float:right">2021-06-30</span>
-* [计算机网络](./computer-network)  <span style="color:#bbb; float:right">2021-06-30</span>
-* [日常技术随笔](./blog-daily) <span style="color:#bbb; float:right">2021-07-01</span>
 --- ---
 ### 人生随笔列表
 *  [余忆童稚时](./self-daily/remind-record)  <span style="color:#bbb; float:right">2021-05-20</span>

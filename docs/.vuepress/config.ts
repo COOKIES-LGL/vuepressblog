@@ -53,6 +53,14 @@ export default defineUserConfig<DefaultThemeOptions>({
             text: '牛客练习',
             link: 'https://www.nowcoder.com/intelligentTest',
           },
+          {
+            text: '牛客练习',
+            link: 'https://www.nowcoder.com/intelligentTest',
+          },
+          {
+            text: '阮一峰日志',
+            link: 'https://www.ruanyifeng.com/blog/',
+          },
         ],
       },
       {
@@ -71,12 +79,32 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: 'https://next.router.vuejs.org/zh/guide/index.html',
           },
           {
-            text: 'webpack中文文档',
+            text: 'Webpack中文文档',
             link: 'https://www.webpackjs.com/concepts/',
           },
           {
-            text: 'uni-app文档',
+            text: 'Uni-app文档',
             link: 'https://uniapp.dcloud.io/',
+          },
+          {
+            text: 'React文档',
+            link: 'https://zh-hans.reactjs.org/docs/getting-started.html',
+          },
+          {
+            text: 'Kafka官方文档',
+            link: 'https://kafka.apachecn.org/intro.html',
+          },
+          {
+            text: 'Vue-ssr文档',
+            link: 'https://cn.vitejs.dev/guide/',
+          },
+          {
+            text: 'Vite文档',
+            link: 'https://cn.vitejs.dev/guide/',
+          },
+          {
+            text: 'Rollup文档',
+            link: 'https://www.rollupjs.com/',
           },
         ],
       },

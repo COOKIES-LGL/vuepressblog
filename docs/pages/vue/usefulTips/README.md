@@ -1,4 +1,4 @@
-### 问题 1:vue data 里初始值为 undefined 的值，不会做响应式处理
+### vue data 里初始值为 undefined 的值，不会做响应式处理
 
 ```javascript
 export default class AddAddress extends Vue {
@@ -7,7 +7,7 @@ export default class AddAddress extends Vue {
 }
 ```
 
-### 问题 2: null 值不会触发 prop 的 default 逻辑
+### null 值不会触发 prop 的 default 逻辑
 
 ```javascript
 export default class AddAddress extends Vue {
@@ -52,8 +52,9 @@ Vue.config.errorHandler = (err) => {
 ```
 
 像 Bugsnag 和 Rollbar 这样的错误跟踪服务，可以钩住这些处理程序来记录错误，但你也可以用它们来更优雅地处理错误，以获得更好的用户体验。
-例如，如果一个错误未被处理，应用程序不会直接崩溃，你可以显示一个完整的错误屏幕，让用户刷新或尝试其他东西。
-在 Vue3 中，错误处理程序只能处理  template  和  watcher  错误，但是  Vue2 的错误处理程序可以捕获几乎所有错误。这两个版本中的警告处理程序只在开发阶段有效。
+例如，如果一个错误未被处理，应用程序不会直接崩溃，你可以显示一个完整的错误屏幕，让用户刷新或尝试其他东西。  
+在 Vue3 中，错误处理程序只能处理  template  和  watcher  错误，  
+但是  Vue2 的错误处理程序可以捕获几乎所有错误。这两个版本中的警告处理程序只在开发阶段有效。
 
 ### 妙用 hook 事件
 如果想监听子组件的生命周期时，可以像下面例子中这么做：
@@ -61,7 +62,7 @@ Vue.config.errorHandler = (err) => {
 <template>
   <child @hook:mounted="removeLoading" />
 </template>
-复制代码
+
 这样的写法可以用于处理加载第三方的初始化过程稍漫长的子组件时，我们可以加loading动画，等到子组件加载完毕，到了mounted生命周期时，把loading动画移除。
 初次之外hook还有一个常用的写法，在一个需要轮询更新数据的组件上，我们通常在created里开启定时器，然后在beforeDestroy上清除定时器。而通过hook,开启和销毁定时器的逻辑我们都可以在created里实现：
 <script>
@@ -78,7 +79,7 @@ Vue.config.errorHandler = (err) => {
   };
 </script>
 ```
-
+``` javascript
 const broadcast = function(componentName, eventName, ...params) {
   let children = this.$children;
   children.forEach(child => {
@@ -115,7 +116,7 @@ export default {
     }
   }
 };
-
+```
 
 
 ### 妙用 自定义指令
