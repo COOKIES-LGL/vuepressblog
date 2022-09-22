@@ -10,13 +10,13 @@ home: false
 * [面试日常记录](./fe-interview)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [计算机网络](./computer-network)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [日常技术随笔](./blog-daily) <span style="color:#bbb; float:right">2021-07-01</span>
+* [Redis Elastic](./redis-kafaka-elastic)  <span style="color:#bbb; float:right">2021-06-20</span>
 * [Vue](./vue)  <span style="color:#bbb; float:right">2021-06-10</span>
 * [React](./react)  <span style="color:#bbb; float:right">2021-06-13</span>
 * [React-Native](./react-native)  <span style="color:#bbb; float:right">2021-06-13</span>
 * [Typescript](./typescript)  <span style="color:#bbb; float:right">2021-06-15</span>
 * [Webpack](./webpack)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Node](./node)  <span style="color:#bbb; float:right">2021-06-30</span>
-* [Redis Kafaka Elastic](./redis-kafaka-elastic)  <span style="color:#bbb; float:right">2021-06-20</span>
 * [Django](./django)  <span style="color:#bbb; float:right">2021-06-30</span>
 --- ---
 ### 人生随笔列表
