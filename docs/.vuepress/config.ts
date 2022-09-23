@@ -22,9 +22,13 @@ export default defineUserConfig<DefaultThemeOptions>({
         link: '/pages',
       },
       {
-        text: '导航中心',
-        link: 'https://cookies-lgl.github.io/',
+        text: '个人简历',
+        link: '/images/resume.html',
       },
+      // {
+      //   text: '导航中心',
+      //   link: 'https://cookies-lgl.github.io/',
+      // },
       {
         text: '摸鱼棋盘',
         link: 'http://html5.huceo.com/wzq/',
