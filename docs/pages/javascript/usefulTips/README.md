@@ -281,3 +281,51 @@ createData(100);
 // Aray.map() 方法会跳过空项
 // (100) [43, 14, 70, 85, 74, 35, 19, 50, 63, 5, 27, 22, 36, 34, 25, 33, 40, 26, ...
 ```
+
+### 获取拖拽的文件
+``` javascript
+el.addEventListener("drop", e => {
+  const [file] = e.dataTransfer.files;
+  fileData.value = file;
+  el.style.borderColor = "#eee";
+  e.preventDefault();
+});
+```
+
+### 根据文件内容判断文件类型
+
+``` javascript
+// 参考链接 https://www.notion.so/97141a6fb1b54c1795f2be054d1f75d9?v=f3c65f144fc2497a98205683771bda53
+//  - JPG：文件头为 FF D8 FF
+//  - PNG：文件头为 89 50 4E 47
+//  - GIF：文件头为 47 49 46 38
+const isGif = async (file: File): Promise<boolean> => {
+  const ret = await blobToString(file.slice(0, 4));
+  return ret === "47 49 46 38";
+};
+
+const blobToString = (blob: Blob): Promise<string> => {
+  return new Promise(resolve => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = (reader.result as string)
+        .split("")
+				// 转化成 asc 码
+        .map((v: string) => v.charCodeAt(0))
+				// 转化成 16 进制
+        .map((v: number) => v.toString(16))
+				// 补齐 0
+        .map((v: string) => v.padStart(2, "0"))
+        .join(" ");
+      resolve(result);
+    };
+    reader.readAsBinaryString(blob); //转化为2进制
+    // 还存在readAsArrayBuffer、readAsDataURL、readAsText
+  });
+};
+```
+
+``` javascript
+window.requestIdleCallback();
+// 时间切片，让浏览器在空闲的时候去做一些事情
+```

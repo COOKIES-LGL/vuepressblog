@@ -52,7 +52,6 @@ Function.prototype.myBind = function(context) {
     throw new Error('Error Call');
   }
   let args = [...arguments].slice(1);
-  let symbolField = new Symbol();
   context = context | window;
   fn = this;
   return function Fn() {

@@ -53,5 +53,318 @@ limitRequest(urls, 3).then(res => {
 })
 ```
 
+``` javascript
+// 将数组分割成指定长度
+function subGroup(arr, len) {
+  var newArr = [];
+  for(var i = 0; i < arr.length; i += len){
+    newArr.push(arr.slice(i, i + len));
+  }
+  return newArr;
+}
+```
+
+::: tips
+for循环中，当不用&&和||申明多个条件时，默认的是或者关系。
+:::
+
+``` javascript 
+
+1.其他进制转十进制
+parseInt("16",16)    变量/声明我是几进制
+parseInt("12",8)
+parseInt("1010",2) 
+2.十进制转其他进制
+var v1 = 24;
+v1.toString(16)     //转16进制
+v1.toString(8)      //转8进制 
+v1.toString(2)      //转2进制
+v1.toString(10)     //转10进制
+
+parseInt(num,2).toString(8)      //2进制转8进制
+parseInt(num,8).toString(2)     //8进制转2进制
+
+```
+
+``` javascript
+// 求质数因子
+  function getCode(num) {
+    const sqrt = Math.sqrt(num);
+    const arr = [];
+    for (let i = 2; i <= sqrt; i++) {
+      while (num % i == 0) {
+        arr.push(i);
+        num /= i;
+      }
+    }
+    if (num != 1) {
+      arr.push(num);
+    }
+    return arr.join(" ");
+  }
+```
+
+``` javascript
+// 匈牙利算法
+
+```
 
 
+``` javascript
+// 快速排序
+
+```
+
+``` javascript
+// 双指针
+
+```
+
+``` javascript
+// 密码截取
+// HJ32
+// 主要分为两种情况，对于每个元素，分是否作为中心点考虑，如果是中心点，let l=index-1，let r=index+1，否则的话，let l=index，let r=index+1
+let input=readline()
+let arr=Array.from(input)
+let res=[]
+for(let i=0;i<arr.length;i++){
+    let a=d1(i,arr)
+    let b=d2(i,arr)
+//     console.log(a,b)
+    res[i]=Math.max(a,b)
+}
+console.log(Math.max(...res))
+function d1(index,arr){
+    let l=index-1
+    let r=index+1
+    let count=1
+    while(l>=0&&r<arr.length){
+        if(arr[l]==arr[r]){
+            count+=2
+            l--
+            r++
+        }else{
+            break
+        }
+    }
+    return count
+}
+function d2(index,arr){
+    let l=index
+    let r=index+1
+    let count=0
+    while(l>=0&&r<arr.length){
+        if(arr[l]==arr[r]){
+            count+=2
+            l--
+            r++
+        }else{
+            break
+        }
+    }
+    return count
+}
+
+```
+
+### 动态规划
+``` javascript
+// 动态规划01背包
+function knapSack(w,val,capacity,n){
+	var T = []
+	for(let i = 0;i < n;i++){
+		T[i] = [];
+		for(let j=0;j <= capacity;j++){
+			if(j === 0){ //容量为0
+				T[i][j] = 0;
+				continue;
+			}	
+			if(j < w[i]){ //容量小于物品重量，本行hold不住
+				if(i === 0){
+					T[i][j] = 0; // i = 0时，不存在i-1，所以T[i][j]取0
+				}else{
+					T[i][j] = T[i-1][j]; //容量小于物品重量，参照上一行
+				}
+				continue;
+			}
+			if(i === 0){
+				T[i][j] = val[i]; //第0行，不存在 i-1, 最多只能放这一行的那一个物品
+			}else{
+				T[i][j] = Math.max(val[i] + T[i-1][j-w[i]],T[i-1][j]);
+			}
+		}
+	}
+	findValue(w,val,capacity,n,T);
+	return T;
+}
+//找到需要的物品
+function findValue(w,val,capacity,n,T){
+	var i = n-1, j = capacity;
+	while ( i > 0 && j > 0 ){
+		if(T[i][j] != T[i-1][j]){
+			console.log('选择物品'+i+',重量：'+ w[i] +',价值：' + val[i]);
+			j = j- w[i];
+			i--;
+		}else{
+			i--;  //如果相等，那么就到 i-1 行
+		}
+	}
+	if(i == 0 ){
+		if(T[i][j] != 0){ //那么第一行的物品也可以取
+			console.log('选择物品'+i+',重量：'+ w[i] +',价值：' + val[i]);
+		}
+	}
+}
+var values = [3,4,5],
+	weights = [2,3,4],
+	capacity = 5,
+	n = values.length;
+console.log(knapSack(weights,values,capacity,n));
+```
+
+``` javascript
+// 找零钱问题
+//动态规划 -- 硬币找零问题
+function minCoins(coins,total,n){
+	var T = [];
+	for(let i = 0;i<n;i++){
+		T[i] = []
+		for (let j=0;j<= total;j++){
+			if(j == 0){
+				T[i][j] = 0;
+				continue;
+			}
+			if(i == 0){
+				T[i][j] = j/coins[i]; //硬币找零一定要有个 最小面额1，否则会无解
+			}else{
+				if(j >= coins[i]){
+					T[i][j] = Math.min(T[i-1][j],1+T[i][j-coins[i]]);
+				}else{
+					T[i][j] = T[i-1][j];
+				}
+			}
+		}
+	}
+	findValue(coins,total,n,T);
+	return T;
+}
+
+function findValue(coins,total,n,T){
+	var i = n-1, j = total;
+	while(i>0 && j >0){
+		if(T[i][j]!=T[i-1][j]){
+			//锁定位置,确定i,j值，开始找构成结果的硬币组合。 其实根据这种计算方法，只需要考虑最右边那一列，从下往上推。
+			console.log(T[i][j]);
+			break
+		}else{
+			i--;
+		}
+	}
+	var s = []; //存储组合结果
+	while(i >= 0 && j > 0 ){
+		s.push(coins[i]);
+		j=j-coins[i];
+		if(j <= 0){
+			break; //计算结束，退出循环
+		}
+		//如果 i == 0,那么就在第 0 行一直循环计算，直到 j=0即可
+		if(i>0){
+			//console.log(i);
+			while(T[i][j] == T[i-1][j]){
+				i--;
+				if(i== 0){
+					break;
+				}
+			}
+		}
+	}
+	console.log(s);
+}
+var coins = [1,2,5,6];
+var total = 11
+var n = coins.length
+console.log(minCoins(coins,total,n));
+```
+
+``` javascript
+//动态规划 -- 最长公共子序列
+//!!!!  T[i][j] 计算，记住口诀：相等左上角加一，不等取上或左最大值
+function longestSeq(input1,input2,n1,n2){
+	var T = []; // T[i][j]表示 公共子序列长度
+	for(let i=0;i<n1;i++){
+		T[i] = [];
+		for(let j= 0;j<n2;j++){
+			if(j==0 ||i==0){
+				T[i][j] = 0;
+				continue;
+			}
+			if(input1[i] == input2[j]){
+				T[i][j] = T[i-1][j-1] + 1;
+			}else{
+				T[i][j] = Math.max(T[i-1][j],T[i][j-1])
+			}
+		}
+	}
+	findValue(input1,input2,n1,n2,T);
+	return T;
+}
+//!!!如果它来自左上角加一，则是子序列，否则向左或上回退。
+//findValue过程，其实就是和 就是把T[i][j]的计算反过来。
+function findValue(input1,input2,n1,n2,T){
+	var i = n1-1,j=n2-1;
+	var result = [];//结果保存在数组中
+	while(i>0 && j>0){
+		if(input1[i] == input2[j]){
+			result.unshift(input1[i]);
+			i--;
+			j--;
+		}else{
+			//向左或向上回退
+			if(T[i-1][j]>T[i][j-1]){
+				//向上回退
+				i--;
+			}else{
+				//向左回退
+				j--;
+			}
+		}
+	}
+	console.log(result);
+}
+//两个序列，长度不一定相等, 从计算表格考虑，把input1和input2首位都补一个用于占位的空字符串
+var input2 = ["","a","b","c","a","d","f"],
+	input1 = ["","a","c","b","a","d"],
+	n1 = input1.length,
+	n2 = input2.length;
+console.log(longestSeq(input1,input2,n1,n2));
+```
+
+``` javascript
+// 字符串排列
+function Permutation(str)
+{
+    // write code here
+    let arr = str.split('');
+    let res = [];
+    function swap(p,q){
+      [arr[p],arr[q]] = [arr[q],arr[p]];
+    }
+    function dfs(p, q) {
+        if (p === q) {
+            res.push(arr.join(''));
+            return;
+        }
+        for (let i = p; i <= q;i++) {
+            swap(p,i);
+            dfs(p+1,q);
+            swap(p,i);
+        }
+    }
+    dfs(0, arr.length-1);
+    res = Array.from(new Set(res));
+    return res;
+}
+module.exports = {
+    Permutation : Permutation
+};
+```
