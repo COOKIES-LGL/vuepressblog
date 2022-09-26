@@ -131,3 +131,27 @@ function flat(arr, depth = 1) {
 }
 ```
 
+### typeof
+``` javascript
+const mytypeof=function(obj){
+  return Object.prototype.toString.call(obj).slice(8,-1).toLowerCase();
+}
+console.log(mytypeof('123')); 
+```
+
+### instanceof
+``` javascript
+const myinstanceof=(fn,Fn)=>{
+    let p=fn.__proto__;
+    while(p){
+        if(p===Fn.prototype){
+            return true;//实例的原型等于构造函数的原型对象,即A是B的实例
+        }
+        p=p.__proto__;//顺着原型链查找
+    }
+    return false;
+}
+console.log(myinstanceof(Function,Function))
+
+```
+

@@ -368,3 +368,102 @@ module.exports = {
     Permutation : Permutation
 };
 ```
+
+``` javascript
+// 称砝码
+let line1 = readline();
+let line2 = readline();
+let line3 = readline();
+let m = line2.split(' '); //每种砝码的重量
+let x = line3.split(' '); //每种砝码对应的数量范围
+let fama = []            //序列化砝码，比如两个1g和一个2g的砝码用[1,1,2]表示
+for (let i = 0; i < m.length; i++) {
+    for (let j = 0; j < x[i]; j++) {
+        fama.push(Number(m[i]))
+    }
+}
+let kind = new Set();    //用set表示加入当前砝码之前能产生的重量种类
+kind.add(0);            //set初始化为0
+// 当第一个1g砝码放入时，set中要插入原先所有元素+1g后的结构，即{0,0+1}，插入后变为{0,1}
+// 当第二个1g砝码放入时，set要插入{0+1,1+1},变为{0,1,2}
+// 第三个2g砝码放入时，set要插入{0+2,1+2,2+2},变为{0,1,2,3,4}
+for (let i = 0; i < fama.length; i++) {
+    let arr = [...kind]    //用一个数组来缓存当前种类的砝码的值
+    for (let k of arr) {
+        kind.add(k + fama[i]);
+    }
+}
+console.log(kind.size)
+```
+
+``` javascript
+// 迷宫问题
+// 递归调用，每次判断上下左右四方向； 走过路径标记为1，直到最终到达终点
+let n=readline().split(' ').map(Number);
+// n = [5, 5];
+let maze=[];//读数据
+while(line=readline()) {
+  maze.push(line.split(' ').map(Number));
+}
+function find(i,j,road){
+    road.push([i,j]);//先推入0,0
+    maze[i][j]=1;
+    // n[0] = 5; n[1] = 5, 行列长度
+    if(i==n[0]-1 && j==n[1]-1){
+      // 到达目的地
+      for (let i of road) {
+        console.log(`(${i[0]},${i[1]})`);
+      }
+    }
+    if(j+1 < n[1] && maze[i][j+1]==0) find(i,j+1,road)//右
+    if(i+1 < n[0] && maze[i+1][j]==0) find(i+1,j,road)//下
+    if(j-1 >= 0 && maze[i][j-1]==0) find(i,j-1,road)//左
+    if(i-1 >= 0 && maze[i-1][j]==0) find(i-1,j,road)//上
+}
+find(0,0,[])
+
+```
+``` javascript
+// 名字漂亮度
+// 字符串中出现次数最多的赋值26第二多的25 然后计算和
+while(n = readline()){
+    for(let i = 0; i < n; i++){
+        let str = readline()
+        let map = new Array(26).fill(0);
+        let res = 0;
+        let arr = str.toLowerCase().split('');
+        arr.forEach((ele)=>{
+            map[ele.charCodeAt(0)-97]++;
+        })
+        map.sort((a,b)=>b-a);
+        // 降序排列之后就可以求和
+        for(let i=0;i<26;i++){
+            res += map[i] * (26 - i)
+        }
+        console.log(res);
+    }
+}
+
+```
+
+``` javascript
+// 反转链表
+class Node {
+  constructor(v, next) {
+    this.v = v;
+    this.next = next;
+  }
+}
+ 
+const reverseLinkedList = head => {
+  let prev = null;
+  let cur = head;
+  while(cur) {
+    const next = cur.next;
+    cur.next = prev;
+    prev = cur;
+    cur = next;
+  }
+  return prev;
+}
+```
