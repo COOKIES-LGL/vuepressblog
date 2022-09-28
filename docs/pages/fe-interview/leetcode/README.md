@@ -338,6 +338,28 @@ var input2 = ["","a","b","c","a","d","f"],
 	n2 = input2.length;
 console.log(longestSeq(input1,input2,n1,n2));
 ```
+``` javascript
+// 字符串最小编辑距离
+var minDistance = function(word1, word2) {
+    let n = word1.length;
+    let m = word2.length;
+    if(n*m === 0) return n+m;
+    if(word1 === word2) return 0;
+    let dp = [];
+    for(let i = 0;i <= n;i++){
+        dp.push([])
+        for(let j = 0;j <= m;j++){
+            if(i*j){
+                dp[i][j] = word1[i-1] == word2[j-1]? dp[i-1][j-1]: (Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]) + 1);
+            }else{
+                dp[i][j] = i + j;
+            }
+        }
+    }
+    return dp[n][m];
+};
+```
+
 
 ``` javascript
 // 字符串排列
@@ -465,5 +487,29 @@ const reverseLinkedList = head => {
     cur = next;
   }
   return prev;
+}
+```
+
+``` javascript
+// 分苹果
+let  str;
+while(str = readline()){
+  let arr = str.split(' ');
+  let m = parseInt(arr[0]),n=parseInt(arr[1]);
+  console.log(getCount(m,n))
+}
+ 
+function getCount(m,n){
+  // m 苹果数 n 盘子数
+  if(m==0 || n==1){//极端情况1：都是最小值情况
+    return 1;
+  }else if(n>m){//极端情况2:盘子比苹果多，那肯定有n-m个盘子空着
+    return getCount(m,m)
+  }else{
+    //极端情况3:范围：[至少一个盘子空着----所有盘子都不空，都有苹果]
+    //假设有一个盘子为空，则(m,n)问题转化为将m个苹果放在n-1个盘子上，即求得(m,n-1)即可
+    //假设所有盘子都装有苹果，则每个盘子上至少有一个苹果，即最多剩下m-n个苹果，问题转化为将m-n个苹果放到n个盘子上，即求(m-n，n)
+    return getCount(m,n-1)+getCount(m-n,n);
+  }
 }
 ```
