@@ -21,7 +21,7 @@ export default class AddAddress extends Vue {
 这是**SFC(单文件组件)**的一点已知功能。
 可以像常规 HTML 文件一样导入文件：
 
-```Vue
+``` Vue
 <template src="./template.html"></template>
 <script src="./script.js"></script>
 <style scoped src="./styles.css"></style>
@@ -184,3 +184,5 @@ Vue.directive('loading', loadingDirectiive)
   </div>
 </template>
 ```
+### Vue diff 算法的详细讲解
+[vue的diff算法原理 ](https://www.cnblogs.com/wangtong111/p/11198393.html)

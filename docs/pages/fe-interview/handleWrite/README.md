@@ -118,6 +118,22 @@ Array.prototype.reduce = function (cb, initialValue) {
 };
 ```
 
+### compose 函数
+``` javascript
+let compose = function () {
+    let args = [].slice.call(arguments);
+    return function (x) {
+        return args.reduceRight((res,cb) => {
+           return cb(res); 
+        },x)
+    }
+}
+let add = (X) => X + 10;
+let multiply = (y) => y * 10;
+let calculate = compose(multiply, add);
+console.log(calculate(10)); // 200
+```
+
 ### 数组扁平化
 ``` javascript
 function flat(arr, depth = 1) {
@@ -155,3 +171,124 @@ console.log(myinstanceof(Function,Function))
 
 ```
 
+### LRU缓存
+实现思路
+1. 设定缓存的最大数据量maxSize
+2. 数据按照最近访问时间进行排序，最近访问的数据放在最后
+3. 访问时若数据存在则将数据移动到最后
+添加数据时：
+- 数据存在，则移动到最后
+- 不存在，若队列中数据量已到最大值，删除第一个数据，再添加新数据；否则直接添加新数据
+``` javascript
+class LRU {
+  queue = new Map();
+  constructor(capacity = 10) {
+    // 设置容量
+    this.capacity = capacity;
+  }
+  // 获取数据
+  get(key) {
+    if (this.queue.has(key)) {
+      const value = this.queue.get(key);
+      this.queue.delete(key);
+      this.queue.set(key, value);
+      return value;
+    }
+    return undefined;
+  }
+  // 添加数据， 如果存在则移动位置；若数据已经满了，删除第一个元素后再添加
+  put(key, value) {
+    if (this.queue.has(key)) {
+      this.queue.delete(key);
+      this.queue.set(key, value);
+      return;
+    }
+    if (this.queue.size >= this.capacity) {
+      this.removeFirstItem();
+    }
+    this.queue.set(key, value);
+  }
+  // 删除第一个元素
+  removeFirstItem() {
+    if (this.queue.size) {
+      this.queue.delete(this.queue.keys().next().value);
+    }
+  }
+  // 删除数据
+  remove(key) {
+    if (this.queue.has(key)) {
+      this.queue.delete(key);
+    }
+  }
+}
+
+```
+
+### 防抖节流
+``` javascript
+// 防抖
+function debounce (callback,delay) {
+    var t = null;
+    return function () {
+        clearTimeout(t);
+        t = setTimeout(callback,delay);
+    }
+}
+window.onscroll = debounce(function(){
+    console.log("调用了一次");
+},500)
+
+// 节流;
+function throttle (callback,duration){
+    var lastTime = new Date().getTime();
+    return function () {
+        var now = new Date().getTime();
+        if(now - lastTime > duration){
+            callback();
+            lastTime = now;
+        }
+    }
+}
+window.onscroll = throttle(function(){
+    console.log("调用了一次");
+},500)
+```
+
+### promise.all
+``` javascript
+Promise.prototype.all = (arr) => {
+  console.log('my all called');
+  let result = new Array(arr.length);
+  let counter = 0;//注意这里通过一个变量取保存它的成功的数量
+  return new Promise((resolve, reject) => {
+      arr.forEach(async (item, index) => {
+          let i = index;
+          Promise.resolve(item).then(value => {
+            result[i] = value;
+            counter++;
+            if (counter === arr.length) {
+              //通过conter变量比较，而不是直接通过result.length去判断
+              resolve(result);
+            }
+          }).catch(err => {
+            reject(err)
+          })
+      })
+  });
+}
+```
+
+``` javascript
+// promise.race
+Promise.prototype.race=function(arr){
+    return new Promise((resolve,reject)=>{
+        arr.forEach((item,i) => {
+            Promise.resolve(item).then(val=>{
+                resolve(val)
+            },err=>{
+                reject(err)
+            })
+        });
+    })
+}
+```

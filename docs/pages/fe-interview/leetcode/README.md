@@ -338,6 +338,7 @@ var input2 = ["","a","b","c","a","d","f"],
 	n2 = input2.length;
 console.log(longestSeq(input1,input2,n1,n2));
 ```
+
 ``` javascript
 // 字符串最小编辑距离
 var minDistance = function(word1, word2) {
@@ -390,7 +391,29 @@ module.exports = {
     Permutation : Permutation
 };
 ```
+``` javascript
+// 二维数组全排列组合
+const getResult = (arr1, arr2) => {
+  if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
+    return;
+  }
+  if (!arr1.length) {
+    return arr2;
+  }
+  if (!arr2.length) {
+    return arr1;
+  }
+  const result = [];
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      result.push(String(arr1[i]) + String(arr2[j]));
+    }
+  }
+  return result;
+};
 
+const findAll = arr => arr.reduce((total, current) => getResult(total, current), []);
+```
 ``` javascript
 // 称砝码
 let line1 = readline();
@@ -444,6 +467,40 @@ function find(i,j,road){
 }
 find(0,0,[])
 
+```
+``` javascript
+// 矩阵乘法
+// 第一行包含一个正整数x，代表第一个矩阵的行数
+// 第二行包含一个正整数y，代表第一个矩阵的列数和第二个矩阵的行数
+// 第三行包含一个正整数z，代表第二个矩阵的列数
+// 之后x行，每行y个整数，代表第一个矩阵的值
+// 之后y行，每行z个整数，代表第二个矩阵的值
+const x = parseInt(readline())
+const y = parseInt(readline())
+const z = parseInt(readline())
+const A = []
+const B = []
+const C = []
+for(let i = 0; i < x; i++){
+    A.push(readline().split(' ').map(Number))
+}
+for(let i = 0; i < y; i++){
+    B.push(readline().split(' ').map(Number))
+}
+for(let i = 0; i < x; i++){
+    const tmpA = []
+    for(let j = 0; j < z; j++){
+       let num = 0
+       for(let k = 0; k < y; k++){
+         num += A[i][k]*B[k][j]
+       }
+       tmpA.push(num) 
+    } 
+    C.push(tmpA)
+}
+C.forEach(item =>{
+    console.log(item.join(' '))
+})
 ```
 ``` javascript
 // 名字漂亮度
