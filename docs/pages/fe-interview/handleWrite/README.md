@@ -254,8 +254,9 @@ window.onscroll = throttle(function(){
 },500)
 ```
 
-### promise.all
+### promise.all、 promise.race
 ``` javascript
+// promise.race
 Promise.prototype.all = (arr) => {
   console.log('my all called');
   let result = new Array(arr.length);
@@ -291,4 +292,48 @@ Promise.prototype.race=function(arr){
         });
     })
 }
+```
+
+### javascript 寄生组合式继承
+
+``` javascript
+//定义父对象
+function Father(name, age){
+    this.name = name;
+    this.age = age;
+}
+Father.prototype = {
+    getName: function(){
+        alert(this.name);
+    },
+    getAge: function(){
+        alert(this.age);
+    }
+}
+//定义子对象
+function Son(sex, name, age){
+  this.sex = sex;
+  Father.call(this, name, age); //继承Father的属性, 此处是一份副本
+}
+//extend(子对象, 父对象)
+function extend(suberClass, superClass){
+  var object = function(o){
+      var F = function(){};
+      F.prototype = o;
+      return new F();
+  }; //object作用就是拷贝一份父对象
+  suberClass.prototype = object(superClass.prototype);
+  suberClass.prototype.constructor = suberClass; //强制constructor指向suberClass
+}
+extend(Son, Father); //执行函数
+//继续为子类添加其它方法
+Son.prototype.getSex = function(){
+  alert(this.sex);
+}
+//定义一个相同的方法, 屏蔽父对象的同名方法
+Son.prototype.getName = function(name){
+  alert(this.name = name);
+}
+new Son('male', 'jack').getName('tom'); //'tom'
+new Father('jack').getName(); //'jack'
 ```
