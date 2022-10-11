@@ -64,7 +64,7 @@ function subGroup(arr, len) {
 }
 ```
 
-::: tips
+::: tip
 for循环中，当不用&&和||申明多个条件时，默认的是或者关系。
 :::
 
@@ -112,6 +112,16 @@ parseInt(num,8).toString(2)     //8进制转2进制
 
 ``` javascript
 // 快速排序
+function quickSort( arr ) {
+    if(arr.length <= 1) return arr;
+    const num = arr[0];
+    let left = [], right = [];
+    for(let i = 1;i < arr.length; i++) {
+        if(arr[i]<=num) left.push(arr[i]);
+        else right.push(arr[i]);
+    }
+    return quickSort(left).concat([num],quickSort(right));
+}
 
 ```
 

@@ -77,7 +77,7 @@ function deepClone(object = {}, map = new map()) {
   }
   let result = {};
   if (Array.isArray(object) || Object.prototype.toString(obj) === "[object Array]") {
-    result = [];
+    result = [...object];
   }
   map.set(object, result);
   for (let item in object) {
@@ -156,6 +156,7 @@ console.log(mytypeof('123'));
 ```
 
 ### instanceof
+
 ``` javascript
 const myinstanceof=(fn,Fn)=>{
     let p=fn.__proto__;
@@ -170,7 +171,6 @@ const myinstanceof=(fn,Fn)=>{
 console.log(myinstanceof(Function,Function))
 
 ```
-
 ### LRU缓存
 实现思路
 1. 设定缓存的最大数据量maxSize

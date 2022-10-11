@@ -58,8 +58,8 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: 'https://www.nowcoder.com/intelligentTest',
           },
           {
-            text: '牛客练习',
-            link: 'https://www.nowcoder.com/intelligentTest',
+            text: '掘金社区',
+            link: 'https://juejin.cn/frontend',
           },
           {
             text: '阮一峰日志',
