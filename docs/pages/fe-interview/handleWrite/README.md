@@ -53,7 +53,7 @@ Function.prototype.myBind = function(context) {
   }
   let args = [...arguments].slice(1);
   context = context | window;
-  fn = this;
+  let fn = this;
   return function Fn() {
     return fn.apply(
       this instanceof Fn ? this : context,
@@ -92,7 +92,7 @@ function deepClone(object = {}, map = new map()) {
 
 ### 手写new
 首先创一个新的空对象。
-根据原型链，设置空对象的 __proto__ 为构造函数的 prototype 。
+根据原型链，设置空对象的 __proto__ 为构造函数的 prototype。
 构造函数的 this 指向这个对象，执行构造函数的代码（为这个新对象添加属性）。
 判断函数的返回值类型，如果是引用类型，就返回这个引用类型的对象。
 ```javascript
@@ -133,7 +133,50 @@ let multiply = (y) => y * 10;
 let calculate = compose(multiply, add);
 console.log(calculate(10)); // 200
 ```
+``` javascript
+function fibonacci (n) {
+ if ( n <= 1 ) {return 1};
+ return fibonacci(n - 1) + fibonacci(n - 2);
+}
+// 尾递归
+function fibonacci(n, ac1=1,ac2=1){
+  if(n<=1){return ac2}
+ return fibonacci(n-1, ac2, ac1 + ac2)
+}
+// 闭包缓存实现
+var fn = (function () {
+  var arr = [0, 1, 1]; 
+  return function (n) {
+      var a = arr[n]; 
+      if (a) {
+        return a;
+      } else {
+        return arr[n] = fn(n-1) + fn(n-2);
+      }
+  }
+})()；
 
+```
+``` javascript
+// 函数柯里化
+//普通函数
+function add(a, b, c) {
+  return a + b + c;
+}
+add(1,2,3) //6
+ 
+//手动柯里化后的函数,其参数可以逐步单个传入,得到相同结果。
+function _add(a) {
+    return function(b) {
+        return function(c) {
+            return a + b + c;
+        }
+    }
+}
+ 
+_add(1)(2)(3);//6
+
+```
 ### 数组扁平化
 ``` javascript
 function flat(arr, depth = 1) {
