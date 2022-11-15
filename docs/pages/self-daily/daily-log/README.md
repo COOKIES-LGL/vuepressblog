@@ -7,7 +7,7 @@ sidebar: false
 - [25岁生日](./2022-05-22) <span style="color:#bbb; float:right">2022-05-22</span>
 - [毕业](./2022-09-19) <span style="color:#bbb; float:right">2022-09-19</span>
 - [毕业](./2022-10-26) <span style="color:#bbb; float:right">2022-10-26</span>
-- [毕业](./2022-11-9) <span style="color:#bbb; float:right">2022-11-9</span>
+- [毕业](./2022-11-09) <span style="color:#bbb; float:right">2022-11-09</span>
 <style>
 @media screen and (min-width: 400px) {
   .theme-default-content:not(.custom) {
