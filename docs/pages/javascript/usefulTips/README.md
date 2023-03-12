@@ -329,3 +329,13 @@ const blobToString = (blob: Blob): Promise<string> => {
 window.requestIdleCallback();
 // 时间切片，让浏览器在空闲的时候去做一些事情
 ```
+
+JavaScript中有一种原生的方法来做对象的深拷贝? structuredClone 函数，内置在 JavaScript 运行时
+``` javascript
+const calendarEvent = {
+  title: "Builder.io Conf",
+  date: new Date(123),
+  attendees: ["Steve"]
+}
+const copied = structuredClone(calendarEvent)
+```
