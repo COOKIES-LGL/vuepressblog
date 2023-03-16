@@ -175,3 +175,22 @@ export const tansParams = params => {
 	return result;
 };
 ```
+``` javascript
+new KeyframeEffect(target, keyframes);
+new KeyframeEffect(target, keyframes, options);
+new KeyframeEffect(source);
+// Element.animate;
+// WAAPI
+// https://juejin.cn/post/7023903552946995214
+```
+
+``` javascript
+// 查找当前滚动元素
+function findScroller(element) {
+    element.onscroll = function() { console.log(element)}
+
+    Array.from(element.children).forEach(findScroller);
+}
+
+findScroller(document.body);
+```

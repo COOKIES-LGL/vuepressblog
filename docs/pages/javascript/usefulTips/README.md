@@ -339,3 +339,18 @@ const calendarEvent = {
 }
 const copied = structuredClone(calendarEvent)
 ```
+
+### 获取视频真实宽高
+``` html
+ <video src="https://www.w3schools.com/html/movie.mp4#t=0.01" controls="controls" id="video">
+ </video>
+```
+``` javascript
+  const video = document.getElementById('video');
+
+  video.addEventListener('canplay', function(e) {
+      var width = e.target.videoWidth;
+      var height = e.target.videoHeight;
+      console.log(width, height);
+  })
+```
