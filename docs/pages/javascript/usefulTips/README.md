@@ -354,3 +354,8 @@ const copied = structuredClone(calendarEvent)
       console.log(width, height);
   })
 ```
+
+### 随机key crypto.randomUUID() 浏览器自带
+``` javascript
+ id: crypto.randomUUID()
+```

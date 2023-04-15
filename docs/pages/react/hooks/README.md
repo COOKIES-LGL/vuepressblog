@@ -77,3 +77,19 @@ const App = () => {
 
 export default App;
 ```
+
+### 执行一次
+
+``` typescript
+export const useExecuteOnce = (fn: () => void, condition: boolean) => {
+    const fnRef = useRef(fn);
+    fnRef.current = fn;
+    const once = useRef(false);
+    useEffect(() => {
+        if (condition && !once.current) {
+            once.current = true;
+            return fnRef.current();
+        }
+    }, [condition]);
+};
+```
