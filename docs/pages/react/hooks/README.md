@@ -93,3 +93,58 @@ export const useExecuteOnce = (fn: () => void, condition: boolean) => {
     }, [condition]);
 };
 ```
+
+### 更新执行
+``` typescript
+export default function useUpdateEffect(effect: EffectCallback, deps?: DependencyList) {
+    const mounted = useRef(false);
+
+    useEffect(() => {
+        if (!mounted.current) {
+            mounted.current = true;
+            return;
+        }
+        return effect();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, deps);
+}
+
+```
+
+### 获取最新数据返回
+``` typescript
+/**
+ * reolsve 最近一次函数返回结果
+ */
+const lockThrottleFn = <T extends Function>(fn: T, name = ''): T => {
+    let index = 0;
+    // @ts-ignore
+    return async (...args) => {
+        index++;
+        const current = index;
+        const isCurrent = () => current === index;
+        const ret = await fn(...args);
+        if (isCurrent()) {
+            // 只有一次调用直接Resolve
+            return ret;
+        } else {
+            // eslint-disable-next-line no-console
+            IS_DEV ? console.log(`${name}: hit throttle lock`) : bizErrLogger(`${name} 命中非最新返回结果`);
+            return;
+        }
+    };
+};
+
+```
+
+
+### 检测浏览器是否支持sticky
+``` typescript
+function checkIsSupportSticky() {
+    const testNode = document.createElement('div');
+    return ['', '-webkit-'].some(prefix => {
+        testNode.style.position = prefix + 'sticky';
+        return testNode.style.position !== '';
+    });
+}
+```
