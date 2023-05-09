@@ -251,3 +251,26 @@ el.addEventListener('transitionend', () => {
   // 具体逻辑
 })
 ```
+
+### 两端渐变透明的线条
+``` Css
+.class {
+    border-right: 0.01rem solid #622f01;
+    border-image: linear-gradient(transparent, #622f01, transparent) 5 5;
+}
+```
+
+### 固定渐变高度，剩余部分纯色
+``` Css
+.class {
+      background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 1.4rem, #fee9cd 2rem, #fee9cd);
+}
+```
+
+### 渐变文字
+
+``` Css
+    background: radial-gradient(circle closest-side, #c36300, #713701);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+```

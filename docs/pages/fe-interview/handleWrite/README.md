@@ -390,3 +390,71 @@ Son.prototype.getName = function(name){
 new Son('male', 'jack').getName('tom'); //'tom'
 new Father('jack').getName(); //'jack'
 ```
+
+
+### 限制并发池子
+``` typescript
+async function sendRequest(requestList,limits,callback){
+
+    // 维护一个promise队列
+
+    const promises = []
+
+    // 当前的并发池,用Set结构方便删除
+
+    const pool = new Set() // set也是Iterable<any>[]类型，因此可以放入到race里
+
+    // 开始并发执行所有的任务
+
+    for(let request of requestList){
+
+        // 开始执行前，先await 判断 当前的并发任务是否超过限制
+
+        if(pool.size >= limits){
+
+            // 这里因为没有try catch ，所以要捕获一下错误，不然影响下面微任务的执行
+
+
+            await Promise.race(pool)
+
+            .catch(err=>err)
+
+        }
+
+        const promise = request()// 拿到promise
+
+        // 删除请求结束后，从pool里面移除
+
+        const cb = ()=>{
+
+            pool.delete(promise)
+
+        }
+
+        // 注册下then的任务
+
+        promise.then(cb,cb)
+
+        pool.add(promise)
+
+        promises.push(promise)
+
+    }
+
+    // 等最后一个for await 结束，这里是属于最后一个 await 后面的 微任务
+
+    // 注意这里其实是在微任务当中了，当前的promises里面是能确保所有的promise都在其中(前提是await那里命中了if)
+
+
+    Promise.allSettled(promises).then(callback,callback)
+
+}
+// 总结一下要点：
+
+// 利用race的特性可以找到 并发任务 里最快结束的请求
+// 利用for await 可以保证for结构体下面的代码是最后await 后的微任务，而在最后一个微任务下，可以保证所有的promise已经存入promises里（如果没命中任何一个await，即限制并发数>任务数的时候，虽然不是在微任务当中，也可以保证所有的promise都在里面），最后利用allSettled，等待所有的promise状态转变后，调用回调函数
+// 并发任务池 用Set结构存储，可以通过指针来删除对应的任务，通过闭包引用该指针从而达到 动态控制并发池数目
+// for await 结构体里，其实await下面，包括结构体外 都是属于微任务（前提是有一个await里面的if被命中），至于这个微任务什么时候被加入微任务队列，要看请求的那里的在什么时候开始标记（resolve/reject ）
+// for await 里其实 已经在此轮宏任务当中并发执行了，await后面的代码被挂起来，等前一个promise转变状态-->移出pool-->将下一个promise捞起加入pool当中 -->下一个await等待最快的promise，如此往复。
+
+```
