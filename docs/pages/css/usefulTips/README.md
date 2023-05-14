@@ -270,7 +270,20 @@ el.addEventListener('transitionend', () => {
 ### 渐变文字
 
 ``` Css
+.class {
     background: radial-gradient(circle closest-side, #c36300, #713701);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+```
+
+### rotate(0deg) 解决边角无法hidden
+
+``` Css 
+.class {
+        overflow: hidden;
+        position: relative;
+        transform: rotate(0deg);
+}
+
 ```

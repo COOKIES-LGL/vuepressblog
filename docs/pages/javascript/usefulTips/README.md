@@ -359,3 +359,15 @@ const copied = structuredClone(calendarEvent)
 ``` javascript
  id: crypto.randomUUID()
 ```
+
+### 实用HTML 属性
+``` html
+<!-- HTML中的Spellcheck属性是用于指定元素是否启用拼写检查的属性。 -->
+<p spellcheck="true"></p>
+
+<!-- HTML中的loading属性是一个新的属性，它可以用于指定浏览器在加载资源时的优先级。lazy、eager、auto -->
+<Img src="./src/imag.png" loading="lazy">
+
+<!-- onerror是一个JavaScript事件处理程序， JavaScript错误时触发。 -->
+<Img src="./src/imag.png" onerror="()=> {console.log('发生错误')}">
+```
