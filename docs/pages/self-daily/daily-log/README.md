@@ -17,7 +17,9 @@ sidebar: false
 - [五一深圳攻略](./2023-04-15) <span style="color:#bbb; float:right">2023-04-15</span>
 - [再遇谢小宝15天](./2023-04-21) <span style="color:#bbb; float:right">2023-04-21</span>
 - [深圳攻略](./2023-05-01) <span style="color:#bbb; float:right">2023-05-01</span>
-- [深圳攻略](./2023-05-11) <span style="color:#bbb; float:right">2023-05-11</span>
+- [上海迪士尼](./2023-06-02) <span style="color:#bbb; float:right">2023-06-02</span>
+- [见家长](./2023-06-22) <span style="color:#bbb; float:right">2023-06-22</span>
+
 <style>
 @media screen and (min-width: 400px) {
   .theme-default-content:not(.custom) {
