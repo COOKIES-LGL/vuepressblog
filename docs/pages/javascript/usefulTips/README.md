@@ -371,3 +371,44 @@ const copied = structuredClone(calendarEvent)
 <!-- onerror是一个JavaScript事件处理程序， JavaScript错误时触发。 -->
 <Img src="./src/imag.png" onerror="()=> {console.log('发生错误')}">
 ```
+
+
+### 跳出指定层级循环
+``` javascript
+function test() {
+  let baseCount = 5;
+  baseWhile:while (baseCount--) {
+    let count = 10;
+    while (count--) {
+      if (count === 5) {
+        break baseWhile;
+      }
+    }
+  }
+  console.log("test", baseCount);
+}
+test();
+
+function test2() {
+  let baseCount = 5;
+  baseWhile: for (baseCount; baseCount > 0; baseCount--) {
+    let count = 10;
+    while (count--) {
+      if (count === 5) {
+        continue baseWhile;
+      }
+    }
+  }
+  console.log("test", baseCount);
+}
+test2();
+
+```
+
+### 使用void 0 替换undefined
+``` javascript
+void 0===undefined
+// undefined不是一个关键字，这玩意儿是全局变量的一个属性
+```
+
+

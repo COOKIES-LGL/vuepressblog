@@ -86,3 +86,34 @@ const timestampedActivatableUserExample = new TimestampedActivatableUser();
 console.log(timestampedActivatableUserExample.timestamp);
 console.log(timestampedActivatableUserExample.isActivated);
 ```
+
+### 添加废弃注解
+``` typescript
+{
+    /**
+     * @deprecated 该属性即将禁用，请使用 style属性
+     */
+    className?: string;
+    onClick: () => void;
+}
+
+```
+
+### ITypeA 类型的tag可以直接点击到ITag类型
+``` typescript
+// types.ts
+export interface ITypeA {
+  /**
+   * tag 标签 {@link ITag}.
+   */
+  tag: ITag;
+}
+
+export interface ITag {
+  /** tag id */
+  id: string;
+  /** tag name */
+  name: string;
+}
+// 参考链接 https://juejin.cn/post/7140337202097029133
+```

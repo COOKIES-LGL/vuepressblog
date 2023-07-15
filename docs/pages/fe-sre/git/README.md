@@ -34,3 +34,13 @@ reflog：记录了 commit 的历史操作。
 ``` Bash
 git merge master -m 'merge master' --allow-unrelated-histories //  把两段不相干的 分支进行强行合并
 ```
+
+### 意外提交大小写文件到远程仓库
+
+```Bash
+ git config core.ignorecase false
+ git rm --cached src/biz/**[需要删除的文件路径] -r
+ git add .
+ git commit -m 'feat: 移除大小写文件'
+ git push
+```
