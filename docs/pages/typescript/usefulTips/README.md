@@ -117,3 +117,25 @@ export interface ITag {
 }
 // 参考链接 https://juejin.cn/post/7140337202097029133
 ```
+
+当我们在使用字面量创建了一个正则表达式的时候，相当于初始化了一个对象，这个对象上有一个叫做lastIndex的属性
+``` javascript
+const reg = /[^0-9]/g;
+
+reg.test('a')  // true
+
+reg.lastIndex // 1
+
+reg.test('a') // false
+
+reg.lastIndex // 0
+
+```
+
+### tsconfig.json大括号报错
+使用 消除这个报错
+{
+  compilerOption: {
+    ignoreDeprecations："5.0"
+  }
+}

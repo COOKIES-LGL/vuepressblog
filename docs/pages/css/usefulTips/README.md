@@ -278,12 +278,50 @@ el.addEventListener('transitionend', () => {
 ```
 
 ### rotate(0deg) 解决边角无法hidden
-
 ``` Css 
 .class {
         overflow: hidden;
         position: relative;
         transform: rotate(0deg);
 }
+```
 
+### clamp 函数
+
+``` Css 
+.css-clamp {
+  width: clamp(200px, 50vw, 300px)
+}
+
+/*
+当屏宽小于 400px 时，首选值（50vw）小比下限（200px），所以返回最小值（200px）
+当屏宽介于 400px 和 600px 之间时，首选值（50vw）介于最小值（200px）和最大值（300px）之间时，返回首选值（50vw）
+当屏宽大于 600px 时，首选值（50vw）大比上限（300px），使用最大值（300px）
+*/
+
+```
+
+### :in-range :out-of-range 伪类
+
+``` Css 
+.input:in-range {
+  background: green;
+}
+.input:out-of-range {
+  background: red;
+}
+```
+
+### 适配ipad 居中
+``` Css
+.bottomBar {
+    position: fixed;
+    left: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 3.75rem;
+    transform: translate(-50%);
+}
 ```

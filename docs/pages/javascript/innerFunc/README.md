@@ -20,3 +20,48 @@ function base64Encode(str) {
 }
 // btoa()函数可以将字符串编码为Base64格式，而encodeURIComponent()函数则可以将字符串转换为可传输的URI格式。我们还使用了一个正则表达式来将URI格式中的特殊字符进行替换。
 ```
+
+###
+::: tip
+Iterator 的作用
+为各种数据结构，提供一个统一的、简便的访问接口。
+ES6提出了新的遍历命令for...of循环，Iterator 接口主要供for...of消费。
+:::
+
+``` javascript
+var arr = [1,2,3,4,5];
+var arrValue = arr[Symbol.iterator]();
+arrValue.next(); // 1
+arrValue.next(); // 2
+arrValue.next(); // 3
+...
+```
+
+``` javascript
+function objectIterator() {
+  const keys = Object.keys(this)
+  let index = 0
+  return {
+    next: () => {
+      const done = index >= keys.length
+      const value = done ? undefined : this[keys[index]]
+      index++
+      return {
+        done,
+        value
+      }
+    }
+  }
+}
+
+Object.prototype[Symbol.iterator] = objectIterator
+
+const obj = {
+  key: '1',
+  value: '2'
+}
+
+for (const iterator of obj) {
+  console.log(iterator)
+}
+```
