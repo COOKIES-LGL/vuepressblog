@@ -324,4 +324,26 @@ el.addEventListener('transitionend', () => {
     max-width: 3.75rem;
     transform: translate(-50%);
 }
+``` 
+
+### 根据文本块宽度，让里面的内容文字间距自适应
+text-align-last 属性只有在 text-align 属性设置为 "justify" 时才起作用
+``` HTML
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+  h1.c {text-align:center; width: 400px; background-color: red; color: #fff}
+  h1.j {text-align:justify; text-align-last:justify; width: 400px; background-color: red; color: #fff}
+</style>
+</head>
+
+<body>
+<h1 class="c">This is heading 1</h1>
+<h1 class="j">This is heading 2</h1>
+</body>
+</html>
+
 ```

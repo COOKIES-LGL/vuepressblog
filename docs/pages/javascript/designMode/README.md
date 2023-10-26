@@ -230,3 +230,88 @@ app.use(async (ctx, next) => {
 
 app.listen();
 ```
+
+### 接口缓存复用
+
+```
+const pendingPromises = {};
+function request(type, url, data) {
+  // 使用请求信息作为唯一的请求key，缓存正在请求的promise对象
+  // 相同key的请求将复用promise
+  const requestKey = JSON.stringify([type, url, data]);
+  if (pendingPromises[requestKey]) {
+    return pendingPromises[requestKey];
+  }
+  const fetchPromise = fetch(url, {
+    method: type,
+    data: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .finally(() => {
+    delete pendingPromises[requestKey];
+  });
+  return pendingPromises[requestKey] = fetchPromise;
+}
+
+```
+
+### 可以暂停的请求控制器
+
+``` javascript
+function _request () {
+  return new Promise<number>((res) => setTimeout(() => {
+    res(123)
+  }, 3000))
+}
+
+// 原本想使用 class extends Promise 来实现
+// 结果一直出现这个问题 https://github.com/nodejs/node/issues/13678
+function createPauseControllerPromise () {
+  const result = {
+    isPause: false,
+    resolveWhenResume: false,
+    resolve (value?: any) {},
+    pause () {
+      this.isPause = true
+    },
+    resume () {
+      if (!this.isPause) return
+      this.isPause = false
+      if (this.resolveWhenResume) {
+          this.resolve()
+      }
+    },
+    promise: Promise.resolve()
+  }
+  
+  const promise = new Promise<void>((res) => {
+    result.resolve = res
+  })
+  
+  result.promise = promise
+
+  return result
+}
+
+function requestWithPauseControl <T extends () => Promise<any>>(request: T) {
+  const controller = createPauseControllerPromise()
+  
+  const controlRequest = request().then((data) => {
+      if (!controller.isPause) controller.resolve()
+      controller.resolveWhenResume = controller.isPause
+      return data
+  })
+  
+  const result = Promise.all([controlRequest, controller.promise])
+      .then(data => data[0])
+      
+  result.finally(() => controller.resolve())
+  
+  (result as any).pause = controller.pause.bind(controller);
+  (result as any).resume = controller.resume.bind(controller);
+  
+  return result as ReturnType<T> & { pause: () => void, resume: () => void }
+}
+
+
+```

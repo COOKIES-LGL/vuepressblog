@@ -411,4 +411,19 @@ void 0===undefined
 // undefined不是一个关键字，这玩意儿是全局变量的一个属性
 ```
 
+###  中文首字母排序
 
+``` javascript
+['张三','李四','王五'].sort((a, b) => a.localeCompare(b, 'zh-Hans-CN', {sensitivity: 'accent'}))
+```
+
+### 串行执行多个接口
+
+``` javascript
+const requestAry = [() => api.request1(), () => api.request2(), () => api.request3()];
+const finallyPromise = requestAry.reduce(
+    (currentPromise, nextRequest) => currentPromise.then(() => nextRequest()),
+    Promise.resolve() // 创建一个初始promise，用于链接数组内的promise
+);
+
+```

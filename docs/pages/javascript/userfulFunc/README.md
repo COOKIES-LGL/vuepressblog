@@ -194,3 +194,23 @@ function findScroller(element) {
 
 findScroller(document.body);
 ```
+
+### window.matchMedia()用法
+
+*** js的媒体查询 ***
+
+```
+// 定义媒体查询条件
+const mediaQueryString = "(max-width: 600px)";
+
+// 创建媒体查询对象
+const mediaQueryList = window.matchMedia(mediaQueryString);
+
+// 检查当前视口是否匹配媒体查询条件
+if (mediaQueryList.matches) {
+    console.log("视口宽度小于等于600px");
+} else {
+    console.log("视口宽度大于600px");
+}
+
+```

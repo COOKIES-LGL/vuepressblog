@@ -27,3 +27,15 @@ export function withDefaultProps<P = {}>(defaultProps?: Partial<P>) {
   };
 }
 ```
+
+
+### 感知dom变化
+
+``` javascript
+
+const f = useCallback((node) => {},[]);
+
+<div ref ={f} />
+// 的方法来感知dom变化
+
+```
