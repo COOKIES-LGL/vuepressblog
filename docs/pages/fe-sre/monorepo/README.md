@@ -43,5 +43,25 @@ Mon-repo 方式有许多优点：
 1. 跨服务和项目使用的公共依赖和库必须定期同步以获得最新版本。
 2. 某种程度上鼓励孤立文化，导致重复代码和各个团队试图解决相同问题。
 3. 每个团队可能遵循不同的一组最佳实践来编写代码，从而导致难以遵循通用的最佳实践。
+
 ### multrepo与monorepo优缺点
+
 <img src="http://upload-images.jianshu.io/upload_images/19806861-7e0ab233b65060e2.png?imageMogr2/auto-orient/strip|imageView2/2/w/960/format/webp" />
+
+### yarn deduplicate
+
+Yarn-deduplicate是一款npm包，它可以帮助我们自动解决项目中遇到的同一依赖重复问题，可以有效地保证我们项目的稳定性和安全性。
+
+版权声明：本文为原创文章，版权由本站（JavaScript中文网）拥有，严禁未经允许复制、转载、传播、篡改等任何行为，如需转载，请联系本站管理员获取书面授权
+
+### npm update
+
+已经存在node_modules时 npm install 不会更新 ^的版本控制，需要使用npm update. 或者删除node_modules 进行更新
+
+npm update命令的目的是根据您在package.json文件中指定的内容更新您的package-lock.json。这是正常行为。
+如果你想更新你的package.json文件，你可以使用npm-check-updates：npm install -g npm-check-updates.
+然后可以使用以下命令：
+
+ncu检查package.json文件中的更新
+ncu -u更新package.json文件
+npm update --save从package.json文件更新package-lock.json文件
