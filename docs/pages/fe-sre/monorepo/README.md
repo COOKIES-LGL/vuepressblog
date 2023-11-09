@@ -65,3 +65,11 @@ npm update命令的目的是根据您在package.json文件中指定的内容更�
 ncu检查package.json文件中的更新
 ncu -u更新package.json文件
 npm update --save从package.json文件更新package-lock.json文件
+
+### 命令参数配置
+
+果通过 process.argv 来获取，要额外处理两种不同的命令参数格式，不方便。
+
+这里推荐 yargs 开源库来解析命令参数。运行以下命令安装 yargs：
+
+在 Node.js 中拷贝文件夹并不简单，需要用到递归，这里推荐使用开源库copy-dir来实现拷贝文件。

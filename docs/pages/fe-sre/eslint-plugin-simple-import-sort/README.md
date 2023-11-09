@@ -18,7 +18,7 @@ sidebar: false
               // Side effect imports.
               ["^\\u0000", "^\\u0000.+\\.(s?css|styl|less)$"],
               // external packages
-              ["^react", "^\\w", "^@pdd*"],
+              ["^react", "^\\w", "^@pd*"],
               // alias path
               ["@*", "src/*"],
               // Parent imports. Put `..` last.
@@ -57,7 +57,7 @@ sidebar: false
       "disableSort": true
     },
     {
-      "regex": "^[@](msfe|mc|pdd)",
+      "regex": "^[@](|mc|pd)",
       "orderLevel": 20,
       "disableSort": true
     },
