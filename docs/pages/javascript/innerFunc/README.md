@@ -65,3 +65,57 @@ for (const iterator of obj) {
   console.log(iterator)
 }
 ```
+
+### Array.protoType.FlatMap
+用来实现过滤切格式化处理数组
+
+``` javascript
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const squaredOddNumbers = numbers.flatMap(num => 
+    num % 2 !== 0 ? [num * num] : []
+);
+
+console.log(squaredOddNumbers);
+// 输出：[1, 9, 25, 49, 81]
+```
+
+### 使用URL URLSearchParams 方式避免url参数拼接
+
+``` javascript
+function constructURL(param) {
+  const { category, limit, userId } = param;
+  const baseURL = "https://fakestoreapi.com/products";
+  const url = new URL(baseURL);
+  const params = new URLSearchParams();
+
+  if (category) url.pathname += `/category/${category}`;
+  if (limit) params.append('limit', Number(limit).toString());
+  if (userId) params.append('userId', Number(userId).toString());
+
+  url.search = params.toString();
+  return url.toString();
+}
+
+```
+
+### 获取是否文字省略Ellipsis生效
+
+``` javascript
+
+const checkEllipsis = () => {
+  const range = document.createRange();
+  range.setStart(box, 0)
+  range.setEnd(box, box.childNodes.length)
+  let rangeWidth = range.getBoundingClientRect().width
+  let rangeHeight = range.getBoundingClientRect().height
+  const contentWidth = rangeWidth - Math.floor(rangeWidth)
+  const { pLeft, pRight } = getPadding(box)
+  const horizontalPadding = pLeft + pRight
+  if (rangeWidth + horizontalPadding > box.clientWidth) {
+    result.textContent = '存在省略号'
+  } else {
+    result.textContent = '容器宽度足够，没有省略号了'
+  }
+}
+
+```

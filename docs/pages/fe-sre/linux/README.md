@@ -97,3 +97,12 @@ make install
 
 lsof -i:端口号 查看端口占有情况
 kill -9 PID 杀除进程
+
+### uname -m 查看操作系统类型
+### sysctl machdep.cpu.brand_string 查看CPU 芯片型号
+
+###  安装homebrew
+
+``` bash
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+```

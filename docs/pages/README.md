@@ -18,6 +18,7 @@ home: false
 * [Webpack](./webpack)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Node](./node)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Django](./django)  <span style="color:#bbb; float:right">2021-06-30</span>
+* [Generate-Page脚本](./generate-page)  <span style="color:#bbb; float:right">2023-06-30</span>
 --- ---
 ### 人生随笔列表
 *  [余忆童稚时](./self-daily/remind-record)  <span style="color:#bbb; float:right">2021-05-20</span>

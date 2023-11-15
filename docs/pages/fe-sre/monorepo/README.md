@@ -48,28 +48,94 @@ Mon-repo 方式有许多优点：
 
 <img src="http://upload-images.jianshu.io/upload_images/19806861-7e0ab233b65060e2.png?imageMogr2/auto-orient/strip|imageView2/2/w/960/format/webp" />
 
-### yarn deduplicate
+### 创建一个monorepo
 
-Yarn-deduplicate是一款npm包，它可以帮助我们自动解决项目中遇到的同一依赖重复问题，可以有效地保证我们项目的稳定性和安全性。
+#### 安装lerna
+```
+npm i lerna -g
+```
 
-版权声明：本文为原创文章，版权由本站（JavaScript中文网）拥有，严禁未经允许复制、转载、传播、篡改等任何行为，如需转载，请联系本站管理员获取书面授权
+#### 初始化项目
+找一个空文件夹执行 lerna init 初始化项目。
 
-### npm update
+#### 创建项目包
+``` bash
+lerna create moduleA
+lerna create moduleB
+```
 
-已经存在node_modules时 npm install 不会更新 ^的版本控制，需要使用npm update. 或者删除node_modules 进行更新
+#### 本地包相互引用
+``` bash
+lerna link
+```
 
-npm update命令的目的是根据您在package.json文件中指定的内容更新您的package-lock.json。这是正常行为。
-如果你想更新你的package.json文件，你可以使用npm-check-updates：npm install -g npm-check-updates.
-然后可以使用以下命令：
+j假设moduleA依赖moduleB，现在我们在 moduleA 包下增加个依赖。
 
-ncu检查package.json文件中的更新
-ncu -u更新package.json文件
-npm update --save从package.json文件更新package-lock.json文件
+``` json
+packages/moduleA/package.json
 
-### 命令参数配置
+{
+  ...
+  "dependencies":  {
+  "moduleB":  "^1.0.0"
+  },
+  ...
+}
+```
+在终端执行
+lerna link
+会在包中帮你安装moduleB依赖。
 
-果通过 process.argv 来获取，要额外处理两种不同的命令参数格式，不方便。
+#### 添加公共依赖
+假设 moduleA 和 moduleB 都依赖 lodash
+``` bash
+lerna add lodash
+```
+#### 添加单独依赖
+l 假设moduleA 自己依赖 jquery，moduleB 自己依赖 zepto
 
-这里推荐 yargs 开源库来解析命令参数。运行以下命令安装 yargs：
+``` bash
+lerna add jquery --scope=@fengyinchao/modulea
+lerna add zepto --scope=@fengyinchao/moduleb
+```
 
-在 Node.js 中拷贝文件夹并不简单，需要用到递归，这里推荐使用开源库copy-dir来实现拷贝文件。
+ #### 卸载包
+l 给 moduleA 移除一个依赖 husky
+``` bash
+lerna exec --scope=@fengyinchao/modulea npm uninstall husky
+```
+
+#### 重新安装依赖
+``` bash
+lerna bootstrap
+```
+这样会帮我们安装package.json里的dependencies依赖项
+
+#### 抽离公共模块
+上面 moduleA 和 moduleB 都依赖了 lodash，且在各自 package 下的node_modules 里都有副本，这其实很浪费空间，可以使用 --hoist
+``` bash
+lerna bootstrap --hoist
+```
+这会将 packages 里重复的依赖提取到最外层的 node_modules 里，同时最外层的 package.json 也不会更新 dependency 信息，所以不建议将公用依赖写到最外层的package.json里，而是重复写到每个子package.json 里，然后用 --hoist 提取出来
+
+#### 更新公共依赖
+假设要升级 moduleA 和 moduleB 都依赖的 lodash 版本，不必依次到各子package下升级，可以借助 lerna-update-wizard 这个包来做
+``` bash
+// 根目录执行
+npm install --save-dev lerna-update-wizard
+```
+#### 发布
+- 登录 npm
+- npm login
+- lerna changed 查看代码变化
+- lerna version 修改版本
+- lerna publish 发布
+
+#### 使用
+npm i @syyyds-cli/vue2wx --save
+#### 使用脚手架：
+``` bash
+"scripts": {
+    "dev": "lsy-cli-repo-lerna",
+}
+```
