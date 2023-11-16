@@ -32,3 +32,15 @@ Yarn-deduplicate是一款npm包，它可以帮助我们自动解决项目中遇�
 ``` bash
 npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org/)
 ```
+
+
+### 使npm包同时支持多种模块类型
+
+要使 npm 包同时适配 commonJS 和 esModule，可以在 package.json 的 "main" 字段中指定 commonJS 版本的入口文件，同时在 "module" 字段中指定 esModule 版本的入口文件。例如：
+``` json
+{
+  "name": "my-package",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js"
+}
+```
