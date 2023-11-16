@@ -99,7 +99,7 @@ lerna add jquery --scope=@fengyinchao/modulea
 lerna add zepto --scope=@fengyinchao/moduleb
 ```
 
- #### 卸载包
+#### 卸载包
 l 给 moduleA 移除一个依赖 husky
 ``` bash
 lerna exec --scope=@fengyinchao/modulea npm uninstall husky

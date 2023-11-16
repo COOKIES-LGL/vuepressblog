@@ -63,3 +63,10 @@ git commit -m 'update .gitignore'
 
 1、在空目录下新建.gitkeep文件, 这是一个约定的文件也可以是其它类型文件起到占位的作用
 2、使用git add -f foldername 
+
+### git merge --no-ff
+``` bash
+git merge --no-ff branch1
+```
+以上命令将指定分支合并到当前分支，但总会生成一个合并commit（即便这一合并操作可以快进）。当你需要在仓库的提交历史中标记合并事件时这一命令相当有用。
+https://zhuanlan.zhihu.com/p/467878513?utm_id=0
