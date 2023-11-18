@@ -8,7 +8,7 @@ sidebar: false
 // eslint rules 配置
 {
 {
-  "extends": ["plugin:bgb/all"],
+  "extends": ["plugin:natu/all"],
   "plugins": ["simple-import-sort"],
   "rules": {
     "simple-import-sort/imports": [

@@ -8,7 +8,7 @@ const inquirer = require('inquirer')
 const { addNewRoute } = require('./new-route.js')
 
 const enumTemplateType = {
-  routePage: '普通页面：EasyTableWithFilter',
+  routePage: '普通页面：TableWithFilter',
 }
 
 // 通过命令行选择模板类型
