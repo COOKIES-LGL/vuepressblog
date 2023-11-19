@@ -76,3 +76,20 @@ https://zhuanlan.zhihu.com/p/467878513?utm_id=0
 ``` bash
 git rev-parse --abbrev-ref HEAD
 ```
+
+### 在项目中添加下面脚本代码用来快速同步master
+
+``` bash
+#!/bin/bash
+set -ex
+
+currentGitBranch=`git rev-parse --abbrev-ref HEAD`
+
+git checkout master
+
+git pull
+
+git checkout $currentGitBranch
+
+git merge --no-ff master -m 'feat: merge master'
+```
