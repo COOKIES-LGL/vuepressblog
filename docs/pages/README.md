@@ -4,6 +4,7 @@ home: false
 ## 我的博客
 ### 技术文档列表
 * [Css高级使用技巧](./css)  <span style="color:#bbb; float:right">2021-06-30</span>
+* [HTML高级使用技巧](./html)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Javascript高级使用技巧](./javascript)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [前端前沿技术](./frontier-technology)  <span style="color:#bbb; float:right">2021-08-30</span>
 * [前端基础设施](./fe-sre)  <span style="color:#bbb; float:right">2021-06-30</span>
