@@ -106,3 +106,15 @@ kill -9 PID 杀除进程
 ``` bash
 /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 ```
+
+### 别名alias
+
+``` bash
+# some alias
+alias g=git
+alias ga='git add'
+alias ll='ls -lh'
+```
+
+### ls -lh
+查看当前目录文件修改记录信息
