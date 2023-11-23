@@ -23,4 +23,14 @@ class demo {
 Symbol.hasInstance对应的外部方法是instanceof，这个大家熟悉吧，经常用于判断类型。而在上面的代码片段中，我创建了一个demo类，并重写了Symbol.hasInstance，所以其对应的instanceof行为也会发生改变，其内部的机制是这样的：当我们调用instanceof方法的时候，内部对应调用Symbol.hasInstance对应的方法即return item === "猪痞恶霸"
 :::
 
-### 1
+### flatMap
+使用这个内置方法代替filter and map
+``` javascript
+const arr1 = [1, 2, 1];
+
+const result = arr1.flatMap((num) => (num === 2 ? [2, 2] : 1));
+
+console.log(result);
+// Expected output: Array [1, 2, 2, 1]
+
+```
