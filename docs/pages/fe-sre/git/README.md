@@ -47,8 +47,7 @@ git merge master -m 'merge master' --allow-unrelated-histories //  把两段不�
 
 ### gitignore 规则不生效
 
-在项目开发过程中个，一般都会添加 .gitignore 文件，规则很简单，但有时会发现，规则不生效。
-原因是 .gitignore 只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。
+项目都会添加 .gitignore 文件但有时会发现，规则不生效。原因是 .gitignore 只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。
 那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交。
 
 ```Bash
@@ -77,7 +76,7 @@ https://zhuanlan.zhihu.com/p/467878513?utm_id=0
 git rev-parse --abbrev-ref HEAD
 ```
 
-### 在项目中添加下面脚本代码用来快速同步master
+### 同步远程master
 
 ``` bash
 #!/bin/bash
