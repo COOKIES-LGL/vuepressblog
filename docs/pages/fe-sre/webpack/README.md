@@ -4,6 +4,19 @@ home: false
 
 ## webpack 使用笔记
 
+Webpack 在构建过程中会触发一系列的生命周期事件，开发者可以针对这些事件进行相应的处理或插件化。下面是Webpack的主要生命周期事件：
+
+- beforeRun：在 Webpack 开始执行构建任务前触发的事件。
+- run：Webpack 开始进行编译打包时触发的事件。
+- beforeCompile：在 Webpack 开始编译之前触发的事件。
+- compile：Webpack 开始编译时触发的事件。
+- compilation：在 Webpack 的每次编译构建过程中触发的事件。
+- emit：在 Webpack 输出资源到output目录之前触发的事件。
+- afterEmit：在 Webpack 输出资源到output目录之后触发的事件。
+- done：Webpack 构建完成所有的编译、和输出等任务之后触发的事件。
+- failed：Webpack 构建过程中出现错误时触发的事件。
+
+
 可以通过 npm install --production 实现仅安装 dependencies 中的依赖
 
 [一篇详解webpack](https://zhuanlan.zhihu.com/p/443964387)

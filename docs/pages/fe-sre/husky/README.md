@@ -83,3 +83,9 @@ npx --no-install commitlint --edit $1
 ``` shell command
 npx husk add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 ```
+
+### cspell处理单词拼写
+``` bash
+/** 对当前更改的文件执行cspell命令 */
+git diff --name-only | npx cspell --file-list stdin
+```

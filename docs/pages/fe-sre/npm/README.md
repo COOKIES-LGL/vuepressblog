@@ -56,3 +56,8 @@ npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org
 ### npm ls --depth=0
 可以使用 npm ls --depth=0 命令查看项目中的幽灵依赖
 
+
+### minimist
+轻量命令行参数解析工具
+
+
