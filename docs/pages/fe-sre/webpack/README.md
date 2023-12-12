@@ -27,3 +27,25 @@ Webpack 在构建过程中会触发一系列的生命周期事件，开发者可
 
 - [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>
 
+
+### 动态匹配配置信息
+
+如果要根据 webpack.config.js 中的 mode 变量更改打包行为，则必须将配置导出为函数，而不是导出对象：
+``` js
+var config = {
+  entry: './app.js',
+  //...
+};
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'source-map';
+  }
+
+  if (argv.mode === 'production') {
+    //...
+  }
+
+  return config;
+};
+```

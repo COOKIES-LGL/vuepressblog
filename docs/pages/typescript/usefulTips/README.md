@@ -134,11 +134,19 @@ reg.lastIndex // 0
 
 ### tsconfig.json大括号报错
 使用 消除这个报错
+``` json
 {
   compilerOption: {
     ignoreDeprecations："5.0"
   }
 }
+```
+
+### tsconfig.json references
+
+:::tip
+references指定工程引用依赖。在多子项目中共享配置文件
+:::
 
 ### satisfies
 satisfies 这个语法。它的作用就是让你用自动推导出的类型，而不是声明的类型，增加灵活性，同时还可以对这个推导出的类型做类型检查，保证安全。

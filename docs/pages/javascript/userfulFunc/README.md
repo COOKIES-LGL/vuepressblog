@@ -223,3 +223,24 @@ dayDiff(new Date("2021-10-21"), new Date("2022-02-12"))
 // Result: 114
 
  ```
+
+
+ ### getEnumOptions 从枚举值获取下拉选项列表
+
+ ``` javascript
+
+var getEnumOptions = function getEnumOptions(obj) {
+  return entries(obj).filter(function (_ref) {
+    var val = _ref[1];
+    return typeof val === 'number';
+  }).map(function (_ref2) {
+    var label = _ref2[0],
+        value = _ref2[1];
+    return {
+      label: label,
+      value: value,
+      key: value
+    };
+  });
+};
+```

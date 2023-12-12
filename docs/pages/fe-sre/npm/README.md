@@ -61,3 +61,27 @@ npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org
 轻量命令行参数解析工具
 
 
+### 开发npm开发笔记
+
+开发一个npm包需要创建在项目中新建example项目用于测试
+
+::: tip
+这个工程位于我们主工程的目录底下，
+这里要用到的依赖包，如果本工程没有安装，
+则会自动查找上层目录，
+也就是，外层安装了的话就可用。
+另外，
+找到根目录也没有的话还会查看全局安装，
+都没有的时候才会报错 
+:::
+
+如果通过路径进行安装会出现循环依赖问题
+以下安装方式
+npm install --save-dev ../../npm-plugin/index.js
+因为 demo 工程位于 package 工程目录下，
+会导致递归引用。
+仅当不在同一路径下创建新工程时可以。
+
+因此我们可以直接在项目文件中按文件路径引入 或者使用npx link引入
+
+
