@@ -427,3 +427,23 @@ const finallyPromise = requestAry.reduce(
 );
 
 ```
+
+### 获取字符串大小
+``` javascript
+function getStringSizeInBytes(str) {
+  // 使用UTF-8编码计算字符串的字节长度
+  let totalBytes = new Blob([str]).size;
+  
+  // 将字节长度转换为兆字节（MB）
+  let sizeInMB = totalBytes / (1024 * 1024);
+  
+  // 返回结果
+  return sizeInMB;
+}
+
+// 示例用法
+let myString = "这是一个字符串";
+let sizeInMB = getStringSizeInBytes(myString);
+console.log(sizeInMB + " MB");
+
+```
