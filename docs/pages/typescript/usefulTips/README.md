@@ -165,3 +165,22 @@ NUM[1] === 'A'
 NUM[2] === 'B'
 NUM['demo'] !== 'D'
 ```
+
+### import 标红报错找不到tsconfig.json配置文件
+
+原因: .eslintrc  配置的 tsconfig.json的路径不对
+
+``` json
+{
+  parserOptions: { project: ['/tsconfig.json'] }, 
+}
+```
+这个时候一般我们的项目处于子目录中，可以使用相对路径指定tsconfig.json的路径
+需要将.eslintrc 文件改成 .eslintrc.js 然后使用__dirname获取相对路径
+``` js
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: { project: [__dirname + '/tsconfig.json'] },
+};
+```
+
