@@ -60,6 +60,9 @@ npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org
 ### minimist
 轻量命令行参数解析工具
 
+### fast-glob
+NodeJS文件系统遍历工具：fast-glob
+
 
 ### 开发npm开发笔记
 

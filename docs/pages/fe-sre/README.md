@@ -12,6 +12,7 @@ home: false
 * [eslint-plugin-simple-import-sort](./eslint-plugin-simple-import-sort)  <span style="color:#bbb; float:right">2021-09-10</span>
 * [typescript-plugin-css-modules](./typescript-plugin-css-modules)  <span style="color:#bbb; float:right">2022-09-10</span>
 * [webpack](./webpack)  <span style="color:#bbb; float:right">2023-09-13</span>
+* [vite](./vite)  <span style="color:#bbb; float:right">2023-12-13</span>
 * [bat-cmd文件](./bat-cmd-file)  <span style="color:#bbb; float:right">2023-09-10</span>
 
 * [Docker](./docker)  <span style="color:#bbb; float:right">2023-10-11</span>
