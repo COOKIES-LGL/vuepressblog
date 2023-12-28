@@ -50,6 +50,7 @@ Mon-repo 方式有许多优点：
 
 ### 创建一个monorepo
 
+(lerna教程详解)[https://segmentfault.com/a/1190000019350611]
 #### 安装lerna
 ```
 npm i lerna -g
@@ -133,6 +134,7 @@ npm install --save-dev lerna-update-wizard
 
 #### 使用
 npm i @syyyds-cli/vue2wx --save
+
 #### 使用脚手架：
 ``` bash
 "scripts": {

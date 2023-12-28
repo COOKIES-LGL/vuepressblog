@@ -80,11 +80,11 @@ NodeJS文件系统遍历工具：fast-glob
 
 如果通过路径进行安装会出现循环依赖问题
 以下安装方式
+``` bash
 npm install --save-dev ../../npm-plugin/index.js
+```
 因为 demo 工程位于 package 工程目录下，
 会导致递归引用。
 仅当不在同一路径下创建新工程时可以。
 
 因此我们可以直接在项目文件中按文件路径引入 或者使用npx link引入
-
-
