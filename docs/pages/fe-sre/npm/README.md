@@ -49,13 +49,15 @@ npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org
 （1）.mjs文件总是以 ES6 模块加载，.cjs文件总是以 CommonJS 模块加载，.js文件的加载取决于package.json里面type字段的设置。
 （2）ES6 模块与 CommonJS 模块尽量不要混用。require命令不能加载.mjs文件，会报错，只有import命令才可以加载.mjs文件。反过来，.mjs文件里面也不能使用require命令，必须使用import。
 
-### nodemon
-
 ### npm install -g depcheck
 
 ### npm ls --depth=0
 可以使用 npm ls --depth=0 命令查看项目中的幽灵依赖
 
+### npm list package
+展示当前package的安装情况 
+
+## npm包推荐
 
 ### minimist
 轻量命令行参数解析工具
@@ -63,9 +65,22 @@ npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org
 ### fast-glob
 NodeJS文件系统遍历工具：fast-glob
 
+### nodemon
+观察运行node
 
-### 开发npm开发笔记
+### ts-morph
+基于 TS Compiler API 的工具
+(知乎教程)[https://zhuanlan.zhihu.com/p/616134364]
+(文档)[https://ts-morph.com/utilities]
 
+### chokidar
+极简高效的跨平台文件监视库
+(知乎教程)[https://zhuanlan.zhihu.com/p/601689232?utm_id=0]
+
+### Mockjs
+(Mockjs官方文档)[http://mockjs.com/]
+
+## 开发npm开发笔记
 开发一个npm包需要创建在项目中新建example项目用于测试
 
 ::: tip
@@ -73,9 +88,7 @@ NodeJS文件系统遍历工具：fast-glob
 这里要用到的依赖包，如果本工程没有安装，
 则会自动查找上层目录，
 也就是，外层安装了的话就可用。
-另外，
-找到根目录也没有的话还会查看全局安装，
-都没有的时候才会报错 
+另外，找到根目录也没有的话还会查看全局安装，都没有的时候才会报错 
 :::
 
 如果通过路径进行安装会出现循环依赖问题
