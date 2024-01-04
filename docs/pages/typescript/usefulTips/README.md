@@ -184,3 +184,28 @@ module.exports = {
 };
 ```
 
+### 模块“"fs"”没有默认导出
+- 1 可以使用 import * as fs from 'fs'
+- 2 或者在tsconfig.json的compilation填加属性"esModuleInterop": true
+
+### Cannot find module '*'. Did you mean to set the 'moduleResolution' option to 'node'
+-1 在tsconfig.json的compilation填加属性"moduleResolution": "node"
+
+::: tip
+模块解析策略（ moduleResolution）更多描述的是一个模块包括相对路径以及非相对路径（也就是第三方库，亦或者说 npm 包）是按照怎样的规则去查找的
+现在支持的值有三个classic、node
+* classic 简单来说这种模块解析策略就是一直递归往上找同名文件，当前目录找不到同名文件就往父级目录找。不过这种策略目前前端界用得不多
+* 相比于 classic 策略的区别在于：
+  - 递归查找的目录是 node_modules，不是父级文件夹
+  - 引入了 package.json，各种配置项尤其是后面会展开说的 exports 字段使得 node 模块解析策略的变得非常复杂
+  - 支持文件夹模块，也就是 pkg/index.js，文件夹中包含 index.js，这个文件夹就是一个模块
+[参考资料](https://zhuanlan.zhihu.com/p/621795173)
+::: 
+
+### 模块化js如何规避循环引用
+
+CommonJS和ES Module都对循环引入做了处理，不会进入死循环，但方式不同：
+- CommonJS借助模块缓存，遇到require函数会先检查是否有缓存，已经有的则不会进入执行，在模块缓存中还记录着导出的变量的拷贝值；
+- ES Module借助模块地图，已经进入过的模块标注为获取中，遇到import语句会去检查这个地图，已经标注为获取中的则不会进入，地图中的每一个节点是一个模块记录，上面有导出变量的内存地址，导入时会做一个连接——即指向同一块内存。
+- 有时会项目编译报错因为循环引用使得变量未定义就使用了。
+
