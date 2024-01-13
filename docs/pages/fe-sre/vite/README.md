@@ -23,3 +23,9 @@ plugins: [
 ],
 
 ```
+
+### babel/traverse 不支持es Module 可以从babel/core引入traverse
+
+### babel/traverse 没有遍历所有节点, 需要自行编写遍历代码
+
+### 有些三方包没有默认导出 可以使用import * as babel from 'babel/core' 进行导入
