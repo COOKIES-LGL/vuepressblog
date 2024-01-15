@@ -614,3 +614,47 @@ function getCount(m,n){
   }
 }
 ```
+
+### 二叉树删除节点
+
+``` javascript
+    // 删除一个节点
+    _removeNode(node, data) {
+        if (node == null) {
+            return null;
+        }
+        if (data == node.data) {
+            // 叶子节点
+            if (node.left == null && node.right == null) {
+                return null;
+            }
+
+            // 没有左节点的节点
+            if (node.left == null) return node.right;
+
+
+            //没有右节点的节点
+            if (node.right == null) return node.left;
+     
+            // 有两个节点的节点
+            /*  
+             做法：
+                找到待删除节点的右子树上的最小值创建一个临时节点。
+                将临时节点上的值复制到待删除节点，然后再删除临时节点
+            */
+
+            // 寻找右子树上的最小值
+            let tmpNode = this.getMinNode(node.right);
+            node.data = tmpNode.data;
+            node.right = this._removeNode(node.right, tmpNode.data);
+            return node;
+        } else if (data < node.data) {  // 待删除节点在左子树上
+            node.left = this._removeNode(node.left, data);
+            return node;
+        } else {  // 待删除节点在右子树上
+            node.right = this._removeNode(node.right, data);
+            return node;
+        }
+    }
+
+```

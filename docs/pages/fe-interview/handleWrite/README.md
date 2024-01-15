@@ -458,3 +458,15 @@ async function sendRequest(requestList,limits,callback){
 // for await 里其实 已经在此轮宏任务当中并发执行了，await后面的代码被挂起来，等前一个promise转变状态-->移出pool-->将下一个promise捞起加入pool当中 -->下一个await等待最快的promise，如此往复。
 
 ```
+
+### 手写promise.finally
+
+``` javascript
+Promise.prototype.finally = function(callback) {
+  const P = this.constructor;
+  return this.then(
+    value => P.resolve(callback()).then(() => value),
+    reason => P.resolve(callback()).then(() => { throw reason })
+  );
+}
+```

@@ -34,3 +34,25 @@ console.log(result);
 // Expected output: Array [1, 2, 2, 1]
 
 ```
+
+### WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用
+``` javascript
+const wm = new WeakMap();
+let key = {};
+let obj = {foo: 1};
+
+wm.set(key, obj);
+obj = null;
+wm.get(key)
+// Object {foo: 1}
+```
+
+
+### 输出结果
+
+```
+Promise.resolve().then(() => {
+    return Promise.resolve(4);
+})
+```
+核心就是会比正常的return一个非Promise的值时，多两个微任务.then().then()

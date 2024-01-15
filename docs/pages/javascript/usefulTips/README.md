@@ -447,3 +447,35 @@ let sizeInMB = getStringSizeInBytes(myString);
 console.log(sizeInMB + " MB");
 
 ```
+
+### 取消fetch请求
+
+``` javascript
+// 取消fetch
+const controller = new AbortController();
+void (async function () {
+    const response = await fetch('<http://127.0.0.1:3000/api/get>', {
+        signal: controller.signal,
+    });
+    const data = await response.json();
+})();
+
+setTimeout(() => {
+    controller.abort();
+}, 1000);
+
+// 取消axios
+const controller = new AbortController();
+const API_URL = '<http://127.0.0.1:3000/api/get>';
+void (async function () {
+    const response = await axios.get(API_URL, {
+        signal: controller.signal,
+    });
+    const { data } = response;
+})();
+
+setTimeout(() => {
+    controller.abort();
+}, 1000);
+
+```
