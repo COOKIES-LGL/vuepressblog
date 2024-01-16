@@ -47,7 +47,6 @@ wm.get(key)
 // Object {foo: 1}
 ```
 
-
 ### 输出结果
 
 ```
@@ -56,3 +55,5 @@ Promise.resolve().then(() => {
 })
 ```
 核心就是会比正常的return一个非Promise的值时，多两个微任务.then().then()
+
+### class类无法遍历它实例原型链上的属性和方法
