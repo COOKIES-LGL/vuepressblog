@@ -57,3 +57,18 @@ Promise.resolve().then(() => {
 核心就是会比正常的return一个非Promise的值时，多两个微任务.then().then()
 
 ### class类无法遍历它实例原型链上的属性和方法
+
+### new.target
+
+``` javascript
+// new.target属性允许你检测函数或构造方法是否是通过new运算符被调用的
+function Foo() {
+  if (!new.target) throw "Foo() must be called with new";
+  console.log("Foo instantiated with new");
+}
+
+Foo(); // throws "Foo() must be called with new"
+new Foo(); // logs "Foo instantiated with new"
+```
+
+TODO 141

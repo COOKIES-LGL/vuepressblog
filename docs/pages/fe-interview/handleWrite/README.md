@@ -391,63 +391,34 @@ new Son('male', 'jack').getName('tom'); //'tom'
 new Father('jack').getName(); //'jack'
 ```
 
-
 ### 限制并发池子
 ``` typescript
 async function sendRequest(requestList,limits,callback){
-
     // 维护一个promise队列
-
     const promises = []
-
     // 当前的并发池,用Set结构方便删除
-
     const pool = new Set() // set也是Iterable<any>[]类型，因此可以放入到race里
-
     // 开始并发执行所有的任务
-
     for(let request of requestList){
-
         // 开始执行前，先await 判断 当前的并发任务是否超过限制
-
         if(pool.size >= limits){
-
             // 这里因为没有try catch ，所以要捕获一下错误，不然影响下面微任务的执行
-
-
             await Promise.race(pool)
-
             .catch(err=>err)
-
         }
-
         const promise = request()// 拿到promise
-
         // 删除请求结束后，从pool里面移除
-
         const cb = ()=>{
-
             pool.delete(promise)
-
         }
-
         // 注册下then的任务
-
         promise.then(cb,cb)
-
         pool.add(promise)
-
         promises.push(promise)
-
     }
-
     // 等最后一个for await 结束，这里是属于最后一个 await 后面的 微任务
-
     // 注意这里其实是在微任务当中了，当前的promises里面是能确保所有的promise都在其中(前提是await那里命中了if)
-
-
     Promise.allSettled(promises).then(callback,callback)
-
 }
 // 总结一下要点：
 
@@ -469,4 +440,50 @@ Promise.prototype.finally = function(callback) {
     reason => P.resolve(callback()).then(() => { throw reason })
   );
 }
+```
+
+### 使用Promise实现：限制异步操作的并发个数，并尽可能快的完成全部
+
+``` javascript
+function limitLoad(urls, handler, limit) {
+  let sequence = [].concat(urls); // 复制urls
+  // 这一步是为了初始化 promises 这个"容器"
+  let promises = sequence.splice(0, limit).map((url, index) => {
+    return handler(url).then(() => {
+      // 返回下标是为了知道数组中是哪一项最先完成
+      return index;
+    });
+  });
+  // 注意这里要将整个变量过程返回，这样得到的就是一个Promise，可以在外面链式调用
+  return sequence
+    .reduce((pCollect, url) => {
+      return pCollect
+        .then(() => {
+          return Promise.race(promises); // 返回已经完成的下标
+        })
+        .then(fastestIndex => { // 获取到已经完成的下标
+        	// 将"容器"内已经完成的那一项替换
+          promises[fastestIndex] = handler(url).then(
+            () => {
+              return fastestIndex; // 要继续将这个下标返回，以便下一次变量
+            }
+          );
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }, Promise.resolve()) // 初始化传入
+    .then(() => { // 最后三个用.all来调用
+      return Promise.all(promises);
+    });
+}
+limitLoad(urls, loadImg, 3)
+  .then(res => {
+    console.log("图片全部加载完毕");
+    console.log(res);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
 ```

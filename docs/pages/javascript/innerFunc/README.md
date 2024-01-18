@@ -119,3 +119,12 @@ const checkEllipsis = () => {
 }
 
 ```
+
+### crypto.getRandomValues() 获取真随机数
+
+``` javascript
+let array = new Uint32Array(1);
+window.crypto.getRandomValues(array);
+let randomNum = array[0] % 100;
+
+```
