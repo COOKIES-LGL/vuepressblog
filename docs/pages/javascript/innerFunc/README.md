@@ -128,3 +128,29 @@ window.crypto.getRandomValues(array);
 let randomNum = array[0] % 100;
 
 ```
+
+### MessageChannel 
+
+MessageChannel允许我们在不同的浏览上下文，比如window.open()打开的窗口或者iframe等之间建立通信管道，并通过两端的端口（port1和port2）发送消息。MessageChannel以DOM Event的形式发送消息，所以它属于异步的宏任务。
+
+``` javascript
+// a.js
+export default function a(port) {
+  port.postMessage({ from: 'a', message: 'ping' });
+}
+
+// b.js
+export default function b(port) {
+  port.onmessage = (e) => {
+    console.log(e.data); // {from: 'a', message: 'ping'}
+  };
+}
+
+// index.js
+import a from './a.js';
+import b from './b.js';
+
+const { port1, port2 } = new MessageChannel();
+b(port2);
+a(port1);
+```

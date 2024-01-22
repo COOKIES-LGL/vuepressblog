@@ -487,3 +487,38 @@ limitLoad(urls, loadImg, 3)
   });
 
 ```
+
+### 单点登录 前端实现
+[参考链接](https://fe.ecool.fun/topic/20d4a56b-719b-47ba-b29b-f8a61e226958?orderBy=updateTime&order=desc&tagId=10)
+
+``` javascript
+// 获取 token
+var token = result.data.token;
+// 动态创建一个不可见的iframe，在iframe中加载一个跨域HTML
+var iframe = document.createElement("iframe");
+iframe.src = "http://app1.com/localstorage.html";
+document.body.append(iframe);
+// 使用postMessage()方法将token传递给iframe
+setTimeout(function () {
+    iframe.contentWindow.postMessage(token, "http://app1.com");
+}, 4000);
+setTimeout(function () {
+    iframe.remove();
+}, 6000);
+ 
+// 在这个iframe所加载的HTML中绑定一个事件监听器，当事件被触发时，把接收到的token数据写入localStorage
+window.addEventListener('message', function (event) {
+    localStorage.setItem('token', event.data)
+}, false);
+```
+
+### 文件分片
+
+``` javascript
+var reader = new FileReader();
+reader.readAsArrayBuffer(file);
+reader.addEventListener("load", function(e) {
+    //每10M切割一段,这里只做一个切割演示，实际切割需要循环切割，
+    var slice = e.target.result.slice(0, 10*1024*1024);
+});
+```

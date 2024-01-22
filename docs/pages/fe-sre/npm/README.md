@@ -2,6 +2,15 @@
 home: false
 ---
 
+### https://www.npmjs.com/ 登陆通行key
+::: tips
+a10f91d9caceb99b42e02939b65383a24636618d9e8b4d2a4a5aef1ded9f4323
+59cb94abf01531e2372ea509815d33b3e0ed920c62b4ebcad70cf71796e10ab0
+42048040dc187f85fbbb77027ef3c09ad2f18126e01dacbb1a52275f68a7c785
+47a2d47060b6db99ff123bce9d63410d1601d0e0dd41cdf543cf93e2f3fbf9da
+2168994a69337937328c3160237fe4afe805db4567a0ef5cbe011a07f6e7fed3
+:::
+
 ### npm update
 
 已经存在node_modules时 npm install 不会更新 ^的版本控制，需要使用npm update. 或者删除node_modules 进行更新

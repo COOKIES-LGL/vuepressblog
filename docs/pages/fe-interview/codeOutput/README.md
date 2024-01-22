@@ -25,6 +25,7 @@ var b = 10;
 ### race()的作用也是接收一组异步任务，然后并行执行异步任务，只保留取第一个执行完成的异步操作的结果，race、all、allSettle执行时其他的异步方法代码仍在执行，不过执行结果会被抛弃。
 ### finally是新一层的微任务队列执行
 ### function的length，就是第一个具有默认值之前的参数个数
+### promise return 一个pending的promise可以中断后续流程
 
 ``` javascript
 Promise.resolve('2')
