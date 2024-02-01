@@ -46,3 +46,24 @@ Promise.resolve()
   })
 ```
 
+
+### Promise.all 失败之后依然可以往下执行
+
+``` javascript
+let p11 = Promise.resolve(1)
+let p22 = Promise.resolve(2)
+let p33 = Promise.reject("error")
+let arr = [p11,p22,p33];
+ 
+let all = Promise.all(arr.map((promise) => promise.catch((e) => {
+   console.log("错误信息" + e)
+})))
+all.then(res => {
+  console.log('res:')
+  console.log(res)
+}).catch(err => {
+  console.log('err:')
+  console.log(err, '这个不会执行')
+});
+```
+

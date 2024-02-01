@@ -148,3 +148,9 @@ function checkIsSupportSticky() {
     });
 }
 ```
+
+
+### 无效 useCallback useMemo
+```
+只有当前组件的所有属性都被缓存时，才可以使用useCallback缓存函数 只有当父组件的所有属性都被缓存时，才可以使用useMemo缓存子组件或对象
+```

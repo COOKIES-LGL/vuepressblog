@@ -46,6 +46,14 @@ rel="prerender" 预渲染
 <link rel="prefetch" href="https://xxx.com/"> 
 ```
 
+### dns-prefetch、preconnect、Preload、prefetch
+
+:::tips
+由于dns-prefetch 仅执行 DNS查找，不像preconnect 会建立与服务器的连接.如果页面需要建立与许多第三方域的连接，则将它们预先连接会适得其反。 preconnect 提示最好仅用于最关键的连接。对于其他的，只需使用 <link rel="dns-prefetch"> 即可节省第一步的时间DNS查找
+
+Preload 与 prefetch 不同的地方就是它专注于当前的页面，并以高优先级加载资源，Prefetch 专注于下一个页面将要加载的资源并以低优先级加载。同时也要注意 preload 并不会阻塞 window 的 onload 事件。
+:::
+
 #### 防盗链
 rel="noreferrer"
 rel="noopener"
@@ -58,3 +66,25 @@ rel="noopener"
 ### intergrity
 
 `intergrity`的作用有：避免由【托管在CDN的资源被篡改】而引入的XSS 风险
+
+
+### 上传预览图片
+
+``` javascript
+// window.URL.cteateObejectURL
+function imgChange(img) {
+ document.querySelector("img").src=window.URL.cteateObejectURL(img.files[0]);
+}
+
+// FileReader
+function imgChange(img) {
+    // 生成一个文件读取的对象
+    const reader = new FileReader();
+    reader.onload = function (ev) {
+        document.querySelector("img").src = imgFile;
+    }
+    //发起异步读取文件请求，读取结果为data:url的字符串形式，
+    reader.readAsDataURL(img.files[0]);
+}
+
+```
