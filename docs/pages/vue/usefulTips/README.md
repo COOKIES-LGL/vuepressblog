@@ -79,6 +79,7 @@ Vue.config.errorHandler = (err) => {
   };
 </script>
 ```
+
 ``` javascript
 const broadcast = function(componentName, eventName, ...params) {
   let children = this.$children;
@@ -184,5 +185,6 @@ Vue.directive('loading', loadingDirectiive)
   </div>
 </template>
 ```
+
 ### Vue diff 算法的详细讲解
 [vue的diff算法原理 ](https://www.cnblogs.com/wangtong111/p/11198393.html)

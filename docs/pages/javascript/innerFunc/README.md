@@ -154,3 +154,44 @@ const { port1, port2 } = new MessageChannel();
 b(port2);
 a(port1);
 ```
+
+### AbortController
+
+AbortController可以用来终止一个或多个Web请求
+``` javascript
+  const controller = new AbortController();   // 新建一个AbortController实例
+  let signal = controller.signal;    // signal是AbortController实例的属性
+
+  const downloadBtn = document.querySelector('.download');
+  const abortBtn = document.querySelector('.abort');
+
+  downloadBtn.addEventListener('click', fetchVideo);
+
+  abortBtn.addEventListener('click', function () {
+      controller.abort();  // 调用abort方法
+      console.log('Download aborted');
+  })
+
+  function fetchVideo() {
+    //...
+    fetch(url, {signal}).then(function(response) {
+      //...
+    }).catch(function(e) {
+      console.error('e', e);
+    })
+}
+```
+
+终止事件监听
+
+``` javascript
+const controller = new AbortController();
+function callback (e) {
+  document.addEventListener('mousemove',  (e) => {
+  },{
+        signal: controller.signal  
+  });
+}
+document.addEventListener('mousedown', callback);
+document.addEventListener('mouseup', controller.abort);
+```

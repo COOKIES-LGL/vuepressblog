@@ -1,7 +1,7 @@
 ---
 home: false
 ---
-## 你好Vuex
+## 你好 Vuex
 <style>
 @media screen and (min-width: 400px) {
   .theme-default-content:not(.custom) {
