@@ -631,18 +631,14 @@ function getCount(m,n){
 
             // 没有左节点的节点
             if (node.left == null) return node.right;
-
-
             //没有右节点的节点
             if (node.right == null) return node.left;
-     
             // 有两个节点的节点
             /*  
              做法：
                 找到待删除节点的右子树上的最小值创建一个临时节点。
                 将临时节点上的值复制到待删除节点，然后再删除临时节点
             */
-
             // 寻找右子树上的最小值
             let tmpNode = this.getMinNode(node.right);
             node.data = tmpNode.data;
@@ -658,3 +654,77 @@ function getCount(m,n){
     }
 
 ```
+
+### 239. 滑动窗口最大值
+
+单调队列 解法
+``` javascript
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var maxSlidingWindow = function(nums, k) {
+    const q = [];
+    const res = [];
+    for (let i = 0; i < nums.length; i++) {
+        while(q.length && nums[i] >= nums[q.at(-1)]) {
+            q.pop();
+        }
+        q.push(i);
+        // j 是当前索引为 i 时，滑动窗口内有 k 个值时，第一个值的索引
+        const j = i - k + 1;
+        if (j >= 0) {
+            // 如果最大值不在滑动窗口中，移除该值，重新获得最大值
+            if (q[0] < j) q.shift();
+            res.push(nums[q[0]]);
+        }
+    }
+    return res;
+};
+
+```
+
+### 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+
+``` javascript
+/** 异或运算符
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function(nums) {
+    let ans = 0;
+
+    for(let num of nums) {
+        ans ^= num;
+    }
+
+    return ans
+};
+
+```
+
+### 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。 有效括号组合需满足：左括号必须以正确的顺序闭合。
+``` javascript
+// 回溯法
+var generateParenthesis = function(n) {
+  var ans = []
+  const dfs = (str, left, right) {
+    if (right > left || left > n) return
+    if (right === n && left === n) {
+      ans.push(str)
+    }
+    dfs(`${str}(`, left + 1, right)
+    dfs(`${str})`, left, right + 1)
+  }
+  dfs('', 0, 0)
+  return ans
+}
+```
+
+
+### [最大最小堆](./MinMaxHeap)
+
+### [高频精选](https://juejin.cn/post/6844904183007543310)
+
+### [LeetCode hot 100](https://juejin.cn/column/7029946677398077476)

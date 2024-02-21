@@ -488,6 +488,47 @@ limitLoad(urls, loadImg, 3)
 
 ```
 
+### 图片预加载限制请求数量
+
+``` javascript
+// 总任务 
+function loadImages(list){ 
+  const pageSize = 5 
+  const pageNum = 0 
+  return new Promise((resolve,reject)=>{ 
+      function run(){ 
+          Promise.all(generateTasks(list, pageSize, pageNum)).then(()=>{ 
+            pageNum++ 
+            const hasLength = pageSize * pageNum 
+            if(totalNum > hasLength){ 
+                run() 
+            } else { 
+                resolve(true) 
+            }
+          }) 
+      } 
+      run() 
+}) }
+
+// 子任务 
+function generateTasks(list,pageSize,pageNum){
+    const promiseArr = [] 
+    const start = pageNum * pageSize 
+    const end = (pageNum + 1) * pageSize - 1 
+    for(let i = start;i<end;i++){ 
+        const p = new Promise((resolve,reject)=>{ 
+            const img = new Image() 
+            img.src = list[i] 
+            img.onload = img.onerror = resolve 
+         }) 
+         promiseArr.push(p) 
+    } 
+    return promiseArr 
+}
+
+
+```
+
 ### 单点登录 前端实现
 [参考链接](https://fe.ecool.fun/topic/20d4a56b-719b-47ba-b29b-f8a61e226958?orderBy=updateTime&order=desc&tagId=10)
 
