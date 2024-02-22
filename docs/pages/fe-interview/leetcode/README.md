@@ -725,6 +725,10 @@ var generateParenthesis = function(n) {
 
 ### [最大最小堆](./MinMaxHeap)
 
+### [DFS&BFS深度广度优先遍历](./DFSBFS)
+
+### [排列组合](./Combination)
+
 ### [高频精选](https://juejin.cn/post/6844904183007543310)
 
 ### [LeetCode hot 100](https://juejin.cn/column/7029946677398077476)
