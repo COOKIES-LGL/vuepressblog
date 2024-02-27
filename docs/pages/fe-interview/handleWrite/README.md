@@ -340,9 +340,9 @@ Promise.prototype.race=function(arr){
 ``` javascript
 Promise.prototype.myFinally = function(cb) {//cb就是要共同执行的逻辑
     return this.then(//谁调用finally，this就是谁
-        value => Promise.resolve(cb()),//不管调用finally的promise是什么状态都会执行这个cb
-        error =>//不管调用finally的promise是什么状态都会执行这个cb
-        Promise.resolve(cb())
+        value => Promise.resolve(cb()).then(() => value),// 不管调用finally的promise是什么状态都会执行这个cb
+        error =>// 不管调用finally的promise是什么状态都会执行这个cb
+        Promise.resolve(cb()).then(() => throw error)
     );
 };
 ```
