@@ -21,15 +21,16 @@
         .yellow1{color:#fae001 !important}
         .y_green{color:#a4b049 !important}
         .s_blue{color:#00a0e9 !important}
+		.s_white{color:#ffffff !important;}
         .orange{color:#f39800 !important}
         .resume_box{border:12px solid #efefef}
-        .infomation_l{width:246px;vertical-align:top;background-color:#2d4e5c}
-        .infomation_2{width:350px;vertical-align:top;background-color:#fff}
+        .infomation_l{width:226px;vertical-align:top;background-color:#2d4e5c}
+        .infomation_2{width:370px;vertical-align:top;background-color:#fff}
         .top{margin:26px 0px 18px 0px}
         .picture{text-align:center}
         .name{height:40px;line-height:40px;font-size:18px;color:#fff;text-align:center}
         .posi{width:265px;line-height:14px;text-align:center;padding:0 10px}
-        .mes_boxl{margin:10px 0 22px 0}
+        .mes_boxl{margin:10px 0 12px 0}
         .mes_self{margin:10px 0 15px 0;}
         .mes_l{margin-left:20px}
         .title{height:26px;font-weight:bold;color:#d8dcde}
@@ -39,7 +40,7 @@
         .title_icon1 img{margin-top:5px}
         .b_border{border-top:1px solid #233c47}
         .dir{vertical-align:top}
-        .limit1{width:180px}
+        .limit1{width:160px}
         .limit{width:240px}
         .wid{width:225px}
         .limit2{width:204px}
@@ -47,7 +48,7 @@
         .rank{position:absolute;top:0;left:0;width:70%;height:16px;line-height:16px;text-indent:6px;top:0px;left:0px;background-color:#b9b9b9}
         .email{max-width:146px;word-wrap:break-word}
         .infomation_r{width:386px;vertical-align:top;padding-left:12px;background-color:#efefef}
-        .mes_r{margin-left:26px;padding:10px 0 16px 0}
+        .mes_r{margin-left:26px;padding:10px 0 12px 0}
         .title_icon{width:17px;padding-right:8px;border:0 none;padding-left: 5px;}
         .title_icon img{margin-top:5px}
         .title_txt{width:340px;height:28px;line-height:28px;font-weight:bold;color:#2d4e5c;text-align:left;border-bottom:1px solid #96a6ad;margin-left: 10px;}
@@ -85,7 +86,7 @@
 				<div class="top">
 					<p class="picture"><img src="./self.jpg" alt="简历照片" id="icon" width="120" height="150"></p>
 					<p class="name">李贵霖♂</p>
-					<p class="posi"><a class="yellow1">越努力&越幸运</a></p>
+					<p class="posi"><a class="yellow1"></a></p>
 				</div>
 
 				<table class="border_b"><tbody>
@@ -94,7 +95,6 @@
 						<td class="wid"><span>个人信息</span></td>
 					</tr>
 				</tbody></table>
-
 				<div class="mes_boxl">
 
 					<table class="mes_l"><tbody>
@@ -167,7 +167,7 @@
 					</tr>
 					<tr class="per_list">
 					<td><span>可到岗时间：</span></td>
-					<td class="limit1"><span class="gray">立即到岗</span></td>
+					<td class="limit1"><span class="gray">offer后提离职</span></td>
 					</tr>
 					</tr>
 					</tbody></table>
@@ -182,7 +182,7 @@
 	    		<div class="mes_self">
 					<table class="mes_l"><tbody>
 					<tr class="per_list">
-					<td class="limit"><span>有强烈的集体荣誉感，稳重有活力，待人真诚，认真负责，积极主动，分秒必争，敢于创新。</span></td>
+					<td class="limit"><span>有强烈的集体荣誉感，稳重有活力，认真负责，积极主动，敢于创新。</span></td>
 					</tr>
 					</tbody></table>
 				</div>
@@ -191,7 +191,6 @@
 					<td class="wid"><span>所获证书</span></td>
 					</tr>
 				</tbody></table>
-
 	    		<div class="mes_boxl">
 					<table class="mes_l"><tbody>
 					<tr class="per_list">
@@ -204,10 +203,39 @@
 					</tr>
 					</tbody></table>
 				</div>
-
+				<table class="border_b"><tbody>
+					<tr class="title">
+					<td class="wid"><span>开源工具</span></td>
+					</tr>
+				</tbody></table>
+				<div class="mes_boxl">
+					<table class="mes_l"><tbody>
+					<tr class="per_list">
+						<td class="dir"><span>Vscode插件:</span></td>
+						</tr>
+						<tr class="per_list">
+							<td width="220">
+								<span class="gray"><span class="yellow">OPEN NPM</span> 支持快速定位到选中的npm包、浏览器打开npm包。</span>
+							</td>
+						</tr>
+						<tr class="per_list">
+							<td width="220">
+								<span class="gray"><span class="yellow">cjs2esm</span> 支持相互转化commonJs与esModule模块的代码。</span>
+							</td>
+						</tr>
+					</tr>
+					<tr class="per_list" style="margin-top: 6px">
+						<td class="dir"><span>Webpack Vite插件:</span></td>
+						<tr class="per_list">
+							<td width="220">
+								<span class="gray"><span class="yellow">dead-code-plugin</span> 用来检测出项目中未使用的导出和文件。</span>
+							</td>
+						</tr>
+					</tr>
+					</tbody></table>
+				</div>
 				<table class="border_b"><tbody><tr class="title"></tr>
 				</tbody></table>
-
 			</td>		
             <td class="infomation_2">
 				<table class="per_title"><tbody><tr>
@@ -264,36 +292,41 @@
 					<table>
 						<tbody>
 							<tr class="info_list">
-								<td class="exp"><span>Seller Center</span></td>
-								<td class="exp"><span class="gray">* Vue、TypeScript、multirepo </span></td>
-								<td class="exp"><p class="gray" class="area_text"><b>简介:</b>项目中主要负责Seller marketplace内部业务的开发，有卖家孵化、卖家类型管理、卖家商品类目阈值限制、卖家健康度管理等。</p></td>
+								<td class="exp"><span>Temu | Affiliate Program(H5)</span></td>
+								<td class="exp"><span class="gray">* React、TypeScript、next.js、mobx </span></td>
+								<td class="exp"><p class="gray" class="area_text"><b>简介:</b>参与搭建Temu内部推广拉新活动页、还有参与维护Temu一折购、全额返等活动页。</p></td>
 							</tr>
 						</tbody>
 					</table>
+					<hr style="width: 80%;float: left;">
 					<table>
-					<tbody>
-					<tr><td height="10"></td></tr>
-				    </tbody></table>
+						<tbody>
+							<tr class="info_list">
+								<td class="exp"><span>Temu | OMS</span></td>
+								<td class="exp"><span class="gray">* React、TypeScript、multirepo </span></td>
+								<td class="exp"><p class="gray" class="area_text"><b>简介:</b>OMS是个内部业务管理中台项目, 主要负责人力结算业务的开发，有人力成本、劳务处罚、仓作业计费管理等，参与了个别UI组件维护。</p></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>                
 				<table class="per_title"><tbody><tr>
 				<td width="340"><p class="title_txt">技术栈</p></td>
 				</tr></tbody></table>
-
 				<div class="mes_r">
 					<table>
 						<tbody>
 							<tr class="info_list">
-								<td class="exp_bot">熟悉： <span class="gray">Vue、react、Typescript、前端国际化</span></td>
-								<td class="exp_bot">了解： <span class="gray">Node、Django、前端工程化、ssr</span></td>
+								<td class="exp_bot">熟悉： <span class="gray">Vue、React、Typescript、前端国际化</span></td>
+								<td class="exp_bot">了解： <span class="gray">Node、Django、前端工程化、eslint、ssr</span></td>
 								<td class="exp_bot">了解框架： <span class="gray">React、Koa、Echart、Element</span></td>
 								<td class="exp_bot">了解数据库： <span class="gray">Elastic、 Mysql、 Redis </span></td>
-								<td class="exp_bot">了解工具： <span class="gray">Git、Webpack、Nginx、Genkins</span></td>
+								<td class="exp_bot">了解工具： <span class="gray">Git、Webpack、Vite、Nginx、Genkins</span></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
           </td>
-		</tbody>
+			</tbody>
     	</table>
       </div>
     </div>
