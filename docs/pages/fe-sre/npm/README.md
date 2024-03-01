@@ -86,8 +86,11 @@ NodeJS文件系统遍历工具：fast-glob
 极简高效的跨平台文件监视库
 [知乎教程](https://zhuanlan.zhihu.com/p/601689232?utm_id=0)
 
-### Mockjs
-[Mockjs官方文档](http://mockjs.com/)
+### yargs 命令行参数处理工具
+[yargs](https://www.npmjs.com/package/yargs)
+
+### MockJs
+[MockJs官方文档](http://mockjs.com/)
 
 ## 开发npm开发笔记
 开发一个npm包需要创建在项目中新建example项目用于测试

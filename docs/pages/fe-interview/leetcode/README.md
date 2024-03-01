@@ -435,6 +435,7 @@ module.exports = {
     Permutation : Permutation
 };
 ```
+
 ``` javascript
 // 二维数组全排列组合
 const getResult = (arr1, arr2) => {
@@ -655,7 +656,7 @@ function getCount(m,n){
 
 ```
 
-### 239. 滑动窗口最大值
+### 239. 滑动窗口最大值 返回滑动窗口滑动过程中窗口内最大值
 
 单调队列 解法
 ``` javascript
