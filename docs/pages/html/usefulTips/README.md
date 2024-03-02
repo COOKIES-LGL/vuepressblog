@@ -60,22 +60,23 @@ rel="noopener"
 
 ### crossorigin
 
-::: tip
-- 加载了具有crossorigin属性的跨域js脚本："<script src="user.com/index.js" crossorigin ></script>"，这样就可以获取到user.com/index.js中的具体错误信息了。
+``` html
+<script src="user.com/index.js" crossorigin ></script>
+- 加载了具有crossorigin属性的跨域js脚本，这样就可以获取到user.com/index.js中的具体错误信息了。
 - crossorigin会让浏览器启用CORS访问检查，检查http响应头的Access-Control-Allow-Origin
-:::
+```
 
-### intergrity
+### integrity
 
-`intergrity`的作用有：避免由【托管在CDN的资源被篡改】而引入的XSS 风险
+`integrity`的作用有：避免由【托管在CDN的资源被篡改】而引入的XSS 风险
 
 
 ### 上传预览图片
 
 ``` javascript
-// window.URL.cteateObejectURL
+// window.URL.createObjectURL
 function imgChange(img) {
- document.querySelector("img").src=window.URL.cteateObejectURL(img.files[0]);
+ document.querySelector("img").src=window.URL.createObjectURL(img.files[0]);
 }
 
 // FileReader
