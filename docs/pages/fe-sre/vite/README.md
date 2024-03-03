@@ -4,7 +4,8 @@ home: false
 
 ## vite 使用笔记
 
-
+[Vite是如何实现Esbuild打包的](https://segmentfault.com/a/1190000043980887)
+[rollup打包原理](https://www.baidu.com/link?url=qSPsxiW5_Rboe-4tNN26ObiF8LoQFgnyDX8zMl7HZHYClDlr1eq37JL-4hpDSab5WUqwB7iqfo8Y4VnKAtXBla&wd=&eqid=d2f2c99500896c100000000565e43fbb)
 ### vite 支持 require
 
 1、安装插件vite-plugin-require-transform
