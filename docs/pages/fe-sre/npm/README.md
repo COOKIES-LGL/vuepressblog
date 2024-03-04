@@ -92,6 +92,9 @@ NodeJS文件系统遍历工具：fast-glob
 ### MockJs
 [MockJs官方文档](http://mockjs.com/)
 
+### simple-git 一个轻量级但功能强大的 Node.js Git库
+[simple-git](https://juejin.cn/post/7229906749070721085)
+
 ## 开发npm开发笔记
 开发一个npm包需要创建在项目中新建example项目用于测试
 
