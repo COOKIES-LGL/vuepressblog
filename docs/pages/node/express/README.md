@@ -1,5 +1,5 @@
 
-::: tips
+::: tip
 当setTimeOut不设置时间时
 因受进程性能约束
 在文件IO、网络IO回调中，setImmediate会先于setTimeout执行

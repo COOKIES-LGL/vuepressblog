@@ -3,7 +3,8 @@ home: false
 ---
 
 ### https://www.npmjs.com/ 登陆通行key
-::: tips
+
+::: tip
 a10f91d9caceb99b42e02939b65383a24636618d9e8b4d2a4a5aef1ded9f4323
 59cb94abf01531e2372ea509815d33b3e0ed920c62b4ebcad70cf71796e10ab0
 42048040dc187f85fbbb77027ef3c09ad2f18126e01dacbb1a52275f68a7c785
@@ -116,3 +117,12 @@ npm install --save-dev ../../npm-plugin/index.js
 仅当不在同一路径下创建新工程时可以。
 
 因此我们可以直接在项目文件中按文件路径引入 或者使用npx link引入
+
+``` json
+{
+  "resolutions": {
+    "**/typescript": "^5.3.3"
+  },
+}
+// 可以用来限制某个开发包的 依赖包版本
+```

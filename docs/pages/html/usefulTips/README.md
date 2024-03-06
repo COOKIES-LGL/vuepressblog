@@ -48,7 +48,7 @@ rel="prerender" 预渲染
 
 ### dns-prefetch、preconnect、Preload、prefetch
 
-:::tips
+::: tip
 由于dns-prefetch 仅执行 DNS查找，不像preconnect 会建立与服务器的连接.如果页面需要建立与许多第三方域的连接，则将它们预先连接会适得其反。 preconnect 提示最好仅用于最关键的连接。对于其他的，只需使用 <link rel="dns-prefetch"> 即可节省第一步的时间DNS查找
 
 Preload 与 prefetch 不同的地方就是它专注于当前的页面，并以高优先级加载资源，Prefetch 专注于下一个页面将要加载的资源并以低优先级加载。同时也要注意 preload 并不会阻塞 window 的 onload 事件。
@@ -89,5 +89,23 @@ function imgChange(img) {
     //发起异步读取文件请求，读取结果为data:url的字符串形式，
     reader.readAsDataURL(img.files[0]);
 }
+
+```
+
+### 标签页通信-BroadcastChannel
+
+::: tip
+BroadcastChannel 只能在相同的源（origin）下工作, 不需要使用 BroadcastChannel 实例时，通过 close() 方法手动关闭频道，以便释放资源
+::: 
+
+``` javascript
+
+const channel = new BroadcastChannel('myChannel');
+
+channel.addEventListener('message', event => {
+  console.log('Received message:', event.data);
+});
+
+channel.postMessage('Hello, other windows!');
 
 ```
