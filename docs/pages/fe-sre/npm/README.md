@@ -43,7 +43,6 @@ Yarn-deduplicate是一款npm包，它可以帮助我们自动解决项目中遇�
 npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org/)
 ```
 
-
 ### 使npm包同时支持多种模块类型
 
 要使 npm 包同时适配 commonJS 和 esModule，可以在 package.json 的 "main" 字段中指定 commonJS 版本的入口文件，同时在 "module" 字段中指定 esModule 版本的入口文件。例如：
@@ -95,6 +94,8 @@ NodeJS文件系统遍历工具：fast-glob
 
 ### simple-git 一个轻量级但功能强大的 Node.js Git库
 [simple-git](https://juejin.cn/post/7229906749070721085)
+
+### cosmiconfig 读取项目配置信息
 
 ## 开发npm开发笔记
 开发一个npm包需要创建在项目中新建example项目用于测试
