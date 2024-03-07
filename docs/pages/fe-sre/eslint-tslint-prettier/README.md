@@ -188,3 +188,6 @@ sidebar: false
   "yoda": [2, "never"]//禁止尤达条件
 }
 ```
+
+[编写自定义eslint规则](https://juejin.cn/post/7196517835379900477)
+[编写自定义eslint规则2](https://developer.aliyun.com/article/824999?utm_content=g_1000311627)
