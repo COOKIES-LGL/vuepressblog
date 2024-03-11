@@ -35,7 +35,7 @@ function check(item, context) {
         // const options = {
         //   fetch: {
         //     index: async (_: IInitDataParams, { post }: IFetcher) => {
-        //       return post('cambridge/api/duoduoCollege/app/queryHotKeywords')
+        //       return post('cambridge/api/college/app/queryHotKeywords')
         //     }
         //   }
         // }

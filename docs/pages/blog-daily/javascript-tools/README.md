@@ -4,16 +4,7 @@ sidebar: auto
 
 ### JS 高级使用技巧
 
-```javascript
-function var() {
-    console.log(1)
-    return 1;
-}
-function varr(params = var()){
-    return 22;
-}
-```
-
+### ～～向下取整
 ```javascript
 Math.floor(4.8) === 4;
 ~~4.9 === 4;
@@ -120,9 +111,9 @@ const install = function (vueInstance: VueConstructor, options: any) {
   };
 };
 ```
-
 ---
 
+### 虚拟A标签下载
 ```javascript
 private download(res: any, fileName: string) {
   const downloadLink = document.createElement('a');
@@ -140,13 +131,13 @@ private download(res: any, fileName: string) {
 
 ---
 
+### blob对象转json
 ```javascript
-// blob对象转json
 var reader = new FileReader();
 reader.readAsText(res as Blob, 'utf-8');
 reader.onload = () => {
-console.log(reader.result);
-console.log(JSON.parse(reader.result as string));
+  console.log(reader.result);
+  console.log(JSON.parse(reader.result as string));
 }
 ```
 
@@ -157,7 +148,7 @@ console.log(JSON.parse(reader.result as string));
 如果第一个请求失败了，那么接着发编号为2的请求，如果请求成功，那么剩余的请求都不会发出，成功的结果作为剩余请求返回
 如果第二个请求失败了，那么接着发编号为3的请求，如果请求成功，那么剩余的请求都不会发出，成功的结果作为剩余请求返回
 ...以此递推，直到遇到最坏的情况需要发送最后一个请求
- * 
+ */
 const cacheAsync = (promiseGenerator, symbol) => {
   const cache = new Map();
   return async (params) => {
@@ -207,8 +198,9 @@ const cacheAsync = (promiseGenerator, symbol) => {
   };
 };
 ```
+
+### base64转Blob对象
 ``` Javascript
-// base64转Blob对象
 function base64dataURLtoBlob(dataUrl: string) {
   const char = `"`; //去除首尾双引号
   dataUrl = dataUrl.replace(
@@ -228,6 +220,8 @@ function base64dataURLtoBlob(dataUrl: string) {
   });
 }
 ```
+
+### base64转file对象
 ``` javascript
 // base64转file对象
 function base64dataURLtoBlob(dataUrl: string) {
@@ -250,8 +244,9 @@ function base64dataURLtoBlob(dataUrl: string) {
 }
 ```
 
+### 移除空值
 ``` javascript
-// qs库应该是axios安装时会自带的  get 请求处理数组传递
+// qs库应该是axios安装时会自带的  get请求处理数组传递
 const qs = require('qs');
 
 axios.get(url, {
@@ -259,9 +254,9 @@ axios.get(url, {
         arr: [1,2,3]
     },
     paramsSerializer: function(params) {
-        return Qs.stringify(params, {
+        return qs.stringify(params, {
           arrayFormat: 'repeat'
-          skipNull: true, //  移除空值
+          skipNull: true, // 移除空值
         })
     }
 })
@@ -275,5 +270,3 @@ new Date('2018/01/01');
 // Mon Jan 01 2018 00:00:00 GMT+0800 (中国标准时间)
 // 有个北京时间与格林尼治时间的时差
 ```
-
-### vscode snipper

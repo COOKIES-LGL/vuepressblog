@@ -1,8 +1,32 @@
-### javascript设计模式
+## javascript设计模式
 
 ### 单例模式
 ``` javascript
-//单例模式
+function class1(name) {
+  console.log('class1', name);
+}
+class1.getInstance = function() {
+  if (this.instance) {
+    return this.instance;
+  }
+  return this.instance = new class1(name); 
+}
+// 方式二
+function class1(name) {
+  this.store = {
+    name: name,
+  };
+  if (class1.instance) {
+    return class1.instance;
+  }
+  class1.instance = this;
+}
+class1.instance = null;
+new class1('nihao');
+```
+
+### 单例模式
+``` javascript
 var Singleton = function(name) {
     this.name = name
     this.instance = null
@@ -21,8 +45,8 @@ Singleton.getInstance = function(name) {
 var a = Singleton.getInstance('aa')
 var b = Singleton.getInstance('bb')
 console.log(a === b); // true
-
 ```
+
 ``` javascript
 (function() {
     // 管理单例的逻辑代码，如果没有数据则创建，有数据则返回
@@ -43,15 +67,33 @@ console.log(a === b); // true
     // 单例方法
     var createSingleLoginLayer = getSingle(createLoginLayer)
     // 使用惰性单例，进行创建
-    document.getElementById('loginBtn').onlick = function() {
+    document.getElementById('loginBtn').onClick = function() {
         var loginLayer = createSingleLoginLayer();
         loginLayer.style.display = 'block'
     };
 })()
 
 ```
-### 观察者模式
 
+### 建造者模式
+
+``` javascript
+function class1() {
+}
+function class2() {
+}
+function class3() {
+}
+function factory(type) {
+  this.class1 = new Class1();
+  this.class2 = new Class2();
+  if (type) {
+    this.class3 = new Class3();
+  }
+}
+```
+
+### 观察者模式
 ``` javascript
 var salesOffices = {}; // 定义售楼处
 salesOffices.clientList = []; // 缓存列表，存放订阅者的回调函数
@@ -144,7 +186,8 @@ UserFactory('admin');
 ```
 
 ### javascript 装饰器
-```
+
+``` javascript
 class Circle {
   draw() {
     console.log('画一个圆形')
@@ -190,23 +233,23 @@ alert(Demo.isDec) // false
 ``` javascript
 // 洋葱模型
 function Koa () {
-  this.middleares = [];
+  this.middlewares = [];
 }
-Koa.prototype.use = function (middleare) {
-  this.middleares.push(middleare);
+Koa.prototype.use = function (middlewares) {
+  this.middlewares.push(middlewares);
   return this;
 }
 Koa.prototype.listen = function () {
-  const fn = compose(this.middleares);
+  const fn = compose(this.middlewares);
 }
-function compose(middleares) {
+function compose(middlewares) {
   let index = -1;
   const dispatch = (i) => {
     if(i <= index) throw new Error('next（） 不能调用多次');
     index = i;
-    if(i >= middleares.length) return;
-    const middleare = middleares[i];
-    return middleare('ctx', dispatch.bind(null, i + 1));
+    if(i >= middlewares.length) return;
+    const middlewares = middlewares[i];
+    return middlewares('ctx', dispatch.bind(null, i + 1));
   }
   return dispatch(0);
 }
@@ -312,6 +355,5 @@ function requestWithPauseControl <T extends () => Promise<any>>(request: T) {
   
   return result as ReturnType<T> & { pause: () => void, resume: () => void }
 }
-
 
 ```

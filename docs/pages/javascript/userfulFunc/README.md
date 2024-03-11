@@ -188,10 +188,8 @@ new KeyframeEffect(source);
 // 查找当前滚动元素
 function findScroller(element) {
     element.onscroll = function() { console.log(element)}
-
     Array.from(element.children).forEach(findScroller);
 }
-
 findScroller(document.body);
 ```
 
