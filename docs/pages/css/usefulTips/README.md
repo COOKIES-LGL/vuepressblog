@@ -201,17 +201,6 @@ drop-shadow 的工作方式是，其遵循给给定图片的 Alpha 通道。因�
 我们使用 checkbox 输入类型，加上一个 :checked 伪类。
 当 :checked 返回 true 的情况时，我们使用 transform 属性更改状态。
 
-### HTML details 标签
-
-```HTML
- <details>
-    <summary>
-      文章概要
-    </summary>
-    <div>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</div>
-  </details>
-```
-
 ### 将自身的高度设置成自身的宽度
 
 ```CSS

@@ -219,3 +219,41 @@ CommonJS和ES Module都对循环引入做了处理，不会进入死循环，但
 常量枚举 const enum A {...}, 编译后不会生成任何代码, 会删除 TS 部分内容, 对于使用到的成员只会进行值的替换
 常量枚举 会有更好的性能, 避免额外的性能开销
 :::
+
+
+### Exclude not work on [key: string]:any
+
+``` typescript
+interface TestType {
+  a: number
+  b: string
+  [key: string]: any
+}
+type NTestType1 = {
+  [P in keyof TestType]: any
+}
+const test1: NTestType1 = {} // error missing a and b. this is correct.
+type NTestType2 = {
+  [P in Exclude<keyof TestType, 'a'>]: any
+}
+const test2: NTestType2 = {} // no error, we expect show missing b error here.
+```
+
+
+### ResizeObserver 观察 DOM 元素大小的变化
+``` javascript
+// 创建一个新的 ResizeObserver
+const resizeObserver = new ResizeObserver(entries => {
+  for (let entry of entries) {
+    const { width, height } = entry.contentRect;
+    console.log(`元素调整大小为 ${width}px x ${height}px`);
+    // 根据元素的新尺寸执行操作
+  }
+});
+
+// 选择要观察的元素
+const targetElement = document.querySelector('.resize-me');
+
+// 开始观察目标元素
+resizeObserver.observe(targetElement);
+```

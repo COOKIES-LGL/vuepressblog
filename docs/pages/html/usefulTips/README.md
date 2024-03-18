@@ -109,3 +109,39 @@ channel.addEventListener('message', event => {
 channel.postMessage('Hello, other windows!');
 
 ```
+
+
+### a标签下载
+::: tip
+download设置文件名 跨域情况下，download将不会起作用.
+:::
+
+``` javascript
+import axios from 'axios';
+
+function downloadFile(fileUrl,fileName){
+  axios.get(fileUrl, { responseType: "blob" }).then(response => {
+      const blob = new Blob([response.data]);
+      const a = document.createElement("a");//创建a标签
+      a.href = window.URL.createObjectURL(blob);// 创建下载的链接
+      a.download = fileName;//下载文件名称
+      a.style.display = "none";
+      document.body.appendChild(a);//a标签追加元素到body内
+      a.click();//模拟点击下载
+      document.body.removeChild(a);// 下载完成移除元素
+      window.URL.revokeObjectURL(a.href);// 释放掉blob对象
+  }).catch(console.error);
+}
+
+```
+
+### HTML details 标签
+
+```HTML
+ <details>
+    <summary>
+      文章概要
+    </summary>
+    <div>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</div>
+  </details>
+```
