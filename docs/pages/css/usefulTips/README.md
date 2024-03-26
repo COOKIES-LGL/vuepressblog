@@ -336,3 +336,15 @@ text-align-last 属性只有在 text-align 属性设置为 "justify" 时才起�
 </html>
 
 ```
+
+### rem 移动端适配 初始化
+
+``` css
+html {
+    -webkit-text-size-adjust: none;
+    font-size: calc(100vw / 3.75);
+    @media only screen and (min-width: 768px) and (orientation: landscape) {
+        font-size: 100px;
+    }
+}
+```

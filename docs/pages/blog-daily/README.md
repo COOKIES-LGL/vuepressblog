@@ -14,5 +14,5 @@ sidebar: auto
 * [代理开发解决最新版chrome sameSite问题](./use-test-dev-for-chrome)  <span style="color:#bbb; float:right">2022-06-12</span>
 * [解决前端的竞态问题](./solve-fe-complete-question)  <span style="color:#bbb; float:right">2022-05-12</span>
 * [自定义eslint rules](./eslint-custom-rules)  <span style="color:#bbb; float:right">2023-05-22</span>
-* [自定义eslint rules](./eslint-custom-rules)  <span style="color:#bbb; float:right">2023-05-08</span>
+* [虚拟列表原理与实现](./virtual-list)  <span style="color:#bbb; float:right">2024-01-08</span>
 * [Vitest 测试](https://zhuanlan.zhihu.com/p/638154319) <span style="color:#bbb; float:right">2023-06-12</span>
