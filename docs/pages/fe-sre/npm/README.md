@@ -95,6 +95,9 @@ NodeJS文件系统遍历工具：fast-glob
 ### simple-git 一个轻量级但功能强大的 Node.js Git库
 [simple-git](https://juejin.cn/post/7229906749070721085)
 
+### @oclif/command 脚手架命令执行
+[@oclif/command](https://zhuanlan.zhihu.com/p/54538055)
+
 ### cosmiconfig 读取项目配置信息
 
 ## 开发npm开发笔记

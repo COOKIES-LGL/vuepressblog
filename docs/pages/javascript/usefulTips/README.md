@@ -70,6 +70,10 @@ requestAnimationFrame 比起 setTimeout、setInterval 的优势主要有两点�
 3、requestAnimationFrame 默认返回一个 id，cancelAnimationFrame 只需要传入这个 id 就可以停止了.
 :::
 
+::: tip
+for循环中，当不用&&和||申明多个条件时，默认的是或者关系。
+:::
+
 ### Void
 
 由于 void 总是返回 undefined，而 void 总是计算它旁边的表达式，你有一个非常简洁的方法从函数返回而不返回一个值，但仍然调用一个回调例如：

@@ -1,5 +1,18 @@
-nodejs多进程spawn execFile exec fok方法的区别
 
+### nodejs多进程spawn execFile exec fok方法的区别
+::: tip
+在Node.js中，spawn、execFile、exec和fork都用于创建子进程，但它们之间有一些区别：
+
+spawn：用于生成一个 shell，可以执行任何命令。它通过 stdio 流与子进程通信。
+
+exec：与 spawn 类似，但需要等待命令执行完毕才返回结果。
+
+execFile：专门用于执行一个文件，不需要启动 shell。
+
+fork：用于执行一个 JavaScript 文件，类似于 spawn 但是专门用于 Node.js 进程，并且它提供了一个 IPC 通信信道。
+:::
+
+下面是每种方法的简单示例代码：
 1. spawn 创建新进程，执行结果已流的形式返回，只能通过事件来获取结果数据
 ``` javascript
 const spawn = require('child_process').spawn;
@@ -30,19 +43,15 @@ execFile('node', ['--version'], function(error, stdout, stderr){
 
 3. exec  创建新进程，可以直接执行shell命令，简化了shell命令执行方式，同样以回调方式
 ``` javascript
-execFile('node', ['--version'], function(error, stdout, stderr){
-    if(error){
-        throw error;
-    }
-    console.log(stdout);
+exec('ls -lh /usr', (error, stdout, stderr) => {
+  if (error) {
+    throw error;
+  }
+  console.log(stdout);
 });
 ```
 
 fork  创建新进程，执行node程序
 ``` javascript
-execFile('node', ['--version'], function(error, stdout, stderr){
-    if(error){
-        throw error;
-    }
-    console.log(stdout);
-});
+const child = fork('child_script.js');
+```

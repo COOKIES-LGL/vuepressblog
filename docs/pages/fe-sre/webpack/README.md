@@ -24,6 +24,7 @@ Webpack 在构建过程中会触发一系列的生命周期事件，开发者可
 [webpack-Loader详解](https://zhuanlan.zhihu.com/p/397174187)
 [webpack5持久缓存](https://segmentfault.com/a/1190000041726881?sort=votes)
 [深度解析webpack打包流程](https://www.pipipi.net/30583.html/amp)
+[webpack与rollup背后的acorn](https://www.zhihu.com/tardis/bd/art/149323563)
 
 ### 动态匹配配置信息
 

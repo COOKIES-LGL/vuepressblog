@@ -4,7 +4,8 @@ sidebar: false
 ---
 
 ### 批量加载图片
-#### 上面的解没有达到请求最快，因为 Promise.all 的返回是传入 promise组 相互依赖的结果，当其中有一个完成了还得等其它都完成，蜗牛都睁大了双眼👀。 也不是题目想要的效果。也就有了下面的思路将八张图片先拿三张出来，当做 初始请求，但是一旦有完成的（无论成功或失败）就 将成后面的一张的结果加入请求。
+#### 因为 Promise.all 的返回是传入 promise组 相互依赖的结果，当其中有一个完成了还得等其它都完成，也不是题目想要的效果。也就有了下面的思路将八张图片先拿三张出来，当做 初始请求，但是一旦有完成的（无论成功或失败）就 将成后面的一张的结果加入请求。
+
 ``` javascript
 function limitRequest(urlArr, max) {
 
@@ -64,12 +65,8 @@ function subGroup(arr, len) {
 }
 ```
 
-::: tip
-for循环中，当不用&&和||申明多个条件时，默认的是或者关系。
-:::
-
+### 进制转化
 ``` javascript 
-
 1.其他进制转十进制
 parseInt("16",16)    变量/声明我是几进制
 parseInt("12",8)
@@ -102,11 +99,6 @@ parseInt(num,8).toString(2)     //8进制转2进制
     }
     return arr.join(" ");
   }
-```
-
-``` javascript
-// 匈牙利算法
-
 ```
 
 
@@ -165,8 +157,7 @@ console.log(mergeSort(arr));
 ```
 
 ``` javascript
-// 密码截取
-// HJ32
+// 密码截取 HJ32
 // 主要分为两种情况，对于每个元素，分是否作为中心点考虑，如果是中心点，let l=index-1，let r=index+1，否则的话，let l=index，let r=index+1
 let input=readline()
 let arr=Array.from(input)
@@ -174,7 +165,7 @@ let res=[]
 for(let i=0;i<arr.length;i++){
     let a=d1(i,arr)
     let b=d2(i,arr)
-//     console.log(a,b)
+    // console.log(a,b)
     res[i]=Math.max(a,b)
 }
 console.log(Math.max(...res))
@@ -331,56 +322,53 @@ console.log(minCoins(coins,total,n));
 ```
 
 ``` javascript
-//动态规划 -- 最长公共子序列
-//!!!!  T[i][j] 计算，记住口诀：相等左上角加一，不等取上或左最大值
-function longestSeq(input1,input2,n1,n2){
-	var T = []; // T[i][j]表示 公共子序列长度
-	for(let i=0;i<n1;i++){
-		T[i] = [];
-		for(let j= 0;j<n2;j++){
-			if(j==0 ||i==0){
-				T[i][j] = 0;
-				continue;
-			}
-			if(input1[i] == input2[j]){
-				T[i][j] = T[i-1][j-1] + 1;
-			}else{
-				T[i][j] = Math.max(T[i-1][j],T[i][j-1])
-			}
-		}
-	}
-	findValue(input1,input2,n1,n2,T);
-	return T;
+// 动态规划 -- 最长公共子序列
+// T[i][j] 计算，记住口诀：相等左上角加一，不等取上或左最大值
+function longestCommonSubsequence(text1, text2) {
+    const m = text1.length;
+    const n = text2.length;
+    const dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
+ 
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            if (text1[i - 1] === text2[j - 1]) {
+                dp[i][j] = 1 + dp[i - 1][j - 1];
+            } else {
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+ 
+    return dp[m][n];
 }
-//!!!如果它来自左上角加一，则是子序列，否则向左或上回退。
-//findValue过程，其实就是和 就是把T[i][j]的计算反过来。
-function findValue(input1,input2,n1,n2,T){
-	var i = n1-1,j=n2-1;
-	var result = [];//结果保存在数组中
-	while(i>0 && j>0){
-		if(input1[i] == input2[j]){
-			result.unshift(input1[i]);
-			i--;
-			j--;
-		}else{
-			//向左或向上回退
-			if(T[i-1][j]>T[i][j-1]){
-				//向上回退
-				i--;
-			}else{
-				//向左回退
-				j--;
-			}
-		}
-	}
-	console.log(result);
+// 示例
+const str1 = "abcde";
+const str2 = "ace";
+console.log(longestCommonSubsequence(str1, str2)); // 输出：3
+```
+
+``` javascript
+// 最大公共子串
+function findSubStr(str1, str2){
+  if (str1.length > str2.length) {
+    var temp = str1;
+    str1 = str2;
+    str2 = temp;
+  }
+  var len1 = str1.length,
+    len2 = str2.length;
+  for (var j = len1; j > 0; j--) {
+    for (var i = 0; i < len1 - j; i++) {
+      var current = str1.substr(i, j);
+      if (str2.indexOf(current) >= 0) {
+        return current;
+      }
+    }
+  }
+  return "";
 }
-//两个序列，长度不一定相等, 从计算表格考虑，把input1和input2首位都补一个用于占位的空字符串
-var input2 = ["","a","b","c","a","d","f"],
-	input1 = ["","a","c","b","a","d"],
-	n1 = input1.length,
-	n2 = input2.length;
-console.log(longestSeq(input1,input2,n1,n2));
+console.log(findSubStr("aaa3333", "baa333cc")); // aa333
+console.log(findSubStr("aaaX3333--", "baa333ccX3333333x")) // X3333
 ```
 
 ``` javascript
@@ -547,6 +535,7 @@ C.forEach(item =>{
     console.log(item.join(' '))
 })
 ```
+
 ``` javascript
 // 名字漂亮度
 // 字符串中出现次数最多的赋值26第二多的25 然后计算和
