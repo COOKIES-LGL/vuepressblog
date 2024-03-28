@@ -154,7 +154,7 @@ export const createScheduler = (callback: () => void, scheduler: (fn: any) => vo
 预算高度，我们可以假定子列表的高度也就是虚假高度（initItemHeight）,当我们渲染的时候，在更新对应高度，这样就可以解决子列表高度的问题
 我们需要去维护一个公共的高度列表（positions），这个数组将会记录真实的DOM高度信息。
 positions需要记录的信息：
-::: tip
+``` javascript
 const state = useReactive<any>({
     ...,
     positions: [ //需要记录每一项的高度
@@ -165,7 +165,7 @@ const state = useReactive<any>({
     ], 
     initItemHeight: 50, // 预计高度
 })
-:::
+```
 
 需要记录元素的高度，其次可以存入距离顶部和底部的高度，方便后面计算偏移量和列表的整体高度，在设定一个参数（dHeight）判断新的高度与旧的高度是否一样，不一样的话就进行更新。
 其中最重要的就是index，它用来记录子列表真实高度的下标，原因是：在之前的讲解中，我们发现start 和 end的差值实际上是不变的，也就是说，最终渲染的数据，实际上是一个固定值，但里面的子列表高度却是变值,所以我们需要有一个变量来区分数据所对应的高度，所以这个index就变的尤为重要。
