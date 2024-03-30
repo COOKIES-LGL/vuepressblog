@@ -348,3 +348,30 @@ html {
     }
 }
 ```
+
+### @scope
+借助 @scope @ 规则，开发者可以将样式规则的作用域限定为给定的范围根，并根据该范围根的邻近度来设置元素的样式。
+``` css
+   @scope (.box) {
+      color:red
+    }
+```
+
+### CSS.support
+
+``` javascript
+CSS.support("display: flex") // true、 false
+```
+``` css
+@supports ( display: flex ) {    // 支持flex使用如下代码
+  body, #navigation, #content { display: flex; }
+  #navigation { background: blue; color: white; }
+  #article { background: white; color: black; }
+}
+
+@supports not ( display: flex ) {  // 不支持使用如下代码
+  body { width: 100%; height: 100%; background: white; color: black; }
+  #navigation { width: 25%; }
+  #article { width: 75%; }
+}
+```

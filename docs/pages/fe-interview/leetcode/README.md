@@ -675,6 +675,40 @@ var maxSlidingWindow = function(nums, k) {
 
 ```
 
+### 最大子序和
+给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+``` javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ * 输入： nums = [-2,1,-3,4,-1,2,1,-5,4] 输出： 6 解释： 连续子数组 [4,-1,2,1] 的和最大，为 6 。
+ */
+function maxSubArray(nums) {
+    let maxSum = nums[0];
+    let currentSum = maxSum;
+ 
+    for (let i = 1; i < nums.length; i++) {
+        if (currentSum < 0) {
+            currentSum = nums[i];
+        } else {
+            currentSum += nums[i];
+        }
+        maxSum = Math.max(maxSum, currentSum);
+    }
+ 
+    return maxSum;
+}
+// 动态规划
+var maxSubArray = function(nums) {
+    let pre = 0, maxAns = nums[0];
+    nums.forEach((x) => {
+        pre = Math.max(pre + x, x);
+        maxAns = Math.max(maxAns, pre);
+    });
+    return maxAns;
+};
+```
+
 ### 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
 
 ``` javascript
