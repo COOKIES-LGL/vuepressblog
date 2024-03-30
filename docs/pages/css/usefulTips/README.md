@@ -1,6 +1,6 @@
 ### 增加按钮可点击区域
 
-```CSS
+```css
 /*增加按钮可点击区域*/
 #btn::before {
   content: "";
@@ -15,11 +15,11 @@
 
 ### 用户选择文本
 
-```CSS
+```css
 /*
-用户选择的CSS属性控制用户是否可以选择文本。如果它的值是all，意味着一个元素的所有内容都将被原子化地选择。
+用户选择的css属性控制用户是否可以选择文本。如果它的值是all，意味着一个元素的所有内容都将被原子化地选择。
 如果你想在文本被选中后添加一些额外的样式，你可以使用::selection 。
-::selection CSS伪元素将样式应用于文档中被用户突出显示的部分（比如在文本上点击和拖动鼠标）。
+::selection css伪元素将样式应用于文档中被用户突出显示的部分（比如在文本上点击和拖动鼠标）。
 */
 .all{
   user-select: all;
@@ -32,7 +32,7 @@
 
 ### 充分利用 onerror 事件
 
-```HTML
+``` html
 <!-- 我们可以给img元素添加一个onerror事件。
 加载图片时出现了错误，那么我们可以通过 onerror事件给该元素添加一个样式，并使用404图片。 -->
 <img src="https://miro.medium.com/xxx.jpg" alt='fireworks picture' onerror="this.classList.add('error');">
@@ -40,20 +40,22 @@
 
 ### 固定定位元素
 
-```HTML
-<!-- 给固定定位元素的父元素设置 transform: scale(1), 可让固定定位相较于父元素定位 -->
+``` css
+.class {
+/* 给固定定位元素的父元素设置 transform: scale(1), 可让固定定位相较于父元素定位 */
 transform: scale(1);
-<!-- 设置固定定位后元素的宽度会不确定, 设置100%时会溢出,因此设置left:0 right:0 可以解决 -->
+/*  设置固定定位后元素的宽度会不确定, 设置100%时会溢出,因此设置left:0 right:0 可以解决 */
 left: 0;
 right: 0;
+}
+
 ```
 
 ### 固定定位元素相对父标签
 
-```HTML
+``` html
 因为position： fixed 的是相对于浏览器视图窗口定位的，并且宽度是继承自浏览器视图窗口的总宽度，无法达到宽度自适应的效果
 可以使用 position: sticky; 替换fixed 达到相对于父标签固定定位的功能
-
 ```
 
 ### 打印自动分页
@@ -94,7 +96,7 @@ hyphens: none | manual | auto
 使用列属性为文本元素制作漂亮的列布局。
 :::
 
-```CSS
+```css
 p{
   column-count: 3;
   column-gap: 5rem;
@@ -102,13 +104,13 @@ p{
 }
 ```
 
-### column count
+### 使用限制
 
 ::: tip
-1、textContent innerText 都可以用来获取元素内文本,但 textConten 可以获取隐藏但元素. 一般使用 textContent
+1、textContent innerText 都可以用来获取元素内文本,但 textContent 可以获取隐藏但元素. 一般使用 textContent
 2、border-sizing: border-box; 在设置了宽 高才会生效
 3、table 设置了 border-collapse:collapse 之后，设置 border-radius 没效果
-4、tr、无法这是 padding td 、无法设置 margin
+4、tr、无法设置 padding td 、无法设置 margin
 :::
 
 ### attr() css 实现 tooltip
@@ -122,9 +124,10 @@ attr() 属性工作的方式很简单，我逐步解析一下：
 
 此外，你可以包含自定义的样式。这取决于你设定的 tooltp 的数据，你也许需要调整其宽度或者边距。一旦你设定了 tooptip-data arrt() 类，你可以在你设计的其他部分应用 [参考链接 ](https://juejin.cn/post/7089997204252786702)
 
-```HTML
+``` html
+<html>
 <h1>
-  HTML/CSS tooltip
+  HTML/css tooltip
 </h1>
 <p>
   Hover <span class="tooltip" tooltip-data="Tooltip Content">Here</span> to see the tooltip.
@@ -177,12 +180,12 @@ attr() 属性工作的方式很简单，我逐步解析一下：
   visibility: visible;
 }
 </style>
-
+</html>
 ```
 
 ### 条件逻辑选择器。:is() 和 :where()
 
-```CSS
+```css
 :where(h2,h3,h4) > b {
   color: blue;
 }
@@ -203,7 +206,7 @@ drop-shadow 的工作方式是，其遵循给给定图片的 Alpha 通道。因�
 
 ### 将自身的高度设置成自身的宽度
 
-```CSS
+```css
 .div-box {
   height: 100px;
   width: attr(height);
@@ -213,8 +216,8 @@ drop-shadow 的工作方式是，其遵循给给定图片的 Alpha 通道。因�
 
 ### 延迟hover执行&实现长按效果
 
-现在转折来了，如果借用 CSS 就可以有效地避免上述问题，如下，先给需要触发的元素加一个有延时的transition
-``` CSS
+如果借用 css 就可以有效地避免上述问题，如下，先给需要触发的元素加一个有延时的transition
+``` css
 button:hover{
   opacity: 0.999; /*无关紧要的样式*/
   transition: 0s 1s opacity; /*延时 1s */
@@ -229,20 +232,20 @@ el.addEventListener('transitionend', () => {
 })
 ```
 ----------------------------------------------------------------
-``` Css
+``` css
 button:hover:active{
   opacity: .999; /*无关紧要的样式*/
   transition: opacity 1s; /*延时 1s */
 }
 ```
-``` Javascript
+``` javascript
 el.addEventListener('transitionend', () => {
   // 具体逻辑
 })
 ```
 
 ### 两端渐变透明的线条
-``` Css
+``` css
 .class {
     border-right: 0.01rem solid #622f01;
     border-image: linear-gradient(transparent, #622f01, transparent) 5 5;
@@ -250,7 +253,7 @@ el.addEventListener('transitionend', () => {
 ```
 
 ### 固定渐变高度，剩余部分纯色
-``` Css
+``` css
 .class {
       background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 1.4rem, #fee9cd 2rem, #fee9cd);
 }
@@ -258,7 +261,7 @@ el.addEventListener('transitionend', () => {
 
 ### 渐变文字
 
-``` Css
+``` css
 .class {
     background: radial-gradient(circle closest-side, #c36300, #713701);
     background-clip: text;
@@ -267,7 +270,7 @@ el.addEventListener('transitionend', () => {
 ```
 
 ### rotate(0deg) 解决边角无法hidden
-``` Css 
+``` css 
 .class {
         overflow: hidden;
         position: relative;
@@ -277,7 +280,7 @@ el.addEventListener('transitionend', () => {
 
 ### clamp 函数
 
-``` Css 
+``` css 
 .css-clamp {
   width: clamp(200px, 50vw, 300px)
 }
@@ -292,7 +295,7 @@ el.addEventListener('transitionend', () => {
 
 ### :in-range :out-of-range 伪类
 
-``` Css 
+``` css 
 .input:in-range {
   background: green;
 }
@@ -302,7 +305,7 @@ el.addEventListener('transitionend', () => {
 ```
 
 ### 适配ipad 居中
-``` Css
+``` css
 .bottomBar {
     position: fixed;
     left: 50%;
@@ -317,7 +320,7 @@ el.addEventListener('transitionend', () => {
 
 ### 根据文本块宽度，让里面的内容文字间距自适应
 text-align-last 属性只有在 text-align 属性设置为 "justify" 时才起作用
-``` HTML
+``` html
 <!DOCTYPE html>
 <html>
 <head>
@@ -357,10 +360,10 @@ html {
     }
 ```
 
-### CSS.support
+### css.support
 
 ``` javascript
-CSS.support("display: flex") // true、 false
+css.support("display: flex") // true、 false
 ```
 ``` css
 @supports ( display: flex ) {    // 支持flex使用如下代码

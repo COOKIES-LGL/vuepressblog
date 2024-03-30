@@ -4,7 +4,7 @@
 #### rel="alternate"
 
 * alternate 是交替、替换，标识链接有替换内容
-```HTML
+``` html
 <!-- 可以用来告知 SEO、屏幕阅读器有 H5 端 -->
 <link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.xxx.com/" />
 <!-- rel="alternate" 定义网站的替换样式 -->
@@ -17,10 +17,9 @@
 document.querySelector('link[href="red.css"]').disabled = false;
 </script>
 ```
-
 #### rel="canonica"
 
-``` HTML
+``` html
 <link rel="canonical" href="https://edu.51cto.com" />
 指定规范网页，用在 link 中; 告知搜索引擎，以哪个地址为规范版本，降低其他地址的抓取频率
 比如你的站点可以通过多个域名访问、或者既有移动端又有 PC 端，这时候就能设定你想要的地址为搜索引擎优化抓取
@@ -38,12 +37,24 @@ rel="preload" 强制浏览器提前加载资源 优先级为 high
 rel="prefetch" 资源预拉取 优先级为 low
 rel="prerender" 预渲染
 
-``` HTML
+``` html
 <meta http-equiv="x-dns-prefetch-control" content="on"> 
 <link rel="preconnect" href="https://xxx.com/"> 
 <link rel="dns-prefetch" href="https://xxx.com/"> 
 <link rel="preload" href="https://xxx.com/"> 
 <link rel="prefetch" href="https://xxx.com/"> 
+```
+
+### 实用HTML 属性
+``` html
+<!-- HTML中的Spellcheck属性是用于指定元素是否启用拼写检查的属性。 -->
+<p spellcheck="true"></p>
+
+<!-- HTML中的loading属性是一个新的属性，它可以用于指定浏览器在加载资源时的优先级。lazy、eager、auto -->
+<Img src="./src/imag.png" loading="lazy">
+
+<!-- onerror是一个JavaScript事件处理程序， JavaScript错误时触发。 -->
+<Img src="./src/imag.png" onerror="()=> {console.log('发生错误')}">
 ```
 
 ### dns-prefetch、preconnect、Preload、prefetch
@@ -113,7 +124,8 @@ channel.postMessage('Hello, other windows!');
 
 ### a标签下载
 ::: tip
-download设置文件名 跨域情况下，download将不会起作用.
+download设置文件名 跨域情况下，download将不会起作用.  
+可以使用axios通过blob形式拉取资源
 :::
 
 ``` javascript
@@ -137,7 +149,7 @@ function downloadFile(fileUrl,fileName){
 
 ### HTML details 标签
 
-```HTML
+``` html
  <details>
     <summary>
       文章概要

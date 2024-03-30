@@ -152,11 +152,6 @@ console.log(mergeSort(arr));
 ```
 
 ``` javascript
-// 双指针
-
-```
-
-``` javascript
 // 密码截取 HJ32
 // 主要分为两种情况，对于每个元素，分是否作为中心点考虑，如果是中心点，let l=index-1，let r=index+1，否则的话，let l=index，let r=index+1
 let input=readline()

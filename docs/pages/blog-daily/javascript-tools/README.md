@@ -200,7 +200,7 @@ const cacheAsync = (promiseGenerator, symbol) => {
 ```
 
 ### base64转Blob对象
-``` Javascript
+``` javascript
 function base64dataURLtoBlob(dataUrl: string) {
   const char = `"`; //去除首尾双引号
   dataUrl = dataUrl.replace(

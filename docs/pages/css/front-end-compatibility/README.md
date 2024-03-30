@@ -1,6 +1,17 @@
 ### 1、日期兼容性
 
+安卓系统下 可以
+Date.parse(new Date('2018-03-30 12:00:00'))  
+ios系统下 报错
+Date.parse(new Date('2018-03-30 12:00:00'))  
 
+``` javascript
+// 兼容写法
+function formatTimeStamp (time) {
+  return Date.parse(new Date('2018/03/30 12:00:00')) || Date.parse(new Date('2018-03-30 12:00:00'))
+}
+
+```
 
 ### 2、input框聚焦，ios出现outline或者阴影，安卓显示正常
 

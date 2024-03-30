@@ -1,3 +1,5 @@
+### 解构赋值移除属性
+
 ```javascript
 // 移除对象中的某个属性
 let obj = { x: 45, y: 72, z: 68, p: 98 };
@@ -11,7 +13,7 @@ console.log(obj); // {y: 72, z: 68}
 let { x, p, ...newObj } = obj;
 console.log(newObj); // {y: 72, z: 68}
 ```
-
+### URL这个对象解析路由参数
 ```javascript
 // 使用 URL 这个对象，URL 接口用于解析，构造，规范化和编码 URLs，用它可以很方便的获取链接上的 query 参数。
 const url = new URL(window.location.href);
@@ -19,6 +21,7 @@ const paramValue = url.searchParams.get(paramName);
 console.log(paramValue);
 ```
 
+### 校验一个元素是否在可视区域
 ```javascript
 // 校验一个元素是否在可视区域内
 const callback = (entries) => {
@@ -35,14 +38,13 @@ const options = {
 };
 
 const observer = new IntersectionObserver(callback, options);
-
 const btn = document.getElementById(btn);
 const bottomBtn = document.getElementById(bottom - btn);
 
 observer.observe(btn);
 observer.observe(bottomBtn);
 ```
-
+### requestAnimationFrame的优势
 ```javascript
 // 监控卡顿的fps 如果浏览器卡顿，无法很好地保证渲染的频率，1s 中 frame 无法达到 60 帧
 var lastTime = performance.now();
@@ -63,7 +65,7 @@ var loop = function (time) {
 };
 ```
 
-::: warning
+::: tip
 requestAnimationFrame 比起 setTimeout、setInterval 的优势主要有两点：
 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒 60 帧。
 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
@@ -74,7 +76,7 @@ requestAnimationFrame 比起 setTimeout、setInterval 的优势主要有两点�
 for循环中，当不用&&和||申明多个条件时，默认的是或者关系。
 :::
 
-### Void
+### Void巧用
 
 由于 void 总是返回 undefined，而 void 总是计算它旁边的表达式，你有一个非常简洁的方法从函数返回而不返回一个值，但仍然调用一个回调例如：
 
@@ -113,7 +115,8 @@ saveLog = function () {
 saveLog('test Save Log');
 ```
 
-### 利用 compositionstart 和 compositionend 可以知道中文输入什么时候开始和结束。
+### compositionstart 和 compositionend
+利用 compositionstart 和 compositionend 可以知道中文输入什么时候开始和结束。
 
 ```vue
 <template>
@@ -236,7 +239,7 @@ let type = new URLSearchParams(location.search).get('type');
 
 ### Event EventTarget Node Document HTMLElement 区别
 
-*** HTMLElement extends Element
+* HTMLElement extends Element 
 1. Element extends Node ， Document extends Node
 2. Node extends EventTarget
 3. Event是发生在dom的事件，其中target属性为 EventTarget | null
@@ -256,7 +259,8 @@ try {
 }
 // 这里的错误将无法被捕获，try-catch 只能捕获到当前调用栈中的错误，而 setTimeout 作为一个宏任务将会脱离外层 try-catch 调用栈运行，导致无法被外层 try-catch 所捕获。
 ```
-``` Javascript
+
+``` javascript
 console.log(
     (() => {
         try {
@@ -363,19 +367,6 @@ const copied = structuredClone(calendarEvent)
 ``` javascript
  id: crypto.randomUUID()
 ```
-
-### 实用HTML 属性
-``` html
-<!-- HTML中的Spellcheck属性是用于指定元素是否启用拼写检查的属性。 -->
-<p spellcheck="true"></p>
-
-<!-- HTML中的loading属性是一个新的属性，它可以用于指定浏览器在加载资源时的优先级。lazy、eager、auto -->
-<Img src="./src/imag.png" loading="lazy">
-
-<!-- onerror是一个JavaScript事件处理程序， JavaScript错误时触发。 -->
-<Img src="./src/imag.png" onerror="()=> {console.log('发生错误')}">
-```
-
 
 ### 跳出指定层级循环
 ``` javascript
