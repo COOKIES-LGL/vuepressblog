@@ -1,5 +1,6 @@
 分享一些常用的JS方法
-1、Copy URL地址
+
+### 1、Copy URL地址
 
 方式一
 ``` javascript
@@ -29,16 +30,16 @@ export const copyUrl = (url, type = 1) => {
  * @param {string} url 地址
  **/
 export const copyUrl = (url) => {
-        let input = document.createElement("input");
-        input.value = url;
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand("copy");
-        document.body.removeChild(input);
+	let input = document.createElement("input");
+	input.value = url;
+	document.body.appendChild(input);
+	input.select();
+	document.execCommand("copy");
+	document.body.removeChild(input);
 };
 ```
 
-2、处理文件大小展示
+###  2、处理文件大小展示
 ``` javascript
 /**
  * @description 计算文件大小
@@ -65,7 +66,8 @@ export const name = (fileSize = 0) => {
 	return size + unit;
 };
 ```
-3、获取音频/视频时长
+
+###  3、获取音频/视频时长
 
 ``` javascript
 /**
@@ -93,7 +95,7 @@ export const getMediaDuration = file => {
 };
 ```
 
-4、下载文件
+###  4、下载文件
 
 ``` javascript
 /**
@@ -114,7 +116,7 @@ export const downloadFile = fileUrl => {
 };
 ```
 
-5、获取地址栏参数
+###  5、获取地址栏参数
 
 方式一
 ``` javascript
@@ -146,7 +148,7 @@ export const getQueryString = name => {
 };
 ```
 
-6、params参数处理
+###  6、params参数处理
 
 ``` javascript
 /**
@@ -184,6 +186,7 @@ new KeyframeEffect(source);
 // https://juejin.cn/post/7023903552946995214
 ```
 
+### 7、查找当前滚动元素
 ``` javascript
 // 查找当前滚动元素
 function findScroller(element) {
@@ -193,7 +196,7 @@ function findScroller(element) {
 findScroller(document.body);
 ```
 
-### window.matchMedia()用法
+### 8、window.matchMedia()用法
 
 *** js的媒体查询 ***
 
@@ -213,7 +216,7 @@ if (mediaQueryList.matches) {
 
 ```
 
-### 两日期之间相差天数
+### 9、两日期之间相差天数
  ``` javascript
  const dayDiff = (date1, date2) => Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000);
 
@@ -223,7 +226,7 @@ dayDiff(new Date("2021-10-21"), new Date("2022-02-12"))
  ```
 
 
- ### getEnumOptions 从枚举值获取下拉选项列表
+ ### 10、getEnumOptions 从枚举值获取下拉选项列表
 
  ``` javascript
 

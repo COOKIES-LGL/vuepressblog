@@ -54,9 +54,3 @@ touchstart 早于 touchend 早于click。 亦即click的触发是有延迟的，
 ``` css
 input::-webkit-input-speech-button {display: none}
 ```
-
-
-原文链接：https://blog.csdn.net/Hhjian524/article/details/103925830
-
-
-(参考链接)[https://blog.csdn.net/Hhjian524/article/details/103925830]
