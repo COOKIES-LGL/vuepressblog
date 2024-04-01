@@ -92,3 +92,4 @@ git checkout $currentGitBranch
 
 git merge --no-ff master -m 'feat: merge master'
 ```
+[merge rebase的区别](https://fe.ecool.fun/topic/cfe8f03e-1a05-4c00-baa7-04ae08c8765c?orderBy=updateTime&order=desc&tagId=0)

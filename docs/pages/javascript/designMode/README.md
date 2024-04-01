@@ -95,23 +95,142 @@ function factory(type) {
 
 ### 观察者模式
 ``` javascript
-var salesOffices = {}; // 定义售楼处
-salesOffices.clientList = []; // 缓存列表，存放订阅者的回调函数
-salesOffices.listen = function(fn) { // 增加订阅者
-    this.clientList.push(fn) // 订阅的消息添加进缓存列表
-};
-salesOffices.trigger = function() { // 发布消息
-    for (var i = 0, fn; fn = this.clientList[i++];) {
-        fn.apply(this, arguments); // arguments 是发布消息时带上的参数。
+// 被观察者
+class Subject {
+  constructor() {
+    this.observerList = [];
+  }
+  addObserver(observer) {
+    this.observerList.push(observer);
+  }
+  removeObserver(observer) {
+    const index = this.observerList.findIndex(o => o.name === observer.name);
+    this.observerList.splice(index, 1);
+  }
+  notifyObservers(message) {
+    const observers = this.observerList;
+    observers.forEach(observer => observer.notified(message));
+  }
+}
+
+// 观察者
+class Observer {
+  constructor(name, subject) {
+    this.name = name;
+    if (subject) {
+      subject.addObserver(this);
     }
-};
-//调用
-salesOffices.listen(function(price, squareMeter) { // 订阅消息
-    console.log('价格=' + price);
-    console.log('squareMeter=' + squareMeter);
-});
-salesOffices.trigger(2000000, 88); // 输出： 200 万，88 平方米
+  }
+  notified(message) {
+    console.log(this.name, 'got message', message);
+  }
+}
+
+// 使用
+const subject = new Subject();
+const observerA = new Observer('observerA', subject);
+const observerB = new Observer('observerB');
+subject.addObserver(observerB);
+subject.notifyObservers('Hello from subject');
+subject.removeObserver(observerA);
+subject.notifyObservers('Hello again');
+
 ```
+
+### 发布订阅模式
+``` javascript
+class PubSub {
+  constructor() {
+    this.messages = {};
+    this.listeners = {};
+  }
+
+  publish(type, content) {
+    const existContent = this.messages[type];
+    if (!existContent) {
+      this.messages[type] = [];
+    }
+    this.messages[type].push(content);
+  }
+
+  subscribe(type, cb) {
+    const existListener = this.listeners[type];
+    if (!existListener) {
+      this.listeners[type] = [];
+    }
+    this.listeners[type].push(cb);
+  }
+
+  notify(type) {
+    const messages = this.messages[type];
+    const subscribers = this.listeners[type] || [];
+    subscribers.forEach((cb) => cb(messages));
+  }
+}
+
+class Publisher {
+  constructor(name, context) {
+    this.name = name;
+    this.context = context;
+  }
+
+  publish(type, content) {
+    this.context.publish(type, content);
+  }
+}
+
+class Subscriber {
+  constructor(name, context) {
+    this.name = name;
+    this.context = context;
+  }
+
+  subscribe(type, cb) {
+    this.context.subscribe(type, cb);
+  }
+}
+
+function main() {
+  const TYPE_A = 'music';
+  const TYPE_B = 'movie';
+  const TYPE_C = 'novel';
+
+  const pubsub = new PubSub();
+
+  const publisherA = new Publisher('publisherA', pubsub);
+  publisherA.publish(TYPE_A, 'we are young');
+  publisherA.publish(TYPE_B, 'the silicon valley');
+  const publisherB = new Publisher('publisherB', pubsub);
+  publisherB.publish(TYPE_A, 'stronger');
+  const publisherC = new Publisher('publisherC', pubsub);
+  publisherC.publish(TYPE_B, 'imitation game');
+
+  const subscriberA = new Subscriber('subscriberA', pubsub);
+  subscriberA.subscribe(TYPE_A, (res) => {
+    console.log('subscriberA received', res);
+  });
+  const subscriberB = new Subscriber('subscriberB', pubsub);
+  subscriberB.subscribe(TYPE_C, (res) => {
+    console.log('subscriberB received', res);
+  });
+  const subscriberC = new Subscriber('subscriberC', pubsub);
+  subscriberC.subscribe(TYPE_B, (res) => {
+    console.log('subscriberC received', res);
+  });
+
+  pubsub.notify(TYPE_A);
+  pubsub.notify(TYPE_B);
+  pubsub.notify(TYPE_C);
+}
+
+main();
+
+// subscriberA received [ 'we are young', 'stronger' ]
+// subscriberC received [ 'the silicon valley', 'imitation game' ]
+// subscriberB received undefined
+```
+[参考地址](https://juejin.cn/post/6978728619782701087?searchId=2024040120572958143269EC1C1049E53D)
+
 
 ### 工厂模式
 
