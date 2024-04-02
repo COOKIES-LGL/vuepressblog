@@ -75,3 +75,74 @@ webpack-dev-server 主要包含了三个部分：
 ### MarkDown 使用指南
 
 - [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>
+
+
+### 编写插件在指定插件后执行
+
+``` javascript
+class MyCustomPlugin {
+  apply(compiler) {
+    compiler.hooks.afterPlugins.tap('MyCustomPlugin', (compilation) => {
+      // 在这里编写你的逻辑
+      // 确保这个插件在SomeOtherPlugin之后执行
+    });
+  }
+}
+module.exports = MyCustomPlugin;
+```
+
+``` javascript
+const SomeOtherPlugin = require('some-other-plugin');
+const MyCustomPlugin = require('./MyCustomPlugin');
+ 
+module.exports = {
+  // ... 其他webpack配置
+  plugins: [
+    new SomeOtherPlugin(),
+    new MyCustomPlugin(),
+  ],
+};
+```
+
+请注意，afterPlugins 钩子是在所有插件都应用之后触发的，因此你可以在这个钩子中执行代码，确保它在其他插件之后执行。  
+如果你需要更精确地控制，可能需要查看特定插件的文档，看看它们提供的钩子，并选择最适合你需求的钩子。
+
+
+### Tapable 事件机制
+
+Tapable 是一个类似于 Node.js 中的 EventEmitter 的库，但它更专注于自定义事件的触发和处理。  
+通过 Tapable 我们可以注册自定义事件，然后在适当的时机去执行自定义事件。  
+这个和我们所熟知的生命周期函数类似，在特定的时机去触发。  
+
+``` javascript
+const { SyncHook } = require("tapable");
+
+// 实例化 钩子函数 定义形参
+const syncHook = new SyncHook(["name"]);
+
+//通过tap函数注册事件
+syncHook.tap("同步钩子1", (name) => {
+  console.log("同步钩子1", name);
+});
+
+//同步钩子 通过call 发布事件
+syncHook.call("古茗前端");
+
+```
+通过上面的例子，我们大致可以将 Tapable 的使用分为以下三步:
+
+- 实例化钩子函数
+- 事件注册
+- 事件触发
+
+#### 事件注册
+同步的钩子要用 tap 方法来注册事件  
+异步的钩子可以像同步方式一样用 tap 方法来注册，也可以用 tapAsync 或 tapPromise 异步方法来注册。  
+- tapAsync： 使用用 tapAsync 方法来注册 hook 时，必须调用callback 回调函数。  
+- tapPromise：使用 tapPromise 方法来注册 hook 时，必须返回一个 pormise ，异步任务完成后 resolve 。  
+
+####  事件触发
+同步的钩子要用 call 方法来触发  
+异步的钩子需要用 callAsync 或 promise 异步方法来触发。
+- callAsync：当我们用 callAsync 方法来调用 hook 时，第二个参数是一个回调函数，回调函数的参数是执行任务的最后一个返回值  
+- promise：当我们用 promise 方法来调用 hook 时，需要使用 then 来处理执行结果，参数是执行任务的最后一个返回值。  
