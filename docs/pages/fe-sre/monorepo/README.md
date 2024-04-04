@@ -3,6 +3,8 @@ home: false
 sidebar: false
 ---
 
+[微服务架构乾坤核心原理](https://zhuanlan.zhihu.com/p/414468874)
+
 ### 使用 monorepo 的原因
 我正在开发的项目 A，依赖了已经线上发布的项目 B，但是随着项目 A 的不断开发，又需要不时修改项目 B 的代码（这些修改暂时不必发布线上），如何能够在修改项目 B 代码后及时将改动后在项目 A 中同步？ 在项目 A 发布上线后，如何以一种优雅的方式解决项目 A，B 版本升级后的版本同步问题？
 
@@ -140,4 +142,57 @@ npm i @syyyds-cli/vue2wx --save
 "scripts": {
     "dev": "lsy-cli-repo-lerna",
 }
+```
+
+### with proxy 代理
+ 
+``` javascript
+// 构造一个 with 来包裹需要执行的代码，返回 with 代码块的一个函数实例
+function withedYourCode(code) {
+  code = 'with(globalObj) {' + code + '}'
+  return new Function('globalObj', code)
+}
+ 
+// 可访问全局作用域的白名单列表
+const accessWhiteList = ['Math', 'Date','console']
+ 
+ 
+// 待执行程序
+const code = `
+    console.log(1111,Math.random());
+    func(foo)
+    location.href = 'xxx'
+`
+ 
+// 执行上下文对象
+const ctx = {
+    func: variable => {
+        console.log(variable)
+    },
+    foo: 'foo'
+}
+
+// 执行上下文对象的代理对象
+const ctxProxy = new Proxy(ctx, {
+    has: (target, prop) => { // has 可以拦截 with 代码块中任意属性的访问
+      if (accessWhiteList.includes(prop)) { // 在可访问的白名单内，可继续向上查找
+          return target.hasOwnProperty(prop)
+      }
+ 
+      if (!target.hasOwnProperty(prop)) {
+          throw new Error(`Invalid expression - ${prop}! You can not do that!`)
+      }
+ 
+      return true
+    }
+})
+ 
+// 普通的沙箱
+function normalSandbox(code, proxy) {
+    withedYourCode(code).call(ctx, proxy) // 将 this 指向手动构造的全局代理对象
+}
+ 
+normalSandbox(code, ctxProxy) 
+ 
+// Uncaught Error: Invalid expression - location! You can not do that!
 ```

@@ -2,15 +2,12 @@
 
 ::: tip
 symbol 作为对象的属性无法通过.运算符获取,需要使用[symbol]
-:::
-
-::: tip
 全局共享Symbol
 let a = Symbol.for("a")
 let b = Symbol.for("a")
 a === b // true
 Symbol.keyFor(a) 可以通过变量名查询该变量名对应的Symbol是否在全局注册表中
-::: 
+:::
 
 ::: tip
 我们还可以通过更改内置Symbol值对应的方法来达到更改外部方法作用的效果。

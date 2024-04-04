@@ -18,13 +18,13 @@ Webpack 在构建过程中会触发一系列的生命周期事件，开发者可
 
 可以通过 npm install --production 实现仅安装 dependencies 中的依赖
 
-[一篇详解webpack](https://zhuanlan.zhihu.com/p/443964387)
+[一篇详解webpack](https://zhuanlan.zhihu.com/p/443964387)  
 [webpack打包原理详解](https://www.pipipi.net/30583.html/amp)
-[参考编写一个loader和plugins](https://pcaaron.github.io/pages/fe/webpack/plugin.html#%E6%8F%92%E4%BB%B6%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86)
-[webpack-Loader详解](https://zhuanlan.zhihu.com/p/397174187)
-[webpack5持久缓存](https://segmentfault.com/a/1190000041726881?sort=votes)
-[深度解析webpack打包流程](https://www.pipipi.net/30583.html/amp)
-[webpack与rollup背后的acorn](https://www.zhihu.com/tardis/bd/art/149323563)
+[参考编写一个loader和plugins](https://pcaaron.github.io/pages/fe/webpack/plugin.html#%E6%8F%92%E4%BB%B6%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86)  
+[webpack-Loader详解](https://zhuanlan.zhihu.com/p/397174187)  
+[webpack5持久缓存](https://segmentfault.com/a/1190000041726881?sort=votes)  
+[深度解析webpack打包流程](https://www.pipipi.net/30583.html/amp)  
+[webpack与rollup背后的acorn](https://www.zhihu.com/tardis/bd/art/149323563)  
 
 ### 动态匹配配置信息
 
@@ -70,12 +70,6 @@ webpack-dev-server 主要包含了三个部分：
 8.最后调用 module.hot.accept() 完成热更新；
 
 ```
-
-
-### MarkDown 使用指南
-
-- [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>
-
 
 ### 编写插件在指定插件后执行
 
@@ -136,13 +130,16 @@ syncHook.call("古茗前端");
 - 事件触发
 
 #### 事件注册
-同步的钩子要用 tap 方法来注册事件  
-异步的钩子可以像同步方式一样用 tap 方法来注册，也可以用 tapAsync 或 tapPromise 异步方法来注册。  
+同步的钩子要用 tap 方法来注册事件异步的钩子可以像同步方式一样用 tap 方法来注册，也可以用 tapAsync 或 tapPromise 异步方法来注册。  
 - tapAsync： 使用用 tapAsync 方法来注册 hook 时，必须调用callback 回调函数。  
 - tapPromise：使用 tapPromise 方法来注册 hook 时，必须返回一个 pormise ，异步任务完成后 resolve 。  
 
 ####  事件触发
-同步的钩子要用 call 方法来触发  
-异步的钩子需要用 callAsync 或 promise 异步方法来触发。
+同步的钩子要用 call 方法来触发异步的钩子需要用 callAsync 或 promise 异步方法来触发。
 - callAsync：当我们用 callAsync 方法来调用 hook 时，第二个参数是一个回调函数，回调函数的参数是执行任务的最后一个返回值  
 - promise：当我们用 promise 方法来调用 hook 时，需要使用 then 来处理执行结果，参数是执行任务的最后一个返回值。  
+
+
+### MarkDown 使用指南
+
+- [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>

@@ -198,9 +198,9 @@ findScroller(document.body);
 
 ### 8、window.matchMedia()用法
 
-*** js的媒体查询 ***
+* js的媒体查询
 
-```
+``` javascript
 // 定义媒体查询条件
 const mediaQueryString = "(max-width: 600px)";
 
@@ -218,18 +218,16 @@ if (mediaQueryList.matches) {
 
 ### 9、两日期之间相差天数
  ``` javascript
- const dayDiff = (date1, date2) => Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000);
+const dayDiff = (date1, date2) => Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000);
 
 dayDiff(new Date("2021-10-21"), new Date("2022-02-12"))
 // Result: 114
-
  ```
 
 
  ### 10、getEnumOptions 从枚举值获取下拉选项列表
 
  ``` javascript
-
 var getEnumOptions = function getEnumOptions(obj) {
   return entries(obj).filter(function (_ref) {
     var val = _ref[1];

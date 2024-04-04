@@ -66,10 +66,10 @@ var loop = function (time) {
 ```
 
 ::: tip
-requestAnimationFrame 比起 setTimeout、setInterval 的优势主要有两点：
-1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒 60 帧。
-2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
-3、requestAnimationFrame 默认返回一个 id，cancelAnimationFrame 只需要传入这个 id 就可以停止了.
+requestAnimationFrame 比起 setTimeout、setInterval 的优势主要有三点：  
+1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒 60 帧。  
+2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。  
+3、requestAnimationFrame 默认返回一个 id，cancelAnimationFrame 只需要传入这个 id 就可以停止了.  
 :::
 
 ::: tip
@@ -237,13 +237,13 @@ let type = new URLSearchParams(location.search).get('type');
 // https://juejin.cn/post/7133096500753596446#heading-2
 ```
 
-### Event EventTarget Node Document HTMLElement 区别
+### Event、EventTarget、Node、Document、HTMLElement的关系
 
 * HTMLElement extends Element 
 1. Element extends Node ， Document extends Node
 2. Node extends EventTarget
 3. Event是发生在dom的事件，其中target属性为 EventTarget | null
-4. Node有很多dom的API，Document 与Element又进行扩充，像className就是Element特有的，document有cookie,domain之类特有的。
+4. Node有很多dom的API，Document对Element又进行扩充，像className就是Element特有的，document有cookie,domain之类特有的。
 5. 而HTMLElement就是扩充自Element，比Element多了offsetHeight之类属性。
 
 
@@ -338,6 +338,7 @@ window.requestIdleCallback();
 // 时间切片，让浏览器在空闲的时候去做一些事情
 ```
 
+### structuredClone
 JavaScript中有一种原生的方法来做对象的深拷贝? structuredClone 函数，内置在 JavaScript 运行时
 ``` javascript
 const calendarEvent = {
@@ -347,20 +348,25 @@ const calendarEvent = {
 }
 const copied = structuredClone(calendarEvent)
 ```
+::: tip
+structuredClone 缺点
+1、无法拷贝函数、方法、DOM，当拷贝函数、方法、DOM时，就会抛出异常。  
+2、属性描述符、setter 和 getter 属性描述符、setter 和 getter 以及类似的元数据都不能被克隆。例如，对于 getter，结果值被克隆，但 getter 函数本身没有被克隆。  
+3、原型链不能被遍历或拷贝。所以如果克隆一个实例 MyClass，克隆的对象将不再是这个类的一个实例（但是这个类的所有有效属性都将被拷贝
+:::
 
 ### 获取视频真实宽高
 ``` html
- <video src="https://www.w3schools.com/html/movie.mp4#t=0.01" controls="controls" id="video">
- </video>
-```
-``` javascript
-  const video = document.getElementById('video');
-
-  video.addEventListener('canplay', function(e) {
-      var width = e.target.videoWidth;
-      var height = e.target.videoHeight;
-      console.log(width, height);
-  })
+<video src="https://www.w3schools.com/html/movie.mp4#t=0.01" controls="controls" id="video">
+</video>
+<script>
+const video = document.getElementById('video');
+video.addEventListener('canplay', function(e) {
+    var width = e.target.videoWidth;
+    var height = e.target.videoHeight;
+    console.log(width, height);
+})
+</script>
 ```
 
 ### 随机key crypto.randomUUID() 浏览器自带

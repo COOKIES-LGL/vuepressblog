@@ -1,5 +1,6 @@
+### 关于includes和indexOf
+
 ``` javascript
-关于includes和indexOf的学习笔记：
 1. 主要用途：判断字符串或者数组中是否存在对应的元素
 2. 两者的区别
 （1）NaN includes 能匹配到NaN，indexOf不能匹配到NaN
@@ -7,13 +8,15 @@
 3.字符串和数组中的indexOf方法比较：字符串会进行类型转换，数组会严格匹配（===）
 4.字符串和数组中的includes方法比较：字符串会进行类型转换，数组会严格匹配（===）
 
-```
+```  
 
+### 内置数组方法的效率
 ``` javascript
 splice 操作方法是非常耗时的，每次删除元素之后，需要重排数组中的元素，具有相同副作用的操作方法还有 unshift 和 shift 
 相比较下，pop 和 push 则是非常快的操作方法，
 ```
 
+### 字符串编码
 ``` javascript
 function base64Encode(str) {
   return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
@@ -21,9 +24,8 @@ function base64Encode(str) {
 // btoa()函数可以将字符串编码为Base64格式，而encodeURIComponent()函数则可以将字符串转换为可传输的URI格式。我们还使用了一个正则表达式来将URI格式中的特殊字符进行替换。
 ```
 
-###
+### Iterator 的作用
 ::: tip
-Iterator 的作用
 为各种数据结构，提供一个统一的、简便的访问接口。
 ES6提出了新的遍历命令for...of循环，Iterator 接口主要供for...of消费。
 :::
@@ -60,14 +62,13 @@ const obj = {
   key: '1',
   value: '2'
 }
-
 for (const iterator of obj) {
   console.log(iterator)
 }
 ```
 
 ### Array.protoType.FlatMap
-用来实现过滤切格式化处理数组
+用来实现过滤切格式化处理数组 代替filter map
 
 ``` javascript
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -101,7 +102,6 @@ function constructURL(param) {
 ### 获取是否文字省略Ellipsis生效
 
 ``` javascript
-
 const checkEllipsis = () => {
   const range = document.createRange();
   range.setStart(box, 0)
@@ -126,7 +126,6 @@ const checkEllipsis = () => {
 let array = new Uint32Array(1);
 window.crypto.getRandomValues(array);
 let randomNum = array[0] % 100;
-
 ```
 
 ### MessageChannel 
@@ -156,8 +155,8 @@ a(port1);
 ```
 
 ### AbortController
+1、AbortController可以用来终止一个或多个Web请求
 
-AbortController可以用来终止一个或多个Web请求
 ``` javascript
   const controller = new AbortController();   // 新建一个AbortController实例
   let signal = controller.signal;    // signal是AbortController实例的属性
@@ -182,7 +181,7 @@ AbortController可以用来终止一个或多个Web请求
 }
 ```
 
-终止事件监听
+2、终止事件监听
 
 ``` javascript
 const controller = new AbortController();
