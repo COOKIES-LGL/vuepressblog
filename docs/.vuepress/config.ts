@@ -41,8 +41,32 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: 'https://codepen.io/pen/',
           },
           {
+            text: '站长工具',
+            link: 'https://tool.chinaz.com/dns/',
+          },
+          {
+            text: '在线流程图绘制',
+            link: 'https://app.diagrams.net/',
+          },
+          {
+            text: '代码在线运行',
+            link: 'https://tool.lu/coderunner/'
+          },
+          {
             text: '格式图片获取',
             link: 'https://placeholder.com/',
+          },
+          {
+            text: '缓动函数',
+            link: 'https://easings.net/zh-cn',
+          },
+          {
+            text: '表格转化工具',
+            link: 'https://tableconvert.com/zh-cn/json-to-markdown',
+          },
+          {
+            text: 'snippet生成器',
+            link: 'https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode',
           },
         ],
       },
@@ -64,6 +88,27 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: '阮一峰日志',
             link: 'https://www.ruanyifeng.com/blog/',
+          },
+        ],
+      },
+      {
+        text: '社区',
+        children: [
+          {
+            text: '代码随想录',
+            link: 'https://programmercarl.com/other/update.html',
+          },
+          {
+            text: 'hello算法',
+            link: 'https://www.hello-algo.com/chapter_hello_algo/',
+          },
+          {
+            text: '电鸭社区',
+            link: 'https://eleduck.com/',
+          },
+          {
+            text: 'solo自由开发者',
+            link: 'https://solo.xin/',
           },
         ],
       },
