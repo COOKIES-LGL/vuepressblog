@@ -253,6 +253,30 @@ console.log(knapSack(weights,values,capacity,n));
 ```
 
 ``` javascript
+// 最长递增子序列
+var getSequence = function(nums) {
+    let len = nums.length
+    if(len<1) return len
+    let l = 1; // 定义返回的最长的子序列长度，最小为 1
+    let dp=new Array(len).fill(1); // 定义动态规划状态数组,初始化每一位作为单独的序列为长度 1
+    // 第一层循环，从第一位开始遍历，取出每一位元素，依次与前面所有元素做对比
+    for(let i=1;i<len;i++){
+        // 第二层循环，依次与前面所有元素做对比
+        for(let j=0;j<i;j++){
+            // 如果第一层取到的当前元素大于当前元素之前的某个元素
+            if(nums[i]>nums[j]){
+                // 则重新更新当前 i 所对应的状态值，更新为原来的值和当前在对比元素+1后的最大值
+                dp[i] = Math.max(dp[i],dp[j]+1)
+            }
+        }
+        l = Math.max(l,dp[i]) // 每次循环之后，拿到当前最大的序列长度
+    }
+    return l 
+}
+getSequence([3, 7, 22, 4, 8, 13, 9, 11, 12]);
+```
+
+``` javascript
 // 找零钱问题
 //动态规划 -- 硬币找零问题
 function minCoins(coins,total,n){
@@ -420,6 +444,32 @@ module.exports = {
 ```
 
 ``` javascript
+/**
+ * 不定长二维数组的全排列
+ * 动态规划，下一次的结果，依赖上一次的结果
+ * 比如 [['A','B'], ['a','b'], [1, 2]]，输出 ['Aa1','Aa2','Ab1','Ab2','Ba1','Ba2','Bb1','Bb2']
+ * @param {array} arr 
+ */
+function permutate(arr) {
+    // 第一次的结果就是二维数组的第0项
+	let res = arr[0].slice();
+
+	for (let i = 1; i < arr.length; i++) {
+		const pre = res.slice();
+		res = [];
+		pre.forEach(item => {
+			arr[i].forEach(curr => {
+				res.push(item + curr)
+			})
+		});
+	}
+	console.log(res)
+	return res;
+}
+permutate([['A','B'], ['a','b'], [1, 2]])
+```
+
+``` javascript
 // 二维数组全排列组合
 const getResult = (arr1, arr2) => {
   if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
@@ -442,6 +492,7 @@ const getResult = (arr1, arr2) => {
 
 const findAll = arr => arr.reduce((total, current) => getResult(total, current), []);
 ```
+
 ``` javascript
 // 称砝码
 let line1 = readline();

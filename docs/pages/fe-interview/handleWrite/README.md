@@ -133,6 +133,8 @@ let multiply = (y) => y * 10;
 let calculate = compose(multiply, add);
 console.log(calculate(10)); // 200
 ```
+
+### 斐波那次
 ``` javascript
 function fibonacci (n) {
  if ( n <= 1 ) {return 1};
@@ -157,26 +159,56 @@ var fn = (function () {
 })()；
 
 ```
-``` javascript
-// 函数柯里化
-//普通函数
-function add(a, b, c) {
-  return a + b + c;
-}
-add(1,2,3) //6
- 
-//手动柯里化后的函数,其参数可以逐步单个传入,得到相同结果。
-function _add(a) {
-    return function(b) {
-        return function(c) {
-            return a + b + c;
-        }
-    }
-}
- 
-_add(1)(2)(3);//6
 
+``` javascript
+// 函数柯里化指的是一种将使用多个参数的一个函数转换成一系列使用一个参数的函数的技术。
+function curry(fn, args) {
+  // 获取函数需要的参数长度
+  let length = fn.length;
+  args = args || [];
+  return function() {
+    let subArgs = args.slice(0);
+    // 拼接得到现有的所有参数
+    for (let i = 0; i < arguments.length; i++) {
+      subArgs.push(arguments[i]);
+    }
+    // 判断参数的长度是否已经满足函数所需参数的长度
+    if (subArgs.length >= length) {
+      // 如果满足，执行函数
+      return fn.apply(this, subArgs);
+    } else {
+      // 如果不满足，递归返回科里化的函数，等待参数的传入
+      return curry.call(this, fn, subArgs);
+    }
+  };
+}
+​
+// es6 实现
+function curry(fn, ...args) {
+  return fn.length <= args.length ? fn(...args) : curry.bind(null, fn, ...args);
+}
 ```
+
+### 有序数组原地去重
+``` javascript
+function removeDuplicates(nums) {
+  if (nums.length === 0) {
+    return 0;
+  }
+  let slow = 0;
+  for (let fast = 1; fast < nums.length; fast++) {
+    if (nums[fast] !== nums[slow]) {
+      slow++;
+      nums[slow] = nums[fast];
+    }
+  }
+  return nums;
+}
+// 示例用法
+const nums = [1, 1, 2, 2, 2, 3, 4, 4, 5];
+removeDuplicates(nums);
+```
+
 ### 数组扁平化
 ``` javascript
 function flat(arr, depth = 1) {
@@ -273,7 +305,7 @@ class LRU {
 function debounce (callback,delay) {
     var t = null;
     return function () {
-        clearTimeout(t);
+        t && clearTimeout(t);
         t = setTimeout(callback,delay);
     }
 }
@@ -283,9 +315,9 @@ window.onscroll = debounce(function(){
 
 // 节流;
 function throttle (callback,duration){
-    var lastTime = new Date().getTime();
+    var lastTime = Date.now();
     return function () {
-        var now = new Date().getTime();
+        var now = Date.now();
         if(now - lastTime > duration){
             callback();
             lastTime = now;
@@ -311,7 +343,7 @@ Promise.prototype.all = (arr) => {
             result[i] = value;
             counter++;
             if (counter === arr.length) {
-              //通过conter变量比较，而不是直接通过result.length去判断
+              //通过counter变量比较，而不是直接通过result.length去判断
               resolve(result);
             }
           }).catch(err => {
@@ -335,16 +367,6 @@ Promise.prototype.race=function(arr){
         });
     })
 }
-```
-### promise.finally
-``` javascript
-Promise.prototype.myFinally = function(cb) {//cb就是要共同执行的逻辑
-    return this.then(//谁调用finally，this就是谁
-        value => Promise.resolve(cb()).then(() => value),// 不管调用finally的promise是什么状态都会执行这个cb
-        error =>// 不管调用finally的promise是什么状态都会执行这个cb
-        Promise.resolve(cb()).then(() => throw error)
-    );
-};
 ```
 
 ### javascript 寄生组合式继承
@@ -488,6 +510,60 @@ limitLoad(urls, loadImg, 3)
 
 ```
 
+### 实现可以限制最大并发数的promise.all
+``` javascript
+function multiRequest(urls = [], maxNum) {
+    // 请求总数量
+    const sum = urls.length;
+    // 根据请求数量创建一个数组来保存请求的结果
+    const result = new Array(sum).fill(false);
+    // 当前完成的数量
+    let count = 0;
+
+    return new Promise((resolve, reject) => {
+        // 请求maxNum个
+        while (count < maxNum) {
+            next();
+        }
+        function next() {
+            let current = count++;
+            // 处理边界条件
+            if (current >= sum) {
+                // 请求全部完成就将promise置为成功状态, 然后将result作为promise值返回
+                !result.includes(false) && resolve(result);
+                return;
+            }
+            const url = urls[current];
+            console.log(`开始 ${current}`, new Date().toLocaleString());
+            fetch(url).then(res => {
+                // 保存请求结果
+                result[current] = res;
+                console.log(`完成 ${current}`, new Date().toLocaleString());
+                // 请求没有全部完成, 就递归
+                if (current < sum) {
+                    next();
+                }
+            }).catch(err => {
+                console.log(`结束 ${current}`, new Date().toLocaleString());
+                result[current] = err;
+                // 请求没有全部完成, 就递归
+                if (current < sum) {
+                    next();
+                }
+            });
+        }
+    });
+}
+
+const url = `https://www.baidu.com/s?wd=javascript`;
+const urls = new Array(100).fill(url);
+
+(async () => {
+    const res = await multiRequest(urls, 10);
+    console.log(res);
+})();
+```
+
 ### 图片预加载限制请求数量
 
 ``` javascript
@@ -495,15 +571,16 @@ limitLoad(urls, loadImg, 3)
 function loadImages(list){ 
   const pageSize = 5 
   const pageNum = 0 
+  const totalNum = list.length
   return new Promise((resolve,reject)=>{ 
       function run(){ 
           Promise.all(generateTasks(list, pageSize, pageNum)).then(()=>{ 
             pageNum++ 
             const hasLength = pageSize * pageNum 
             if(totalNum > hasLength){ 
-                run() 
+              run() 
             } else { 
-                resolve(true) 
+              resolve(true) 
             }
           }) 
       } 

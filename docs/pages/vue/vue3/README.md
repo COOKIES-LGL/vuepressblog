@@ -2,6 +2,9 @@
 home: false
 ---
 ## Vue3相关
+
+[vue3 diff流程](https://juejin.cn/post/7324151621297897507)
+
 <style>
 @media screen and (min-width: 400px) {
   .theme-default-content:not(.custom) {

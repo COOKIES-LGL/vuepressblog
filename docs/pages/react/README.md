@@ -10,6 +10,7 @@ home: false
 * [React 流式渲染](https://zhuanlan.zhihu.com/p/639505410?utm_id=0)
 * [React 服务端组件](https://sorrycc.com/why-react-server-components/)
 * [Vuex、Flux、Redux、Redux-saga、Dva、MobX](https://zhuanlan.zhihu.com/p/53599723)
+* [Recoil](https://juejin.cn/post/7259168207055175739)
 * [React Schedule 核心流程图](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/493c087e2fd64e1a8c552f16927192f6~tplv-k3u1fbpfcp-watermark.image?)
 
 * [Schedule 核心流程图](https://zhuanlan.zhihu.com/p/450267610?utm_id=0)
@@ -37,6 +38,14 @@ React Scheduler 使用 MessageChannel 的原因为：生成宏任务，实现：
 如果上次任务调度不是 rAF() 触发的，将导致在当前帧更新前进行两次任务调度。  
 页面更新的时间不确定，如果浏览器间隔了 10ms 才更新页面，那么这 10ms 就浪费了。  
 :::
+
+### 开启BFCache
+
+BFCache（Back-Forward Cache）是浏览器的一种机制，在 Safari 和 Chrome 中都得到了很好的支持，它利用内存缓存来存储用户访问过的页面状态。  
+当用户在浏览器中执行后退或前进操作时，浏览器可以从 BFCache 中快速加载页面，而不是重新请求服务器并重新渲染页面。  
+这意味着用户可以瞬间回到之前访问的页面，无需等待页面重新加载。
+它不是 HTTP 意义上的“缓存”，不是“磁盘缓存”意义上的“缓存”，而是将解码资源保存在内存中，以便在多个网页之间共享。  
+[被忽略的缓存-BFCache](https://cloud.tencent.com/developer/article/2350456?areaId=106001)
 
 ### MarkDown使用指南
 *  [MarkDown](../blog-daily/use-markdown)  <span style="color:#bbb; float:right">2021-06-24</span>

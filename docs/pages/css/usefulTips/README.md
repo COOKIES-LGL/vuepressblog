@@ -272,9 +272,9 @@ el.addEventListener('transitionend', () => {
 ### rotate(0deg) 解决边角无法hidden
 ``` css 
 .class {
-        overflow: hidden;
-        position: relative;
-        transform: rotate(0deg);
+  overflow: hidden;
+  position: relative;
+  transform: rotate(0deg);
 }
 ```
 
