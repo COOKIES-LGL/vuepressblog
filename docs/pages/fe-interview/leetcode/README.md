@@ -153,7 +153,8 @@ console.log(mergeSort(arr));
 
 ``` javascript
 // 密码截取 HJ32
-// 主要分为两种情况，对于每个元素，分是否作为中心点考虑，如果是中心点，let l=index-1，let r=index+1，否则的话，let l=index，let r=index+1
+// 主要分为两种情况，对于每个元素，分是否作为中心点考虑，如果是中心点，
+// let l=index-1，let r=index+1，否则的话，let l=index，let r=index+1
 let input=readline()
 let arr=Array.from(input)
 let res=[]
@@ -369,7 +370,7 @@ console.log(longestCommonSubsequence(str1, str2)); // 输出：3
 ``` javascript
 // 最大公共子串
 function findSubStr(str1, str2){
-  if (str1.length > str2.length) {
+  if (str1.length > str2.length) { // 找到较长的那个字符串
     var temp = str1;
     str1 = str2;
     str2 = temp;
@@ -379,6 +380,7 @@ function findSubStr(str1, str2){
   for (var j = len1; j > 0; j--) {
     for (var i = 0; i < len1 - j; i++) {
       var current = str1.substr(i, j);
+      // 在长的里面找短的，没找到则短的截取掉一个从新找，找到了就是最长的了
       if (str2.indexOf(current) >= 0) {
         return current;
       }

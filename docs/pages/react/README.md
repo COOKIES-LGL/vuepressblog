@@ -11,6 +11,7 @@ home: false
 * [React 服务端组件](https://sorrycc.com/why-react-server-components/)
 * [Vuex、Flux、Redux、Redux-saga、Dva、MobX](https://zhuanlan.zhihu.com/p/53599723)
 * [Recoil](https://juejin.cn/post/7259168207055175739)
+* [mobx概要梳理](https://article.juejin.cn/post/6914179461957025800)
 * [React Schedule 核心流程图](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/493c087e2fd64e1a8c552f16927192f6~tplv-k3u1fbpfcp-watermark.image?)
 
 * [Schedule 核心流程图](https://zhuanlan.zhihu.com/p/450267610?utm_id=0)
