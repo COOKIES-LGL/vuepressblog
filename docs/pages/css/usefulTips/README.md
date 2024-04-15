@@ -278,6 +278,29 @@ el.addEventListener('transitionend', () => {
 }
 ```
 
+### 1px的虚线border
+``` SCSS
+@mixin dashed-border1px($position, $color) {
+  position: relative;
+  border: none !important;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: -100%;
+    right: 0%;
+    left: 0;
+    transform: scaleY(.5);
+    transform-origin: 0 0;
+    pointer-events: none;
+    width: 100%;
+    box-sizing: border-box;
+    border-#{$position}: 1px dashed $color;
+  }
+}
+```
+
 ### clamp 函数
 
 ``` css 
