@@ -375,6 +375,22 @@ html {
 }
 ```
 
+### 适配安全区域
+
+1、修改页面布局方式
+当使用viewport-fit: contain时，初始视口将应用于显示器的最大内接矩形。
+``` html
+<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=0, viewport-fit=cover">
+```
+
+2、底部适配
+``` css
+.keyboard_foot {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+```
+
 ### @scope
 借助 @scope @ 规则，开发者可以将样式规则的作用域限定为给定的范围根，并根据该范围根的邻近度来设置元素的样式。
 ``` css
