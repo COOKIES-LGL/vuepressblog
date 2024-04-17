@@ -130,3 +130,7 @@ npm install --save-dev ../../npm-plugin/index.js
 }
 // 可以用来限制某个开发包的 依赖包版本
 ```
+
+### @loadable/component
+应用程序，组件查分懒加载   
+Enable Code Splitting in your React application. 
