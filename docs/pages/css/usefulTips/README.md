@@ -255,7 +255,7 @@ el.addEventListener('transitionend', () => {
 ### 固定渐变高度，剩余部分纯色
 ``` css
 .class {
-      background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 1.4rem, #fee9cd 2rem, #fee9cd);
+    background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 1.4rem, #fee9cd 2rem, #fee9cd);
 }
 ```
 
@@ -327,17 +327,16 @@ el.addEventListener('transitionend', () => {
 }
 ```
 
-### 适配ipad 居中
+### 适配ipad居中
 ``` css
 .bottomBar {
-    position: fixed;
-    left: 50%;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    max-width: 3.75rem;
-    transform: translate(-50%);
+  position: fixed;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 3.75rem;
+  transform: translate(-50%);
 }
 ``` 
 
@@ -360,7 +359,6 @@ text-align-last 属性只有在 text-align 属性设置为 "justify" 时才起�
 <h1 class="j">This is heading 2</h1>
 </body>
 </html>
-
 ```
 
 ### rem 移动端适配 初始化
@@ -379,6 +377,7 @@ html {
 
 1、修改页面布局方式
 当使用viewport-fit: contain时，初始视口将应用于显示器的最大内接矩形。
+当使用viewport-fit: cover时，初始视口将应用于显示器的最大外接矩形。
 ``` html
 <meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=0, viewport-fit=cover">
 ```
@@ -417,3 +416,6 @@ css.support("display: flex") // true、 false
   #article { width: 75%; }
 }
 ```
+
+### onAnimationEnd 事件会冒泡传递
+监听的内部元素有动画事件会提前触发执行，导致执行时机不合理

@@ -46,7 +46,7 @@ wm.get(key)
 
 ### 输出结果
 
-```
+``` javascript
 Promise.resolve().then(() => {
     return Promise.resolve(4);
 })
@@ -56,14 +56,12 @@ Promise.resolve().then(() => {
 ### class类无法遍历它实例原型链上的属性和方法
 
 ### new.target
-
 ``` javascript
 // new.target属性允许你检测函数或构造方法是否是通过new运算符被调用的
 function Foo() {
   if (!new.target) throw "Foo() must be called with new";
   console.log("Foo instantiated with new");
 }
-
 Foo(); // throws "Foo() must be called with new"
 new Foo(); // logs "Foo instantiated with new"
 ```

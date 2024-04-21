@@ -134,7 +134,6 @@ subject.addObserver(observerB);
 subject.notifyObservers('Hello from subject');
 subject.removeObserver(observerA);
 subject.notifyObservers('Hello again');
-
 ```
 
 ### 发布订阅模式
@@ -395,7 +394,7 @@ app.listen();
 
 ### 接口缓存复用
 
-```
+``` javascript
 const pendingPromises = {};
 function request(type, url, data) {
   // 使用请求信息作为唯一的请求key，缓存正在请求的promise对象

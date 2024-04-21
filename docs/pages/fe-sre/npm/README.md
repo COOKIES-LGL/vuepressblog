@@ -100,6 +100,13 @@ NodeJS文件系统遍历工具：fast-glob
 
 ### cosmiconfig 读取项目配置信息
 
+### @loadable/component
+应用程序，组件查分懒加载   
+Enable Code Splitting in your React application. 
+
+### generator-eslint 自定义eslint规则生成器
+[generator-eslint](https://github.com/eslint/generator-eslint)
+
 ## 开发npm开发笔记
 开发一个npm包需要创建在项目中新建example项目用于测试
 
@@ -131,6 +138,3 @@ npm install --save-dev ../../npm-plugin/index.js
 // 可以用来限制某个开发包的 依赖包版本
 ```
 
-### @loadable/component
-应用程序，组件查分懒加载   
-Enable Code Splitting in your React application. 
