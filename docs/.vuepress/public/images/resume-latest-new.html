@@ -14,7 +14,8 @@
         .all_wrap{width:750px;margin-top: 20px;}
         .at{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
         .page{width:750px;margin:0 auto;padding:3px;background-color:#fff}
-        .gray{color:#919191 !important}
+        .gray{color:#cbcbcb !important}
+		.gray_right{color:#6d6c6c !important}
         .l_green{color:#6d8194 !important}
         .blue{color:#4567af !important}
         .yellow{color:#fae001 !important}
@@ -31,7 +32,7 @@
         .name{height:40px;line-height:40px;font-size:18px;color:#fff;text-align:center}
         .posi{width:265px;line-height:14px;text-align:center;padding:0 10px}
         .mes_boxl{margin:10px 0 12px 0}
-        .mes_self{margin:10px 0 15px 0;}
+        .mes_self{margin:10px 0 12px 0;}
         .mes_l{margin-left:20px}
         .title{height:26px;font-weight:bold;color:#d8dcde}
         .border_b{margin-left:20px;border-bottom:1px solid #81959d}
@@ -39,7 +40,7 @@
         .title_iconl{width:12px;padding-right:8px}
         .title_icon1 img{margin-top:5px}
         .b_border{border-top:1px solid #233c47}
-        .dir{vertical-align:top}
+        .dir{vertical-align:top; font-weight: bold;}
         .limit1{width:160px}
         .limit{width:240px}
         .wid{width:225px}
@@ -63,9 +64,14 @@
         .mes_r .reu_a{max-width:190px;vertical-align:top;padding-right:20px}
         .mes_r .in{line-height:22px;font-size:14px;color:#919191;}
         .mes_r .expexo{width:200px;display:block;}
-         .mes_r .exp{width:300px;display:block;}
+        .mes_r .exp{width:300px;display:block;}
+		.exp_title {
+			width:300px;
+			display:block;
+			font-weight: bold;
+		}
         .mes_r .area_text{width: 230px;line-height: 22px;word-wrap: break-word;word-break:break-all;}
-         .mes_r .exp_bot{width:350px;display:block;}
+        .mes_r .exp_bot{width:350px;display:block;}
         .mes_r .pofi{padding:0px;font-size: 14px; width:140px;text-align:right;vertical-align:top}
         .mes_r .edu1{width:206px;margin-right:20px}
         .mes_r .edu2{width:220px;padding-right:20px}
@@ -99,13 +105,13 @@
 
 					<table class="mes_l"><tbody>
 						<tr class="per_list">
-						<td><span>出生日期：</span></td>
+						<td class="dir"><span>出生日期：</span></td>
 						<td><span class="gray">1997/4/22</span></td>
 						</tr>
 					</tbody></table>
 					<table class="mes_l"><tbody>
 						<tr class="per_list">
-						<td><span>籍贯：</span></td>
+						<td class="dir"><span>籍贯：</span></td>
 						<td  class="limit1"><span class="gray">江西省 宜春市</span></td>
 					 	</tr>
 					</tbody></table>
@@ -158,11 +164,7 @@
 					<td class="limit1"><span class="gray">深圳</span></td>
 					</tr>
 					<tr class="per_list">
-					<td><span>期望月薪：</span></td>
-					<td class="limit1"><span class="gray">面议/月</span></td>
-					</tr>
-					<tr class="per_list">
-					<td><span>可到岗时间：</span></td>
+					<td class="dir"><span>可到岗时间：</span></td>
 					<td class="limit1"><span class="gray">offer后提离职</span></td>
 					</tr>
 					</tr>
@@ -205,39 +207,38 @@
 					</tr>
 				</tbody></table>
 				<div class="mes_boxl">
-					<table class="mes_l"><tbody>
-					<tr class="per_list">
-						<td class="dir"><span>Vscode插件:</span></td>
-						</tr>
+					<table class="mes_l">
+						<tbody>
 						<tr class="per_list">
-							<td width="220">
-								<span class="gray"><span class="yellow">OPEN NPM</span> 支持快速定位到选中的npm包、浏览器打开npm包。</span>
-							</td>
+							<td class="dir"><span>Vscode插件:</span></td>
+							</tr>
+							<tr class="per_list">
+								<td width="220">
+									<span class="gray"><span class="yellow">OPEN NPM</span> 支持快速定位到选中的npm包、浏览器打开npm包。</span>
+								</td>
+							</tr>
+							<tr class="per_list">
+								<td width="220">
+									<span class="gray"><span class="yellow">cjs2esm</span> 支持相互转化commonJs与esModule模块的代码。</span>
+								</td>
+							</tr>
 						</tr>
-						<tr class="per_list">
-							<td width="220">
-								<span class="gray"><span class="yellow">cjs2esm</span> 支持相互转化commonJs与esModule模块的代码。</span>
-							</td>
+						<tr class="per_list" style="margin-top: 6px">
+							<td class="dir"><span>Webpack Vite插件:</span></td>
+							<tr class="per_list">
+								<td width="220">
+									<span class="gray"><span class="yellow">dead-code-plugin</span> 用来检测出项目中未使用的导出和文件。</span>
+								</td>
+							</tr>
 						</tr>
-					</tr>
-					<tr class="per_list" style="margin-top: 6px">
-						<td class="dir"><span>Webpack Vite插件:</span></td>
-						<tr class="per_list">
-							<td width="220">
-								<span class="gray"><span class="yellow">dead-code-plugin</span> 用来检测出项目中未使用的导出和文件。</span>
-							</td>
-						</tr>
-					</tr>
-					</tbody></table>
+						</tbody>
+					</table>
 				</div>
-				<table class="border_b"><tbody><tr class="title"></tr>
-				</tbody></table>
 			</td>		
             <td class="infomation_2">
 				<table class="per_title"><tbody><tr>
 				<td width="340"><p class="title_txt">最高学历</p></td>
 				</tr></tbody></table>
-
 				<div class="mes_r">
 					<table><tbody><tr class="info_list">
 					<td class="edu"><span>学校：</span></td>
@@ -247,39 +248,29 @@
 
 					<table><tbody><tr class="info_list">
 					<td class="edu"><span>学历：</span></td>
-					<td class="edu_a"><span class="gray">本科(2020届)</span></td>
+					<td class="edu_a"><span class="gray_right">本科(2020届)</span></td>
 					<td class="edu"><span>专业：</span></td>
-					<td class="reu"><span class="gray">计算机科学与技术</span></td>
+					<td class="reu"><span class="gray_right">计算机科学与技术</span></td>
 					</tr></tbody></table>
 				</div>
 				<table class="per_title"><tbody><tr>
 				<td width="340"><p class="title_txt">工作经历 <i style="font-size: 15px;"><i></p></td>
 				</tr></tbody></table>
 			    <div class="mes_r" style="font-size: 14px;">
-			    	<span>深圳虾皮信息科技 [Seller]</span>  <span class="gray">2020.07-2022.09</span><br/>
-					<span>上海寻梦信息科技(拼多多)[Temu]</span>  <span class="gray">2022.10-至今</span>
+			    	<span>深圳虾皮信息科技 [Seller]</span>  <span class="gray_right">2020.07-2022.09</span><br/>
+					<span>上海寻梦信息科技(拼多多) [Temu]</span>  <span class="gray_right">2022.10-至今</span>
 			    </div>
 
 				<table class="per_title"><tbody><tr>
 				<td width="340"><p class="title_txt">项目经验 <i style="font-size: 15px;"><i></p></td>
 				</tr></tbody></table>
 			    <div class="mes_r">
-					<table>
-						<tbody>
-							<tr class="info_list">
-								<td class="exp"><span>PAP (Page Analyze Platform)</span></td>
-								<td class="exp"><span class="gray">* Express、Elastic、Vue、Echart</span></td>
-								<td class="exp"><p class="gray" class="area_text"><b>简介:</b>此项目是用户页面性能数据上报分析平台，包含SDK、SDK-BE、PAP-Management、PAP-Management-BE、四部分,BE使用Express框架,数据聚合使用了Elastic,图表展示使用了Echart。整个平台对宿主项目的资源加载、渲染耗时、自定义埋点进行了统计分析。</p></td>
-							</tr>
-						</tbody>
-					</table>
-                    <hr style="width: 80%;float: left;">
                     <table>
 						<tbody>
 							<tr class="info_list">
-								<td class="exp"><span>SEH (Seller Education Hub)</span></td>
-								<td class="exp"><span class="gray">* Vue、Webpack、SSR、SEO、H5、Nginx</span></td>
-								<td class="exp"><p class="gray" class="area_text"><b>简介:</b>此项目是卖家教育平台，用于对入驻卖家进行以视频，文章形式的教育。同时支持移动端展示，对SEO、国际化和首页渲染有较高需求。</p></td>
+								<td class="exp_title"><span>SEH (Seller Education Hub)</span></td>
+								<td class="exp"><span class="gray_right">* Vue、Webpack、SSR、SEO、H5、Nginx</span></td>
+								<td class="exp"><p class="gray_right" class="area_text"><b>简介:</b>卖家教育平台，用于对入驻卖家进行以视频，文章形式的教育。同时支持移动端展示，对SEO、国际化和首页渲染有较高需求。</p></td>
 								<td class="exp"><span>项目地址：<span/><a href="https://seller.shopee.sg/edu" target="_blank">https://seller.shopee.sg/edu</a></td>
 							</tr>
 						</tbody>
@@ -288,9 +279,9 @@
 					<table>
 						<tbody>
 							<tr class="info_list">
-								<td class="exp"><span>Temu | Affiliate Program(H5)</span></td>
-								<td class="exp"><span class="gray">* React、TypeScript、Next.js、Mobx </span></td>
-								<td class="exp"><p class="gray" class="area_text"><b>简介:</b>此项目是Temu推广达人拉新活动项目，进行了项目搭建、首屏弹窗管理优化、还参与维护Temu App内一折购、全额返等活动页。</p></td>
+								<td class="exp_title"><span>Temu | Affiliate Program(H5+PC)</span></td>
+								<td class="exp"><span class="gray_right">* React、TypeScript、Next.js、Mobx </span></td>
+								<td class="exp"><p class="gray_right" class="area_text"><b>简介:</b>Temu用户增长业务推广达人拉新活动项目，进行了项目搭建、多接口场景mock，首屏弹窗管理优化。还参与开发了Temu端内一折购、全额返等新人转化活动页。</p></td>
 							</tr>
 						</tbody>
 					</table>
@@ -298,9 +289,19 @@
 					<table>
 						<tbody>
 							<tr class="info_list">
-								<td class="exp"><span>Temu | OMS</span></td>
-								<td class="exp"><span class="gray">* React、TypeScript、Multirepo </span></td>
-								<td class="exp"><p class="gray" class="area_text"><b>简介:</b>此项目是个内部业务管理中台, 主要负责人力结算业务的开发，有人力成本、劳务处罚、仓作业计费管理等，参与了个别UI组件维护, 以及参与项目治理编写了定制化eslint规则。</p></td>
+								<td class="exp_title"><span>Temu | Settlement Rank System(H5)</span></td>
+								<td class="exp"><span class="gray_right">* React、Next.js、Express、Antv</span></td>
+								<td class="exp"><p class="gray_right" class="area_text"><b>简介:</b>跨境结算业务仓库成本排名系统，项目主导人，进行了项目初始化，使用Antv进行移动端图表展示，使用了虚拟列表优化长列表展示。</p></td>
+							</tr>
+						</tbody>
+					</table>
+					<hr style="width: 80%;float: left;">
+					<table>
+						<tbody>
+							<tr class="info_list">
+								<td class="exp_title"><span>Temu | OMS</span></td>
+								<td class="exp"><span class="gray_right">* React、TypeScript、Multirepo </span></td>
+								<td class="exp"><p class="gray_right" class="area_text"><b>简介:</b>跨境内部业务管理中台，微前端架构项目，主要负责人力结算业务的开发，有人力成本、劳务处罚、仓作业计费管理等。还参与了个别UI组件维护，脚本模版代码生成，以及参与项目治理编写了定制化eslint规则。</p></td>
 							</tr>
 						</tbody>
 					</table>
@@ -312,11 +313,11 @@
 					<table>
 						<tbody>
 							<tr class="info_list">
-								<td class="exp_bot">熟悉： <span class="gray">Vue、React、Typescript、前端国际化</span></td>
-								<td class="exp_bot">了解： <span class="gray">Node、Django、前端工程化、eslint、ssr</span></td>
-								<td class="exp_bot">了解框架： <span class="gray">React、Koa、Echart、Element</span></td>
-								<td class="exp_bot">了解数据库： <span class="gray">Elastic、 Mysql、 Redis </span></td>
-								<td class="exp_bot">了解工具： <span class="gray">Git、Webpack、Vite、Nginx、Genkins</span></td>
+								<td class="exp_bot">熟悉： <span class="gray_right">Vue、React、Typescript、前端国际化</span></td>
+								<td class="exp_bot">掌握： <span class="gray_right">Node、Django、Eslint、SSR、前端工程化</span></td>
+								<td class="exp_bot">了解框架： <span class="gray_right">Nest、Koa、小程序、Echart、Element</span></td>
+								<td class="exp_bot">了解数据库： <span class="gray_right">Elastic、 Mysql、 Redis </span></td>
+								<td class="exp_bot">了解工具： <span class="gray_right">Git、Webpack、Vite、Nginx、Genkins</span></td>
 							</tr>
 						</tbody>
 					</table>
