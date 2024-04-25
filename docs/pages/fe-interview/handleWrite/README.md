@@ -413,6 +413,18 @@ new Son('male', 'jack').getName('tom'); //'tom'
 new Father('jack').getName(); //'jack'
 ```
 
+### 手写promise.finally
+
+``` javascript
+Promise.prototype.finally = function(callback) {
+  const P = this.constructor;
+  return this.then(
+    value => P.resolve(callback()).then(() => value),
+    reason => P.resolve(callback()).then(() => { throw reason })
+  );
+}
+```
+
 ### 限制并发池子
 ``` typescript
 async function sendRequest(requestList,limits,callback){
@@ -450,18 +462,6 @@ async function sendRequest(requestList,limits,callback){
 // for await 结构体里，其实await下面，包括结构体外 都是属于微任务（前提是有一个await里面的if被命中），至于这个微任务什么时候被加入微任务队列，要看请求的那里的在什么时候开始标记（resolve/reject ）
 // for await 里其实 已经在此轮宏任务当中并发执行了，await后面的代码被挂起来，等前一个promise转变状态-->移出pool-->将下一个promise捞起加入pool当中 -->下一个await等待最快的promise，如此往复。
 
-```
-
-### 手写promise.finally
-
-``` javascript
-Promise.prototype.finally = function(callback) {
-  const P = this.constructor;
-  return this.then(
-    value => P.resolve(callback()).then(() => value),
-    reason => P.resolve(callback()).then(() => { throw reason })
-  );
-}
 ```
 
 ### 使用Promise实现：限制异步操作的并发个数，并尽可能快的完成全部

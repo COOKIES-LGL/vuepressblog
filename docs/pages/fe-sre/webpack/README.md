@@ -19,13 +19,12 @@ Webpack 在构建过程中会触发一系列的生命周期事件，开发者可
 可以通过 npm install --production 实现仅安装 dependencies 中的依赖
 
 [一篇详解webpack](https://zhuanlan.zhihu.com/p/443964387)  
-[webpack打包原理详解](https://www.pipipi.net/30583.html/amp)
 [参考编写一个loader和plugins](https://pcaaron.github.io/pages/fe/webpack/plugin.html#%E6%8F%92%E4%BB%B6%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86)  
 [webpack-Loader详解](https://zhuanlan.zhihu.com/p/397174187)  
 [webpack5持久缓存](https://segmentfault.com/a/1190000041726881?sort=votes)  
 [深度解析webpack打包流程](https://www.pipipi.net/30583.html/amp)  
 [webpack与rollup背后的acorn](https://www.zhihu.com/tardis/bd/art/149323563)  
-
+[webpack5的新增特性](https://blog.csdn.net/qq_17175013/article/details/119769033)
 ### 动态匹配配置信息
 
 如果要根据 webpack.config.js 中的 mode 变量更改打包行为，则必须将配置导出为函数，而不是导出对象：
@@ -138,6 +137,7 @@ syncHook.call("古茗前端");
 同步的钩子要用 call 方法来触发异步的钩子需要用 callAsync 或 promise 异步方法来触发。
 - callAsync：当我们用 callAsync 方法来调用 hook 时，第二个参数是一个回调函数，回调函数的参数是执行任务的最后一个返回值  
 - promise：当我们用 promise 方法来调用 hook 时，需要使用 then 来处理执行结果，参数是执行任务的最后一个返回值。  
+
 
 
 ### MarkDown 使用指南

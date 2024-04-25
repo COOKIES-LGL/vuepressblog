@@ -48,7 +48,7 @@ Promise.resolve()
 ```
 
 
-### Promise.all 失败之后依然可以往下执行
+### 实现Promise.all 失败之后依然可以往下执行
 
 ``` javascript
 let p11 = Promise.resolve(1)

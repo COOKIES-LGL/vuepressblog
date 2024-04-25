@@ -491,3 +491,18 @@ setTimeout(() => {
 ``` javascript
 [].every(item => item) // true
 ```
+
+### 检测浏览器是否支持sticky
+``` typescript
+function checkIsSupportSticky() {
+    const testNode = document.createElement('div');
+    return ['', '-webkit-'].some(prefix => {
+        testNode.style.position = prefix + 'sticky';
+        return testNode.style.position !== '';
+    });
+}
+```
+
+### requestAnimationFrame回调函数参数时间
+requestAnimationFrame回调函数的参数rafTime接近一帧的开始时间。
+performance.now()输出的值接近回调函数的开始执行时间。
