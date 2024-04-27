@@ -2,8 +2,9 @@
 sidebar: auto
 ---
 [Typescript工具类型](https://mp.weixin.qq.com/s?__biz=MzU2MTIyNDUwMA==&mid=2247496918&idx=1&sn=1cf004f0a4091e37bfadff5f360c6326&chksm=fc7eba8dcb09339b09a6868c4ef6acfe08d063f3cc17eb3d36986a05221b4a3fedcf8a815475)
-### Partial
+[Typescript类型体操](https://www.jianshu.com/p/276a7d596744)
 
+### Partial
 ``` typescript
 interface PullDownRefreshConfig {
   threshold: number;
@@ -17,6 +18,7 @@ interface PullDownRefreshConfig {
  */ 
 type PullDownRefreshOptions = Partial<PullDownRefreshConfig>
 ```
+
 ### Required
 ``` typescript
 interface PullDownRefreshConfig {
@@ -322,5 +324,6 @@ class Person {
 _name = new WeakMap();
 ```
 通过观察上述代码，使用 # 号定义的 ECMAScript 私有字段，会通过 WeakMap 对象来存储，同时编译器会生成 __classPrivateFieldSet 和 __classPrivateFieldGet 这两个方法用于设置值和获取值。
+
 ### 参考链接
 [深入TS装饰器](https://mp.weixin.qq.com/s?__biz=MzI2MjcxNTQ0Nw==&mid=2247484552&idx=1&sn=fe548e36a4fcda8e103ae6a5cb6cec41&chksm=ea47a5d0dd302cc6fef0c6eab2e585aed4563e90a97a21094ee00d871d9cddaa7a2ba881533c&scene=21#wechat_redirect)
