@@ -138,15 +138,15 @@ const lockThrottleFn = <T extends Function>(fn: T, name = ''): T => {
 ```
 
 ### 无效 useCallback useMemo
-```
+::: tip
 只有当前组件的所有属性都被缓存时，才可以使用useCallback缓存函数 只有当父组件的所有属性都被缓存时，才可以使用useMemo缓存子组件或对象
-```
+:::
 
 ### HOC 类型声明
-::: tip
+``` typescript
 React.FC<React.PropsWithChildren<IProps>>
 Children: React.ComponentType<any>
-:::
+```
 
 ### useReducer和useContext的结合可以取代Redux?
 ::: tip
