@@ -419,3 +419,40 @@ css.support("display: flex") // true、 false
 
 ### onAnimationEnd 事件会冒泡传递
 监听的内部元素有动画事件会提前触发执行，导致执行时机不合理
+
+
+### CSS变量
+
+``` html
+<html>
+  <head>
+    <style>
+    .div1 {
+      width: var(--Demo);
+      height: 200px;
+      background: red;
+      position: relative;
+      left: 0;
+      animation: s 2s infinite
+    }
+
+    @keyframes s {
+      0% {
+        left: 0
+      }
+      50% {
+        left: calc(100% - var(--Demo, 100px))
+        /* var第二个参数是默认值 */
+      }
+      100% {
+        left: 0
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <div class="div1" style="--Demo: 120px"></div>
+  </body>
+</html>
+
+```

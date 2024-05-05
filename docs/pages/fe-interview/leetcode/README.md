@@ -8,7 +8,6 @@ sidebar: false
 
 ``` javascript
 function limitRequest(urlArr, max) {
-
     const urls = [].concat(urlArr);
     let currentUrls = urls.splice(0, 3)
     let currentPromises = currentUrls.map(url => loadImg(url));

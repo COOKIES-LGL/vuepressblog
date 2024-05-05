@@ -73,9 +73,13 @@ rel="noopener"
 
 ``` html
 <script src="user.com/index.js" crossorigin ></script>
+- anonymous - 执行跨源请求。不发送凭据
 - 加载了具有crossorigin属性的跨域js脚本，这样就可以获取到user.com/index.js中的具体错误信息了。
 - crossorigin会让浏览器启用CORS访问检查，检查http响应头的Access-Control-Allow-Origin
 ```
+
+### Script error.
+浏览器只允许同域下的脚本捕获具体的错误信息。其它脚本只知道发生了一个错误，而不知具体发生了什么错误
 
 ### integrity
 

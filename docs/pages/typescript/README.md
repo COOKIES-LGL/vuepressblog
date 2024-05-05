@@ -3,7 +3,7 @@ sidebar: auto
 ---
 [Typescript工具类型](https://mp.weixin.qq.com/s?__biz=MzU2MTIyNDUwMA==&mid=2247496918&idx=1&sn=1cf004f0a4091e37bfadff5f360c6326&chksm=fc7eba8dcb09339b09a6868c4ef6acfe08d063f3cc17eb3d36986a05221b4a3fedcf8a815475)
 [Typescript类型体操](https://www.jianshu.com/p/276a7d596744)
-
+[tsconfig moduleResolution](https://juejin.cn/post/7276408879364948028)
 ### Partial
 ``` typescript
 interface PullDownRefreshConfig {
