@@ -83,7 +83,7 @@ NodeJS文件系统遍历工具：fast-glob
 [文档](https://ts-morph.com/utilities)
 
 ### chokidar
-极简高效的跨平台文件监视库
+极简高效的跨平台文件监视库 封装 Node.js 监控文件系统文件变化功能
 [知乎教程](https://zhuanlan.zhihu.com/p/601689232?utm_id=0)
 
 ### yargs 命令行参数处理工具
@@ -99,6 +99,10 @@ NodeJS文件系统遍历工具：fast-glob
 [@oclif/command](https://zhuanlan.zhihu.com/p/54538055)
 
 ### cosmiconfig 读取项目配置信息
+
+### cron node 维护定时任务
+
+### amqplib node 维护消息队列
 
 ### @loadable/component
 应用程序，组件查分懒加载   

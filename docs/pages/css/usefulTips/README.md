@@ -456,3 +456,11 @@ css.support("display: flex") // true、 false
 </html>
 
 ```
+
+### 移动浏览器中vh变成静态值并且不反映视口的实际高度，当页面展示隐藏地址栏时，dvh 它始终会适应视口大小,
+
+``` css
+.my-page {
+     height: 100dvh
+}
+```

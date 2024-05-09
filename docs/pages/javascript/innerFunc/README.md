@@ -194,3 +194,14 @@ function callback (e) {
 document.addEventListener('mousedown', callback);
 document.addEventListener('mouseup', controller.abort);
 ```
+
+### 文件分片
+
+``` javascript
+var reader = new FileReader();
+reader.readAsArrayBuffer(file);
+reader.addEventListener("load", function(e) {
+    //每10M切割一段,这里只做一个切割演示，实际切割需要循环切割，
+    var slice = e.target.result.slice(0, 10*1024*1024);
+});
+```

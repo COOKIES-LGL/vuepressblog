@@ -137,6 +137,21 @@ const lockThrottleFn = <T extends Function>(fn: T, name = ''): T => {
 
 ```
 
+### useEvent 获取地址不变的函数
+``` typescript
+export function usePersistFn<T extends (...args: any[]) => any>(fn: T) {
+  const fnRef = useRef<T>(fn);
+  fnRef.current = fn;
+
+  const persistFn = useCallback((...args: any[]) => {
+      return fnRef.current?.(...args);
+  }, []);
+
+  return persistFn as any as T;
+}
+```
+
+
 ### 无效 useCallback useMemo
 ::: tip
 只有当前组件的所有属性都被缓存时，才可以使用useCallback缓存函数 只有当父组件的所有属性都被缓存时，才可以使用useMemo缓存子组件或对象

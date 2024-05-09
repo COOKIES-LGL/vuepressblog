@@ -67,19 +67,19 @@ function subGroup(arr, len) {
 ### 进制转化
 ``` javascript 
 1.其他进制转十进制
-parseInt("16",16)    变量/声明我是几进制
-parseInt("12",8)
-parseInt("1010",2) 
+变量/声明我是几进制
+parseInt("16",16) // 22
+parseInt("12",8)  // 10
+parseInt("1010",2) // 10
 2.十进制转其他进制
 var v1 = 24;
-v1.toString(16)     //转16进制
-v1.toString(8)      //转8进制 
-v1.toString(2)      //转2进制
-v1.toString(10)     //转10进制
+v1.toString(16)     //转16进制 18
+v1.toString(8)      //转8进制  30
+v1.toString(2)      //转2进制  11000
+v1.toString(10)     //转10进制 24
 
 parseInt(num,2).toString(8)      //2进制转8进制
 parseInt(num,8).toString(2)     //8进制转2进制
-
 ```
 
 ``` javascript
@@ -100,7 +100,7 @@ parseInt(num,8).toString(2)     //8进制转2进制
   }
 ```
 
-
+### 快速排序
 ``` javascript
 // 快速排序
 function quickSort( arr ) {
@@ -116,6 +116,7 @@ function quickSort( arr ) {
 
 ```
 
+### 归并排序
 ``` javascript
 // 归并排序
 function mergeSort(arr) { //采用自上而下的递归方法
@@ -252,6 +253,7 @@ var values = [3,4,5],
 console.log(knapSack(weights,values,capacity,n));
 ```
 
+### 最长递增子序列
 ``` javascript
 // 最长递增子序列
 var getSequence = function(nums) {
@@ -276,6 +278,7 @@ var getSequence = function(nums) {
 getSequence([3, 7, 22, 4, 8, 13, 9, 11, 12]);
 ```
 
+### 找零钱问题
 ``` javascript
 // 找零钱问题
 //动态规划 -- 硬币找零问题
@@ -340,9 +343,11 @@ var n = coins.length
 console.log(minCoins(coins,total,n));
 ```
 
+### 最长公共子序列
 ``` javascript
 // 动态规划 -- 最长公共子序列
 // T[i][j] 计算，记住口诀：相等左上角加一，不等取上或左最大值
+// T[i][j] 表示text1前i个元素和text2前j个元素的公共子序列长度
 function longestCommonSubsequence(text1, text2) {
     const m = text1.length;
     const n = text2.length;
@@ -366,6 +371,7 @@ const str2 = "ace";
 console.log(longestCommonSubsequence(str1, str2)); // 输出：3
 ```
 
+### 最大公共子串
 ``` javascript
 // 最大公共子串
 function findSubStr(str1, str2){
@@ -391,6 +397,7 @@ console.log(findSubStr("aaa3333", "baa333cc")); // aa333
 console.log(findSubStr("aaaX3333--", "baa333ccX3333333x")) // X3333
 ```
 
+### 字符串最小编辑距离
 ``` javascript
 // 字符串最小编辑距离
 var minDistance = function(word1, word2) {
@@ -413,7 +420,7 @@ var minDistance = function(word1, word2) {
 };
 ```
 
-
+### 字符串排列
 ``` javascript
 // 字符串排列
 function Permutation(str)
@@ -470,6 +477,7 @@ function permutate(arr) {
 permutate([['A','B'], ['a','b'], [1, 2]])
 ```
 
+### 维数组全排列组合
 ``` javascript
 // 二维数组全排列组合
 const getResult = (arr1, arr2) => {
@@ -494,6 +502,7 @@ const getResult = (arr1, arr2) => {
 const findAll = arr => arr.reduce((total, current) => getResult(total, current), []);
 ```
 
+### 称砝码
 ``` javascript
 // 称砝码
 let line1 = readline();
@@ -521,6 +530,7 @@ for (let i = 0; i < fama.length; i++) {
 console.log(kind.size)
 ```
 
+### 迷宫问题
 ``` javascript
 // 迷宫问题
 // 递归调用，每次判断上下左右四方向； 走过路径标记为1，直到最终到达终点
@@ -548,6 +558,8 @@ function find(i,j,road){
 find(0,0,[])
 
 ```
+
+### 矩阵乘法
 ``` javascript
 // 矩阵乘法
 // 第一行包含一个正整数x，代表第一个矩阵的行数
@@ -606,6 +618,7 @@ while(n = readline()){
 
 ```
 
+###  反转链表
 ``` javascript
 // 反转链表
 class Node {
@@ -628,6 +641,7 @@ const reverseLinkedList = head => {
 }
 ```
 
+### 分苹果
 ``` javascript
 // 分苹果
 let  str;
@@ -793,6 +807,92 @@ var generateParenthesis = function(n) {
 }
 ```
 
+### 杨辉三角
+
+``` javascript
+// 构建杨辉三角
+// 输入: 5 输出: [ [1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1] ]
+var generate = function(numRows) {
+    var res = [];
+    for (var i=0; i<numRows; i++){
+        var arr = [1];
+        for (var j=1; j<i; j++){
+            arr[j] = res[i-1][j]+res[i-1][j-1];
+        }
+        arr[i] = 1;
+        res.push(arr);
+    }
+    return res;
+};
+// 返回杨辉三角第几行
+var getRow = function(rowIndex) {
+    var res = [1];
+    if (rowIndex==0) return [1];
+    if (rowIndex==1) {
+        return [1,1];
+    }
+    var arr = getRow(rowIndex-1);
+    for (var i=1; i<rowIndex; i++){
+        res[i] = arr[i]+arr[i-1];
+    }
+    res.push(1);
+    return res;
+};
+
+```
+
+### 岛屿的最大面积
+``` javascript
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ * 给你一个正方形二维网格图，其中只包含 0（水）和 1（陆地）。
+ * 岛屿由一组相连的陆地单元格组成，这里的「相连」要求两个陆地单元水平或垂直地相邻即它们有一个共同边。找出并返回岛屿的最大面积
+ */
+var maxAreaOfIsland = function(grid) {
+    let m = grid.length;
+    let n = grid[0].length;
+    let maxArea = 0;
+    
+    function dfs(i, j, area) {
+        if (i < 0 || j < 0 || i >= m || j >= n || grid[i][j] === 0) {
+            return 0;
+        }
+        grid[i][j] = 0; // 标记为0，避免重复计算
+        area++;
+        // 上下左右四个方向深度优先搜索
+        area += dfs(i + 1, j, 0);
+        area += dfs(i - 1, j, 0);
+        area += dfs(i, j + 1, 0);
+        area += dfs(i, j - 1, 0);
+        return area;
+    }
+    
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === 1) {
+                maxArea = Math.max(maxArea, dfs(i, j, 1));
+            }
+        }
+    }
+    return maxArea;
+};
+```
+
+### 判断平衡二叉树
+``` javascript
+var isBalanced = function(root) {
+  if (!root) return true;
+  function depth(node){
+    if (!node) return 0;
+    var left = depth(node.left);
+    var right = depth(node.right);
+    return Math.max(left, right)+1;
+  }
+  if (Math.abs(depth(root.left)-depth(root.right))>1) return false; 
+  return isBalanced(root.left) && isBalanced(root.right);  
+};
+```
 
 ### [最大最小堆](./MinMaxHeap)
 

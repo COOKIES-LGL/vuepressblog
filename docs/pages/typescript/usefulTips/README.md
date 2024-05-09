@@ -257,3 +257,46 @@ const targetElement = document.querySelector('.resize-me');
 // 开始观察目标元素
 resizeObserver.observe(targetElement);
 ```
+
+### tsConfig 配置样式可点击
+``` json
+{
+"plugins": [{ "name": "typescript-plugin-css-modules" }]
+}
+```
+
+### extends infer
+
+``` ts
+// 条件类型（其中extends可以理解为T类型（窄类型）是否是U类型（宽类型）的子类型，或者说T类型是否可以赋值给U类型，
+// 语法同js的三元表达式）
+T extends U ? U : T;
+
+// infer只能在extends类型语句中使用
+// infer存储的变量U只能用于语句的true返回分支
+type UnpackedArray<T> = T extends (infer U)[] ? U : T;
+
+```
+
+### UnpackedArray 获取数组子元素类型
+
+``` ts
+type Arr = string[];
+// 工具类型
+type UnpackedArray<T> = T extends (infer R)[] ？ R : T;
+type newArr = UnpackedArray<Arr>; // string
+```
+
+### 提取链接参数类型
+
+``` ts
+// 1. /分割
+type Split<S extends string> = S extends `/${infer L}/${infer R}` ? L | Split<`/${R}`> : S extends `/${infer L}` ? L : never
+
+// 2， 提取含:的参数
+type PickParams<T extends string> = T extends `:${infer P}` ? P : never
+
+const path = '/transport/ground/detail/:code/:tab' as const
+
+type Params = Record<PickParams<Split<typeof path>>, string> // { code: string; tab: string; }
+```

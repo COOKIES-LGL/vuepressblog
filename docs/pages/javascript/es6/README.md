@@ -44,6 +44,22 @@ wm.get(key)
 // Object {foo: 1}
 ```
 
+### WeakSet与Set的差异
+
+- 对于WeakSet实例，若调用了add()方法时传入了非对象的参数，则会抛出错误。如果在has()或者delete()方法中传入了非对象的参数则会返回false；
+- Weak Set不可迭代，因此不能用于for-of循环；
+- Weak Set 无法暴露出任何迭代器（例如 keys() 与 values() 方法） ，因此没有任何编程手段可用于判断 Weak Set 的内容；
+- Weak Set没有forEach()方法；
+- Weak Set没有size属性；
+
+### WeakMap与Map的差异
+
+- WeakMap的键必须是对象，值可以是任意类型
+- 可以使用has()方法来检查Weak Map中是否存在某一个键值对，使用delete()方法可以删除一个键值对。
+- clear() 方法不存在，
+- Weak Map 只为它们的内容提供了很小的可见度，因此你不能使用 forEach() 方法、size 属性或 clear() 方法来管理其中的项
+- 这是因为没必要对键进行枚举, 并且枚举 Weak Map 也是不可能的
+
 ### 输出结果
 
 ``` javascript

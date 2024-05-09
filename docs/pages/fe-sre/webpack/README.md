@@ -25,6 +25,7 @@ Webpack 在构建过程中会触发一系列的生命周期事件，开发者可
 [深度解析webpack打包流程](https://www.pipipi.net/30583.html/amp)  
 [webpack与rollup背后的acorn](https://www.zhihu.com/tardis/bd/art/149323563)  
 [webpack5的新增特性](https://blog.csdn.net/qq_17175013/article/details/119769033)
+[Https启动服务](https://blog.osvlabs.com/?p=582)
 ### 动态匹配配置信息
 
 如果要根据 webpack.config.js 中的 mode 变量更改打包行为，则必须将配置导出为函数，而不是导出对象：

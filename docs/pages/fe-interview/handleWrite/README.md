@@ -630,13 +630,59 @@ window.addEventListener('message', function (event) {
 }, false);
 ```
 
-### 文件分片
+### 手写lodash常用方法
+
+#### keyBy
+``` javascript
+// Output: {
+//   "1": {
+//     "id": 1,
+//     "name": "月"
+//   },
+//   "2": {
+//     "id": 2,
+//     "name": "shan"
+//   }
+// }
+keyBy(
+  [
+    { id: 1, name: "月" },
+    { id: 2, name: "shan" },
+  ],
+  (x) => x.id,
+);
+function keyBy(list, by) {
+  return list.reduce((acc, x) => {
+    acc[by(x)] = x;
+    return acc;
+  }, {});
+}
+```
+
+#### lodashGet
 
 ``` javascript
-var reader = new FileReader();
-reader.readAsArrayBuffer(file);
-reader.addEventListener("load", function(e) {
-    //每10M切割一段,这里只做一个切割演示，实际切割需要循环切割，
-    var slice = e.target.result.slice(0, 10*1024*1024);
-});
+function lodashGet(object, path, defaultValue) {
+  let obj = object
+  if(typeof path === 'string') {
+    const reg = /[^\[\]""''.]+/g
+    path = path.match(reg)
+  }
+  for(let key of path) {
+    if(!obj) {
+      return defaultValue
+    }
+    obj = obj[key]
+  }
+  return obj
+}
+const object = { a: [{ b: { c: 3 } }] };
+console.log(get(object, 'a[0]["b"]["c"]'));
+const object = { a: [{ b: { c: 3 } }] };
+//=> 3
+get(object, "a[0].b.c");
+//=> 3
+get(object, 'a[0]["b"]["c"]');
+//=> 10086
+get(object, "a[100].b.c", 10086);
 ```
