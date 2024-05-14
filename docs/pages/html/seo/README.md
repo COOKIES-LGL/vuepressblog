@@ -7,10 +7,11 @@
 
 ### 增加站点内部链接和导航
 
+### a标签跳转拦截js进行页面跳转
+
 ### 配置精细的description和keyword meta标签
 
 ### 可以使用Open Graph Protocol（OG）标签来提升社交媒体平台上页面的展示效果
-
 ``` html
 <!DOCTYPE html>
 <html lang="zh-CN" prefix="og: http://ogp.me/ns#">
@@ -39,4 +40,5 @@
 
 ### 使用sitemap
 
-使用sitemap（站点地图），画一张地图，有目的地引导搜索引擎去发掘我们的网站。通常是一个xml文件，可以在线上去生成，也可以本地自己项目里生成
+使用sitemap（站点地图），画一张地图，有目的地引导搜索引擎去发掘我们的网站。  
+通常是一个xml文件，可以在线上去生成，也可以本地自己项目里生成
