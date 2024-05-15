@@ -46,7 +46,6 @@ Function.prototype.myApply = function(context) {
 
 ### 手写Bind 
 ``` javascript
-
 Function.prototype.myBind = function(context) {
   if(typeof this !== 'function') {
     throw new Error('Error Call');
@@ -61,13 +60,11 @@ Function.prototype.myBind = function(context) {
     )
   };
 }
-
 ```
 
 ### 手写深度克隆
 
 ``` javascript
-
 function deepClone(object = {}, map = new map()) {
   if (typeof object !== 'object') {
     return object;
@@ -78,6 +75,9 @@ function deepClone(object = {}, map = new map()) {
   let result = {};
   if (Array.isArray(object) || Object.prototype.toString(obj) === "[object Array]") {
     result = [...object];
+  }
+  if ([Date, RegExp].includes(object.constructor)) {
+    result = new data.constructor(data)
   }
   map.set(object, result);
   for (let item in object) {

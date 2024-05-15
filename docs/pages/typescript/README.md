@@ -4,7 +4,9 @@ sidebar: auto
 [Typescript工具类型](https://mp.weixin.qq.com/s?__biz=MzU2MTIyNDUwMA==&mid=2247496918&idx=1&sn=1cf004f0a4091e37bfadff5f360c6326&chksm=fc7eba8dcb09339b09a6868c4ef6acfe08d063f3cc17eb3d36986a05221b4a3fedcf8a815475)
 [Typescript类型体操](https://www.jianshu.com/p/276a7d596744)
 [tsconfig moduleResolution](https://juejin.cn/post/7276408879364948028)
+
 ### Partial
+
 ``` typescript
 interface PullDownRefreshConfig {
   threshold: number;
@@ -34,7 +36,43 @@ type PullDownRefreshOptions = Partial<PullDownRefreshConfig>
  */
 type PullDownRefresh = Required<Partial<PullDownRefreshConfig>>
 ```
+
+### ReturnType
+
+TypeScript中，你可以使用内置的ReturnType工具类型来获取函数的返回类型
+``` ts
+const multiply = (a: number, b: number): number => a * b;
+ 
+type MultiplyReturnType = ReturnType<typeof multiply>; // 等同于 number
+```
+
+### Pick
+``` ts
+// Pick 的源码
+type Pick<T, K extends keyof T> = {
+    [P in K]: T[P];
+};
+```
+
+### Omit
+``` ts
+// Omit 的源码
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+```
+
+### Extract
+``` ts
+// Extract实现源码 原理很简单
+type Extract<T, U> = T extends U ? T : never;
+// 处理联合类型
+type Test1 = '1' | '2' | '3'
+const obj: Extract<Test1, '1' | '2'> = '1'; // 1,2 OK 赋值3就会error
+```
+
+
+
 ### Typescript装饰器
+
 #### 装饰器语法
 对于一些刚接触 TypeScript 的小伙伴来说，在第一次看到 @Plugin({...}) 这种语法可能会觉得很惊讶。其实这是装饰器的语法，
 装饰器的本质是一个函数，通过装饰器我们可以方便地定义与对象相关的元数据。
