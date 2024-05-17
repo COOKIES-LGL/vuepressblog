@@ -151,51 +151,27 @@ var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
 console.log(mergeSort(arr));
 ```
 
+### 插入排序
 ``` javascript
-// 密码截取 HJ32
-// 主要分为两种情况，对于每个元素，分是否作为中心点考虑，如果是中心点，
-// let l=index-1，let r=index+1，否则的话，let l=index，let r=index+1
-let input=readline()
-let arr=Array.from(input)
-let res=[]
-for(let i=0;i<arr.length;i++){
-    let a=d1(i,arr)
-    let b=d2(i,arr)
-    // console.log(a,b)
-    res[i]=Math.max(a,b)
-}
-console.log(Math.max(...res))
-function d1(index,arr){
-    let l=index-1
-    let r=index+1
-    let count=1
-    while(l>=0&&r<arr.length){
-        if(arr[l]==arr[r]){
-            count+=2
-            l--
-            r++
-        }else{
-            break
+function insertionSort(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        let key = arr[i]; // key 是此次循环需要找到位置的元素
+        let j = i - 1;
+ 
+        // 移动并查找插入的位置
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
         }
+        arr[j + 1] = key;
     }
-    return count
+    return arr;
 }
-function d2(index,arr){
-    let l=index
-    let r=index+1
-    let count=0
-    while(l>=0&&r<arr.length){
-        if(arr[l]==arr[r]){
-            count+=2
-            l--
-            r++
-        }else{
-            break
-        }
-    }
-    return count
-}
-
+ 
+// 示例使用
+const arr = [10, 2, 9, 3, 8, 4, 7, 5, 6];
+const sortedArr = insertionSort(arr);
+console.log(sortedArr); // 输出: [2, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
 
 ### 动态规划
@@ -410,7 +386,11 @@ var minDistance = function(word1, word2) {
         dp.push([])
         for(let j = 0;j <= m;j++){
             if(i*j){
-                dp[i][j] = word1[i-1] == word2[j-1]? dp[i-1][j-1]: (Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]) + 1);
+                if (word1[i-1] == word2[j-1]) {
+                  dp[i][j] = dp[i-1][j-1]
+                } else {
+                  dp[i][j] = (Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]) + 1);
+                }
             }else{
                 dp[i][j] = i + j;
             }
