@@ -54,3 +54,13 @@ touchstart 早于 touchend 早于click。 亦即click的触发是有延迟的，
 ``` css
 input::-webkit-input-speech-button {display: none}
 ```
+
+### ios android 监听键盘弹起事件
+``` js
+   if (window.visualViewport) {
+     window.visualViewport?.addEventListener("resize", listener);
+     window.visualViewport?.addEventListener("scroll", listener);
+   } else {
+     window.addEventListener("resize", listener);
+   }
+```

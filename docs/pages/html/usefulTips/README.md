@@ -85,6 +85,12 @@ rel="noopener"
 
 `integrity`的作用有：避免由【托管在CDN的资源被篡改】而引入的XSS 风险
 
+### http-equiv
+
+HTML 页面中的 <a> 标签 会 自动启用 DNS 提前解析 来提升网站性能，但是在使用 https 协议的网站中失效，可通过设置以下方式进行打开
+``` html
+<meta http-equiv="x-dns-prefetch-control" content="on">
+```
 
 ### 上传预览图片
 

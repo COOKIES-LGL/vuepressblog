@@ -55,5 +55,97 @@ BFCache（Back-Forward Cache）是浏览器的一种机制，在 Safari 和 Chro
 它不是 HTTP 意义上的“缓存”，不是“磁盘缓存”意义上的“缓存”，而是将解码资源保存在内存中，以便在多个网页之间共享。  
 [被忽略的缓存-BFCache](https://cloud.tencent.com/developer/article/2350456?areaId=106001)
 
+### react schedule 原理
+
+``` js
+const localSetTimeout = typeof setTimeout === 'function' ? setTimeout : null;
+const localClearTimeout =
+  typeof clearTimeout === 'function' ? clearTimeout : null;
+const localSetImmediate =
+  typeof setImmediate !== 'undefined' ? setImmediate : null; 
+
+
+let startTime; // 记录开始时间
+let sum = 0
+const currentIndex = 0;  // 当前遍历的索引
+const totalCount = 20000000  
+
+const getCurrentTime = () => Date.now();
+
+// 调度应该被中断吗
+function shouldYieldToHost() {
+  const timeElapsed = getCurrentTime() - startTime;
+  // 如果当前时间减去开始时间小于 5ms, 那么继续调度
+  if (timeElapsed < 5) {
+    return false;
+  }
+  return true;
+}
+
+const performWorkUntilDeadline = () => {
+    const currentTime = getCurrentTime();
+    startTime = currentTime;
+    const hasTimeRemaining = true; // 有剩余时间
+
+    let hasMoreWork = true;
+    try {
+      // 这里执行的函数就是 flushWork，flushWork 如果返回一个 true 那么表示还有任务
+      // 这里的 是 workLoop 循环里 return 的， 如果 return true, 那么表示还有剩余的任务，只是时间用完了，被中断了
+       hasMoreWork = flushWork();
+    } finally {
+      if (hasMoreWork) {
+        schedulePerformWorkUntilDeadline();
+      } else {
+      }
+    }
+  
+};
+
+let schedulePerformWorkUntilDeadline;
+// react 中调度的优先级  setImmediate > MessageChannel > setTimeout
+if (typeof localSetImmediate === 'function') {
+  schedulePerformWorkUntilDeadline = () => {
+    localSetImmediate(performWorkUntilDeadline);
+  };
+} else if (typeof MessageChannel !== 'undefined') {
+  const channel = new MessageChannel();
+  const port = channel.port2;
+  channel.port1.onmessage = performWorkUntilDeadline;
+  schedulePerformWorkUntilDeadline = () => {
+    port.postMessage(null);
+  };
+} else {
+  schedulePerformWorkUntilDeadline = () => {
+    localSetTimeout(performWorkUntilDeadline, 0);
+  };
+}
+
+const flushWork = () => {
+  return workLoop()
+}
+
+const workLoop = () => {
+  while(true) {
+      try {
+        work()
+      } catch (error) {
+      }finally {
+        if(currentIndex < totalCount) {
+          return true
+        } else {
+          return false
+        }
+      }
+  }
+}
+const work = () => {
+  for(let currentIndex = 0; currentIndex <  totalCount && !shouldYieldToHost(); currentIndex++) {
+    sum += currentIndex
+  }
+}
+performWorkUntilDeadline()
+```
+
+
 ### MarkDown使用指南
 *  [MarkDown](../blog-daily/use-markdown)  <span style="color:#bbb; float:right">2021-06-24</span>
