@@ -90,3 +90,9 @@ a[c]='c';
 console.log(a[b]); // c
 ```
 
+``` js
+let person = { name: "Lydia" };
+const members = [person];
+person = null;
+console.log(members); // [{ name: "Lydia" }]
+```

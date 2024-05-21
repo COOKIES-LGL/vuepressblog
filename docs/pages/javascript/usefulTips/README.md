@@ -1,18 +1,23 @@
-### 解构赋值移除属性
-
-```javascript
-// 移除对象中的某个属性
-let obj = { x: 45, y: 72, z: 68, p: 98 };
-
-// Longhand
-delete obj.x;
-delete obj.p;
-console.log(obj); // {y: 72, z: 68}
-
-// Shorthand
-let { x, p, ...newObj } = obj;
-console.log(newObj); // {y: 72, z: 68}
+### 通过枚举值获取下拉options
+``` javascript
+// 通过枚举值获取下拉options
+export const getOptionsFromEnum = (enumParams: object) => {
+  if (!enumParams) return []
+  const storeSet = new Set()
+  const returnList = Object.entries(enumParams).map(item => {
+    if (storeSet.has(item[1].toString())) {
+      return {
+        label: item[0],
+        value: item[1]
+      }
+    }
+    storeSet.add(item[0].toString())
+    return null
+  })
+  return returnList.filter(item => item)
+}
 ```
+
 ### URL这个对象解析路由参数
 ```javascript
 // 使用 URL 这个对象，URL 接口用于解析，构造，规范化和编码 URLs，用它可以很方便的获取链接上的 query 参数。
@@ -44,6 +49,7 @@ const bottomBtn = document.getElementById(bottom - btn);
 observer.observe(btn);
 observer.observe(bottomBtn);
 ```
+
 ### requestAnimationFrame的优势
 ```javascript
 // 监控卡顿的fps 如果浏览器卡顿，无法很好地保证渲染的频率，1s 中 frame 无法达到 60 帧
@@ -72,6 +78,7 @@ requestAnimationFrame 比起 setTimeout、setInterval 的优势主要有三点�
 3、requestAnimationFrame 默认返回一个 id，cancelAnimationFrame 只需要传入这个 id 就可以停止了.  
 :::
 
+### for循环中多个条件关系
 ::: tip
 for循环中，当不用&&和||申明多个条件时，默认的是或者关系。
 :::
@@ -87,35 +94,12 @@ function middleware(nextCallback) {
     return void nextCallback();
   }
 }
-
-这让我想到了 void 最重要的通途：它是你程序的安全门。当你的函数总是应该返回 undefined 时，你可以确保始终如此。
-
+// 这让我想到了 void 最重要的通途：它是你程序的安全门。当你的函数总是应该返回 undefined 时，你可以确保始终如此。
 button.onclick = () => void doSomething();
 ```
 
-### 函数劫持, 增强函数
-
-```javascript
-// 原始函数
-var saveLog = function (log) {
-  console.log(`我保存了日志：${log}`);
-};
-
-// 1-保存原有函数
-var originSaveLog = saveLog;
-
-// 2-改写原有函数
-saveLog = function () {
-  const args = Array.prototype.slice.call(arguments);
-  // 3-在改写后的函数中执行原有函数的逻辑
-  originSaveLog.apply(null, args);
-  console.log('我要劫持你这个函数，用来做自己的事情');
-};
-
-saveLog('test Save Log');
-```
-
 ### compositionstart 和 compositionend
+
 利用 compositionstart 和 compositionend 可以知道中文输入什么时候开始和结束。
 
 ```vue
@@ -146,8 +130,7 @@ export default {
         'The Wealth of Nations',
         '战争与和平',
         '海底两万里',
-        '三国演义',
-        '嫌疑人X的献身',
+        '三国演义'
       ],
       lock: false,
     };
@@ -229,13 +212,10 @@ let type = new URLSearchParams(location.search).get('type');
 ```
 
 ### 全屏展示Dom元素
+- requestFullscreen：系统上以全屏模式显示所选元素，会关闭其他应用程序以及浏览器和系统 UI 元素。
+- exitFullscreen：退出全屏模式并切换到正常模式。
+[全屏展示Dom](https://juejin.cn/post/7133096500753596446#heading-2)
 
-``` javascript
-// requestFullscreen：系统上以全屏模式显示所选元素，会关闭其他应用程序以及浏览器和系统 UI 元素。
-// exitFullscreen：退出全屏模式并切换到正常模式。
-// 鲜为人知但很实用的Web API
-// https://juejin.cn/post/7133096500753596446#heading-2
-```
 
 ### Event、EventTarget、Node、Document、HTMLElement的关系
 
@@ -257,7 +237,8 @@ try {
 } catch (e) {
     console.error('error');
 }
-// 这里的错误将无法被捕获，try-catch 只能捕获到当前调用栈中的错误，而 setTimeout 作为一个宏任务将会脱离外层 try-catch 调用栈运行，导致无法被外层 try-catch 所捕获。
+// 这里的错误将无法被捕获，try-catch 只能捕获到当前调用栈中的错误，而 setTimeout 作为一个宏任务将会脱离外层 try-catch 调用栈运行，
+// 导致无法被外层 try-catch 所捕获。
 ```
 
 ``` javascript
@@ -272,7 +253,8 @@ console.log(
         }
     })()
 );
-// 打印出 finally.在你想要跳出代码块时：如 try、catch 中存在 return、break 等等语句时，finally 将会霸道的拦截跳出语句，这就导致如果你在 try 或 catch 中存在跳出语句，而在 finally 中同样存在跳出语句，那你的 try、catch 块中的跳出语句将永远无法运行。
+// 打印出 finally.在你想要跳出代码块时：如 try、catch 中存在 return、break 等等语句时，finally 将会霸道的拦截跳出语句，
+// 这就导致如果你在 try 或 catch 中存在跳出语句，而在 finally 中同样存在跳出语句，那你的 try、catch 块中的跳出语句将永远无法运行。
 ```
 
 ### 创建不继承Object.prototype的对象
@@ -311,7 +293,6 @@ const isGif = async (file: File): Promise<boolean> => {
   const ret = await blobToString(file.slice(0, 4));
   return ret === "47 49 46 38";
 };
-
 const blobToString = (blob: Blob): Promise<string> => {
   return new Promise(resolve => {
     const reader = new FileReader();
@@ -331,11 +312,6 @@ const blobToString = (blob: Blob): Promise<string> => {
     // 还存在readAsArrayBuffer、readAsDataURL、readAsText
   });
 };
-```
-
-``` javascript
-window.requestIdleCallback();
-// 时间切片，让浏览器在空闲的时候去做一些事情
 ```
 
 ### structuredClone
@@ -403,7 +379,6 @@ function test2() {
   console.log("test", baseCount);
 }
 test2();
-
 ```
 
 ### 使用void 0 替换undefined
@@ -419,7 +394,6 @@ void 0===undefined
 ```
 
 ### 串行执行多个接口
-
 ``` javascript
 const requestAry = [() => api.request1(), () => api.request2(), () => api.request3()];
 const finallyPromise = requestAry.reduce(
@@ -450,7 +424,6 @@ console.log(sizeInMB + " MB");
 ```
 
 ### 取消fetch请求
-
 ``` javascript
 // 取消fetch
 const controller = new AbortController();
@@ -474,7 +447,6 @@ void (async function () {
     });
     const { data } = response;
 })();
-
 setTimeout(() => {
     controller.abort();
 }, 1000);
