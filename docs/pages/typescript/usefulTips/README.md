@@ -123,11 +123,8 @@ export interface ITag {
 const reg = /[^0-9]/g;
 
 reg.test('a')  // true
-
 reg.lastIndex // 1
-
 reg.test('a') // false
-
 reg.lastIndex // 0
 
 ```

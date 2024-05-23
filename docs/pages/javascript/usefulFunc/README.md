@@ -228,18 +228,39 @@ dayDiff(new Date("2021-10-21"), new Date("2022-02-12"))
  ### 10、getEnumOptions 从枚举值获取下拉选项列表
 
  ``` javascript
-var getEnumOptions = function getEnumOptions(obj) {
-  return entries(obj).filter(function (_ref) {
-    var val = _ref[1];
-    return typeof val === 'number';
-  }).map(function (_ref2) {
-    var label = _ref2[0],
-        value = _ref2[1];
-    return {
-      label: label,
-      value: value,
-      key: value
-    };
-  });
-};
+export const getOptionsFromEnum = (enumParams: object) => {
+  if (!enumParams) return []
+
+  const storeSet = new Set()
+  const returnList = Object.entries(enumParams).reduce((acc, [key, value]) => {
+    if (storeSet.has(value.toString())) {
+      acc.push({ label: key, value })
+    } else {
+      storeSet.add(key)
+    }
+    return acc
+  }, [] as any)
+  return returnList
+}
+```
+
+### 使用符号 *，我们引入文件中的所有值，包括默认和具名。
+如果我们有以下文件：
+``` js
+// info.js
+export const name = "Lydia";
+export const age = 21;
+export default "I love JavaScript";
+// index.js
+import * as info from "./info";
+console.log(info);
+```
+
+将会输出以下内容
+```json
+{
+  default: "I love JavaScript",
+  name: "Lydia",
+  age: 21
+}
 ```

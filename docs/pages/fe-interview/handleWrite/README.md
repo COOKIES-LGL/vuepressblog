@@ -65,27 +65,33 @@ Function.prototype.myBind = function(context) {
 ### 手写深度克隆
 
 ``` javascript
-function deepClone(object = {}, map = new map()) {
-  if (typeof object !== 'object') {
-    return object;
+function deepClone(oldObject, map = new WeakMap()) {
+  if (map.has(oldObject)) return map.get(oldObject)
+  let newObject = Array.isArray(oldObject) ? [] : {}
+  // 一、拷贝基本数据类型
+  // 判断是否为基本数据类型
+  if (typeof oldObject !== 'object' || oldObjectType === '[object Null]') {
+    newObject = oldObject
   }
-  if (map.get(object)) {
-    return map.get(object);
+    // 六、拷贝函数
+  if (oldObjectType === '[object Function]') {
+    newObject = oldObject
   }
-  let result = {};
-  if (Array.isArray(object) || Object.prototype.toString(obj) === "[object Array]") {
-    result = [...object];
+
+  // 七、拷贝值为symbol类型的数据
+  if (oldObjectType === '[object Symbol]') {
+    newObject = Symbol(oldObject.description)
   }
-  if ([Date, RegExp].includes(object.constructor)) {
-    result = new data.constructor(data)
+
+  // 八、拷贝时间类型
+  if (oldObjectType === '[object Date]') {
+    newObject = new Date(oldObject)
   }
-  map.set(object, result);
-  for (let item in object) {
-    if (object.hasOwnProperty(item)) {
-      result[item] = deepClone(object[item], map);
-    }
+  map.set(oldObject, newObject)
+  for (const key in oldObject) {
+    newObject[key] = deepClone(oldObject[key], map)
   }
-  return result;
+  return newObject
 }
 
 ```

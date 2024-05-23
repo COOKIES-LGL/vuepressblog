@@ -21,7 +21,7 @@ Symbol.hasInstance对应的外部方法是instanceof，这个大家熟悉吧，�
 :::
 
 ### flatMap
-使用这个内置方法代替filter and map
+只能增加数组元素不能减少
 ``` javascript
 const arr1 = [1, 2, 1];
 
@@ -81,3 +81,30 @@ function Foo() {
 Foo(); // throws "Foo() must be called with new"
 new Foo(); // logs "Foo instantiated with new"
 ```
+
+
+### for await 异步迭代器
+
+``` js
+async function* myAsyncIterator() {
+  yield 1;
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  yield 2;
+  yield 3;
+}
+
+async function main() {
+  for await (let value of myAsyncIterator()) {
+    console.log(value);
+  }
+}
+main();
+```
+
+### FileReader
+
+如果想要读取Blob或者文件对象并转化为其他格式的数据，可以借助FileReader对象的API进行操作
+
+- FileReader.readAsText(Blob)：将Blob转化为文本字符串
+- FileReader.readAsArrayBuffer(Blob)：将Blob转为ArrayBuffer格式数据
+- FileReader.readAsDataURL(): 将Blob转化为Base64格式的Data URL
