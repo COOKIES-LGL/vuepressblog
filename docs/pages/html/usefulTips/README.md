@@ -51,43 +51,42 @@ rel="prerender" 预渲染
 <p spellcheck="true"></p>
 
 <!-- HTML中的loading属性是一个新的属性，它可以用于指定浏览器在加载资源时的优先级。lazy、eager、auto -->
-<Img src="./src/imag.png" loading="lazy">
+<Img src="./src/img.png" loading="lazy">
 
 <!-- onerror是一个JavaScript事件处理程序， JavaScript错误时触发。 -->
-<Img src="./src/imag.png" onerror="()=> {console.log('发生错误')}">
+<Img src="./src/img.png" onerror="()=> {console.log('发生错误')}">
 ```
 
 ### dns-prefetch、preconnect、Preload、prefetch
 
 ::: tip
-由于dns-prefetch 仅执行 DNS查找，不像preconnect 会建立与服务器的连接.如果页面需要建立与许多第三方域的连接，则将它们预先连接会适得其反。 preconnect 提示最好仅用于最关键的连接。对于其他的，只需使用 <link rel="dns-prefetch"> 即可节省第一步的时间DNS查找
-
+由于dns-prefetch 仅执行 DNS查找，不像preconnect 会建立与服务器的连接.如果页面需要建立与许多第三方域的连接，则将它们预先连接会适得其反。 
+preconnect 提示最好仅用于最关键的连接。对于其他的，只需使用 `<link rel="dns-prefetch">` 即可节省第一步的时间DNS查找
 Preload 与 prefetch 不同的地方就是它专注于当前的页面，并以高优先级加载资源，Prefetch 专注于下一个页面将要加载的资源并以低优先级加载。同时也要注意 preload 并不会阻塞 window 的 onload 事件。
 :::
 
 #### 防盗链
-rel="noreferrer"
-rel="noopener"
+- rel="noreferrer"
+- rel="noopener"
 
 ### crossorigin
 
-``` html
-<script src="user.com/index.js" crossorigin ></script>
 - anonymous - 执行跨源请求。不发送凭据
 - 加载了具有crossorigin属性的跨域js脚本，这样就可以获取到user.com/index.js中的具体错误信息了。
 - crossorigin会让浏览器启用CORS访问检查，检查http响应头的Access-Control-Allow-Origin
+``` html
+<script src="user.com/index.js" crossorigin ></script>
 ```
 
 ### Script error.
 浏览器只允许同域下的脚本捕获具体的错误信息。其它脚本只知道发生了一个错误，而不知具体发生了什么错误
 
 ### integrity
-
-`integrity`的作用有：避免由【托管在CDN的资源被篡改】而引入的XSS 风险
+integrity的作用有：避免由【托管在CDN的资源被篡改】而引入的XSS 风险
 
 ### http-equiv
 
-HTML 页面中的 <a> 标签 会 自动启用 DNS 提前解析 来提升网站性能，但是在使用 https 协议的网站中失效，可通过设置以下方式进行打开
+HTML 页面中的 `<a>` 标签 会 自动启用 DNS 提前解析 来提升网站性能，但是在使用 https 协议的网站中失效，可通过设置以下方式进行打开
 ``` html
 <meta http-equiv="x-dns-prefetch-control" content="on">
 ```
@@ -160,10 +159,10 @@ function downloadFile(fileUrl,fileName){
 ### HTML details 标签
 
 ``` html
- <details>
-    <summary>
-      文章概要
-    </summary>
-    <div>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</div>
-  </details>
+<details>
+  <summary>
+    文章概要
+  </summary>
+  <div>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</div>
+</details>
 ```

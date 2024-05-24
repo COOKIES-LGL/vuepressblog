@@ -6,7 +6,6 @@
 其它情况setTimeout会先于setImmediate执行
 :::
 
-
 #### node 多进程
 
 它一般有两种实现：
@@ -45,3 +44,18 @@ PM2是一个内建了负载均衡器的node进程管理工具，可以利用它�
 
 [PM2官网](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)
 
+
+### express-sslify express 配置证书
+``` js
+const express = require('express');
+const sslify = require('express-sslify');
+const app = express();
+// ... 其他中间件和路由配置 ...
+// 使用sslify中间件
+app.use(sslify());
+// 启动服务器
+const port = process.env.PORT || 443;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
+```
