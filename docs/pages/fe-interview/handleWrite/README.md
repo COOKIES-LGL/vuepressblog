@@ -70,7 +70,8 @@ function deepClone(oldObject, map = new WeakMap()) {
   let newObject = Array.isArray(oldObject) ? [] : {}
   // 一、拷贝基本数据类型
   // 判断是否为基本数据类型
-  if (typeof oldObject !== 'object' || oldObjectType === '[object Null]') {
+  const oldObjectType = typeof oldObject
+  if (oldObjectType !== 'object') {
     newObject = oldObject
   }
     // 六、拷贝函数
@@ -78,6 +79,10 @@ function deepClone(oldObject, map = new WeakMap()) {
     newObject = oldObject
   }
 
+  // 六、拷贝数组
+  if (Array.isArray(obj)) {
+    return obj.map(item => deepClone(item));
+  }
   // 七、拷贝值为symbol类型的数据
   if (oldObjectType === '[object Symbol]') {
     newObject = Symbol(oldObject.description)
@@ -89,7 +94,9 @@ function deepClone(oldObject, map = new WeakMap()) {
   }
   map.set(oldObject, newObject)
   for (const key in oldObject) {
-    newObject[key] = deepClone(oldObject[key], map)
+    if (oldObject.hasOwnProperty(key)) {
+      newObject[key] = deepClone(oldObject[key], map)
+    }
   }
   return newObject
 }

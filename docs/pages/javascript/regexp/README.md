@@ -18,3 +18,11 @@
 环视结果标记的是一个位置
 
 ### \b 单词字间位置  \B 非字间
+
+### 匹配字符串
+``` js
+export const getRegion = (): 'eu' | 'us' => {
+  const reg = /settle-search-(.+?)\./
+  return location?.host?.match(reg)?.[1] as any // settle-search-us.com 会获取到us地区
+}
+```
