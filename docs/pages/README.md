@@ -14,7 +14,7 @@ home: false
 * [Redis Elastic](./redis-kafaka-elastic)  <span style="color:#bbb; float:right">2021-06-20</span>
 * [Vue](./vue)  <span style="color:#bbb; float:right">2021-06-10</span>
 * [React](./react)  <span style="color:#bbb; float:right">2021-06-13</span>
-* [React-Native](./react-native)  <span style="color:#bbb; float:right">2021-06-13</span>
+* [React Native](./react-native)  <span style="color:#bbb; float:right">2021-06-13</span>
 * [Typescript](./typescript)  <span style="color:#bbb; float:right">2021-06-15</span>
 * [Node](./node)  <span style="color:#bbb; float:right">2021-06-30</span>
 * [Django](./django)  <span style="color:#bbb; float:right">2021-06-30</span>

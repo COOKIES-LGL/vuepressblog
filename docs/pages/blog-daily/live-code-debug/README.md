@@ -30,10 +30,10 @@ sidebar: auto
 ``` javascript
 module.exports = {
   COUNTRY: 'sg',
-  shopeeEnvironment: 'live'
+  shopEnvironment: 'live'
 };
 ```
 2、使用 yarn dev 或 npm start 命令启动本地项目。
-3、打开浏览器访问 https://seller.shopee.sg。
+3、打开浏览器访问 https://seller.shop.sg。
 4、修改本地文件后重新刷新浏览器。
 5、当需要切换国家或者 staging 和 live 时，修改 environment.local.js 即可。

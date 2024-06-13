@@ -43,7 +43,7 @@ w2 stop //启动
 
 ::: tip
 // 可根据不同环境要求自行调整域名和环境等信息
-/^https:\/\/(seller\.|banhang\.)(.*\.)?shopee\.(com\.)?.*?\/(.*)/ localhost:4200/$4 excludeFilter:///(.*)?\/api\/.*/ excludeFilter:///favicon\.ico/ excludeFilter:///registration\/static\/translation/ 
+/^https:\/\/(seller\.|banhang\.)(.*\.)?shop\.(com\.)?.*?\/(.*)/ localhost:4200/$4 excludeFilter:///(.*)?\/api\/.*/ excludeFilter:///favicon\.ico/ excludeFilter:///registration\/static\/translation/ 
 excludeFilter:///\/account\/signin/ excludeFilter:///pfb/
 :::
 
@@ -65,7 +65,7 @@ excludeFilter:///\/account\/signin/ excludeFilter:///pfb/
 **SwitchyOmega 配置**  
 新增情景模式（代理服务器） 命名：Whistle 配置代理协议： http 代理服务器：127.0.0.1 代理端口： 8899
 
-新增情景模式（切换规则） 命名： SellerCenter 条件配置：seller..shopee. 情景模式: 选择Whistle
+新增情景模式（切换规则） 命名： SellerCenter 条件配置：seller.shop. 情景模式: 选择Whistle
 
 可以按照配置多个项目的转发规则，灵活切换
 
