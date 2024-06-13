@@ -7,7 +7,6 @@ sideBar: false;
 ``` python
 class Foo(models.Model): 
     bar = models.CharField(maxlength=30)
-
     class Meta: 
         # ...
 ```
@@ -54,16 +53,16 @@ order_with_respect_to = 'pizza'
 ordering
 这个字段是告诉Django模型对象返回的记录结果集是按照哪个字段排序的。比如下面的代码：
 
-复制代码
+
 ordering=['order_date'] 
-# 按订单升序排列
+## 按订单升序排列
 ordering=['-order_date'] 
-# 按订单降序排列，-表示降序
+## 按订单降序排列，-表示降序
 ordering=['?order_date'] 
-# 随机排序，？表示随机
+## 随机排序，？表示随机
 ordering = ['-pub_date', 'author']
-# 对 pub_date 降序,然后对 author 升序
-复制代码
+## 对 pub_date 降序,然后对 author 升序
+
 需要注意的是:不论你使用了多少个字段排序, admin 只使用第一个字段
 
 permissions

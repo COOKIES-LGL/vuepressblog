@@ -1,3 +1,7 @@
+---
+home: false
+sidebar: false
+---
 
 ### nodejs多进程spawn execFile exec fok方法的区别
 ::: tip

@@ -1,3 +1,7 @@
+---
+home: false
+sidebar: false
+---
 
 ::: tip
 当setTimeOut不设置时间时

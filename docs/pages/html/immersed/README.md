@@ -23,3 +23,20 @@ meta.setAttribute('content', '#颜色值');
 
 ### 获取到状态栏高度后，就可以设置页面的根布局组件的 paddingTop 值了
 
+### H5开发获取键盘是否显示
+``` js
+function isInput(element: Element | null) {
+    return element && ['INPUT', 'TEXTAREA'].includes(element.tagName.toUpperCase());
+}
+
+// 获取键盘是否显示
+export function isKeyboardShow() {
+    return isInput(document.activeElement);
+}
+
+// 隐藏键盘
+export function hideKeyboard() {
+    // @ts-ignore
+    isInput(document.activeElement) && document.activeElement.blur();
+}
+```

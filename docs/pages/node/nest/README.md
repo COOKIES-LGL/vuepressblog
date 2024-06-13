@@ -1,0 +1,4 @@
+---
+home: false
+sidebar: false
+---

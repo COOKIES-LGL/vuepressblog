@@ -34,10 +34,6 @@ let bar: Bar; // ok
 // 所有 mixins 都需要
 type Constructor<T = {}> = new (...args: any[]) => T;
 
-/////////////
-// mixins 例子
-////////////
-
 // 添加属性的混合例子
 function TimesTamped<TBase extends Constructor>(Base: TBase) {
   return class extends Base {

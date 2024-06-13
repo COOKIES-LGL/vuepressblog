@@ -45,6 +45,16 @@ rel="prerender" 预渲染
 <link rel="prefetch" href="https://xxx.com/"> 
 ```
 
+### httpEquiv 设置缓存
+``` html
+<meta httpEquiv='Cache-Control' content='no-cache'>
+```
+::: tip
+需要注意的是，虽然 httpEquiv='Cache-Control' 可以在 HTML 中设置缓存控制，但它的效果可能不如在 HTTP 响应头中设置的 Cache-Control 字段，
+因为不是所有的代理服务器都会尊重 HTML 中的缓存控制指令。因此，在生产环境中，通常建议在服务器端配置正确的 HTTP 响应头来控制缓存。
+:::
+
+
 ### 实用HTML 属性
 ``` html
 <!-- HTML中的Spellcheck属性是用于指定元素是否启用拼写检查的属性。 -->

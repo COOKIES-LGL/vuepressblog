@@ -1,4 +1,8 @@
 
+---
+home: false
+sidebar: false
+---
 
 ## Vue SSR 内存泄漏排查
 
