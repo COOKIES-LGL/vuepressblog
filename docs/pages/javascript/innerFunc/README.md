@@ -7,7 +7,6 @@
 （2）undefined  includes能识别到稀疏数组中的undefined，indexOf不可以
 3.字符串和数组中的indexOf方法比较：字符串会进行类型转换，数组会严格匹配（===）
 4.字符串和数组中的includes方法比较：字符串会进行类型转换，数组会严格匹配（===）
-
 ```  
 
 ### 内置数组方法的效率
@@ -188,7 +187,7 @@ const controller = new AbortController();
 function callback (e) {
   document.addEventListener('mousemove',  (e) => {
   },{
-        signal: controller.signal  
+      signal: controller.signal  
   });
 }
 document.addEventListener('mousedown', callback);
@@ -203,5 +202,19 @@ reader.readAsArrayBuffer(file);
 reader.addEventListener("load", function(e) {
     //每10M切割一段,这里只做一个切割演示，实际切割需要循环切割，
     var slice = e.target.result.slice(0, 10*1024*1024);
+});
+```
+
+### 一次性的事件监听
+``` js
+const handler = function (e) {};
+ele.addEventListener('event-name', handler, { once: true });
+```
+
+### 检测元素之外的点击
+``` js
+document.addEventListener('click', function (evt) {
+    // isClickedOutside 为 true 如果点击的元素在 ele 之外
+    const isClickedOutside = !ele.contains(evt.target);
 });
 ```

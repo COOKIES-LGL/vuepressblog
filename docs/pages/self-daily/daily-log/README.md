@@ -18,7 +18,8 @@ sidebar: false
 - [再遇谢小宝15天](./2023-04-21) <span style="color:#bbb; float:right">2023-04-21</span>
 - [深圳攻略](./2023-05-01) <span style="color:#bbb; float:right">2023-05-01</span>
 - [上海迪士尼](./2023-06-02) <span style="color:#bbb; float:right">2023-06-02</span>
-- [见家长](./2023-06-22) <span style="color:#bbb; float:right">2023-06-22</span>
+- [初见家长](./2023-06-22) <span style="color:#bbb; float:right">2023-06-22</span>
+- [深夜有感](./2024-06-12) <span style="color:#bbb; float:right">2024-06-12</span>
 
 <style>
 @media screen and (min-width: 400px) {
