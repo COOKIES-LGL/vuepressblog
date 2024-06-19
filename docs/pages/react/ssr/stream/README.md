@@ -37,7 +37,7 @@ SSR —— Server Side Render 即在用户请求页面时，页面的后台服�
 - SSR 环境下不会执行 `componentDidMount` 生命周期
 - SSR 环境是静态渲染 —— 即不会有任何 update state 发生，因此也不会执行 `componentDidUpdate` 或类似的生命周期
 - SSR 环境在 Nodejs runtime 执行，不会有 `window`、`document` 等 BOM 或 DOM API，在 Node 环境下运行这些代码会导致**渲染出错**，请确保正确使用 BOM 和 DOM
-- 当 SSR 失败，页面会自动降级到 CSR 渲染，此时 框架 传递给页面组件的 fetch 状态一开始为 `pending`，然后更新为 `resolved`，换句话说，框架也是通过 state 异步传递接口数据的，因此使用接口数据请做好判空校验，最佳实践请查看[发送请求](/docs/usage/fetch)
+- 当 SSR 失败，页面会自动降级到 CSR 渲染，此时 框架 传递给页面组件的 fetch 状态一开始为 `pending`，然后更新为 `resolved`，换句话说，框架也是通过 state 异步传递接口数据的，因此使用接口数据请做好判空校验
 :::
 
 ## 从 SSR 到 Stream SSR
@@ -73,7 +73,7 @@ SSR —— Server Side Render 即在用户请求页面时，页面的后台服�
 
 首屏 DOM 渲染包含浏览器下载 HTML、解析 HTML、构建 DOM&CSSOM、调用 [Skia](https://skia.org/) 图像绘制引擎绘制页面，在整个过程中，HTML 字节数量都与上述步骤强相关。因此，**减少首屏 HTML 字节数量 (即首屏 HTML 体积) 是优化首屏 DOM 渲染耗时的核心手段**。
 
-商家移动端将页面 HTML size 指标阈值制定为 100K 以下。为此，框架提供了 [useLazyLoad Hooks](/docs/api/useLazyLoad) 和[ LazyLoad 懒加载组件 ](/docs/api/useLazyLoad)共业务方使用，延迟非首屏内容渲染。同时在团队内多次分享，宣导长列表页面优化手段。
+商家移动端将页面 HTML size 指标阈值制定为 100K 以下。为此，使用 [useLazyLoad Hooks]共业务方使用，延迟非首屏内容渲染。同时在团队内多次分享，宣导长列表页面优化手段。
 
 ## 总结
 

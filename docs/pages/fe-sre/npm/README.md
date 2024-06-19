@@ -104,9 +104,15 @@ NodeJS文件系统遍历工具：fast-glob
 
 ### amqplib node 维护消息队列
 
+### @better-scroll/core 核心滚动，实现基础的列表滚动效
+
+### @loadable/server
+
 ### @loadable/component
 应用程序，组件查分懒加载   
-Enable Code Splitting in your React application. 
+Enable Code Splitting in your React application. [文档](https://loadable-components.com/)
+
+### 
 
 ### generator-eslint 自定义eslint规则生成器
 [generator-eslint](https://github.com/eslint/generator-eslint)
