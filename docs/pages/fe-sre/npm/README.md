@@ -106,6 +106,10 @@ NodeJS文件系统遍历工具：fast-glob
 
 ### @better-scroll/core 核心滚动，实现基础的列表滚动效
 
+### patch-package 用与修复npm包的工具，允许你在不修改原始包的情况下进行补丁
+
+### resize-observer-polyfill 提供浏览器的resize事件监听
+
 ### @loadable/server
 
 ### @loadable/component

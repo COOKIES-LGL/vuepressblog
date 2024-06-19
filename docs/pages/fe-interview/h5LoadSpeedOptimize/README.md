@@ -91,5 +91,8 @@
 ### DisableTranslate 禁止翻译
 [disableTranslate](./disableTranslate)
 
-### 
+### preloadLinks 预加载链接
 [preloadLinks](./preloadLinks)
+
+### smallScroll 流畅滚动
+[smallScroll](./smallScroll)
