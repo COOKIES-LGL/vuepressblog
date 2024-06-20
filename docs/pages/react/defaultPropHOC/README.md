@@ -100,8 +100,8 @@ function updateNode(node, nextVal) {
 // 执行函数
 function updateFunctionComponent(vnode, parentNode) {
     const {type, props} = vnode;
-    let vvnode = type(props);
-    const node = createNode(vvnode, parentNode);
+    let vnode = type(props);
+    const node = createNode(vnode, parentNode);
     return node;
 }
 
@@ -110,8 +110,8 @@ function updateFunctionComponent(vnode, parentNode) {
 function updateClassComponent(vnode, parentNode) {
     const {type, props} = vnode;
     let cmp = new type(props);
-    const vvnode = cmp.render();
-    const node = createNode(vvnode, parentNode);
+    const vnode = cmp.render();
+    const node = createNode(vnode, parentNode);
     return node;
 }
 export default {

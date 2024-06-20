@@ -1,0 +1,21 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignoreRegExpList": [
+    "key: '\\w+'"
+  ],
+  "ignorePaths": [
+    ".vscode/**",
+  ],
+  "words": [
+    "dompurify"
+  ],
+  "flagWords": [
+    "hte"
+  ],
+  "ignoreWords": [
+    "typeof",
+    "vnode",
+    "oclif"
+  ]
+}

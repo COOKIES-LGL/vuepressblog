@@ -61,3 +61,91 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 ```
+
+###  HTTP Range 实现文件分片并发下载
+``` js
+const express = require('express');
+const fs = require('fs');
+const app = express();
+ 
+app.get('/length',(req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.end('' + fs.statSync('./guangguang.png').size);
+})
+
+app.options('/', (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Range')
+    res.end('');
+});
+
+app.get('/', (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.download('guangguang.png', {
+        acceptRanges: true
+    })
+})
+
+app.listen(3000, () => {
+    console.log(`server is running at port 3000`)
+})
+```
+
+``` html
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <script src="https://www.unpkg.com/axios@1.3.5/dist/axios.min.js"></script>
+ </head>
+ <body>
+     <img id="img"/>
+     <script>
+         async function concurrencyDownload(path, size, chunkSize) {
+             let chunkNum = Math.ceil(size / chunkSize);
+ 
+             const downloadTask = [];
+             for(let i = 1; i <= chunkNum; i++) {
+                 const rangeStart = chunkSize * (i - 1);
+                 const rangeEnd = chunkSize * i - 1;
+ 
+                 downloadTask.push(axios.get(path, {
+                     headers: {
+                         Range: `bytes=${rangeStart}-${rangeEnd}`,
+                     },
+                     responseType: 'arraybuffer'
+                 }))
+             }
+             const arrayBuffers = await Promise.all(downloadTask.map(task => {
+                 return task.then(res => res.data)
+             }))
+             return mergeArrayBuffer(arrayBuffers);
+         }
+ 
+         function  mergeArrayBuffer(arrays) {
+             let totalLen = 0;
+             for (let arr of arrays) {
+                 totalLen += arr.byteLength;
+             }
+             let res = new Uint8Array(totalLen)
+             let offset = 0
+             for (let arr of arrays) {
+                 let uint8Arr = new Uint8Array(arr)
+                 res.set(uint8Arr, offset)
+                 offset += arr.byteLength
+             }
+             return res.buffer
+         }
+ 
+         (async function() {
+             const { data: len } = await axios.get('http://localhost:3000/length');
+             const res = await concurrencyDownload('http://localhost:3000', len, 300000);
+             console.log(res)
+             const blob = new Blob([res]);
+             const url = URL.createObjectURL(blob);
+             img.src =url;
+         })();
+     </script>
+ </body>
+ </html>
+
+```
