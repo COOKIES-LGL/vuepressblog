@@ -454,7 +454,6 @@ setTimeout(() => {
 ```
 
 ### 字符串比较大小
-
 而当字符串长度大于1的时候比较则是逐位进行，因此'5'>'10'进行比较时，首先比较第一位也就是'5'>'1'，  
 如果有结果则返回，没有结果则继续比较第二位。所以'5'>'10'的结果与'5'>'1'相同，也是true。
 
@@ -476,5 +475,10 @@ function checkIsSupportSticky() {
 ```
 
 ### requestAnimationFrame回调函数参数时间
-requestAnimationFrame回调函数的参数rafTime接近一帧的开始时间。
-performance.now()输出的值接近回调函数的开始执行时间。
+- requestAnimationFrame回调函数的参数rafTime接近一帧的开始时间。
+- performance.now()输出的值接近回调函数的开始执行时间。
+
+### 比较 reject / throw
+- 如果 Promise 内有异步回调函数，我们就不能在回调函数内使用 throw，因为 catch() 不会识别它，我们将在输出中得到一个错误。
+- throw 抛出异常后，函数执行将退出， 而 reject 不会， 后面代码会继续执行。
+- reject 需要与 promise 一起使用, 而 throw 可以结果 try/catch 在任意代码中使用。
