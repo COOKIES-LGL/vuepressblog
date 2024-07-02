@@ -139,7 +139,26 @@ syncHook.call("古茗前端");
 - callAsync：当我们用 callAsync 方法来调用 hook 时，第二个参数是一个回调函数，回调函数的参数是执行任务的最后一个返回值  
 - promise：当我们用 promise 方法来调用 hook 时，需要使用 then 来处理执行结果，参数是执行任务的最后一个返回值。  
 
+### webpack 插件 webpack.ProvidePlugin
+项目中用到的变量/函数/库或工具，只要配置后就可以在任何地方使用了  
+``` ts
+const webpack = require('webpack');
 
+module.exports = {
+  // 其他配置...
+  plugins: [
+    new webpack.ProvidePlugin({
+      React: 'react',
+      dayjs: 'dayjs',
+      // 假设项目中自己定义的utils.js在src目录下
+      Utils: path.resolve(__dirname, 'src/utils.js')
+})
+    })
+  ]
+  // 其他配置...
+};
+
+```
 
 ### MarkDown 使用指南
 
