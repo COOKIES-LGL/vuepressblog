@@ -3,7 +3,7 @@
 
 #### rel="alternate"
 
-* alternate 是交替、替换，标识链接有替换内容
+alternate 是交替、替换，标识链接有替换内容
 ``` html
 <!-- 可以用来告知 SEO、屏幕阅读器有 H5 端 -->
 <link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.xxx.com/" />
@@ -21,9 +21,9 @@ document.querySelector('link[href="red.css"]').disabled = false;
 
 ``` html
 <link rel="canonical" href="https://edu.51cto.com" />
+```
 指定规范网页，用在 link 中; 告知搜索引擎，以哪个地址为规范版本，降低其他地址的抓取频率
 比如你的站点可以通过多个域名访问、或者既有移动端又有 PC 端，这时候就能设定你想要的地址为搜索引擎优化抓取
-```
 
 #### rel="nofollow"
 
@@ -31,11 +31,11 @@ document.querySelector('link[href="red.css"]').disabled = false;
 比如首页，应该只保留列表页，详情页，友链的链接追踪；对于如logo回到首页，一些不重要的链接进入登录后的页面等，均需要设置 nofollow
 
 #### DNS 优化
-rel="dns-prefetch" DNS 预读取
-rel="preconnect" DNS 预链接
-rel="preload" 强制浏览器提前加载资源 优先级为 high
-rel="prefetch" 资源预拉取 优先级为 low
-rel="prerender" 预渲染
+- rel="dns-prefetch" DNS 预读取
+- rel="preconnect" DNS 预链接
+- rel="preload" 强制浏览器提前加载资源 优先级为 high
+- rel="prefetch" 资源预拉取 优先级为 low
+- rel="prerender" 预渲染
 
 ``` html
 <meta http-equiv="x-dns-prefetch-control" content="on"> 
@@ -59,10 +59,8 @@ rel="prerender" 预渲染
 ``` html
 <!-- HTML中的Spellcheck属性是用于指定元素是否启用拼写检查的属性。 -->
 <p spellcheck="true"></p>
-
 <!-- HTML中的loading属性是一个新的属性，它可以用于指定浏览器在加载资源时的优先级。lazy、eager、auto -->
 <Img src="./src/img.png" loading="lazy">
-
 <!-- onerror是一个JavaScript事件处理程序， JavaScript错误时触发。 -->
 <Img src="./src/img.png" onerror="()=> {console.log('发生错误')}">
 ```
@@ -129,27 +127,22 @@ BroadcastChannel 只能在相同的源（origin）下工作, 不需要使用 Bro
 ::: 
 
 ``` javascript
-
 const channel = new BroadcastChannel('myChannel');
-
 channel.addEventListener('message', event => {
   console.log('Received message:', event.data);
 });
-
 channel.postMessage('Hello, other windows!');
-
 ```
 
 
 ### a标签下载
 ::: tip
 download设置文件名 跨域情况下，download将不会起作用.  
-可以使用axios通过blob形式拉取资源
+可以使用axios通过blob形式拉取资源.
 :::
 
 ``` javascript
 import axios from 'axios';
-
 function downloadFile(fileUrl,fileName){
   axios.get(fileUrl, { responseType: "blob" }).then(response => {
       const blob = new Blob([response.data]);

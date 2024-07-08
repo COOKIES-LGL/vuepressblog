@@ -18,3 +18,6 @@
 
 ### AI 赋能
 [AI副业赚钱资讯](https://github.com/bleedline/aimoneyhunter?tab=readme-ov-file#%E5%85%B3%E4%BA%8E%E5%90%88%E9%9B%86)
+
+### 通用API
+[全国实时公交API](http://bus.wxbus163.cn/app/index.php?i=1&c=entry&do=index&m=mon_yjgz)

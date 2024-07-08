@@ -163,7 +163,7 @@ nginx操作运行中的进程方法一般是通过发送信号-s，有以下几�
 （2）特点：服务端收到的请求全部来自于代理服务器，如此一来起到了隐藏客户端的效果，和服务端进行信息交流的全部都是正向代理服务器。
 
 （3）应用：翻墙
- <img :src="$withBase('./images/daily-blog/nginx-proxy-1.png')">  
+<img :src="$withBase('./images/daily-blog/nginx-proxy-1.png')">  
 
 ### Nginx反向代理（代理服务端）
 

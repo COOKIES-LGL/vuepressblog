@@ -157,26 +157,26 @@ a(port1);
 1、AbortController可以用来终止一个或多个Web请求
 
 ``` javascript
-  const controller = new AbortController();   // 新建一个AbortController实例
-  let signal = controller.signal;    // signal是AbortController实例的属性
+const controller = new AbortController();   // 新建一个AbortController实例
+let signal = controller.signal;    // signal是AbortController实例的属性
 
-  const downloadBtn = document.querySelector('.download');
-  const abortBtn = document.querySelector('.abort');
+const downloadBtn = document.querySelector('.download');
+const abortBtn = document.querySelector('.abort');
 
-  downloadBtn.addEventListener('click', fetchVideo);
+downloadBtn.addEventListener('click', fetchVideo);
 
-  abortBtn.addEventListener('click', function () {
-      controller.abort();  // 调用abort方法
-      console.log('Download aborted');
-  })
+abortBtn.addEventListener('click', function () {
+    controller.abort();  // 调用abort方法
+    console.log('Download aborted');
+})
 
-  function fetchVideo() {
+function fetchVideo() {
+  //...
+  fetch(url, {signal}).then(function(response) {
     //...
-    fetch(url, {signal}).then(function(response) {
-      //...
-    }).catch(function(e) {
-      console.error('e', e);
-    })
+  }).catch(function(e) {
+    console.error('e', e);
+  })
 }
 ```
 

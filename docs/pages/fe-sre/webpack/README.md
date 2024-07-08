@@ -34,16 +34,13 @@ var config = {
   entry: './app.js',
   //...
 };
-
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
     config.devtool = 'source-map';
   }
-
   if (argv.mode === 'production') {
     //...
   }
-
   return config;
 };
 ```
@@ -110,18 +107,14 @@ Tapable 是一个类似于 Node.js 中的 EventEmitter 的库，但它更专注�
 
 ``` javascript
 const { SyncHook } = require("tapable");
-
 // 实例化 钩子函数 定义形参
 const syncHook = new SyncHook(["name"]);
-
 //通过tap函数注册事件
 syncHook.tap("同步钩子1", (name) => {
   console.log("同步钩子1", name);
 });
-
 //同步钩子 通过call 发布事件
-syncHook.call("古茗前端");
-
+syncHook.call("那兔前端");
 ```
 通过上面的例子，我们大致可以将 Tapable 的使用分为以下三步:
 
@@ -143,7 +136,6 @@ syncHook.call("古茗前端");
 项目中用到的变量/函数/库或工具，只要配置后就可以在任何地方使用了  
 ``` ts
 const webpack = require('webpack');
-
 module.exports = {
   // 其他配置...
   plugins: [
@@ -152,7 +144,6 @@ module.exports = {
       dayjs: 'dayjs',
       // 假设项目中自己定义的utils.js在src目录下
       Utils: path.resolve(__dirname, 'src/utils.js')
-})
     })
   ]
   // 其他配置...

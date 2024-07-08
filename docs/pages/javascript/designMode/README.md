@@ -1,7 +1,8 @@
-## javascript设计模式
+## javascript 设计模式
 
 ### 单例模式
 ``` javascript
+// 方式一
 function class1(name) {
   console.log('class1', name);
 }
@@ -36,10 +37,10 @@ Singleton.prototype.getName = function() {
 };
 // 获取实例对象
 Singleton.getInstance = function(name) {
-        if (!this.instance) {
-            this.instance = new Singleton(name)
-        }
-        return this.instance
+    if (!this.instance) {
+        this.instance = new Singleton(name)
+    }
+    return this.instance
 }
 //测试单例模式的实例
 var a = Singleton.getInstance('aa')
@@ -265,10 +266,10 @@ let UserFactory = function(role) {
             throw new Error('参数错误,可选参数:superAdmin,admin,user')
     }
 }
-
 UserFactory('admin');
 
 ```
+
 ``` javascript
 // 安全模式创建的工厂方法函数
  let UserFactory = function(role) {
@@ -333,7 +334,8 @@ let dec = new Decorator(circle)
 dec.draw()
 
 ```
-``` javascript
+
+``` ts
 function testDec(isDec) {
   return function (target) {
     target.isDec = isDec
@@ -345,9 +347,9 @@ class Demo {
 
 }
 alert(Demo.isDec) // false
-
 ```
 
+### 洋葱模型
 ``` javascript
 // 洋葱模型
 function Koa () {
@@ -425,8 +427,6 @@ function _request () {
   }, 3000))
 }
 
-// 原本想使用 class extends Promise 来实现
-// 结果一直出现这个问题 https://github.com/nodejs/node/issues/13678
 function createPauseControllerPromise () {
   const result = {
     isPause: false,
