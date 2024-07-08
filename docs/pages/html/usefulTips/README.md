@@ -159,6 +159,22 @@ function downloadFile(fileUrl,fileName){
 
 ```
 
+### script标签
+
+1、当script同时存在行内代码和外部文件引用时，则只会下载外部文件而去忽略行内代码  
+2、浏览器在解析行内脚本的过程中，看到字符串</script>，会将其当成结束的</script>标签。目前测试下来只有这个标签作为字符串才会出现。解决就是使用转义字符\,将</script>转义成<\/script>
+``` html
+<script>
+   function sayScript() {
+     console.log('</script>')
+   }
+   sayScript()
+</script>
+```
+3、如果页面是通过https协议启动的，那么src只能使用https协议，如果页面是http协议启动那么https/http协议都可以使用
+
+
+
 ### HTML details 标签
 
 ``` html

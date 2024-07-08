@@ -36,3 +36,20 @@ module.exports = {
 ::: tip
 有些三方包没有默认导出 可以使用import * as babel from 'babel/core' 进行导入
 :::
+
+### plugin
+
+``` bash
+npm i -D unplugin-auto-import
+```
+是基于 unimport 开发，这个插件可以帮助开发者在代码中直接使用Vue核心库的功能，而不需要显式地导入它们。
+``` ts
+// vite.config.ts
+import AutoImport from 'unplugin-auto-import/vite'
+
+export default defineConfig({
+  plugins: [
+    AutoImport({ /* options */ }),
+  ],
+})
+```

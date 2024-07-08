@@ -148,8 +148,17 @@ module.exports = {
   ]
   // 其他配置...
 };
-
 ```
+
+### Farm 新一代构建工具
+::: tip
+Farm 是一个非常快的基于 Rust 的 Web 构建工具，类似 webpack 和 vite，但更快。
+farm resolve, load, transform 所有 asset(js/jsx/ts/tsx、css/sass/less、html、静态资源、json 等)，并将它们打包成一系列可部署文件。
+创建项目  
+``` bash
+npm create farm@latest
+```
+:::
 
 ### MarkDown 使用指南
 
