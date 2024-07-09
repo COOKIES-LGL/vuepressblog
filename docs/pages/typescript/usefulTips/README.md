@@ -45,11 +45,9 @@ function TimesTamped<TBase extends Constructor>(Base: TBase) {
 function Activatable<TBase extends Constructor>(Base: TBase) {
   return class extends Base {
     isActivated = false;
-
     activate() {
       this.isActivated = true;
     }
-
     deactivate() {
       this.isActivated = false;
     }
@@ -59,22 +57,18 @@ function Activatable<TBase extends Constructor>(Base: TBase) {
 ///////////
 // 组合类
 ///////////
-
 // 简单的类
 class User {
   name = '';
 }
-
 // 添加 TimesTamped 的 User
 const TimestampedUser = TimesTamped(User);
-
 // Tina TimesTamped 和 Activatable 的类
 const TimestampedActivatableUser = TimesTamped(Activatable(User));
 
 //////////
 // 使用组合类
 //////////
-
 const timestampedUserExample = new TimestampedUser();
 console.log(timestampedUserExample.timestamp);
 
@@ -86,11 +80,11 @@ console.log(timestampedActivatableUserExample.isActivated);
 ### 添加废弃注解
 ``` typescript
 {
-    /**
-     * @deprecated 该属性即将禁用，请使用 style属性
-     */
-    className?: string;
-    onClick: () => void;
+  /**
+   * @deprecated 该属性即将禁用，请使用 style属性
+   */
+  className?: string;
+  onClick: () => void;
 }
 
 ```
@@ -117,12 +111,10 @@ export interface ITag {
 当我们在使用字面量创建了一个正则表达式的时候，相当于初始化了一个对象，这个对象上有一个叫做lastIndex的属性
 ``` javascript
 const reg = /[^0-9]/g;
-
 reg.test('a')  // true
 reg.lastIndex // 1
 reg.test('a') // false
 reg.lastIndex // 0
-
 ```
 
 ### tsconfig.json大括号报错
@@ -137,7 +129,7 @@ reg.lastIndex // 0
 
 ### tsconfig.json references
 
-:::tip
+::: tip
 references指定工程引用依赖。在多子项目中共享配置文件
 :::
 
@@ -181,11 +173,12 @@ module.exports = {
 - 1 可以使用 import * as fs from 'fs'
 - 2 或者在tsconfig.json的compilation填加属性"esModuleInterop": true
 
-### Cannot find module '*'. Did you mean to set the 'moduleResolution' option to 'node'
+### Cannot find module '*' Error
+Cannot find module '*'. Did you mean to set the 'moduleResolution' option to 'node'
 -1 在tsconfig.json的compilation填加属性"moduleResolution": "node"
 
 ::: tip
-模块解析策略（ moduleResolution）更多描述的是一个模块包括相对路径以及非相对路径（也就是第三方库，亦或者说 npm 包）是按照怎样的规则去查找的
+模块解析策略（moduleResolution）更多描述的是一个模块包括相对路径以及非相对路径（也就是第三方库，亦或者说 npm 包）是按照怎样的规则去查找的
 现在支持的值有三个classic、node
 * classic 简单来说这种模块解析策略就是一直递归往上找同名文件，当前目录找不到同名文件就往父级目录找。不过这种策略目前前端界用得不多
 * 相比于 classic 策略的区别在于：

@@ -1,10 +1,10 @@
 ---
 sidebar: auto
 ---
-[Typescript工具类型](https://mp.weixin.qq.com/s?__biz=MzU2MTIyNDUwMA==&mid=2247496918&idx=1&sn=1cf004f0a4091e37bfadff5f360c6326&chksm=fc7eba8dcb09339b09a6868c4ef6acfe08d063f3cc17eb3d36986a05221b4a3fedcf8a815475)
-[Typescript类型体操](https://www.jianshu.com/p/276a7d596744)
-[tsconfig moduleResolution](https://juejin.cn/post/7276408879364948028)
-
+[Typescript工具类型](https://mp.weixin.qq.com/s?__biz=MzU2MTIyNDUwMA==&mid=2247496918&idx=1&sn=1cf004f0a4091e37bfadff5f360c6326&chksm=fc7eba8dcb09339b09a6868c4ef6acfe08d063f3cc17eb3d36986a05221b4a3fedcf8a815475)  
+[Typescript类型体操](https://www.jianshu.com/p/276a7d596744)  
+[tsconfig moduleResolution](https://juejin.cn/post/7276408879364948028)  
+[ts实用小技巧](./usefulTips/README.md)  
 ### Partial
 
 ``` typescript
@@ -87,6 +87,7 @@ const obj: Extract<Test1, '1' | '2'> = '1'; // 1,2 OK 赋值3就会error
 @Injectable()
 export class Device extends IonicNativePlugin {}
 ```
+
 在以上代码中，我们通过装饰器来保存 ionic-native 插件的相关元信息，而 @Plugin({...}) 中的 @ 符号只是语法糖，
 为什么说是语法糖呢？这里我们来看一下编译生成的 ES5 代码：
 ``` typescript
@@ -117,7 +118,11 @@ var Device = /** @class */ (function (_super) {
 ```
 通过生成的代码可知，@Plugin({...}) 和 @Injectable() 最终会被转换成普通的方法调用，它们的调用结果最终会以数组的形式作为参数传递给 __decorate 函数，而在 __decorate 函数内部会以 Device 类作为参数调用各自的类型装饰器，从而扩展对应的功能。
 #### 装饰器的分类
-在 TypeScript 中装饰器分为 *类装饰器*、*属性装饰器*、*方法装饰器*和*参数装饰器*四大类。
+在 TypeScript 中装饰器分为 
+> 类装饰器*  
+> 属性装饰器*  
+> 方法装饰器*  
+> 参数装饰器*  
 
 #### 类装饰器
 类装饰器声明：
@@ -144,20 +149,19 @@ class Greeting {
 let myGreeting = new Greeting();
 myGreeting.greet(); // console output: 'Hello Semlinker!';
 ```
-上面的例子中，我们定义了 Greeter 类装饰器，同时我们使用了 @Greeter 语法糖，来使用装饰器。
-::: warn
+上面的例子中，我们定义了 Greeter 类装饰器，同时我们使用了 @Greeter 语法糖，来使用装饰器。  
+::: warning
 友情提示：读者可以直接复制上面的代码，在 TypeScript Playground 中运行查看结果。
 :::
 
 #### 属性装饰器
 属性装饰器声明：
 ``` typescript
-declare type PropertyDecorator = (target:Object, 
-  propertyKey: string | symbol ) => void;
+declare type PropertyDecorator = (target:Object, propertyKey: string | symbol ) => void;
 ```
 属性装饰器顾名思义，用来装饰类的属性。它接收两个参数：
-target: Object - 被装饰的类
-propertyKey: string | symbol - 被装饰类的属性名
+- target: Object - 被装饰的类
+- propertyKey: string | symbol - 被装饰类的属性名
 ``` typescript
 function logProperty(target: any, key: string) {
   delete target[key];
@@ -208,10 +212,9 @@ declare type MethodDecorator = <T>(target:Object, propertyKey: string | symbol,
   descriptor: TypePropertyDescript<T>) => TypedPropertyDescriptor<T> | void;
 ```
 方法装饰器顾名思义，用来装饰类的方法。它接收三个参数：
-
-target: Object - 被装饰的类
-propertyKey: string | symbol - 方法名
-descriptor: TypePropertyDescript - 属性描述符
+- target: Object - 被装饰的类
+- propertyKey: string | symbol - 方法名
+- descriptor: TypePropertyDescript - 属性描述符
 废话不多说，直接上例子：
 ``` typescript
 function LogOutput(tarage: Function, key: string, descriptor: any) {
@@ -249,9 +252,9 @@ declare type ParameterDecorator = (target: Object, propertyKey: string | symbol,
   parameterIndex: number ) => void
 参数装饰器顾名思义，是用来装饰函数参数，它接收三个参数：
 
-target: Object - 被装饰的类
-propertyKey: string | symbol - 方法名
-parameterIndex: number - 方法中参数的索引值
+// target: Object - 被装饰的类
+// propertyKey: string | symbol - 方法名
+// parameterIndex: number - 方法中参数的索引值
 function Log(target: Function, key: string, parameterIndex: number) {
   let functionLogged = key || target.prototype.constructor.name;
   console.log(`The parameter in position ${parameterIndex} at ${functionLogged} has
@@ -301,7 +304,7 @@ let person = new Person("Semlinker");
 console.log(person.name);
 ```
 在上面代码中，我们创建了一个 Person 类，该类中使用 private 修饰符定义了一个私有属性 name，接着使用该类创建一个 person 对象，然后通过 person.name 来访问 person 对象的私有属性，这时 TypeScript 编译器会提示以下异常：
-** Property 'name' is private and only accessible within class 'Person'.(2341) **
+>> Property 'name' is private and only accessible within class 'Person'.(2341)  
 那如何解决这个异常呢？当然你可以使用类型断言把 person 转为 any 类型：
 
 console.log((person as any).name);
