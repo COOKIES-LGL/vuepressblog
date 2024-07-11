@@ -18,8 +18,8 @@ vite-plugin-inspect
 对AST 字符串做轻量替换
 
 ### vite-plugin-checker
-vite插件用来运行时校验typescrip类型
-(使用文档)[https://vite-plugin-checker.netlify.app/introduction/introduction.html]
+vite插件用来运行时校验typescript类型
+[使用文档](https://vite-plugin-checker.netlify.app/introduction/introduction.html)
 
 
 ### class-validator
@@ -31,7 +31,7 @@ https://www.npmjs.com/package/cspell
 
 ### ansi-escapes 
 
-(ansi-escapes)[https://www.npmjs.com/search?q=ansi-escapes]
+[ansi-escapes](https://www.npmjs.com/search?q=ansi-escapes)
 我们经常需要对终端输出进行控制，比如清空终端、移动光标等操作。而 npm 包 ansi-escapes 就是一个非常实用的工具，它提供了一系列 ANSI 转义码，可以让我们方便地对终端输出进行控制。
 
 - ansiEscapes.cursorTo(x, y)：将光标移动到指定位置（x, y）处。
@@ -43,4 +43,4 @@ https://www.npmjs.com/package/cspell
 - ansiEscapes.scrollDown(n)：向下滚动 n 行。
 
 ### mute-stream 包
-(mute-stream)[https://www.npmjs.com/package/mute-stream]
+[mute-stream](https://www.npmjs.com/package/mute-stream)

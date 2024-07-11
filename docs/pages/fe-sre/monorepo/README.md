@@ -30,7 +30,7 @@ Mon-repo 方式有许多优点：
 
 使用 Mono-repo 的大公司都有自定义工具来处理扩展问题。例如，Facebook 使用自定义文件系统和源代码控制。
 
-*什么是 Multi-repo?*
+什么是 Multi-repo?  
 在 Multi-repo 方法中，存在多个存储库，它们承载一个项目的多个库和服务。如果服务发生更改，开发人员只需重新构建该服务，而不需要构建整个项目。个人和团队可以从事他们特定的服务，他们只能访问他们有权限的服务。
 
 1、Multi-repo 的优势
@@ -52,7 +52,7 @@ Mon-repo 方式有许多优点：
 
 ### 创建一个monorepo
 
-(lerna教程详解)[https://segmentfault.com/a/1190000019350611]
+[lerna教程详解](https://segmentfault.com/a/1190000019350611)
 #### 安装lerna
 ```
 npm i lerna -g
@@ -72,7 +72,7 @@ lerna create moduleB
 lerna link
 ```
 
-j假设moduleA依赖moduleB，现在我们在 moduleA 包下增加个依赖。
+假设moduleA依赖moduleB，现在我们在 moduleA 包下增加个依赖。
 
 ``` json
 packages/moduleA/package.json
@@ -95,7 +95,7 @@ lerna link
 lerna add lodash
 ```
 #### 添加单独依赖
-l 假设moduleA 自己依赖 jquery，moduleB 自己依赖 zepto
+假设moduleA 自己依赖 jquery，moduleB 自己依赖 zepto
 
 ``` bash
 lerna add jquery --scope=@fengyinchao/modulea
@@ -103,7 +103,7 @@ lerna add zepto --scope=@fengyinchao/moduleb
 ```
 
 #### 卸载包
-l 给 moduleA 移除一个依赖 husky
+给 moduleA 移除一个依赖 husky
 ``` bash
 lerna exec --scope=@fengyinchao/modulea npm uninstall husky
 ```
@@ -156,7 +156,6 @@ function withedYourCode(code) {
 // 可访问全局作用域的白名单列表
 const accessWhiteList = ['Math', 'Date','console']
  
- 
 // 待执行程序
 const code = `
     console.log(1111,Math.random());
@@ -178,11 +177,9 @@ const ctxProxy = new Proxy(ctx, {
       if (accessWhiteList.includes(prop)) { // 在可访问的白名单内，可继续向上查找
           return target.hasOwnProperty(prop)
       }
- 
       if (!target.hasOwnProperty(prop)) {
           throw new Error(`Invalid expression - ${prop}! You can not do that!`)
       }
- 
       return true
     }
 })
@@ -191,8 +188,6 @@ const ctxProxy = new Proxy(ctx, {
 function normalSandbox(code, proxy) {
     withedYourCode(code).call(ctx, proxy) // 将 this 指向手动构造的全局代理对象
 }
- 
 normalSandbox(code, ctxProxy) 
- 
 // Uncaught Error: Invalid expression - location! You can not do that!
 ```

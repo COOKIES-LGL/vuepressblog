@@ -14,7 +14,7 @@ a10f91d9caceb99b42e02939b65383a24636618d9e8b4d2a4a5aef1ded9f4323
 
 ### npm update
 
-已经存在node_modules时 npm install 不会更新 ^的版本控制，需要使用npm update. 或者删除node_modules 进行更新
+已经存在node_modules时 npm install 不会更新 ^的版本控制，需要使用npm update. 或者删除node_modules进行更新
 
 npm update命令的目的是根据您在package.json文件中指定的内容更新您的package-lock.json。这是正常行为。
 如果你想更新你的package.json文件，你可以使用npm-check-updates：npm install -g npm-check-updates.
@@ -116,9 +116,8 @@ NodeJS文件系统遍历工具：fast-glob
 
 ### @loadable/component
 应用程序，组件查分懒加载   
-Enable Code Splitting in your React application. [文档](https://loadable-components.com/)
-
-### 
+Enable Code Splitting in your React application. 
+[文档](https://loadable-components.com/)
 
 ### generator-eslint 自定义eslint规则生成器
 [generator-eslint](https://github.com/eslint/generator-eslint)
@@ -136,9 +135,11 @@ Enable Code Splitting in your React application. [文档](https://loadable-compo
 
 如果通过路径进行安装会出现循环依赖问题
 以下安装方式
+
 ``` bash
 npm install --save-dev ../../npm-plugin/index.js
 ```
+
 因为 demo 工程位于 package 工程目录下，
 会导致递归引用。
 仅当不在同一路径下创建新工程时可以。
@@ -154,3 +155,41 @@ npm install --save-dev ../../npm-plugin/index.js
 // 可以用来限制某个开发包的 依赖包版本
 ```
 
+### package.json 中配置 workspaces
+单个代码库中统一管理多个包（monorepo），在workspaces声明目录下的package会软链到根目录的node_modules中。
+
+1. 初始化项目
+> npm init -y
+2. 声明本项目是workspaces模式
+``` json
+{
+  "private": "true",
+  "workspaces": [
+    "packages/*" 
+  ]
+}
+```
+3. 创建子包 package1
+``` bash
+npm init -w packages/package1 -y
+```
+package-lock.json 中可以看到软链link
+``` json
+{
+  "packages": {
+    "node_modules/package1": {
+      "resolved": "packages/package1",
+      "link": true
+    },
+  }
+}
+```
+4. 创建子包 package2
+``` bash
+npm init -w packages/package2 -y
+```
+5. 将子包package1添加到package2中
+``` bash
+npm i p1 -w p2
+```
+workspaces功能与lerna类似，如果只需简单地管理多个包，workspaces足够了。lerna具有版本管理，发包提示，简化多包项目发布流程等更多功能。
