@@ -55,7 +55,17 @@ exec('ls -lh /usr', (error, stdout, stderr) => {
 });
 ```
 
-fork  创建新进程，执行node程序
+4. execSync  创建新进程，可以直接执行shell命令，简化了shell命令执行方式，它会阻塞 Node.js 事件循环,同步执行.
+常见的 stdio 选项：
+> 'inherit'：这意味着输出将直接显示在控制台上，就像你直接在终端中运行命令一样。  
+> 'pipe'：这将创建一个管道来传输子进程的输出，可以在 stdout 或 stderr 属性中获取。  
+> 'ignore'：这将忽略子进程的相应输出，不会在父进程中显示。  
+``` javascript
+const stdout = execSync('ls -lh /usr', { stdio: 'pipe' } )
+console.log(stdout);
+```
+
+5. fork  创建新进程，执行node程序
 ``` javascript
 const child = fork('child_script.js');
 ```

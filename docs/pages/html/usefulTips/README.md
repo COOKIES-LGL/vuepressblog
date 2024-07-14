@@ -173,6 +173,30 @@ function downloadFile(fileUrl,fileName){
 ```
 3、如果页面是通过https协议启动的，那么src只能使用https协议，如果页面是http协议启动那么https/http协议都可以使用
 
+### `<script>`标签的nonce属性
+
+在HTML中，`<script>`标签的nonce属性是用于指定一个随机数（nonce），这个随机数与内容安全策略（Content Security Policy, CSP）配合使用，以确保脚本的安全执行。CSP是一种安全特性，用于定义哪些源的内容可以被网页使用，以防止跨站脚本攻击（XSS）。
+
+当你在HTTP头或`<meta>`标签中定义了CSP策略时，你可以指定一个脚本执行策略，例如只允许来自特定域的脚本执行，或者要求脚本必须有特定的哈希值。nonce属性提供了另一种方式来允许脚本执行，即通过在CSP策略中定义一个随机的令牌（nonce），然后在`<script>`标签中包含这个令牌。
+
+例如，如果你的CSP策略中包含以下内容：
+``` js
+Content-Security-Policy
+:
+script-src
+ 
+'nonce-4gLaoLwzcmJ2rXUH'
+```
+那么你的`<script>`标签应该包含相同的nonce值：
+``` html
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'self' 'unsafe-inline' 'nonce-4gLaoLwzcmJ2rXUH';">
+<script nonce="4gLaoLwzcmJ2rXUH">
+  // 脚本内容
+</script>
+``` 
+只有当`<script>`标签中的nonce属性与CSP策略中指定的nonce值匹配时，浏览器才会执行脚本。这样可以确保即使攻击者能够注入恶意脚本，除非他们知道正确的nonce值，否则脚本也不会被执行。
+
+> nonce值应该是随机生成的，并且对于每个请求都是唯一的，以防止攻击者预测或重用nonce值。
 
 
 ### HTML details 标签
