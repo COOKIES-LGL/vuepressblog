@@ -145,21 +145,21 @@ download设置文件名 跨域情况下，download将不会起作用.
 import axios from 'axios';
 function downloadFile(fileUrl,fileName){
   axios.get(fileUrl, { responseType: "blob" }).then(response => {
-      const blob = new Blob([response.data]);
-      const a = document.createElement("a");//创建a标签
-      a.href = window.URL.createObjectURL(blob);// 创建下载的链接
-      a.download = fileName;//下载文件名称
-      a.style.display = "none";
-      document.body.appendChild(a);//a标签追加元素到body内
-      a.click();//模拟点击下载
-      document.body.removeChild(a);// 下载完成移除元素
-      window.URL.revokeObjectURL(a.href);// 释放掉blob对象
+    const blob = new Blob([response.data]);
+    const a = document.createElement("a");//创建a标签
+    a.href = window.URL.createObjectURL(blob);// 创建下载的链接
+    a.download = fileName;//下载文件名称
+    a.style.display = "none";
+    document.body.appendChild(a);//a标签追加元素到body内
+    a.click();//模拟点击下载
+    document.body.removeChild(a);// 下载完成移除元素
+    window.URL.revokeObjectURL(a.href);// 释放掉blob对象
   }).catch(console.error);
 }
 
 ```
 
-### script标签
+### script标签特性
 
 1、当script同时存在行内代码和外部文件引用时，则只会下载外部文件而去忽略行内代码  
 2、浏览器在解析行内脚本的过程中，看到字符串`</script>`，会将其当成结束的`</script>`标签。目前测试下来只有这个标签作为字符串才会出现。解决就是使用转义字符\,将`</script>`转义成`<\/script>`

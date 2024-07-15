@@ -10,7 +10,6 @@ Date.parse(new Date('2018-03-30 12:00:00'))
 function formatTimeStamp (time) {
   return Date.parse(new Date('2018/03/30 12:00:00')) || Date.parse(new Date('2018-03-30 12:00:00'))
 }
-
 ```
 
 ### 2、input框聚焦，ios出现outline或者阴影，安卓显示正常
@@ -35,7 +34,7 @@ input,textarea {
 }
 ```
 
-### 5、关于 iOS 系统中，中文输入法输入英文时，字母之间可能会出现一个六分之一空格
+### 5、iOS系统中，中文输入法输入英文时，字母之间可能会出现一个六分之一空格
 
 ``` javascript
 this.value = this.value.replace(/\u2006/g,'');
@@ -47,20 +46,20 @@ touchstart 早于 touchend 早于click。 亦即click的触发是有延迟的，
 解决：
 - 1、尽量都使用touch事件来替换click事件。例如用touchend事件(推荐)。
 - 2、用fastclick https://github.com/ftlabs/fastclick
-- 3、用preventDefault阻止a标签的click
+- 3、用preventDefault阻止a标签的click  
 :::
 
-### 7、android下取消输入语音按钮
+### 7、Android下取消输入语音按钮
 ``` css
 input::-webkit-input-speech-button {display: none}
 ```
 
-### ios android 监听键盘弹起事件
+### 8、ios Android 监听键盘弹起事件
 ``` js
-   if (window.visualViewport) {
-     window.visualViewport?.addEventListener("resize", listener);
-     window.visualViewport?.addEventListener("scroll", listener);
-   } else {
-     window.addEventListener("resize", listener);
-   }
+if (window.visualViewport) {
+   window.visualViewport?.addEventListener("resize", listener);
+   window.visualViewport?.addEventListener("scroll", listener);
+} else {
+   window.addEventListener("resize", listener);
+}
 ```
