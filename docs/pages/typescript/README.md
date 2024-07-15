@@ -5,21 +5,22 @@ sidebar: auto
 [Typescript类型体操](https://www.jianshu.com/p/276a7d596744)  
 [tsconfig moduleResolution](https://juejin.cn/post/7276408879364948028)  
 [ts实用小技巧](./usefulTips/README.md) 
-[ts类型推断](./infer/README.md)   
-### Partial
+[ts类型推断](./infer/README.md)
+[reflect-metadata](https://zhuanlan.zhihu.com/p/643674031)   
 
+### Partial
 ``` typescript
 interface PullDownRefreshConfig {
   threshold: number;
   stop: number;
 }
+type PullDownRefreshOptions = Partial<PullDownRefreshConfig>
 /**
  * type PullDownRefreshOptions = {
  *   threshold?: number | undefined;
  *   stop?: number | undefined;
  * }
  */ 
-type PullDownRefreshOptions = Partial<PullDownRefreshConfig>
 ```
 
 ### Required
@@ -29,22 +30,21 @@ interface PullDownRefreshConfig {
   stop: number;
 }
 type PullDownRefreshOptions = Partial<PullDownRefreshConfig>
+type PullDownRefresh = Required<Partial<PullDownRefreshConfig>>
 /**
  * type PullDownRefresh = {
  *   threshold: number;
  *   stop: number;
  * }
  */
-type PullDownRefresh = Required<Partial<PullDownRefreshConfig>>
 ```
 
 ### ReturnType
-
 TypeScript中，你可以使用内置的ReturnType工具类型来获取函数的返回类型
 ``` ts
 const multiply = (a: number, b: number): number => a * b;
- 
-type MultiplyReturnType = ReturnType<typeof multiply>; // 等同于 number
+type MultiplyReturnType = ReturnType<typeof multiply>;
+// 等同于 number
 ```
 
 ### Pick
@@ -117,13 +117,13 @@ var Device = /** @class */ (function (_super) {
     return Device;
 }(IonicNativePlugin));
 ```
-通过生成的代码可知，@Plugin({...}) 和 @Injectable() 最终会被转换成普通的方法调用，它们的调用结果最终会以数组的形式作为参数传递给 __decorate 函数，而在 __decorate 函数内部会以 Device 类作为参数调用各自的类型装饰器，从而扩展对应的功能。
+通过生成的代码可知，`@Plugin({...})` 和 `@Injectable()` 最终会被转换成普通的方法调用，它们的调用结果最终会以数组的形式作为参数传递给 `__decorate` 函数，而在 `__decorate` 函数内部会以 Device 类作为参数调用各自的类型装饰器，从而扩展对应的功能。
 #### 装饰器的分类
 在 TypeScript 中装饰器分为 
-> 类装饰器*  
-> 属性装饰器*  
-> 方法装饰器*  
-> 参数装饰器*  
+> 类装饰器  
+> 属性装饰器  
+> 方法装饰器  
+> 参数装饰器  
 
 #### 类装饰器
 类装饰器声明：
@@ -131,9 +131,10 @@ var Device = /** @class */ (function (_super) {
 declare type ClassDecorator = <TFunction extends Function>(
   target: TFunction
 ) => TFunction | void;
-类装饰器顾名思义，就是用来装饰类的。它接收一个参数：
+// 类装饰器顾名思义，就是用来装饰类的。它接收一个参数：
 ```
-target: TFunction - 被装饰的类
+> target: TFunction - 被装饰的类  
+
 看完第一眼后，是不是感觉都不好了。没事，我们马上来个例子：
 ``` typescript
 function Greeter(target: Function): void {
@@ -148,9 +149,10 @@ class Greeting {
   }
 }
 let myGreeting = new Greeting();
-myGreeting.greet(); // console output: 'Hello Semlinker!';
+myGreeting.greet(); 
+// console output: 'Hello Semlinker!';
 ```
-上面的例子中，我们定义了 Greeter 类装饰器，同时我们使用了 @Greeter 语法糖，来使用装饰器。  
+上面的例子中，我们定义了 Greeter 类装饰器，同时我们使用了 @Greeter 语法糖，来使用装饰器。    
 ::: warning
 友情提示：读者可以直接复制上面的代码，在 TypeScript Playground 中运行查看结果。
 :::

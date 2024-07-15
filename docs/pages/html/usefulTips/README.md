@@ -198,6 +198,22 @@ script-src
 
 > nonce值应该是随机生成的，并且对于每个请求都是唯一的，以防止攻击者预测或重用nonce值。
 
+### ResizeObserver 观察 DOM 元素大小的变化
+``` javascript
+// 创建一个新的 ResizeObserver
+const resizeObserver = new ResizeObserver(entries => {
+  for (let entry of entries) {
+    const { width, height } = entry.contentRect;
+    console.log(`元素调整大小为 ${width}px x ${height}px`);
+    // 根据元素的新尺寸执行操作
+  }
+});
+
+// 选择要观察的元素
+const targetElement = document.querySelector('.resize-me');
+// 开始观察目标元素
+resizeObserver.observe(targetElement);
+```
 
 ### HTML details 标签
 

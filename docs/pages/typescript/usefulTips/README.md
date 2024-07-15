@@ -225,29 +225,11 @@ type NTestType2 = {
 const test2: NTestType2 = {} // no error, we expect show missing b error here.
 ```
 
-
-### ResizeObserver 观察 DOM 元素大小的变化
-``` javascript
-// 创建一个新的 ResizeObserver
-const resizeObserver = new ResizeObserver(entries => {
-  for (let entry of entries) {
-    const { width, height } = entry.contentRect;
-    console.log(`元素调整大小为 ${width}px x ${height}px`);
-    // 根据元素的新尺寸执行操作
-  }
-});
-
-// 选择要观察的元素
-const targetElement = document.querySelector('.resize-me');
-
-// 开始观察目标元素
-resizeObserver.observe(targetElement);
-```
-
 ### tsConfig 配置样式可点击
+首先安装插件typescript-plugin-css-modules
 ``` json
 {
-"plugins": [{ "name": "typescript-plugin-css-modules" }]
+  "plugins": [{ "name": "typescript-plugin-css-modules" }]
 }
 ```
 
@@ -257,7 +239,6 @@ resizeObserver.observe(targetElement);
 // 条件类型（其中extends可以理解为T类型（窄类型）是否是U类型（宽类型）的子类型，或者说T类型是否可以赋值给U类型，
 // 语法同js的三元表达式）
 T extends U ? U : T;
-
 // infer只能在extends类型语句中使用
 // infer存储的变量U只能用于语句的true返回分支
 type UnpackedArray<T> = T extends (infer U)[] ? U : T;
