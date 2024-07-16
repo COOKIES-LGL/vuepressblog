@@ -47,7 +47,7 @@ var a = Singleton.getInstance('aa')
 var b = Singleton.getInstance('bb')
 console.log(a === b); // true
 ```
-
+#### 单例模式的应用
 ``` javascript
 (function() {
     // 管理单例的逻辑代码，如果没有数据则创建，有数据则返回
@@ -79,12 +79,9 @@ console.log(a === b); // true
 ### 建造者模式
 
 ``` javascript
-function class1() {
-}
-function class2() {
-}
-function class3() {
-}
+function class1() {}
+function class2() {}
+function class3() {}
 function factory(type) {
   this.class1 = new Class1();
   this.class2 = new Class2();
@@ -269,7 +266,7 @@ let UserFactory = function(role) {
 UserFactory('admin');
 
 ```
-
+#### 工厂模式使用场景
 ``` javascript
 // 安全模式创建的工厂方法函数
  let UserFactory = function(role) {
@@ -332,9 +329,9 @@ circle.draw()
 
 let dec = new Decorator(circle)
 dec.draw()
-
 ```
 
+#### ts 装饰器
 ``` ts
 function testDec(isDec) {
   return function (target) {
@@ -343,9 +340,7 @@ function testDec(isDec) {
 }
 
 @testDec(false)
-class Demo {
-
-}
+class Demo {}
 alert(Demo.isDec) // false
 ```
 
@@ -474,4 +469,37 @@ function requestWithPauseControl <T extends () => Promise<any>>(request: T) {
   return result as ReturnType<T> & { pause: () => void, resume: () => void }
 }
 
+```
+
+### 管道设计模式
+
+``` js
+// 定义管道中的各个阶段（函数）
+function addTwo(number) {
+  return number + 2;
+}
+
+function multiplyByThree(number) {
+  return number * 3;
+}
+
+function subtractOne(number) {
+  return number - 1;
+}
+
+// 创建管道函数
+function createPipeline(...functions) {
+  return function(value) {
+    return functions.reduce((currentValue, currentFunction) => {
+      return currentFunction(currentValue);
+    }, value);
+  };
+}
+
+// 创建一个包含上述函数的管道
+const pipeline = createPipeline(addTwo, multiplyByThree, subtractOne);
+
+// 使用管道处理数据
+const result = pipeline(5);
+console.log(result); // 输出: 46
 ```

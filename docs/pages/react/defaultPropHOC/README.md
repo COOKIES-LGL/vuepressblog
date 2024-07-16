@@ -4,7 +4,6 @@
 ``` javascript
 // 定义
 import React from "react";
-
 /**
  * 组件默认属性Hoc
  * @param defaultProps 默认属性
