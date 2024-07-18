@@ -141,6 +141,9 @@ Enable Code Splitting in your React application.
 ### github-markdown-css
 帮助您轻松实现与GitHub一致的Markdown样式
 
+### node-stream-zip
+是查看和提取大型 ZIP 文件的 Node.js 库
+
 ::: tip
 这个工程位于我们主工程的目录底下，
 这里要用到的依赖包，如果本工程没有安装，
