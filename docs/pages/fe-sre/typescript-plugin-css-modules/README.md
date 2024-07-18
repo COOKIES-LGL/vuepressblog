@@ -15,7 +15,7 @@ sidebar: false
 yarn add -D typescript-plugin-css-modules
 
 ### 配置
-配置后需要重启vscode，然后项目中使用cssMoudule时，就可以享受到typeScript提示的class类名了，配置如下：
+配置后需要重启vscode，然后项目中使用cssModule时，就可以享受到typeScript提示的class类名了，配置如下：
 
 配置tsconfig.json
 

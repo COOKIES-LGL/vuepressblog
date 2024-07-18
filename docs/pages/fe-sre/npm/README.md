@@ -17,26 +17,18 @@ a10f91d9caceb99b42e02939b65383a24636618d9e8b4d2a4a5aef1ded9f4323
 已经存在node_modules时 npm install 不会更新 ^的版本控制，需要使用npm update. 或者删除node_modules进行更新
 
 npm update命令的目的是根据您在package.json文件中指定的内容更新您的package-lock.json。这是正常行为。
-如果你想更新你的package.json文件，你可以使用npm-check-updates：npm install -g npm-check-updates.
+如果你想更新你的package.json文件，你可以使用npm-check-updates
+> npm install -g npm-check-updates.  
+
 然后可以使用以下命令：
 
-ncu检查package.json文件中的更新
-ncu -u更新package.json文件
-npm update --save从package.json文件更新package-lock.json文件
-
-### 命令参数配置
-
-果通过 process.argv 来获取，要额外处理两种不同的命令参数格式，不方便。
-
-这里推荐 yargs 开源库来解析命令参数。运行以下命令安装 yargs：
-
-在 Node.js 中拷贝文件夹并不简单，需要用到递归，这里推荐使用开源库copy-dir来实现拷贝文件。
+- ncu检查package.json文件中的更新
+- ncu -u更新package.json文件
+- npm update --save从package.json文件更新package-lock.json文件
 
 ### yarn deduplicate
 
 Yarn-deduplicate是一款npm包，它可以帮助我们自动解决项目中遇到的同一依赖重复问题，可以有效地保证我们项目的稳定性和安全性。
-
-版权声明：本文为原创文章，版权由本站（JavaScript中文网）拥有，严禁未经允许复制、转载、传播、篡改等任何行为，如需转载，请联系本站管理员获取书面授权
 
 ### npm 设置仓库源
 ``` bash
@@ -58,7 +50,8 @@ npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org
 （1）.mjs文件总是以 ES6 模块加载，.cjs文件总是以 CommonJS 模块加载，.js文件的加载取决于package.json里面type字段的设置。
 （2）ES6 模块与 CommonJS 模块尽量不要混用。require命令不能加载.mjs文件，会报错，只有import命令才可以加载.mjs文件。反过来，.mjs文件里面也不能使用require命令，必须使用import。
 
-### npm install -g depcheck
+### depcheck 
+检测幽灵依赖 
 
 ### npm ls --depth=0
 可以使用 npm ls --depth=0 命令查看项目中的幽灵依赖
@@ -66,7 +59,17 @@ npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org
 ### npm list package
 展示当前package的安装情况 
 
-## npm包推荐
+## 高频使用的NPM包
+
+### yargs 命令参数配置
+
+如果通过 process.argv 来获取，要额外处理两种不同的命令参数格式，不方便。
+
+这里推荐 yargs 开源库来解析命令参数。运行以下命令安装 yargs
+> npm install -g yargs
+
+### copy-dir 拷贝文件夹
+在 Node.js 中拷贝文件夹并不简单，需要用到递归，这里推荐使用开源库copy-dir来实现拷贝文件。
 
 ### minimist
 轻量命令行参数解析工具
@@ -98,21 +101,28 @@ NodeJS文件系统遍历工具：fast-glob
 ### @oclif/command 脚手架命令执行
 [@oclif/command](https://zhuanlan.zhihu.com/p/54538055)
 
-### cosmiconfig 读取项目配置信息
+### cosmiconfig
+读取项目配置信息
 
-### cron node 维护定时任务
+### cron 
+node维护定时任务
 
-### amqplib node 维护消息队列
+### amqplib 
+node 维护消息队列
 
-### @better-scroll/core 核心滚动，实现基础的列表滚动效
+### @better-scroll/core 核心滚动，
+实现基础的列表滚动效
 
-### patch-package 用与修复npm包的工具，允许你在不修改原始包的情况下进行补丁
+### patch-package 
+用与修复npm包的工具，允许你在不修改原始包的情况下进行补丁
 
-### resize-observer-polyfill 提供浏览器的resize事件监听
+### resize-observer-polyfill 
+提供浏览器的resize事件监听
 
 ### @loadable/server
 
-### react-spring react 动画库
+### react-spring 
+react 动画库
 
 ### @loadable/component
 应用程序，组件查分懒加载   
@@ -122,8 +132,14 @@ Enable Code Splitting in your React application.
 ### generator-eslint 自定义eslint规则生成器
 [generator-eslint](https://github.com/eslint/generator-eslint)
 
-## 开发npm开发笔记
+### markdown-it 一个快速、灵活的 markdown 引擎
+[markdown中文文档](https://markdown-it.docschina.org/)
+
+### 开发npm开发笔记
 开发一个npm包需要创建在项目中新建example项目用于测试
+
+### github-markdown-css
+帮助您轻松实现与GitHub一致的Markdown样式
 
 ::: tip
 这个工程位于我们主工程的目录底下，
