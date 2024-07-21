@@ -2,14 +2,14 @@
 home: false
 sidebar: false
 ---
-## 旧版husky使用总结
+### 旧版husky使用总结
 在做前端工程化时husky可以说是一个必不可少的工具。husky可以让我们向项目中方便添加git hooks。通常情况下我只需要如下两步就可在项目中引入并设置好husky：
-### 将husky添加到项目的开发依赖中
+#### 将husky添加到项目的开发依赖中
 
 ``` shell command
 npm install -D husky
 ```
-### 在package.json中设置我们需要的git hooks
+#### 在package.json中设置我们需要的git hooks
 ``` json
 {
   "husky": {
@@ -24,21 +24,27 @@ npm install -D husky
 在之前的项目中我们通常都是这样完成对husky的引入和设置的。但是今天在我新建的项目中这样设置竟然不起作用了，经过一番查看才知道原来最新版本的husky（6.0.0）已经做了破坏性的变更，之前的设置方式已经失效了
 :::
 
-## 新版husky使用
+### 新版husky使用
 根据官方的说法，之前husky的工作方式是这样的，为了能够让用户设置任何类型的git hooks都能正常工作，husky不得不创建所有类型的git hooks。这样在git 工作的每个阶段都会调用husky所设置的脚本，在这个脚本中husky会检查用户是否配置该hook，如果有就运行用户配置的命令，如果没有就继续往下执行。
 
 这样做的好处就是无论用户设置什么类型的git hook husky都能确保其正常运行。但是缺点也是显而易见的，即使用户没有设置任何git hook，husky也向git中添加了所有类型的git hook。
 
 那有没有可能让husky只添加我们需要的git hook呢
 
-### 新版husky的工作原理
+#### 新版husky的工作原理
 新版的husky使用了从git 2.9开始引入的一个新功能core.hooksPath。core.hooksPath可以让你指定git hooks所在的目录而不是使用默认的.git/hooks/。这样husky可以使用husky install将git hooks的目录指定为.husky/，然后使用husky add命令向.husky/中添加hook。通过这种方式我们就可以只添加我们需要的git hook，而且所有的脚本都保存在了一个地方（.husky/目录下）因此也就不存在同步文件的问题了。
 
-### 安装husky
+> 位置：默认在.git/hooks， 不会被 push 到远端。也可以通过以下配置指定，然后push到远端，不用每个人都配置 
+需要配置下 `core.hooksPath`
+``` bash
+git config core.hooksPath .mygithooks
+```
+
+#### 安装husky
 ``` shell command
 npm install -D husky
 ```
-### 在packgae.json中添加prepare脚本
+#### 在packgae.json中添加prepare脚本
 ``` json
 {
   "scripts": {
@@ -46,7 +52,8 @@ npm install -D husky
   }
 }
 ```
-prepare脚本会在npm install（不带参数）之后自动执行。也就是说当我们执行npm install安装完项目依赖后会执行 husky install命令，该命令会创建.husky/目录并指定该目录为git hooks所在的目录。
+prepare脚本会在npm install（不带参数）之后自动执行。也就是说当我们执行npm install安装完项目依赖后会执行 husky install命令，  
+该命令会创建.husky/目录并指定该目录为git hooks所在的目录。
 
 ### 添加git hooks，运行一下命令创建git hooks
 ``` shell command
@@ -57,7 +64,7 @@ npx husky add .husky/pre-commit "npm run test"
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
    
-npm run  test
+npm run test
 ```
 可以看到该脚本的功能就是执行npm run test这个命令
 ### 需要注意的点
@@ -71,7 +78,12 @@ npm run  test
   }
 }
 ```
-在新版husky中$HUSKY_GIT_PARAMS这个变量不再使用了，取而代之的是$1。在新版husky中我们的commit-msg脚本内容如下：
+- pre-commit：键入提交信息前运行
+- prepare-commit-msg:启动提交信息编辑器之前，默认信息被创建之后运行
+- commit-msg： 用来在提交通过前验证项目状态或提交信息
+- post-commit：整个提交过程完成后运行。该钩子一般用于通知之类的事情，通知有人push了代码等
+
+在新版husky中`$HUSKY_GIT_PARAMS`这个变量不再使用了，取而代之的是`$1`。在新版husky中我们的commit-msg脚本容如下：
 ``` shell command
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
@@ -79,6 +91,7 @@ npm run  test
 #--no-install 参数表示强制npx使用项目中node_modules目录中的commitlint包
 npx --no-install commitlint --edit $1
 ```
+
 这个脚本应该也能使用类似于下面的命令进行添加
 ``` shell command
 npx husk add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'

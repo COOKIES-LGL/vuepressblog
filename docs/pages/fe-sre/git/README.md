@@ -3,6 +3,8 @@ home: false
 ---
 ## git 实用笔记
 
+* [Husky](./husky)  <span style="color:#bbb; float:right">2021-08-10</span>
+
 ### 切换账户
 ``` Bash
 ssh-add ~/.ssh/private // 后面的路径是指定的配置文件
@@ -24,10 +26,10 @@ git branch --set-upstream-to origin/newBranch
 
 ### 优雅回退
 ``` Bash
-reset --soft：软回溯，回退 commit 的同时保留修改内容。
-cherry-pick：复制 commit。
-revert：撤销 commit 的修改内容。
-reflog：记录了 commit 的历史操作。
+git reset --soft：软回溯，回退 commit 的同时保留修改内容。
+git cherry-pick：复制 commit。
+git revert：撤销 commit 的修改内容。
+git reflog：记录了 commit 的历史操作。
 ```
 
 ### 仓库分支合并
@@ -92,4 +94,5 @@ git checkout $currentGitBranch
 
 git merge --no-ff master -m 'feat: merge master'
 ```
+
 [merge rebase的区别](https://fe.ecool.fun/topic/cfe8f03e-1a05-4c00-baa7-04ae08c8765c?orderBy=updateTime&order=desc&tagId=0)

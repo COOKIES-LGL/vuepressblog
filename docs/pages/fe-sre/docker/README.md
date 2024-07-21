@@ -5,7 +5,7 @@ home: false
 
 [面向WEB开发人员的Docker](https://juejin.cn/column/6965049243660714021)
 
-### docker 指令
+### docker 常用指令
 
 ``` bash
 docker run 提供了许多选项，但是将使用的主要选项是：
