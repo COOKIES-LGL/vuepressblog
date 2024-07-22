@@ -4,6 +4,7 @@ home: false
 ## git 实用笔记
 
 * [Husky](./husky)  <span style="color:#bbb; float:right">2021-08-10</span>
+* [Github Actions](./github-actions)  <span style="color:#bbb; float:right">2023-01-14</span>
 
 ### 切换账户
 ``` Bash
