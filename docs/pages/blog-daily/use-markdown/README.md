@@ -50,11 +50,17 @@ $(document).ready(function () {
 
 ### 图片
 
-![RUNOOB 图标](http://static.runoob.com/images/runoob-logo.png)  
+![RUNOOB 图标](图片地址)  
 使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑  
  使用反斜杠转义特殊字符  
+ 
 **文本加粗**  
 \*\* 正常显示星号 \*\*
+
+**复选框**
+
+- [x] 动态表格(已完善)
+- [ ] 动态表格(待完善)
 
 ### 表格
 
@@ -108,19 +114,14 @@ A[方形] -->B(圆角)
 
 <CodeGroup>
   <CodeGroupItem title="YARN">
-
-```bash:no-line-numbers
-yarn
-```
-
+  ```bash:no-line-numbers
+  yarn
+  ```
   </CodeGroupItem>
-
   <CodeGroupItem title="NPM" active>
-
-```bash:no-line-numbers
-npm install
-```
-
+  ```bash:no-line-numbers
+  npm install
+  ```
   </CodeGroupItem>
 </CodeGroup>
 
