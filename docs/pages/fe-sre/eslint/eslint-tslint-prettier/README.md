@@ -107,6 +107,7 @@ sidebar: false
   "no-unreachable": 2,//不能有无法执行的代码
   "no-unused-expressions": 0,//禁止无用的表达式
   "no-unused-vars": [2, {"vars": "all", "args": "after-used", "ignoreRestSiblings": true, "argsIgnorePattern": "^_"}],//不能有声明后未被使用的变量或参数
+  "unused-imports/no-unused-imports": "error", // 如需保存时自动删除未引用代码
   "no-use-before-define": 0,//未定义前不能使用
   "no-useless-call": 2,//禁止不必要的call和apply
   "no-void": 2,//禁用void操作符

@@ -18,7 +18,7 @@ vite-plugin-inspect
 对AST 字符串做轻量替换
 
 ### vite-plugin-checker
-vite插件用来运行时校验typescript类型
+vite插件用来运行时校验typescript类型 eslint
 [使用文档](https://vite-plugin-checker.netlify.app/introduction/introduction.html)
 
 

@@ -19,5 +19,13 @@ home: false
 * [Vscode Plugin](./vscode-plugin)  <span style="color:#bbb; float:right">2023-10-11</span>
 * [浏览器缓存策略一文就够](https://juejin.cn/post/6844903747357769742?utm_source=gold_browser_extension) <span style="color:#bbb; float:right">2023-12-11</span>
 
+### mac安装homebrew
+``` bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/guilinli/.zprofile
+#  eval "$(/opt/homebrew/bin/brew shellenv)"
+# 下面两个命令将homebrew的bin目录添加到PATH
+```
+
 ### MarkDown使用指南
 * [MarkDown](../blog-daily/use-markdown)  <span style="color:#bbb; float:right">2021-06-24</span>

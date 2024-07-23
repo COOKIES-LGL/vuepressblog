@@ -8,7 +8,8 @@ home: false
 [Vite工作原理](https://juejin.cn/post/7350936959059722280?utm_source=gold_browser_extension)  
 [rollup打包原理](https://www.baidu.com/link?url=qSPsxiW5_Rboe-4tNN26ObiF8LoQFgnyDX8zMl7HZHYClDlr1eq37JL-4hpDSab5WUqwB7iqfo8Y4VnKAtXBla&wd=&eqid=d2f2c99500896c100000000565e43fbb)  
 [Vite配置Https启动服务](https://blog.csdn.net/weixin_44786530/article/details/135893697)  
-[vite和webpack热更新的区别](https://juejin.cn/post/7338042858702618678?utm_source=gold_browser_extension#heading-14)  
+[vite和webpack热更新的区别](https://juejin.cn/post/7338042858702618678?utm_source=gold_browser_extension#heading-14) 
+
 ### vite 支持 require
 
 1、安装插件vite-plugin-require-transform
@@ -50,6 +51,34 @@ import AutoImport from 'unplugin-auto-import/vite'
 export default defineConfig({
   plugins: [
     AutoImport({ /* options */ }),
+  ],
+})
+```
+### vite本地开发支持https
+
+**前置条件** 
+
+安装了 mkcert 并且添加了它的可执行文件到系统的 PATH 中。
+
+``` bash
+brew install mkcert
+# Homebrew安装mkcert
+mkcert -install
+# 添加本地CA到系统的根证书颁发机构
+```
+
+安装插件
+``` bash
+npm i -D vite-plugin-mkcert
+```
+配置vite.config.ts
+``` ts
+// vite.config.ts
+import mkcert from 'vite-plugin-mkcert'
+
+export default defineConfig({
+  plugins: [
+    mkcert({ /* options */ }),
   ],
 })
 ```
