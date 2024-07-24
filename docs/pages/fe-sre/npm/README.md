@@ -2,6 +2,8 @@
 home: false
 ---
 
+* [高频使用的npm包](./common-use-npm) <span style="color:#bbb; float:right">2022-02-10</span>
+
 ### https://www.npmjs.com/ 登陆通行key
 
 ::: tip
@@ -50,99 +52,11 @@ npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org
 （1）.mjs文件总是以 ES6 模块加载，.cjs文件总是以 CommonJS 模块加载，.js文件的加载取决于package.json里面type字段的设置。
 （2）ES6 模块与 CommonJS 模块尽量不要混用。require命令不能加载.mjs文件，会报错，只有import命令才可以加载.mjs文件。反过来，.mjs文件里面也不能使用require命令，必须使用import。
 
-### depcheck 
-检测幽灵依赖 
-
 ### npm ls --depth=0
 可以使用 npm ls --depth=0 命令查看项目中的幽灵依赖
 
 ### npm list package
 展示当前package的安装情况 
-
-## 高频使用的NPM包
-
-### yargs 命令参数配置
-
-如果通过 process.argv 来获取，要额外处理两种不同的命令参数格式，不方便。
-
-这里推荐 yargs 开源库来解析命令参数。运行以下命令安装 yargs
-> npm install -g yargs
-
-### copy-dir 拷贝文件夹
-在 Node.js 中拷贝文件夹并不简单，需要用到递归，这里推荐使用开源库copy-dir来实现拷贝文件。
-
-### minimist
-轻量命令行参数解析工具
-
-### fast-glob
-NodeJS文件系统遍历工具：fast-glob
-
-### nodemon
-观察运行node
-
-### ts-morph
-基于 TS Compiler API 的工具
-[知乎教程](https://zhuanlan.zhihu.com/p/616134364)
-[文档](https://ts-morph.com/utilities)
-
-### chokidar
-极简高效的跨平台文件监视库 封装 Node.js 监控文件系统文件变化功能
-[知乎教程](https://zhuanlan.zhihu.com/p/601689232?utm_id=0)
-
-### yargs 命令行参数处理工具
-[yargs](https://www.npmjs.com/package/yargs)
-
-### MockJs
-[MockJs官方文档](http://mockjs.com/)
-
-### simple-git 一个轻量级但功能强大的 Node.js Git库
-[simple-git](https://juejin.cn/post/7229906749070721085)
-
-### @oclif/command 脚手架命令执行
-[@oclif/command](https://zhuanlan.zhihu.com/p/54538055)
-
-### cosmiconfig
-读取项目配置信息
-
-### cron 
-node维护定时任务
-
-### amqplib 
-node 维护消息队列
-
-### @better-scroll/core 核心滚动，
-实现基础的列表滚动效
-
-### patch-package 
-用与修复npm包的工具，允许你在不修改原始包的情况下进行补丁
-
-### resize-observer-polyfill 
-提供浏览器的resize事件监听
-
-### @loadable/server
-
-### react-spring 
-react 动画库
-
-### @loadable/component
-应用程序，组件查分懒加载   
-Enable Code Splitting in your React application. 
-[文档](https://loadable-components.com/)
-
-### generator-eslint 自定义eslint规则生成器
-[generator-eslint](https://github.com/eslint/generator-eslint)
-
-### markdown-it 一个快速、灵活的 markdown 引擎
-[markdown中文文档](https://markdown-it.docschina.org/)
-
-### 开发npm开发笔记
-开发一个npm包需要创建在项目中新建example项目用于测试
-
-### github-markdown-css
-帮助您轻松实现与GitHub一致的Markdown样式
-
-### node-stream-zip
-是查看和提取大型 ZIP 文件的 Node.js 库
 
 ::: tip
 这个工程位于我们主工程的目录底下，

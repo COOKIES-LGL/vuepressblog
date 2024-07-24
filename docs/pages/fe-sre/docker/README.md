@@ -9,6 +9,8 @@ home: false
 
 Docker可用于在任何开发PC上提供可复制的构建环境。  
 
+Docker 使用了缓存来加速镜像构建，所以上面执行结果可以看出只要上一层和当前层的输入没有变动，那么执行结果就会被缓存下来。
+
 docker run 提供了许多选项，但是将使用的主要选项是：
 ``` bash
 -d：运行一个容器作为后台进程（在应用程序结束时退出）
@@ -25,13 +27,36 @@ docker run 提供了许多选项，但是将使用的主要选项是：
 ```
 
 ### Dockerfile
+Dockerfile 中执行各种任务，包括环境初始化、单元测试、构建
 
 Dockerfile 就是这样一个用于描述 Docker 镜像构建过程的文本文件，这个文件可以包含多条构建指令，以及相关的描述
 [Dockerfile文件详解](https://juejin.cn/post/7179042892395053113?searchId=20240723114156ADF38CC477C06B958D85)
 [Dockerfile赋能前端部署](https://juejin.cn/post/7269668219488354361?searchId=20240723155610C04B85D6CEF8063CAB10)
 
-### Docker Compose
+__________________
 
+### .dockerignore
+- 减少构建上下文的大小，因为不需要将所有文件发送到Docker守护进程。
+- 加速构建过程，因为Docker不需要处理不必要的文件。
+- 保护敏感数据，如本地配置文件或源代码，不会意外地包含在镜像中。
+``` bash
+# 忽略 node_modules 目录
+node_modules/
+# 忽略 git 信息
+.git
+# 忽略 IDE 设置
+.vscode/
+# 忽略本地配置文件
+config/local.js
+# 忽略日志文件
+logs/
+# 忽略构建产物
+dist/ 
+```
+
+__________________
+
+### Docker Compose
 Docker Compose 允许您在单个YAML文件中定义和管理多容器应用程序。这简化了编排和协调各种服务的复杂任务，使管理和复制应用程序环境变得更加容易。
 
 1. docker-compose up - 启动服务。
@@ -100,6 +125,7 @@ restart: unless-stopped
 ```
 [全部配置项说明](https://www.cnblogs.com/dirgo/p/18112035)
 
+__________________
 
 ### 常见错误
 > Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?  
