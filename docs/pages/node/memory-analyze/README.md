@@ -1,4 +1,3 @@
-
 ---
 home: false
 sidebar: false
@@ -10,18 +9,20 @@ mac自带的apache中的ab是有最大并发限制的，您可以重新下载一
 Mac下自带apache，查看版本：  
 ``` bash
 apachectl -v
-Server version: Apache/2.4.34 (Unix)
-Server built:   Feb 22 2019 20:20:11  
+# Server version: Apache/2.4.34 (Unix)
+# Server built:   Feb 22 2019 20:20:11  
 ```
 查看ab版本:  
 ``` bash
 ab -V
-ab压力测试工具的用法，查看：
+# ab 压力测试工具的用法，查看：
 ab --help
 或者
 man ab
 ```
 例如：
+
+``` sh
 ab -c 并发数 -n 请求数 URL
 ab工具常用参数：
 -n ：总共的请求执行数，缺省是1；
@@ -32,8 +33,10 @@ ab工具常用参数：
 -r: 跳过异常接口错误
 -k: 让连接KeepAlive避免The timeout specified has expired (70007)
 ab -n 100 -c 10 -w http://www.baidu.com/ >> baidu.html
+```
 
-结果界面和下面例子是一样的，只是以html文件形式保存而已。下面，我们以请求百度为例：
+结果界面和下面例子是一样的，只是以html文件形式保存而已。
+下面，我们以请求百度为例：
 
 ab -n 100 -c 10 https://www.baidu.com/
 

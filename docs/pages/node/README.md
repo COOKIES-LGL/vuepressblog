@@ -14,6 +14,7 @@ home: false
 * [Node集群(cluster)](https://www.jianshu.com/p/c90dc4adcaf4) <span style="color:#bbb; float:right">2023-03-10</span>
 * [Node多线程(worker_threads)](https://juejin.cn/post/7062733724504293413)<span style="color:#bbb; float:right">2024-01-10</span>
 * [child_process](https://segmentfault.com/a/1190000040590402)<span style="color:#bbb; float:right">2024-02-10</span>
+* [pm2](./pm2)<span style="color:#bbb; float:right">2024-06-10</span>
 
 ### easy-monitor 监控系统
 
