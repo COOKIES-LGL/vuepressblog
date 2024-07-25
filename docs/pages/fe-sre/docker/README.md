@@ -157,7 +157,7 @@ Docker Compose 允许您在单个YAML文件中定义和管理多容器应用程�
 
 6. docker-compose ps - 列出所有容器。
 
-7. docker-compose exec <service> - 进入指定服务的容器。
+7. docker-compose exec `<service>` - 进入指定服务的容器。
     - 例如：docker-compose exec web /bin/bash。
 
 8. docker-compose logs - 查看服务的日志。

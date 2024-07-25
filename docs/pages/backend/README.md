@@ -1,5 +1,6 @@
 ---
 home: false
+sidebar: false
 ---
 
 ### 技术文档列表
