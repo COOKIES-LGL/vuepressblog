@@ -179,7 +179,7 @@ Cannot find module '*'. Did you mean to set the 'moduleResolution' option to 'no
 
 ::: tip
 模块解析策略（moduleResolution）更多描述的是一个模块包括相对路径以及非相对路径（也就是第三方库，亦或者说 npm 包）是按照怎样的规则去查找的
-现在支持的值有三个classic、node
+现在支持的值有三个classic、node、Bundler
 * classic 简单来说这种模块解析策略就是一直递归往上找同名文件，当前目录找不到同名文件就往父级目录找。不过这种策略目前前端界用得不多
 * 相比于 classic 策略的区别在于：
   - 递归查找的目录是 node_modules，不是父级文件夹
