@@ -97,3 +97,22 @@ Enable Code Splitting in your React application.
 - 在没有对依赖进行变更的情况下更新了lock文件
 
 `Corepack`就是为了解决这些问题
+
+### ts-node
+执行一个一次性的 Nodejs 脚本命令
+> TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".ts"
+
+这是因为通过 tsc --init 生成默认 tsconfig.json 使用的默认模块规范是："module": "commonjs", 
+也就是说 Typescript 的默认配置是将代码编译为 commonjs 的模块，而非我们在 package.json 中声明的 module （即 ES module）模块。
+ts-node 在运行时会既会读取 package.json 又会读取 tsconfig.json ，而二者的配置相互冲突，于是产生了错误。
+修改 tsconfig.json 中的
+``` json
+{
+  "compilerOptions": {
+    "module": "ESNext" // or ES2015, ES2020
+  },
+  "ts-node": {
+    "esm": true
+  }
+}
+```

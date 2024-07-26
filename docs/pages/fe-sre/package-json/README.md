@@ -32,3 +32,9 @@ home: false
 - prestop, stop, poststop: 分别在停止命令之前、停止命令时、停止命令之后执行。
 - prestart, start, poststart: 分别在启动命令之前、启动命令时、启动命令之后执行。
 - prefetch, fetch, postfetch: 分别在获取资源之前、获取资源时、获取资源之后执行。
+
+``` json 
+{
+    "type": "module" // 指定当前包是 ECMAScript 模块。
+}
+```
