@@ -22,3 +22,9 @@ sessionStorage 不能在多个窗口或标签页之间共享数据，但是当�
 - windows.open(, ‘_self’): A刷新到B，A和B共用sessionStorage，肯定影响。
 - link（‘_blank’）: A跳到B，B不拷贝A的sessionStorage，互不影响。
 - link（‘_self’）: A刷新到B，A和B共用sessionStorage，肯定影响。
+
+``` sh
+chrome://version/
+# 用于查看可执行文件路径和版本信息
+```
+

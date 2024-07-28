@@ -21,3 +21,10 @@ findstr PID
 chmod g+w file.txt
 # 更改文件或目录权限，将向文件 file.txt 的组添加写入权限
 ````
+
+使用find命令在终端中查找文件的路径。以下是一个基本的find命令示例，用于查找名为filename.txt的文件
+``` bash
+sudo find / -name filename.txt
+# 搜索用户的主目录，可以使用~代替/
+sudo find ~ -name filename.txt
+```
