@@ -90,6 +90,9 @@ Enable Code Splitting in your React application.
 ### node-stream-zip
 是查看和提取大型 ZIP 文件的 Node.js 库
 
+### cheerio
+一个用于解析 HTML 的库
+
 ### Corepack 包管理器的管理器
 在不同的项目切换时，难免会遇到使用不同的包管理器或者不同的包管理器版本的情况。如果团队中每个人都是用不同的包管理器或者不同版本,可能会导致：
 - 新版本的包管理的breaking change导致安装失败

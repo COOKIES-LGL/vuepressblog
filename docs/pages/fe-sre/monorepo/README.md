@@ -191,3 +191,69 @@ function normalSandbox(code, proxy) {
 normalSandbox(code, ctxProxy) 
 // Uncaught Error: Invalid expression - location! You can not do that!
 ```
+
+### yarn workspaces
+Yarn Workspaces则是Yarn包管理器提供的一种特性，用于简化Monorepo中包的管理和依赖安装
+
+#### 配置Yarn Workspaces
+
+``` bash
+mkdir my-monorepo
+cd my-monorepo
+yarn init --scope=@my-org # 初始化根目录的package.json，并设置scope
+# 假设我们有两个包：ui-components和backend-api。
+mkdir packages
+cd packages
+mkdir ui-components backend-api
+cd ui-components
+yarn init # 初始化ui-components的package.json
+cd ../backend-api
+yarn init # 同理初始化backend-api的package.json
+```
+编辑package.json，添加workspaces字段
+``` json
+{
+  "name": "@my-org/my-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
+```
+安装依赖
+``` bash
+cd packages/ui-components
+yarn add react react-dom # 为ui-components安装依赖
+cd ../backend-api
+yarn add express # 为backend-api安装依赖
+```
+#### 跨包共享依赖
+一些包是所有工作空间共用的，可以在根目录的package.json中安装这些依赖，并使用nohoist选项来防止这些依赖被提升到根目录，保持它们在每个工作空间内部
+``` json
+{
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": ["**/lodash"]
+  }
+}
+```
+#### 自动链接
+Yarn Workspaces会自动在本地开发环境中创建软链接，使得在开发一个包时，对它的改动可以立即反映到依赖它的其他包中，无需重新发布或安装。  
+这意味着当你修改了ui-components，在backend-api中如果直接引用了ui-components，那么改动会即时生效，无需额外操作
+
+#### 脚本跨包共享
+在根目录的package.json中定义这些脚本，并利用yarn workspace命令在各个包中执行它们
+``` json
+{
+  "scripts": {
+    "lint": "eslint 'packages/*/src'",
+    "test": "yarn workspace ui-components test && yarn workspace backend-api test"
+  }
+}
+```
+
