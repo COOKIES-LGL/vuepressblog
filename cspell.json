@@ -11,11 +11,15 @@
     "dompurify"
   ],
   "flagWords": [
-    "hte"
+    "het"
   ],
   "ignoreWords": [
     "typeof",
     "vnode",
-    "oclif"
+    "oclif",
+    "unplugin",
+    "Corepack",
+    "ignorecase",
+    "reflog"
   ]
 }
