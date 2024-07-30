@@ -6,6 +6,7 @@ home: false
 * [Husky](./husky)  <span style="color:#bbb; float:right">2021-08-10</span>
 * [Github Actions](./github-actions)  <span style="color:#bbb; float:right">2023-01-14</span>
 * [Git Modules](./git-modules)  <span style="color:#bbb; float:right">2024-01-14</span>
+* [GitHub 文档](https://docs.github.com/zh) <span style="color:#bbb; float:right">2024-02-10</span>
 
 ### 切换账户
 ``` Bash
