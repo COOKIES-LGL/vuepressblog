@@ -214,6 +214,13 @@ const targetElement = document.querySelector('.resize-me');
 // 开始观察目标元素
 resizeObserver.observe(targetElement);
 ```
+### nofollow、external
+- nofollow：会告诉搜索引擎忽略这个链接，阻止搜索引擎对该页面进行追踪，从而避免权重分散
+- external：会告诉搜索引擎这是一个外部链接，非本站的链接
+``` html
+<a rel="nofollow" href="http://www.baidu.com/">百度</a>
+<a rel="external" href="http://www.baidu.com/">百度</a>
+```
 
 ### HTML details 标签
 

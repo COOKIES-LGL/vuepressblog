@@ -182,7 +182,6 @@ new KeyframeEffect(target, keyframes);
 new KeyframeEffect(target, keyframes, options);
 new KeyframeEffect(source);
 // Element.animate;
-// WAAPI
 // https://juejin.cn/post/7023903552946995214
 ```
 
@@ -226,7 +225,6 @@ dayDiff(new Date("2021-10-21"), new Date("2022-02-12"))
 
 
  ### 10、getEnumOptions 从枚举值获取下拉选项列表
-
  ``` javascript
 export const getOptionsFromEnum = (enumParams: object) => {
   if (!enumParams) return []
