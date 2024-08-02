@@ -1,4 +1,4 @@
-分享一些常用的JS方法
+## 一些常用的JS方法
 
 ### 1、Copy URL地址
 
@@ -242,7 +242,7 @@ export const getOptionsFromEnum = (enumParams: object) => {
 }
 ```
 
-### 使用符号 *，我们引入文件中的所有值，包括默认和具名。
+### 11、使用符号 *，引入文件中的所有值，默认和具名。
 如果我们有以下文件：
 ``` js
 // info.js

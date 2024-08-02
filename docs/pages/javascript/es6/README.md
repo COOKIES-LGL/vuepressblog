@@ -109,3 +109,14 @@ main();
 - FileReader.readAsText(Blob)：将Blob转化为文本字符串
 - FileReader.readAsArrayBuffer(Blob)：将Blob转为ArrayBuffer格式数据
 - FileReader.readAsDataURL(): 将Blob转化为Base64格式的Data URL
+
+
+### 迭代对象获取迭代器
+``` js
+const iterator = iterable[Symbol.iterator](); // 获取迭代器
+const value = iterator.next(); // 获取元素内容/每次调用获取下一个
+value.done; // bool 是否迭代完毕
+``` 
+
+### Promise.race特殊特性
+当使用空的可迭代对象，调用 Promise.race API 时，将会返回一个永远处于 pending 状态的 Promise 对象

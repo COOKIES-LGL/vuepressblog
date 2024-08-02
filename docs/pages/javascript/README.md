@@ -10,6 +10,7 @@ home: false
 * [javascript设计模式](./designMode)  <span style="color:#bbb; float:right">2022-06-10</span>
 * [javascript正则表达式使用笔记](./regexp)  <span style="color:#bbb; float:right">2023-08-10</span>
 * [promise高级封装](./promise)  <span style="color:#bbb; float:right">2023-12-10</span>
+* [lodash常用方法](./lodash)  <span style="color:#bbb; float:right">2023-12-10</span>
 
 ### MarkDown使用指南
 *  [MarkDown](../blog-daily/use-markdown)  <span style="color:#bbb; float:right">2021-06-24</span>

@@ -483,13 +483,3 @@ function checkIsSupportSticky() {
 - throw 抛出异常后，函数执行将退出， 而 reject 不会， 后面代码会继续执行。
 - reject 需要与 promise 一起使用, 而 throw 可以结果 try/catch 在任意代码中使用。
 
-
-### 迭代对象获取迭代器
-``` js
-const iterator = iterable[Symbol.iterator](); // 获取迭代器
-const value = iterator.next(); // 获取元素内容/每次调用获取下一个
-value.done; // bool 是否迭代完毕
-``` 
-
-### Promise.race特殊特性
-当使用空的可迭代对象，调用 Promise.race API 时，将会返回一个永远处于 pending 状态的 Promise 对象
