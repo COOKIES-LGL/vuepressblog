@@ -27,5 +27,9 @@ home: false
 # 下面两个命令将homebrew的bin目录添加到PATH
 ```
 
+### mac 输入上面功能键F12
+按住左下角fn键再按对应的功能键
+vscode 查找变量的全局引用可以按住shift + option + fn + f12
+
 ### MarkDown使用指南
 * [MarkDown](../blog-daily/use-markdown)  <span style="color:#bbb; float:right">2021-06-24</span>

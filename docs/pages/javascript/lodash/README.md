@@ -119,6 +119,7 @@ utils.isEmpty([]); // => true
 utils.isEmpty(null); // => true
 utils.isEmpty(undefined); // => true
 utils.isEmpty({}); // => true
+utils.isEmpty(0); // => true
 utils.isEmpty({ name: 'John Doe' }); // => false
 ```
 
