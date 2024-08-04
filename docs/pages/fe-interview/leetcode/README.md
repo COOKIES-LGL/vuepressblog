@@ -4,7 +4,7 @@ sidebar: false
 ---
 
 ### 批量加载图片
-#### 因为 Promise.all 的返回是传入 promise组 相互依赖的结果，当其中有一个完成了还得等其它都完成，也不是题目想要的效果。也就有了下面的思路将八张图片先拿三张出来，当做 初始请求，但是一旦有完成的（无论成功或失败）就 将成后面的一张的结果加入请求。
+**因为 Promise.all 的返回是传入 promise组 相互依赖的结果，当其中有一个完成了还得等其它都完成，也不是题目想要的效果。也就有了下面的思路将八张图片先拿三张出来，当做 初始请求，但是一旦有完成的（无论成功或失败）就 将成后面的一张的结果加入请求。**
 
 ``` javascript
 function limitRequest(urlArr, max) {
@@ -575,6 +575,7 @@ C.forEach(item =>{
 })
 ```
 
+### 名字漂亮度
 ``` javascript
 // 名字漂亮度
 // 字符串中出现次数最多的赋值26第二多的25 然后计算和
@@ -595,10 +596,9 @@ while(n = readline()){
         console.log(res);
     }
 }
-
 ```
 
-###  反转链表
+### 反转链表
 ``` javascript
 // 反转链表
 class Node {
@@ -647,7 +647,6 @@ function getCount(m,n){
 ```
 
 ### 二叉树删除节点
-
 ``` javascript
     // 删除一个节点
     _removeNode(node, data) {
@@ -686,7 +685,8 @@ function getCount(m,n){
 
 ```
 
-### 239. 滑动窗口最大值 返回滑动窗口滑动过程中窗口内最大值
+### 滑动窗口最大值
+239. 滑动窗口最大值 返回滑动窗口滑动过程中窗口内最大值
 
 单调队列 解法
 ``` javascript
@@ -750,7 +750,8 @@ var maxSubArray = function(nums) {
 };
 ```
 
-### 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+### 找出那个只出现了一次的元素
+给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
 
 ``` javascript
 /** 异或运算符
@@ -769,7 +770,8 @@ var singleNumber = function(nums) {
 
 ```
 
-### 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。 有效括号组合需满足：左括号必须以正确的顺序闭合。
+### 有效括号组合
+数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。 有效括号组合需满足：左括号必须以正确的顺序闭合。
 ``` javascript
 // 回溯法
 var generateParenthesis = function(n) {
@@ -788,7 +790,6 @@ var generateParenthesis = function(n) {
 ```
 
 ### 杨辉三角
-
 ``` javascript
 // 构建杨辉三角
 // 输入: 5 输出: [ [1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1] ]
@@ -873,6 +874,126 @@ var isBalanced = function(root) {
   return isBalanced(root.left) && isBalanced(root.right);  
 };
 ```
+
+求最优，你就应该想到动态规划，发现求最大最小，你就应该想到贪心算法，发现求子集，你就应该想到回溯算法
+
+### 哨兵节点
+在链表中，我们经常会使用哨兵节点，比如在链表的头部添加一个哨兵节点，这样我们就不需要单独处理头节点的情况。
+举一个简单的例子，我们要删除链表中的一个节点，我们可以这样做
+``` js
+//创建一个哨兵节点
+let dummy = new ListNode(0);
+dummy.next = head;
+let prev = dummy;
+while (prev.next) {
+    if (prev.next.val === val) {
+        prev.next = prev.next.next;
+        break;
+    }
+    prev = prev.next;
+}
+return dummy.next;
+```
+
+### Tire 树
+Tire 树主要用于解决字符串匹配等问题，特别适合查找字符串长度基本都不长，但是量很大的情况。
+Tire 树的核心思想是将字符串存储在树中，然后通过树来查找字符串,Tire 树的典型问题有实现一个 Trie 树、实现一个 Trie 树的前缀搜索.
+``` js
+class Trie {
+    constructor() {
+        this.root = {};
+    }
+    insert(word) {
+        let node = this.root;
+        for (let char of word) {
+            if (!node[char]) {
+                node[char] = {};
+            }
+            node = node[char];
+        }
+        node.isEnd = true;
+    }
+    search(word) {
+        let node = this.root;
+        for (let char of word) {
+            if (!node[char]) {
+                return false;
+            }
+            node = node[char];
+        }
+        return node.isEnd || false;
+    }
+    startsWith(prefix) {
+        let node = this.root;
+        for (let char of prefix) {
+            if (!node[char]) {
+                return false;
+            }
+            node = node[char];
+        }
+        return true;
+    }
+}
+```
+### 线段树
+线段树主要用于解决区间查询等问题，特别适合区间查询问题。线段树的核心思想是将区间存储在树中，然后通过树来查询区间.
+线段树的典型问题有区间和的查询、区间最大值的查询
+``` js
+class SegmentTree {
+    constructor(nums) {
+        this.n = nums.length;
+        this.tree = new Array(2 * this.n).fill(0);
+        for (let i = 0; i < this.n; i++) {
+            this.tree[this.n + i] = nums[i];
+        }
+        for (let i = this.n - 1; i > 0; i--) {
+            this.tree[i] = this.tree[2 * i] + this.tree[2 * i + 1];
+        }
+    }
+
+    update(i, val) {
+        i += this.n;
+        this.tree[i] = val;
+        while (i > 0) {
+            let left = i;
+            let right = i;
+            if (i % 2 === 0) {
+                right = i + 1;
+            } else {
+                left = i - 1;
+            }
+            this.tree[i / 2] = this.tree[left] + this.tree[right];
+            i /= 2;
+        }
+    }
+
+    sumRange(i, j) {
+        i += this.n;
+        j += this.n;
+        let sum = 0;
+        while (i <= j) {
+            if (i % 2 === 1) {
+                sum += this.tree[i];
+                i++;
+            }
+            if (j % 2 === 0) {
+                sum += this.tree[j];
+                j--;
+            }
+            i /= 2;
+            j /= 2;
+        }
+        return sum;
+    }
+}
+let nums = [1, 3, 5];
+let st = new SegmentTree(nums);
+console.log(st.sumRange(0, 2)); // 9
+st.update(1, 2);
+console.log(st.sumRange(0, 2)); // 8
+```
+
+
 
 ### [最大最小堆](./MinMaxHeap)
 

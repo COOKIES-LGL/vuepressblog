@@ -2,7 +2,7 @@
 不管是前序遍历，还是中序遍历，亦或是后序遍历，都属于深度优先遍历。
 :::
 
-### 深度优先遍历 递归
+### 深度优先遍历-递归
 ``` javascript
 const dfs = (treeNode) => { 
 	if (treeNode == null) { 
@@ -21,7 +21,7 @@ const dfs = (treeNode) => {
 } 
 ```
 
-### 深度优先遍历 栈循环
+### 深度优先遍历-栈循环
 ``` javascript
 const dfsWithStack = (root) => { 
 	if (!root) return
@@ -41,7 +41,7 @@ const dfsWithStack = (root) => {
 }
 ```
 
-### 广度优先遍历 队列循环
+### 广度优先遍历-队列循环
 
 ``` javascript
 const bfsWithQueue = (root) => { 

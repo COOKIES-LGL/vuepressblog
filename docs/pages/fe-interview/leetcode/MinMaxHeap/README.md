@@ -2,9 +2,11 @@
 
 ::: tip
 数组保存堆结构时每个节点对应的父子节点位置
+``` js
 const parent = (i) => Math.ceil(i / 2 - 1);
 const leftChild = (i) => 2 * i + 1;
 const rightChild = (i) => 2 * i + 2;
+```
 :::
 
 ``` javascript
@@ -94,6 +96,5 @@ pq.add({ name: "Jose", age: 32 });
 
 console.log(pq.remove()); // { name: 'Nushi', age: 42 }
 console.log(pq.array); // [{ name: 'Jose', age: 32 }, { name: 'Maria', age: 23 }]
-
 
 ```

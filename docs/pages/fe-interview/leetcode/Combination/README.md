@@ -1,11 +1,12 @@
-### 最大堆最小堆
+### 排列组合
 
 ::: tip
 一般 回溯 算法都是比较好的解决方案
 :::
 
 
-### 组合总和 给定一个无重复元素的正整数数组 candidates 和一个正整数 target ，找出 candidates 中所有可以使数字和为目标数 target 的唯一组合。
+### 回溯 算法
+组合总和 给定一个无重复元素的正整数数组 candidates 和一个正整数 target ，找出 candidates 中所有可以使数字和为目标数 target 的唯一组合。
 ``` javascript
 var combinationSum = function(candidates, target) {
   var ans = []
@@ -27,7 +28,8 @@ var combinationSum = function(candidates, target) {
 }
 ```
 
-### 给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列
+### 全排列
+给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列
 ``` javascript
 var combination = function(nums) {
   var ans = []
