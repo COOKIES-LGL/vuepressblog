@@ -3,6 +3,7 @@ sideBar: true;
 ---
 
 ## Puppeteer 开发笔记
+
 Puppeteer 的核心在于提供用户控制浏览器行为的方法，以下是一些自动化入门示例：
 
 - 自动提交表单、UI 测试、键盘输入等；
@@ -11,6 +12,127 @@ Puppeteer 的核心在于提供用户控制浏览器行为的方法，以下是�
 - 测试 Chrome 扩展程序；
 - 对页面截图和生成 PDF；
 - 对 SPA 应用爬取并生成预渲染内容；
+
+### 基础知识
+#### 配置列表
+``` js
+puppeteer.launch({
+  headless: true, // 是否以无头模式运行浏览器，默认为true
+  executablePath: '', // 可执行文件路径，如果不指定则自动下载
+  args: [], // 命令行参数数组
+  ignoreDefaultArgs: false, // 是否忽略默认的命令行参数
+  defaultViewport: null, // 默认视窗大小，null表示自动设置
+  slowMo: 0, // 延迟毫秒数，用于调试
+  timeout: 30000, // 超时时间，单位为毫秒
+  devtools: false, // 是否打开DevTools面板，默认为false
+  pipe: false, // 是否将浏览器启动的I/O连接通过管道传递，默认为false
+  handleSIGINT: true, // 是否在收到SIGINT信号时关闭浏览器，默认为true
+  handleSIGTERM: true, // 是否在收到SIGTERM信号时关闭浏览器，默认为true
+  handleSIGHUP: true, // 是否在收到SIGHUP信号时关闭浏览器，默认为true
+  env: {}, // 环境变量对象
+  userDataDir: '', // 用户数据目录路径
+  dumpio: false, // 是否将浏览器I/O输出到进程的stdout和stderr中，默认为false
+  executablePath: '', // 可执行文件路径，如果不指定则自动下载
+  ignoreHTTPSErrors: false, // 是否忽略HTTPS错误，默认为false
+  ignoreCertificateErrors: false // 是否忽略SSL证书错误，默认为false
+});
+```
+#### browser常用属性方法
+``` js
+const browser = await puppeteer.launch();
+const version = await browser.version(); // 返回浏览器实例的版本信息
+const target = await browser.target(); // 返回浏览器实例的Target对象
+const target = await browser.waitForTarget(target => target.url() === 'https://baidu.com/'); // 等待符合条件的Target对象，返回Promise，在目标找到时resolve
+const isConnected = browser.isConnected(); // 表示浏览器实例是否连接
+const process = browser.process(); // 返回Node.js的ChildProcess实例，表示浏览器进程
+browser.on('disconnected', () => console.log('Browser disconnected')); // 监听浏览器实例的事件
+browser.once('disconnected', () => console.log('Browser disconnected')); // 浏览器实例的单次事件监听
+browser.removeListener('disconnected', onDisconnected); // 移除浏览器实例的事件监听器
+browser.removeAllListeners(); // 移除浏览器实例的全部事件监听器
+```
+#### page常用属性方法
+``` js
+await page.goto('https://www.baidu.com'); // 当前页面跳转到
+await page.waitForSelector('.container'); // 等待页面上 container 元素出现
+const element = await page.$('.container'); // 获取页面上第一个 container 元素
+page.click('.container'); // 模拟点击页面上的 container 元素
+await page.setViewport({width: 1920, height: 1080}); // 设置页面的视口大小
+await page.screenshot({path: 'picture.png'}); // 对当前页面进行截图，并将截图保存在 picture.png 文件中
+const title = await page.evaluate(() => {
+  return document.title; //  可以在浏览器页面上下文中执行任意JavaScript代码的方法，它可以访问所有页面中的DOM元素和JavaScript对象
+});
+const metrics = await page.metrics(); // 得到一些页面性能数据
+```
+#### 注入函数
+``` js
+// 可以将nodejs的方法暴露给浏览器
+const crypto = require('crypto');
+​
+...
+await page.exposeFunction('md5', text =>
+  crypto.createHash('md5').update(text).digest('hex')
+);
+console.log(window.md5)
+```
+#### 鼠标键盘
+``` js
+// 模拟按下Esc键
+await page.keyboard.down('Escape');
+// 模拟松开Esc键
+await page.keyboard.up('Escape');
+// 模拟按下并松开Enter键
+await page.keyboard.press('Enter');
+// 模拟输入文本
+await page.keyboard.type('hello, world');
+// 将鼠标移动到指定位置
+await page.mouse.move(100, 100);
+// 模拟鼠标单击事件
+await page.mouse.click(100, 100);
+// 模拟鼠标按下事件
+await page.mouse.down();
+// 模拟鼠标松开事件
+await page.mouse.up();
+```
+#### waitFor等待
+``` js
+// 等待id为myButton的按钮出现并单击
+await page.waitFor('#myButton');
+await page.click('#myButton');
+​
+// 等待页面中的img元素加载完成
+await page.waitForSelector('img', { visible: true });
+console.log('All images loaded');
+​
+// 等待页面中的第一个a元素出现并单击
+await page.waitForXPath('//a[1]');
+await page.click('//a[1]');
+​
+// 等待页面标题包含“Puppeteer”的页面跳转完成
+await page.waitForNavigation({ waitUntil: 'titleContains', url: /puppeteer/i });
+console.log('Page navigation completed');
+​
+// 等待一个异步操作完成
+await page.waitForFunction(() => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(true);
+    }, 1000);
+  });
+}, { polling: 100 });
+console.log('Async function completed');
+​
+// 等待指定的URL请求完成
+await page.waitForRequest(request => {
+  return request.url().endsWith('.png');
+}, { timeout: 5000 });
+console.log('PNG request completed');
+​
+// 等待指定的URL响应完成
+await page.waitForResponse(response => {
+  return response.url().endsWith('.js');
+}, { timeout: 5000 });
+console.log('JS response completed');
+```
 
 ### 浏览器管理
 connect 直接连接到已启动的浏览器
@@ -62,11 +184,11 @@ import puppeteer from 'puppeteer';
 
 ### 页面交互
 #### 定位器
-点击元素	await page.locator('button').click();
-录入文本	await page.locator('input').fill('hello world');
-鼠标悬停	await page.locator('div').hover();
-滚动元素	await page.locator('div').scroll({ scrollTop: 10, scrollLeft: 20 });
-等待元素可见	await page.locator('.loading').wait();
+- 点击元素	await page.locator('button').click();
+- 录入文本	await page.locator('input').fill('hello world');
+- 鼠标悬停	await page.locator('div').hover();
+- 滚动元素	await page.locator('div').scroll({ scrollTop: 10, scrollLeft: 20 });
+- 等待元素可见	await page.locator('.loading').wait();
 ``` js
 // 配置超时时间
 await page.locator('button').setTimeout(5 * 1000).click();
@@ -305,7 +427,8 @@ import puppeteer from 'puppeteer'
 })()
 ```
 
-
+[玩转Puppeteer](https://zhuanlan.zhihu.com/p/624900686)
 #### cheerio
 方便快捷的html xml 解析工具
 [中文文档](https://github.com/cheeriojs/cheerio/wiki/Chinese-README)
+

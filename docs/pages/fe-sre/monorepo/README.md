@@ -224,8 +224,11 @@ yarn init # 同理初始化backend-api的package.json
 ``` bash
 cd packages/ui-components
 yarn add react react-dom # 为ui-components安装依赖
+yarn add react -w ui-components # 或者
 cd ../backend-api
 yarn add express # 为backend-api安装依赖
+yarn add react -w backend-api # 或者
+yarn add react --workspace-root # 在根目录安装
 ```
 #### 跨包共享依赖
 一些包是所有工作空间共用的，可以在根目录的package.json中安装这些依赖，并使用nohoist选项来防止这些依赖被提升到根目录，保持它们在每个工作空间内部
