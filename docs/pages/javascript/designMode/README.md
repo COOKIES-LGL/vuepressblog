@@ -472,7 +472,6 @@ function requestWithPauseControl <T extends () => Promise<any>>(request: T) {
 ```
 
 ### 管道设计模式
-
 ``` js
 // 定义管道中的各个阶段（函数）
 function addTwo(number) {
@@ -502,4 +501,64 @@ const pipeline = createPipeline(addTwo, multiplyByThree, subtractOne);
 // 使用管道处理数据
 const result = pipeline(5);
 console.log(result); // 输出: 46
+```
+
+### 插件模式
+``` js
+// 定义插件构造器
+abstract class MyPlugin {
+  name: string;
+  constructor(name) {
+    this.name = name;
+  }
+  printName() {
+    return this.name
+  }
+  abstract install(): void
+}
+
+class PluginFirst extends MyPlugin {
+  constructor(name) {
+    super(name);
+  }
+  install() {
+    console.log('安装插件: ' + this.name);
+  }
+}
+
+class PluginSecond extends MyPlugin {
+  constructor(name) {
+    super(name);
+  }
+  install() {
+    console.log('安装插件: ' + this.name);
+  }
+}
+ 
+// 插件管理器
+class PluginManager() {
+  constructor() {
+    this.plugins = [];
+  }
+  // 插件管理器原型上添加插件和调用方法
+  addPlugin(plugin) {
+      this.plugins.push(plugin);
+  },
+  // 调用每个插件的方法
+  execute() {
+      this.plugins.forEach(function(plugin) {
+          plugin.printName();
+      });
+  }
+}
+ 
+// 使用示例
+var manager = new PluginManager();
+var plugin1 = new PluginFirst('插件1');
+var plugin2 = new PluginSecond('插件2');
+ 
+manager.addPlugin(plugin1);
+manager.addPlugin(plugin2);
+ 
+manager.execute(); // 输出: 安装插件:  插件1 和 安装插件:  插件2
 ```

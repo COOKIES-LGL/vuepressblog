@@ -3,6 +3,7 @@ sideBar: false;
 ---
 ## Redis 使用笔记
 
+[redis实战](https://juejin.cn/post/7225139862223405114?searchId=20240807141838EE5FF94EE3B720C9ED47)
 
 [redis入门知识第1篇-redis特性介绍](https://juejin.cn/post/7040839039284412452)
 [redis入门知识第2篇-redis的安装与测试](https://juejin.cn/post/7041224816988749832)

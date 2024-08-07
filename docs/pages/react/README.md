@@ -18,6 +18,7 @@ home: false
 
 * [Schedule 核心流程图](https://zhuanlan.zhihu.com/p/450267610?utm_id=0)
 * [React-router快速入门](https://segmentfault.com/a/1190000014294604)
+* [React思想](https://react.iamkasong.com/preparation/idea.html#react-%E7%90%86%E5%BF%B5)
 
 ### React Scheduler使用MessageChannel的原因
 :::tip
