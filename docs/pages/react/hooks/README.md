@@ -157,12 +157,6 @@ export function usePersistFn<T extends (...args: any[]) => any>(fn: T) {
 只有当前组件的所有属性都被缓存时，才可以使用useCallback缓存函数 只有当父组件的所有属性都被缓存时，才可以使用useMemo缓存子组件或对象
 :::
 
-### HOC 类型声明
-``` typescript
-React.FC<React.PropsWithChildren<IProps>>
-Children: React.ComponentType<any>
-```
-
 ### useReducer和useContext的结合可以取代Redux?
 ::: tip
 主要问题useReducer+useContext维护的状态还只是一个强耦合于UI的状态。这写状态的生命周期完全局限于在函数组件内部，这个状态是在在组件函数作用域内创建的，

@@ -46,6 +46,11 @@ React.CSSProperties是React基于TypeScript定义的CSS属性类型
 style?: CSSProperties | undefined;
 ```
 
+### HOC 类型声明
+``` typescript
+React.FC<React.PropsWithChildren<IProps>>
+Children: React.ComponentType<any>
+```
 
 ### Event
 

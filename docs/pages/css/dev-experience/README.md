@@ -26,3 +26,17 @@
   unicode-range: U+00-FF; /* 基本拉丁字母及扩展 */
 }
 ```
+
+
+#### position：sticky 无效的原因
+- 缺少top、left、right或bottom属性：为了使position: sticky生效，你需要指定至少一个定位属性（如top、left、right或bottom），以定义元素在何时开始粘性定位。
+
+- 父元素没有足够的内容或高度：如果父元素没有足够的内容或高度，导致没有滚动条，sticky定位可能不会生效，因为没有滚动行为来触发粘性定位。
+
+- 父元素设置了overflow属性：如果元素的直接父元素或任何祖先元素设置了overflow: hidden或overflow: auto、scroll，这可能会创建一个新的格式化上下文（formatting context），导致sticky定位失效。
+
+- 元素的祖先元素使用了transform属性：如果元素的任何祖先元素使用了transform属性，这可能会创建一个新的包含块（containing block），这会影响sticky定位的行为。
+
+- position: sticky 仅在元素的父容器是块级元素（block-level element）时有效。如果父容器是内联元素（inline element），粘性定位将不起作用
+
+
