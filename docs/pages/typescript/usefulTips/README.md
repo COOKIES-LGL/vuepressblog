@@ -267,3 +267,35 @@ const path = '/transport/ground/detail/:code/:tab' as const
 
 type Params = Record<PickParams<Split<typeof path>>, string> // { code: string; tab: string; }
 ```
+
+### 对象key值限制
+``` ts
+const ROUTES = {
+  router1: '/router1',
+  router2: '/router2',
+}
+const pmm: Record<keyof typeof ROUTES, { module: string }> = {
+  router1: { module: '1212' },
+  router2: { module: '1212' },
+}
+```
+
+
+### is 关键词
+主要用来框定类型并实现对应的类型断言
+``` ts
+function isString(value:unknown):boolean{
+    return typeof value === "string"
+}
+let someValue:unknown="hhhha"
+if (isString(someValue)){
+    console.log(someValue.length); //这边出现报错，someValue任然是个unknown类型
+}
+// ------------------------------
+function isString1(value:unknown):value is string{
+    return typeof value ==="string"
+}
+if (isString(someValue)){
+    console.log(someValue.length); // 这里就没有报错，如果在编辑器上可以发现，这个someValue的类型转成了string
+}
+```
