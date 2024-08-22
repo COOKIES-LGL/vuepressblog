@@ -52,3 +52,7 @@ NAME=${USER:-default}  # 如果 USER 变量未定义，则使用 "default"
 FILENAME="example.txt"
 echo ${FILENAME%.txt}  # 输出: example
 ```
+
+### 命令行光标移到
+Ctrl + A 要将光标移到当前命令行的开始位置
+Ctrl + E 将光标移动到当前命令行的末尾

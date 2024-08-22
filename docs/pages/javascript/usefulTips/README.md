@@ -483,3 +483,28 @@ function checkIsSupportSticky() {
 - throw 抛出异常后，函数执行将退出， 而 reject 不会， 后面代码会继续执行。
 - reject 需要与 promise 一起使用, 而 throw 可以结果 try/catch 在任意代码中使用。
 
+### jscodeshift 
+代码自动化重构
+``` bash
+npm install -g jscodeshift
+jscodeshift -t transform.js --parser=ts path/to/your/code
+# transform.js 脚本文件
+# path/to/ 要转换的文件路径
+# --parser=ts 使用ts解析器
+# --parser=tsx 使用tsx解析器
+# babel,babylon,flow,ts,tsx
+```
+``` js
+const chalk = require('chalk')
+const { log } = console
+// jscodeshift -t ./scripts/format-try-catch.js scripts/test/format-try-catch-test.js
+export default function transformer(file, api, options) {
+  const j = api.jscodeshift
+  const root = j(file.source)
+  root.find(j.VariableDeclarator)
+  return root.toSource()
+}
+// 奇怪这样输出也会给源文件的返回值添加括号
+```
+
+[常用脚本](https://github.com/cpojer/js-codemod/tree/master)

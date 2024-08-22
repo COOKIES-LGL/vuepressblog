@@ -82,3 +82,12 @@ export default defineConfig({
   ],
 })
 ```
+
+###  使用 banner 或 footer 选项添加 import 语句
+``` js
+config.output = {
+  ...config.output,
+  banner: `require('./index.css');\n` // 在打包的后 JS 文件顶部插入 import 语句
+}
+```
+

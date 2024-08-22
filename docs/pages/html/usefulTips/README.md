@@ -232,3 +232,6 @@ resizeObserver.observe(targetElement);
   <div>文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</div>
 </details>
 ```
+
+### ‌image标签和background-image
+‌image标签和background-image在网页渲染中的顺序是先渲染image标签，再渲染background-image。

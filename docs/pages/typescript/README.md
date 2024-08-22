@@ -7,7 +7,7 @@ sidebar: auto
 [ts实用小技巧](./usefulTips/README.md) 
 [ts类型推断](./infer/README.md)
 [reflect-metadata](https://zhuanlan.zhihu.com/p/643674031)   
-
+[详解tsconfig.json中的module、moduleResolution](https://juejin.cn/post/7276408879364948028)
 ### Partial
 ``` typescript
 interface PullDownRefreshConfig {

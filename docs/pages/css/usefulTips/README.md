@@ -525,3 +525,12 @@ css.support("display: flex") // true、 false
 
 ### @import 导致额外的HTTP请求
 @import 在CSS中使用时会导致额外的HTTP请求，因为每个导入的CSS文件都会触发浏览器的额外请求。这种做法会增加页面加载时间
+
+``` html
+<html>
+<style>
+</style> 
+</html>
+<!-- 写在html中的的样式加载更慢 -->
+```
+
