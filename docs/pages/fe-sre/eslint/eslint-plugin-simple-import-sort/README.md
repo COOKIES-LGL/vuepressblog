@@ -75,7 +75,6 @@ sidebar: false
     }
   ],
   "importSorter.sortConfiguration.removeUnusedImports": true,
-  "cSpell.enableFiletypes": ["typescriptreact"],
   "editor.formatOnSave": true,
   // 主要是这个几个配置
   "editor.codeActionsOnSave": {
