@@ -96,6 +96,17 @@ npm install --save-dev ../../npm-plugin/index.js
 // 可以用来限制某个开发包的 依赖包版本
 ```
 
+
+### npm查看依赖包版本信息
+``` bash
+npm list express versions
+# 查看express所有版本
+npm view express versions
+# 查询到npm服务器上对应查询包express的版本所有信息‌
+npm view express version
+# 查看express当前安装的版本信息
+```
+
 ### package.json 中配置 workspaces
 单个代码库中统一管理多个包（monorepo），在workspaces声明目录下的package会软链到根目录的node_modules中。
 
