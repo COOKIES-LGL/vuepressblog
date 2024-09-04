@@ -155,3 +155,44 @@ const secondObject = { 'A': [{ 'B': 3 }, { 'D': 4 }] };
 const result = utils.merge(firstObject, secondObject);
 // result => { A: [{ B: 3 }, { C: 2, D: 4 }] }
 ```
+
+### uniqBy
+``` js
+import _ from 'lodash-es'
+const afterRunUniqBy = _.uniqBy(array1， 'value') // 去除重复值
+```
+**使用案例**
+``` js
+const firstArray = [{ value: 1 }, { value: 2 }, { value: 1 }, { value: 3 }];
+const result = utils.uniqBy(firstArray, 'value');
+// result => [{ value: 1 }, { value: 2 }, { value: 3 }]
+```
+
+### countBy
+``` js
+import _ from 'lodash-es'
+_.countBy(array1， 'value') // 给数组中的每个元素返回一个计数
+```
+**使用案例**
+``` js
+const firstArray = [{ value: 1 }, { value: 2 }, { value: 1 }, { value: 3 }, { value: 3 }, { value: 3 }];
+const result = utils.countBy(firstArray, 'value');
+// result => { '1': 2，'2': 1, '3': 3 ] }
+```
+
+### forOwn
+``` js
+import _ from 'lodash-es'
+_.forOwn(array1， 'value') // 给数组中的每个元素返回一个计数
+```
+**使用案例**
+``` js
+const firstObject = { value1: 1, value2: 2, value3: 3};
+utils.forOwn(firstObject, (value, key) => {
+    console.log(value, key)
+});
+// result => 1 value1
+// result => 2 value2
+// result => 3 value3
+```
+
