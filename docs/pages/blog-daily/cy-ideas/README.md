@@ -38,3 +38,6 @@ https://juejin.cn/post/7388281982985699363#heading-20
 [点击地图下钻](https://juejin.cn/post/7398352956712534054)
 
 hotline 热点事件时间线
+
+三方应用SDK封装器
+

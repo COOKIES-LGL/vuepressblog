@@ -98,4 +98,8 @@ git checkout $currentGitBranch
 git merge --no-ff master -m 'feat: merge master'
 ```
 
+### 禁用 git push --force
+不要用 git push --force，而要用 git push --force-with-lease 代替。
+在你上次提交之后，只要其他人往该分支提交给代码，git push --force-with-lease 会拒绝覆盖
+
 [merge rebase的区别](https://fe.ecool.fun/topic/cfe8f03e-1a05-4c00-baa7-04ae08c8765c?orderBy=updateTime&order=desc&tagId=0)

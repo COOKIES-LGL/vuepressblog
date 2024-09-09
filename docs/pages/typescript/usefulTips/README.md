@@ -299,3 +299,39 @@ if (isString(someValue)){
     console.log(someValue.length); // 这里就没有报错，如果在编辑器上可以发现，这个someValue的类型转成了string
 }
 ```
+
+### keyof typeof
+
+解决cannot expression of type string used to index type 'object'
+方案一
+``` ts
+const user = {
+  name: "Daniel",
+  age: 26,
+};
+
+const keys = Object.keys(user) as Array<keyof typeof user>;
+keys.forEach((key) => {
+  console.log(user[key]);
+});
+```
+方案二
+``` ts
+const keys = Object.keys(user);
+keys.forEach((key) => {
+  console.log(user[key as keyof typeof user]);
+});
+```
+方案三
+``` ts
+function isKey<T extends object>(x: T, k: PropertyKey): k is keyof T {
+  return k in x;
+}
+
+const keys = Object.keys(user);
+keys.forEach((key) => {
+  if (isKey(user, key)) {
+    console.log(user[key]);
+  }
+});
+```
