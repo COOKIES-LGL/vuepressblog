@@ -39,7 +39,7 @@ _斜体文本_
 
 ```javascript
 $(document).ready(function () {
-  alert('RUNOOB');
+  alert("RUNOOB");
 });
 ```
 
@@ -52,8 +52,8 @@ $(document).ready(function () {
 
 ![RUNOOB 图标](图片地址)  
 使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑  
- 使用反斜杠转义特殊字符  
- 
+ 使用反斜杠转义特殊字符
+
 **文本加粗**  
 \*\* 正常显示星号 \*\*
 
@@ -90,7 +90,8 @@ A[方形] -->B(圆角)
     F[横向流程图]
 ```
 
-### vuepress内置语法
+### vuepress 内置语法
+
 **容器**
 ::: tip
 这是一个提示
@@ -125,11 +126,12 @@ A[方形] -->B(圆角)
   </CodeGroupItem>
 </CodeGroup>
 
-``` html
-<head> 
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script> 
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js"></script> 
-</head> 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+```html
+<head>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js"></script>
+</head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
 ```
+
 [图标搜索](https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free)

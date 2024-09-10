@@ -22,7 +22,7 @@ sidebar: false
 - [Typescript](./typescript) <span style="color:#bbb; float:right">2021-06-15</span>
 - [Node](./node) <span style="color:#bbb; float:right">2021-06-30</span>
 - [Backend 全栈](./backend) <span style="color:#bbb; float:right">2023-07-13</span>
-- [Generate-Page](./generate-page) <span style="color:#bbb; float:right">2024-06-30</span>
+- [Generate Page](./generate-page) <span style="color:#bbb; float:right">2024-06-30</span>
 
 ---
 
