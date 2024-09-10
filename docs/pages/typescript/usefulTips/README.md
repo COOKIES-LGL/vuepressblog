@@ -335,3 +335,15 @@ keys.forEach((key) => {
   }
 });
 ```
+
+### const enum 枚举
+``` ts
+enum Constants {
+  Long = 'a very long string'
+}
+
+const enum Constants {
+  Long = 'a very long string'
+}
+// const enum 我们使用const常量打完包之后的体积更小
+```

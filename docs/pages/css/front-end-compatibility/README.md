@@ -63,3 +63,82 @@ if (window.visualViewport) {
    window.addEventListener("resize", listener);
 }
 ```
+
+### 9、常用的meta属性设置
+``` html
+<meta name="screen-orientation" content="portrait"> // Android 禁止屏幕旋转
+<meta name="full-screen" content="yes"> // 全屏显示
+<meta name="browsermode" content="application"> // UC应用模式，使用application后，页面默认全屏，禁止长按菜单，禁止收拾，标准排版，以及强制图片显示。
+```
+
+### 10、清除输入框内阴影
+``` css
+div {
+  -webkit-appearance: none;
+}
+```
+
+### 11、如何禁止保存或拷贝图像
+``` css
+img {
+  -webkit-touch-callout: none;
+}
+```
+
+### 12、设置字体禁止缩放
+``` css
+body {
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+}
+```
+
+### 13、IOS 键盘收起时页面没用回落，底部会留白
+``` js
+window.addEventListener('focusout', function() {
+  window.scrollTo(0, 0)
+})
+
+//input输入框弹起软键盘的解决方案。
+var bfscrolltop = document.body.scrollTop
+$('input')
+  .focus(function() {
+    document.body.scrollTop = document.body.scrollHeight
+    //console.log(document.body.scrollTop);
+  })
+  .blur(function() {
+    document.body.scrollTop = bfscrolltop
+    //console.log(document.body.scrollTop);
+  })
+```
+
+### 14、IOS 下 fixed 失效的原因
+软键盘唤起后，页面的 fixed 元素将失效，变成了 absolute，所以当页面超过一屏且滚动时，失效的 fixed 元素就会跟随滚动了。不仅限于 type=text 的输入框，凡是软键盘（比如时间日期选择、select 选择等等）被唤起，都会遇到同样地问题。
+
+解决方法: 不让页面滚动，而是让主体部分自己滚动,主体部分高度设为 100%，overflow:scroll
+``` html
+<body>
+  <div class='warper'>
+    <div class='main'></div>
+  <div>
+  <div class="fix-bottom"></div>
+</body>
+<style>
+  .warper {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; /* 解决ios滑动不流畅问题 */
+}
+.fix-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+</style>
+```

@@ -1,0 +1,9 @@
+{
+  "files.eol": "\n",
+  "prettier.endOfLine": "lf",
+  "editor.codeActionsOnSave": {
+    "source.formatDocument": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "cSpell.words": ["vuepress", "Colyseus‌", "guilin"]
+}

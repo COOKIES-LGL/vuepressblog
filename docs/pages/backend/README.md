@@ -13,6 +13,26 @@ sidebar: false
 
 ### 实用工具
 
+#### Open Graph Image
+Open Graph Image（OG图像）集合导航站，OG 图像是用于在社交媒体上分享网页内容时显示的图像，类似于微信分享时的缩略图
+[Open Graph Image](https://opengraphexamples.com/)
+
+#### qr-code
+带动效的二维码组件
+[qr-code](https://github.com/bitjson/qr-code)
+
+#### HivisionIDPhoto
+轻量级的 AI 证件照制作工具，并且还是开源免费的
+[HivisionIDPhoto](https://swanhub.co/ZeYiLin/HivisionIDPhotos/demo)
+
+#### Geckos.io
+专为HTML5实时多人游戏量身定制的开源工具，通过WebRTC和Node.js实现低延迟通信
+[Geckos.io](https://github.com/geckosio/geckos.io)
+
+#### Colyseus‌
+一个基于Node.js的多人游戏框架
+[Colyseus‌](https://github.com/colyseus/colyseus)
+
 #### Coolify
 一个开源的应用运行平台，相当于自己搭建一个 Heroku / Netlify / Vercel 替代品，各种应用可以轻松在上面运行。
 [Coolify](https://github.com/coollabsio/coolify)
@@ -29,6 +49,7 @@ sidebar: false
 [Logo Fast](https://shipfa.st/tools/logo-fast)
 
 #### Observable Plot
+一个javascript的大数据可视化库
 [Observable Plot](https://observablehq.com/plot/)
 
 #### x-crawl
@@ -52,6 +73,7 @@ sidebar: false
 [ocr](https://ocr.plantree.me/ocr)
 
 #### Marker
+高效的将PDF转markdown文件
 [Marker](https://github.com/VikParuchuri/marker)
 
 #### Rsdoctor
@@ -121,7 +143,6 @@ sidebar: false
 #### jsinspect
 软件项目中，同一段逻辑不应该有多个实现。jsinspect 就是用来查出重复代码的工具
 [jsinspect](https://github.com/danielstjules/jsinspect)
---- ---
 
 #### percollate
 命令行抓取网页，生成 PDF 文件的工具。
@@ -171,8 +192,9 @@ sidebar: false
 
 #### sketchviz
 代码手绘流程图绘制
-[sketchviz](https://sketchviz.com/new
+[sketchviz](https://sketchviz.com/new)
 
+--- ---
 
 ### 实用资源
 
