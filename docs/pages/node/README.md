@@ -19,6 +19,7 @@ sidebar: false
 - [child_process](https://segmentfault.com/a/1190000040590402)<span style="color:#bbb; float:right">2024-02-10</span>
 - [pm2](./pm2)<span style="color:#bbb; float:right">2024-06-10</span>
 - [utils 模块](./utils)<span style="color:#bbb; float:right">2024-06-10</span>
+- [Node 常用方法](./usefulTips) <span style="color:#bbb; float:right">2024-08-10</span>
 
 ### easy-monitor 监控系统
 

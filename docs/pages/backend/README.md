@@ -252,6 +252,10 @@ Open Graph Image（OG 图像）集合导航站，OG 图像是用于在社交媒�
 
 [icon](https://www.iconbolt.com/)
 
+#### react icon 图标库
+
+[react icon](https://github.com/hugeicons/hugeicons-react)
+
 #### yesIcon
 
 [yesIcon](https://yesicon.app/)
