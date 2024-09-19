@@ -159,3 +159,12 @@ npm i p1 -w p2
 ```
 
 workspaces 功能与 lerna 类似，如果只需简单地管理多个包，workspaces 足够了。lerna 具有版本管理，发包提示，简化多包项目发布流程等更多功能。
+
+### npm home、 npm repo
+
+```bash
+# npm home 查看官网
+npm home express
+# npm repo 打开代码仓库
+npm repo react
+```
