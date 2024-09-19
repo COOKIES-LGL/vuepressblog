@@ -4,10 +4,11 @@
 一般 回溯 算法都是比较好的解决方案
 :::
 
-
 ### 回溯 算法
+
 组合总和 给定一个无重复元素的正整数数组 candidates 和一个正整数 target ，找出 candidates 中所有可以使数字和为目标数 target 的唯一组合。
-``` javascript
+
+```javascript
 var combinationSum = function(candidates, target) {
   var ans = []
   const getCombinationSum = (arr, target, idx) => {
@@ -21,7 +22,7 @@ var combinationSum = function(candidates, target) {
       const newTarget = target - candidates[i]
       newArr = [...arr, [candidates[i]]
       getCombinationSum(newArr, newTarget, i)
-    } 
+    }
   }
   getCombinationSum([], target, 0)
   return ans
@@ -29,8 +30,10 @@ var combinationSum = function(candidates, target) {
 ```
 
 ### 全排列
+
 给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列
-``` javascript
+
+```javascript
 var combination = function(nums) {
   var ans = []
   const getCombination = (arr, idx) => {
@@ -42,7 +45,7 @@ var combination = function(nums) {
       if (arr.includes(candidates[i])) return
       newArr = [...arr, [candidates[i]]
       getCombination(newArr, i)
-    } 
+    }
   }
   getCombination([], 0)
   return ans

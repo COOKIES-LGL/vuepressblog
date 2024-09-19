@@ -37,6 +37,7 @@ sidebar: false
 ### 读书笔记
 
 - [《斯坦福大学人生设计课》](./book-reading/design-your-life) <span style="color:#bbb; float:right">2021-05-20</span>
+- [《有钱人和你想的不一样》](./book-reading/rich-people-diff-what-you-think) <span style="color:#bbb; float:right">2024-03-20</span>
 
 ---
 

@@ -3,12 +3,12 @@ home: false
 sidebar: true
 ---
 
-### 手写Call 
-``` javascript
+### 手写 Call
 
-Function.prototype.myCall = function(context) {
-  if(typeof this !== 'function') {
-    throw new Error('Error Call');
+```javascript
+Function.prototype.myCall = function (context) {
+  if (typeof this !== "function") {
+    throw new Error("Error Call");
   }
   let args = [...arguments].slice(1);
   let symbolField = new Symbol();
@@ -18,16 +18,15 @@ Function.prototype.myCall = function(context) {
   result = context[symbolField](...args);
   delete context[symbolField];
   return result;
-}
-
+};
 ```
 
-### 手写Apply 
-``` javascript
+### 手写 Apply
 
-Function.prototype.myApply = function(context) {
-  if(typeof this !== 'function') {
-    throw new Error('Error Call');
+```javascript
+Function.prototype.myApply = function (context) {
+  if (typeof this !== "function") {
+    throw new Error("Error Call");
   }
   let symbolField = new Symbol();
   let result = null;
@@ -40,74 +39,72 @@ Function.prototype.myApply = function(context) {
   }
   delete context[symbolField];
   return result;
-}
-
+};
 ```
 
-### 手写Bind 
-``` javascript
-Function.prototype.myBind = function(context) {
-  if(typeof this !== 'function') {
-    throw new Error('Error Call');
+### 手写 Bind
+
+```javascript
+Function.prototype.myBind = function (context) {
+  if (typeof this !== "function") {
+    throw new Error("Error Call");
   }
   let args = [...arguments].slice(1);
   context = context | window;
   let fn = this;
   return function Fn() {
-    return fn.apply(
-      this instanceof Fn ? this : context,
-      args.concat(...arguments)
-    )
+    return fn.apply(this instanceof Fn ? this : context, args.concat(...arguments));
   };
-}
+};
 ```
 
 ### 手写深度克隆
 
-``` javascript
+```javascript
 function deepClone(oldObject, map = new WeakMap()) {
-  if (map.has(oldObject)) return map.get(oldObject)
-  let newObject = Array.isArray(oldObject) ? [] : {}
+  if (map.has(oldObject)) return map.get(oldObject);
+  let newObject = Array.isArray(oldObject) ? [] : {};
   // 一、拷贝基本数据类型
   // 判断是否为基本数据类型
-  const oldObjectType = typeof oldObject
-  if (oldObjectType !== 'object') {
-    newObject = oldObject
+  const oldObjectType = typeof oldObject;
+  if (oldObjectType !== "object") {
+    newObject = oldObject;
   }
-    // 六、拷贝函数
-  if (oldObjectType === '[object Function]') {
-    newObject = oldObject
+  // 六、拷贝函数
+  if (oldObjectType === "[object Function]") {
+    newObject = oldObject;
   }
 
   // 六、拷贝数组
   if (Array.isArray(obj)) {
-    return obj.map(item => deepClone(item));
+    return obj.map((item) => deepClone(item));
   }
   // 七、拷贝值为symbol类型的数据
-  if (oldObjectType === '[object Symbol]') {
-    newObject = Symbol(oldObject.description)
+  if (oldObjectType === "[object Symbol]") {
+    newObject = Symbol(oldObject.description);
   }
 
   // 八、拷贝时间类型
-  if (oldObjectType === '[object Date]') {
-    newObject = new Date(oldObject)
+  if (oldObjectType === "[object Date]") {
+    newObject = new Date(oldObject);
   }
-  map.set(oldObject, newObject)
+  map.set(oldObject, newObject);
   for (const key in oldObject) {
     if (oldObject.hasOwnProperty(key)) {
-      newObject[key] = deepClone(oldObject[key], map)
+      newObject[key] = deepClone(oldObject[key], map);
     }
   }
-  return newObject
+  return newObject;
 }
-
 ```
 
-### 手写new
+### 手写 new
+
 首先创一个新的空对象。
-根据原型链，设置空对象的 __proto__ 为构造函数的 prototype。
+根据原型链，设置空对象的 **proto** 为构造函数的 prototype。
 构造函数的 this 指向这个对象，执行构造函数的代码（为这个新对象添加属性）。
 判断函数的返回值类型，如果是引用类型，就返回这个引用类型的对象。
+
 ```javascript
 function myNew(context) {
   const obj = new Object();
@@ -117,9 +114,9 @@ function myNew(context) {
 }
 ```
 
-### 手写reduce
+### 手写 reduce
 
-``` javascript
+```javascript
 Array.prototype.reduce = function (cb, initialValue) {
   const arr = this;
   let total = initialValue || arr[0];
@@ -132,15 +129,16 @@ Array.prototype.reduce = function (cb, initialValue) {
 ```
 
 ### compose 函数
-``` javascript
+
+```javascript
 let compose = function () {
-    let args = [].slice.call(arguments);
-    return function (x) {
-        return args.reduceRight((res,cb) => {
-           return cb(res); 
-        },x)
-    }
-}
+  let args = [].slice.call(arguments);
+  return function (x) {
+    return args.reduceRight((res, cb) => {
+      return cb(res);
+    }, x);
+  };
+};
 let add = (X) => X + 10;
 let multiply = (y) => y * 10;
 let calculate = compose(multiply, add);
@@ -148,7 +146,8 @@ console.log(calculate(10)); // 200
 ```
 
 ### 斐波那次
-``` javascript
+
+```javascript
 function fibonacci (n) {
  if ( n <= 1 ) {return 1};
  return fibonacci(n - 1) + fibonacci(n - 2);
@@ -160,9 +159,9 @@ function fibonacci(n, ac1=1,ac2=1){
 }
 // 闭包缓存实现
 var fn = (function () {
-  var arr = [0, 1, 1]; 
+  var arr = [0, 1, 1];
   return function (n) {
-      var a = arr[n]; 
+      var a = arr[n];
       if (a) {
         return a;
       } else {
@@ -173,7 +172,7 @@ var fn = (function () {
 
 ```
 
-``` javascript
+```javascript
 // 函数柯里化指的是一种将使用多个参数的一个函数转换成一系列使用一个参数的函数的技术。
 function curry(fn, args) {
   // 获取函数需要的参数长度
@@ -203,7 +202,8 @@ function curry(fn, ...args) {
 ```
 
 ### 有序数组原地去重
-``` javascript
+
+```javascript
 function removeDuplicates(nums) {
   if (nums.length === 0) {
     return 0;
@@ -223,7 +223,8 @@ removeDuplicates(nums);
 ```
 
 ### 数组扁平化
-``` javascript
+
+```javascript
 function flat(arr, depth = 1) {
   if (depth > 0) {
     // 以下代码还可以简化，不过为了可读性，还是....
@@ -236,38 +237,43 @@ function flat(arr, depth = 1) {
 ```
 
 ### typeof
-``` javascript
-const mytypeof=function(obj){
-  return Object.prototype.toString.call(obj).slice(8,-1).toLowerCase();
-}
-console.log(mytypeof('123')); 
+
+```javascript
+const mytypeof = function (obj) {
+  return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+};
+console.log(mytypeof("123"));
 ```
 
 ### instanceof
 
-``` javascript
-const myinstanceof=(fn,Fn)=>{
-    let p=fn.__proto__;
-    while(p){
-        if(p===Fn.prototype){
-            return true;//实例的原型等于构造函数的原型对象,即A是B的实例
-        }
-        p=p.__proto__;//顺着原型链查找
+```javascript
+const myinstanceof = (fn, Fn) => {
+  let p = fn.__proto__;
+  while (p) {
+    if (p === Fn.prototype) {
+      return true; //实例的原型等于构造函数的原型对象,即A是B的实例
     }
-    return false;
-}
-console.log(myinstanceof(Function,Function))
-
+    p = p.__proto__; //顺着原型链查找
+  }
+  return false;
+};
+console.log(myinstanceof(Function, Function));
 ```
-### LRU缓存
+
+### LRU 缓存
+
 实现思路
-1. 设定缓存的最大数据量maxSize
+
+1. 设定缓存的最大数据量 maxSize
 2. 数据按照最近访问时间进行排序，最近访问的数据放在最后
 3. 访问时若数据存在则将数据移动到最后
-添加数据时：
+   添加数据时：
+
 - 数据存在，则移动到最后
 - 不存在，若队列中数据量已到最大值，删除第一个数据，再添加新数据；否则直接添加新数据
-``` javascript
+
+```javascript
 class LRU {
   queue = new Map();
   constructor(capacity = 10) {
@@ -309,163 +315,172 @@ class LRU {
     }
   }
 }
-
 ```
 
 ### 防抖节流
-``` javascript
+
+```javascript
 // 防抖
-function debounce (callback,delay) {
-    var t = null;
-    return function () {
-        t && clearTimeout(t);
-        t = setTimeout(callback,delay);
-    }
+function debounce(callback, delay) {
+  var t = null;
+  return function () {
+    t && clearTimeout(t);
+    t = setTimeout(callback, delay);
+  };
 }
-window.onscroll = debounce(function(){
-    console.log("调用了一次");
-},500)
+window.onscroll = debounce(function () {
+  console.log("调用了一次");
+}, 500);
 
 // 节流;
-function throttle (callback,duration){
-    var lastTime = Date.now();
-    return function () {
-        var now = Date.now();
-        if(now - lastTime > duration){
-            callback();
-            lastTime = now;
-        }
+function throttle(callback, duration) {
+  var lastTime = Date.now();
+  return function () {
+    var now = Date.now();
+    if (now - lastTime > duration) {
+      callback();
+      lastTime = now;
     }
+  };
 }
-window.onscroll = throttle(function(){
-    console.log("调用了一次");
-},500)
+window.onscroll = throttle(function () {
+  console.log("调用了一次");
+}, 500);
 ```
 
 ### promise.all、 promise.race
-``` javascript
+
+```javascript
 // promise.race
 Promise.prototype.all = (arr) => {
-  console.log('my all called');
+  console.log("my all called");
   let result = new Array(arr.length);
-  let counter = 0;//注意这里通过一个变量取保存它的成功的数量
+  let counter = 0; //注意这里通过一个变量取保存它的成功的数量
   return new Promise((resolve, reject) => {
-      arr.forEach(async (item, index) => {
-          let i = index;
-          Promise.resolve(item).then(value => {
-            result[i] = value;
-            counter++;
-            if (counter === arr.length) {
-              //通过counter变量比较，而不是直接通过result.length去判断
-              resolve(result);
-            }
-          }).catch(err => {
-            reject(err)
-          })
-      })
+    arr.forEach(async (item, index) => {
+      let i = index;
+      Promise.resolve(item)
+        .then((value) => {
+          result[i] = value;
+          counter++;
+          if (counter === arr.length) {
+            //通过counter变量比较，而不是直接通过result.length去判断
+            resolve(result);
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
   });
-}
+};
 ```
 
-``` javascript
+```javascript
 // promise.race
-Promise.prototype.race=function(arr){
-    return new Promise((resolve,reject)=>{
-        arr.forEach((item,i) => {
-            Promise.resolve(item).then(val=>{
-                resolve(val)
-            },err=>{
-                reject(err)
-            })
-        });
-    })
-}
+Promise.prototype.race = function (arr) {
+  return new Promise((resolve, reject) => {
+    arr.forEach((item, i) => {
+      Promise.resolve(item).then(
+        (val) => {
+          resolve(val);
+        },
+        (err) => {
+          reject(err);
+        }
+      );
+    });
+  });
+};
 ```
 
 ### javascript 寄生组合式继承
 
-``` javascript
+```javascript
 //定义父对象
-function Father(name, age){
-    this.name = name;
-    this.age = age;
+function Father(name, age) {
+  this.name = name;
+  this.age = age;
 }
 Father.prototype = {
-    getName: function(){
-        alert(this.name);
-    },
-    getAge: function(){
-        alert(this.age);
-    }
-}
+  getName: function () {
+    alert(this.name);
+  },
+  getAge: function () {
+    alert(this.age);
+  },
+};
 //定义子对象
-function Son(sex, name, age){
+function Son(sex, name, age) {
   this.sex = sex;
   Father.call(this, name, age); //继承Father的属性, 此处是一份副本
 }
 //extend(子对象, 父对象)
-function extend(suberClass, superClass){
-  var object = function(o){
-      var F = function(){};
-      F.prototype = o;
-      return new F();
+function extend(suberClass, superClass) {
+  var object = function (o) {
+    var F = function () {};
+    F.prototype = o;
+    return new F();
   }; //object作用就是拷贝一份父对象
   suberClass.prototype = object(superClass.prototype);
   suberClass.prototype.constructor = suberClass; //强制constructor指向suberClass
 }
 extend(Son, Father); //执行函数
 //继续为子类添加其它方法
-Son.prototype.getSex = function(){
+Son.prototype.getSex = function () {
   alert(this.sex);
-}
+};
 //定义一个相同的方法, 屏蔽父对象的同名方法
-Son.prototype.getName = function(name){
-  alert(this.name = name);
-}
-new Son('male', 'jack').getName('tom'); //'tom'
-new Father('jack').getName(); //'jack'
+Son.prototype.getName = function (name) {
+  alert((this.name = name));
+};
+new Son("male", "jack").getName("tom"); //'tom'
+new Father("jack").getName(); //'jack'
 ```
 
-### 手写promise.finally
+### 手写 promise.finally
 
-``` javascript
-Promise.prototype.finally = function(callback) {
+```javascript
+Promise.prototype.finally = function (callback) {
   const P = this.constructor;
   return this.then(
-    value => P.resolve(callback()).then(() => value),
-    reason => P.resolve(callback()).then(() => { throw reason })
+    (value) => P.resolve(callback()).then(() => value),
+    (reason) =>
+      P.resolve(callback()).then(() => {
+        throw reason;
+      })
   );
-}
+};
 ```
 
 ### 限制并发池子
-``` typescript
-async function sendRequest(requestList,limits,callback){
-    // 维护一个promise队列
-    const promises = []
-    // 当前的并发池,用Set结构方便删除
-    const pool = new Set() // set也是Iterable<any>[]类型，因此可以放入到race里
-    // 开始并发执行所有的任务
-    for(let request of requestList){
-        // 开始执行前，先await 判断 当前的并发任务是否超过限制
-        if(pool.size >= limits){
-            // 这里因为没有try catch ，所以要捕获一下错误，不然影响下面微任务的执行
-            await Promise.race(pool)
-            .catch(err=>err)
-        }
-        const promise = request()// 拿到promise
-        // 删除请求结束后，从pool里面移除
-        const cb = ()=>{
-            pool.delete(promise)
-        }
-        // 注册下then的任务
-        promise.then(cb,cb)
-        pool.add(promise)
-        promises.push(promise)
+
+```typescript
+async function sendRequest(requestList, limits, callback) {
+  // 维护一个promise队列
+  const promises = [];
+  // 当前的并发池,用Set结构方便删除
+  const pool = new Set(); // set也是Iterable<any>[]类型，因此可以放入到race里
+  // 开始并发执行所有的任务
+  for (let request of requestList) {
+    // 开始执行前，先await 判断 当前的并发任务是否超过限制
+    if (pool.size >= limits) {
+      // 这里因为没有try catch ，所以要捕获一下错误，不然影响下面微任务的执行
+      await Promise.race(pool).catch((err) => err);
     }
-    // 等最后一个for await 结束，这里是属于最后一个 await 后面的 微任务
-    // 注意这里其实是在微任务当中了，当前的promises里面是能确保所有的promise都在其中(前提是await那里命中了if)
-    Promise.allSettled(promises).then(callback,callback)
+    const promise = request(); // 拿到promise
+    // 删除请求结束后，从pool里面移除
+    const cb = () => {
+      pool.delete(promise);
+    };
+    // 注册下then的任务
+    promise.then(cb, cb);
+    pool.add(promise);
+    promises.push(promise);
+  }
+  // 等最后一个for await 结束，这里是属于最后一个 await 后面的 微任务
+  // 注意这里其实是在微任务当中了，当前的promises里面是能确保所有的promise都在其中(前提是await那里命中了if)
+  Promise.allSettled(promises).then(callback, callback);
 }
 // 总结一下要点：
 
@@ -474,12 +489,11 @@ async function sendRequest(requestList,limits,callback){
 // 并发任务池 用Set结构存储，可以通过指针来删除对应的任务，通过闭包引用该指针从而达到 动态控制并发池数目
 // for await 结构体里，其实await下面，包括结构体外 都是属于微任务（前提是有一个await里面的if被命中），至于这个微任务什么时候被加入微任务队列，要看请求的那里的在什么时候开始标记（resolve/reject ）
 // for await 里其实 已经在此轮宏任务当中并发执行了，await后面的代码被挂起来，等前一个promise转变状态-->移出pool-->将下一个promise捞起加入pool当中 -->下一个await等待最快的promise，如此往复。
-
 ```
 
-### 使用Promise实现：限制异步操作的并发个数，并尽可能快的完成全部
+### 使用 Promise 实现：限制异步操作的并发个数，并尽可能快的完成全部
 
-``` javascript
+```javascript
 function limitLoad(urls, handler, limit) {
   let sequence = [].concat(urls); // 复制urls
   // 这一步是为了初始化 promises 这个"容器"
@@ -496,133 +510,135 @@ function limitLoad(urls, handler, limit) {
         .then(() => {
           return Promise.race(promises); // 返回已经完成的下标
         })
-        .then(fastestIndex => { // 获取到已经完成的下标
-        	// 将"容器"内已经完成的那一项替换
-          promises[fastestIndex] = handler(url).then(
-            () => {
-              return fastestIndex; // 要继续将这个下标返回，以便下一次变量
-            }
-          );
+        .then((fastestIndex) => {
+          // 获取到已经完成的下标
+          // 将"容器"内已经完成的那一项替换
+          promises[fastestIndex] = handler(url).then(() => {
+            return fastestIndex; // 要继续将这个下标返回，以便下一次变量
+          });
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
         });
     }, Promise.resolve()) // 初始化传入
-    .then(() => { // 最后三个用.all来调用
+    .then(() => {
+      // 最后三个用.all来调用
       return Promise.all(promises);
     });
 }
 limitLoad(urls, loadImg, 3)
-  .then(res => {
+  .then((res) => {
     console.log("图片全部加载完毕");
     console.log(res);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
   });
-
 ```
 
-### 实现可以限制最大并发数的promise.all
-``` javascript
-function multiRequest(urls = [], maxNum) {
-    // 请求总数量
-    const sum = urls.length;
-    // 根据请求数量创建一个数组来保存请求的结果
-    const result = new Array(sum).fill(false);
-    // 当前完成的数量
-    let count = 0;
+### 实现可以限制最大并发数的 promise.all
 
-    return new Promise((resolve, reject) => {
-        // 请求maxNum个
-        while (count < maxNum) {
+```javascript
+function multiRequest(urls = [], maxNum) {
+  // 请求总数量
+  const sum = urls.length;
+  // 根据请求数量创建一个数组来保存请求的结果
+  const result = new Array(sum).fill(false);
+  // 当前完成的数量
+  let count = 0;
+
+  return new Promise((resolve, reject) => {
+    // 请求maxNum个
+    while (count < maxNum) {
+      next();
+    }
+    function next() {
+      let current = count++;
+      // 处理边界条件
+      if (current >= sum) {
+        // 请求全部完成就将promise置为成功状态, 然后将result作为promise值返回
+        !result.includes(false) && resolve(result);
+        return;
+      }
+      const url = urls[current];
+      console.log(`开始 ${current}`, new Date().toLocaleString());
+      fetch(url)
+        .then((res) => {
+          // 保存请求结果
+          result[current] = res;
+          console.log(`完成 ${current}`, new Date().toLocaleString());
+          // 请求没有全部完成, 就递归
+          if (current < sum) {
             next();
-        }
-        function next() {
-            let current = count++;
-            // 处理边界条件
-            if (current >= sum) {
-                // 请求全部完成就将promise置为成功状态, 然后将result作为promise值返回
-                !result.includes(false) && resolve(result);
-                return;
-            }
-            const url = urls[current];
-            console.log(`开始 ${current}`, new Date().toLocaleString());
-            fetch(url).then(res => {
-                // 保存请求结果
-                result[current] = res;
-                console.log(`完成 ${current}`, new Date().toLocaleString());
-                // 请求没有全部完成, 就递归
-                if (current < sum) {
-                    next();
-                }
-            }).catch(err => {
-                console.log(`结束 ${current}`, new Date().toLocaleString());
-                result[current] = err;
-                // 请求没有全部完成, 就递归
-                if (current < sum) {
-                    next();
-                }
-            });
-        }
-    });
+          }
+        })
+        .catch((err) => {
+          console.log(`结束 ${current}`, new Date().toLocaleString());
+          result[current] = err;
+          // 请求没有全部完成, 就递归
+          if (current < sum) {
+            next();
+          }
+        });
+    }
+  });
 }
 
 const url = `https://www.baidu.com/s?wd=javascript`;
 const urls = new Array(100).fill(url);
 
 (async () => {
-    const res = await multiRequest(urls, 10);
-    console.log(res);
+  const res = await multiRequest(urls, 10);
+  console.log(res);
 })();
 ```
 
 ### 图片预加载限制请求数量
 
-``` javascript
-// 总任务 
-function loadImages(list){ 
-  const pageSize = 5 
-  const pageNum = 0 
-  const totalNum = list.length
-  return new Promise((resolve,reject)=>{ 
-      function run(){ 
-          Promise.all(generateTasks(list, pageSize, pageNum)).then(()=>{ 
-            pageNum++ 
-            const hasLength = pageSize * pageNum 
-            if(totalNum > hasLength){ 
-              run() 
-            } else { 
-              resolve(true) 
-            }
-          }) 
-      } 
-      run() 
-}) }
-
-// 子任务 
-function generateTasks(list,pageSize,pageNum){
-    const promiseArr = [] 
-    const start = pageNum * pageSize 
-    const end = (pageNum + 1) * pageSize - 1 
-    for(let i = start;i<end;i++){ 
-        const p = new Promise((resolve,reject)=>{ 
-            const img = new Image() 
-            img.src = list[i] 
-            img.onload = img.onerror = resolve 
-         }) 
-         promiseArr.push(p) 
-    } 
-    return promiseArr 
+```javascript
+// 总任务
+function loadImages(list) {
+  const pageSize = 5;
+  const pageNum = 0;
+  const totalNum = list.length;
+  return new Promise((resolve, reject) => {
+    function run() {
+      Promise.all(generateTasks(list, pageSize, pageNum)).then(() => {
+        pageNum++;
+        const hasLength = pageSize * pageNum;
+        if (totalNum > hasLength) {
+          run();
+        } else {
+          resolve(true);
+        }
+      });
+    }
+    run();
+  });
 }
 
-
+// 子任务
+function generateTasks(list, pageSize, pageNum) {
+  const promiseArr = [];
+  const start = pageNum * pageSize;
+  const end = (pageNum + 1) * pageSize - 1;
+  for (let i = start; i < end; i++) {
+    const p = new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = list[i];
+      img.onload = img.onerror = resolve;
+    });
+    promiseArr.push(p);
+  }
+  return promiseArr;
+}
 ```
 
 ### 单点登录 前端实现
+
 [参考链接](https://fe.ecool.fun/topic/20d4a56b-719b-47ba-b29b-f8a61e226958?orderBy=updateTime&order=desc&tagId=10)
 
-``` javascript
+```javascript
 // 获取 token
 var token = result.data.token;
 // 动态创建一个不可见的iframe，在iframe中加载一个跨域HTML
@@ -631,22 +647,27 @@ iframe.src = "http://app1.com/localstorage.html";
 document.body.append(iframe);
 // 使用postMessage()方法将token传递给iframe
 setTimeout(function () {
-    iframe.contentWindow.postMessage(token, "http://app1.com");
+  iframe.contentWindow.postMessage(token, "http://app1.com");
 }, 4000);
 setTimeout(function () {
-    iframe.remove();
+  iframe.remove();
 }, 6000);
- 
+
 // 在这个iframe所加载的HTML中绑定一个事件监听器，当事件被触发时，把接收到的token数据写入localStorage
-window.addEventListener('message', function (event) {
-    localStorage.setItem('token', event.data)
-}, false);
+window.addEventListener(
+  "message",
+  function (event) {
+    localStorage.setItem("token", event.data);
+  },
+  false
+);
 ```
 
-### 手写lodash常用方法
+### 手写 lodash 常用方法
 
 #### keyBy
-``` javascript
+
+```javascript
 // Output: {
 //   "1": {
 //     "id": 1,
@@ -662,7 +683,7 @@ keyBy(
     { id: 1, name: "月" },
     { id: 2, name: "shan" },
   ],
-  (x) => x.id,
+  (x) => x.id
 );
 function keyBy(list, by) {
   return list.reduce((acc, x) => {
@@ -674,20 +695,20 @@ function keyBy(list, by) {
 
 #### lodashGet
 
-``` javascript
+```javascript
 function lodashGet(object, path, defaultValue) {
-  let obj = object
-  if(typeof path === 'string') {
-    const reg = /[^\[\]""''.]+/g
-    path = path.match(reg)
+  let obj = object;
+  if (typeof path === "string") {
+    const reg = /[^\[\]""''.]+/g;
+    path = path.match(reg);
   }
-  for(let key of path) {
-    if(!obj) {
-      return defaultValue
+  for (let key of path) {
+    if (!obj) {
+      return defaultValue;
     }
-    obj = obj[key]
+    obj = obj[key];
   }
-  return obj
+  return obj;
 }
 const object = { a: [{ b: { c: 3 } }] };
 console.log(get(object, 'a[0]["b"]["c"]'));

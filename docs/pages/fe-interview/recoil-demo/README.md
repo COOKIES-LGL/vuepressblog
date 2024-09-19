@@ -1,10 +1,8 @@
-
 ### Recoil
-
 
 ### RouterView
 
-``` typescript
+```typescript
 // 取消订阅
 interface Disconnect {
   disconnect: () => void;
@@ -61,11 +59,16 @@ export function useRecoilState<T>(atom: Atom<T>): [T, (value: T) => void] {
   // 获取value
   const value = useRecoilValue(atom);
   // 使用useCallback包裹更新的方法，防止atom不变的情况，无效更新
-  return [value, useCallback(value => {
-    atom.setState(value)
-  }, [atom])]
+  return [
+    value,
+    useCallback(
+      (value) => {
+        atom.setState(value);
+      },
+      [atom]
+    ),
+  ];
 }
 
-new Atom({})
-
+new Atom({});
 ```
