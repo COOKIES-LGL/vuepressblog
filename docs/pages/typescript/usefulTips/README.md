@@ -394,3 +394,18 @@ type ValueOf<T> = T[keyof T];
 type MenuEnumType = ValueOf<typeof menuAsConst>;
 const env: MenuEnumType = menuAsConst.home;
 ```
+
+### 数组转转联合类型
+
+```ts
+const permissions = [
+  "system:role:list",
+  "system:role:create",
+  "system:role:read",
+  "system:role:update",
+  "system:role:delete",
+] as const;
+
+export type PermissionType = typeof permissions[number];
+// PermissionType;  "system:role:list" | "system:role:create" | "system:role:read" | "system:role:update" | "system:role:delete"
+```
