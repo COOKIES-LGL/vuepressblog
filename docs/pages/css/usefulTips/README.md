@@ -588,3 +588,7 @@ css.support("display: flex"); // true、 false
 </html>
 <!-- 写在html中的的样式加载更慢 -->
 ```
+
+### 格式化 css 属性顺序
+
+[prettier-plugin-style-order](https://www.npmjs.com/package/prettier-plugin-style-order)
