@@ -1,6 +1,6 @@
-
 ### 或者自身类型
-``` ts
+
+```ts
 // 定义
 type Moment<T> = T extends infer U ? U : never;
 
@@ -16,7 +16,8 @@ type UserType = Moment<User>; // User
 ```
 
 ### 获取函数返回值
-``` ts
+
+```ts
 // 定义
 type GetReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
 
@@ -26,7 +27,8 @@ type ReturnTypeOfExampleFunction = GetReturnType<ExampleFunction>; // boolean
 ```
 
 ### 获取数组元素类型
-``` ts
+
+```ts
 // 定义
 type GetArrayElementType<T> = T extends (infer U)[] ? U : never;
 
@@ -37,8 +39,9 @@ type ElementTypeOfExampleArray = GetArrayElementType<Moment>; // string
 type ElementTypeOfExample1Array = GetArrayElementType<Example1Array>; //string
 ```
 
-### 获取Promise的值类型
-``` ts
+### 获取 Promise 的值类型
+
+```ts
 // 定义
 type GetPromiseValueType<T> = T extends Promise<infer U> ? U : never;
 
@@ -48,7 +51,8 @@ type ValueTypeOfExamplePromise = GetPromiseValueType<ExamplePromise>; // number
 ```
 
 ### 获取函数参数类型
-``` ts
+
+```ts
 // 定义
 type GetParameters<T> = T extends (...args: infer P) => any ? P : never;
 

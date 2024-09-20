@@ -20,25 +20,26 @@ SSR —— Server Side Render 即在用户请求页面时，页面的后台服�
 
 ## CSR 到 SSR 改变了什么？
 
-在 CSR 模式下，用户请求到的是一个空白的 HTML 文件，当 JS 下载完成且 DOM 构建完成后开始执行 JS，JS 首先会渲染一次 React 组件，完成后触发 React Component DidMount 事件，此时 JS 开始请求后端接口，并在接口请求成功后触发  React Component DidUpdate 事件将用户数据渲染到页面上，此时，用户可见真实的首屏内容，并且可与页面进行交互。因此用户看到首屏内容同时依赖 HTML 文件下载、JS 下载和执行、接口请求数据几个步骤。
+在 CSR 模式下，用户请求到的是一个空白的 HTML 文件，当 JS 下载完成且 DOM 构建完成后开始执行 JS，JS 首先会渲染一次 React 组件，完成后触发 React Component DidMount 事件，此时 JS 开始请求后端接口，并在接口请求成功后触发 React Component DidUpdate 事件将用户数据渲染到页面上，此时，用户可见真实的首屏内容，并且可与页面进行交互。因此用户看到首屏内容同时依赖 HTML 文件下载、JS 下载和执行、接口请求数据几个步骤。
 
 在 SSR 模式下，用户请求页面后，服务端会在内网调用后端接口，然后直接运行服务本地的 JS 文件将用户首屏内容填充到 HTML 中返回给用户，当用户接收到 HTML 后，浏览器渲染并下载 JS 资源，此时用户可见首屏内容，等待 JS 下载完成后，JS 运行，将已有的 DOM 节点与 React Component 进行绑定并触发 React Component DidMount 事件 (此过程称为 [hydate](https://reactjs.org/docs/react-dom.html#hydrate))，由于服务端已经调用过后端接口了，不再需要浏览器环境下请求接口，因此可直接与页面进行交互。
 
 从整个流程看，SSR 页面性能的提升主要在以下几点：
 
 1. SSR 不依赖远程下载 JS 文件，可以直出 HTML 可缩短首屏时间减少用户等待
-2. SSR 内网接口调用相比用户公网环境调用 RT 更短，网络更稳定 (从线上真实数据看，以批发为例 HTTP 接口内网调用[均值为 110ms，95线为 308ms](https://monitor.xxx.net/server/transaction-new?end_time=1631503796000&ip=10.22.155.101&service=mobile-wholesale-ssr-activity&serviceIndexPath=transaction&time_range=1d#5324084ba447c0d94ce59f4e37b09774))
+2. SSR 内网接口调用相比用户公网环境调用 RT 更短，网络更稳定 (从线上真实数据看，以批发为例 HTTP 接口内网调用[均值为 110ms，95 线为 308ms](https://monitor.xxx.net/server/transaction-new?end_time=1631503796000&ip=10.22.155.101&service=mobile-wholesale-ssr-activity&serviceIndexPath=transaction&time_range=1d#5324084ba447c0d94ce59f4e37b09774))
 3. 由于 SSR 模式下 React 可以直接使用 Node 准备好的数据进行 hydate，比 CSR 模式下少一次 Update (这次 Update 会渲染首屏 DOM)
 
 因此，SSR 模式下主要提升点在首屏时间，对可交互时间提升有限。
 
 :::tip CSR 与 SSR 在代码层面的差异
+
 - SSR 环境下不会执行包括 `useEffect` `useLayoutEffect` 在内的副作用 hooks
 - SSR 环境下不会执行 `componentDidMount` 生命周期
 - SSR 环境是静态渲染 —— 即不会有任何 update state 发生，因此也不会执行 `componentDidUpdate` 或类似的生命周期
 - SSR 环境在 Nodejs runtime 执行，不会有 `window`、`document` 等 BOM 或 DOM API，在 Node 环境下运行这些代码会导致**渲染出错**，请确保正确使用 BOM 和 DOM
 - 当 SSR 失败，页面会自动降级到 CSR 渲染，此时 框架 传递给页面组件的 fetch 状态一开始为 `pending`，然后更新为 `resolved`，换句话说，框架也是通过 state 异步传递接口数据的，因此使用接口数据请做好判空校验
-:::
+  :::
 
 ## 从 SSR 到 Stream SSR
 
@@ -67,7 +68,7 @@ SSR —— Server Side Render 即在用户请求页面时，页面的后台服�
 4. 部分依赖存在多个版本导致重复依赖
 5. 业务代码本身有优化空间
 
-最终我们通过优化打包策略 (针对1) 、优化公共包依赖 (针对2) 、推动业务改造 (针对3、4、5)，最终所有项目 JS 体积都至少减小了 600k。
+最终我们通过优化打包策略 (针对 1) 、优化公共包依赖 (针对 2) 、推动业务改造 (针对 3、4、5)，最终所有项目 JS 体积都至少减小了 600k。
 
 ### 优化首屏 DOM 渲染耗时
 
@@ -77,15 +78,4 @@ SSR —— Server Side Render 即在用户请求页面时，页面的后台服�
 
 ## 总结
 
-在经历上述优化后，最终实现了Stream SSR。**该 Stream SSR 方案当前社区内没有任何一个 SSR 框架实现，目前仅有 C 端 通过该方案优化 T16 性能。**
-
-
-
-
-
-
-
-
-
-
-
+在经历上述优化后，最终实现了 Stream SSR。**该 Stream SSR 方案当前社区内没有任何一个 SSR 框架实现，目前仅有 C 端 通过该方案优化 T16 性能。**

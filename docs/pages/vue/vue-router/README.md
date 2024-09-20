@@ -11,6 +11,7 @@ home: false
 ::: warning
 别名用在 path 为’/’的路由中，别名是不起作用的
 :::
+
 <style>
 @media screen and (min-width: 400px) {
   .theme-default-content:not(.custom) {
