@@ -19,6 +19,11 @@ sidebar: false
 Open Graph Image（OG 图像）集合导航站，OG 图像是用于在社交媒体上分享网页内容时显示的图像，类似于微信分享时的缩略图
 [Open Graph Image](https://opengraphexamples.com/)
 
+#### freeConvert
+
+一个免费的视频压缩网站
+[freeConvert](https://www.freeconvert.com/)
+
 #### qr-code
 
 带动效的二维码组件

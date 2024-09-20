@@ -53,3 +53,36 @@ sidebar: false
 - 元素的祖先元素使用了 transform 属性：如果元素的任何祖先元素使用了 transform 属性，这可能会创建一个新的包含块（containing block），这会影响 sticky 定位的行为。
 
 - position: sticky 仅在元素的父容器是块级元素（block-level element）时有效。如果父容器是内联元素（inline element），粘性定位将不起作用
+
+### 常见的 css link
+
+```html
+<link href="example.css" rel="stylesheet" type="text/css" media="all" />
+```
+
+media 属性规定被链接文档将显示在什么设备上，利用这个属性就衍生出了很多优化方式。
+
+1、比如将不同屏幕尺寸所需的 css 分开加载，可以缩小加载 css 文件的体积。
+
+```html
+<link
+  href="example-pc.css"
+  rel="stylesheet"
+  type="text/css"
+  media="screen and (min-width: 768px)"
+/>
+<link href="example-m.css" rel="stylesheet" type="text/css" media="screen and (max-width: 767px)" />
+```
+
+2、 尽可能的拆分主体样式文件，并将非关键的 css link 的 media 属性设置为 none
+当 media 属性为 none 时，浏览器会以最低优先级加载此文件，并不会阻塞页面的渲染进程
+
+```html
+<link rel="stylesheet" href="footer.css" media="none" onload="this.media='all'" />
+```
+
+3、对于主体样式的预加载
+
+```html
+<link rel="preload" href="common.css" as="style" />
+```
