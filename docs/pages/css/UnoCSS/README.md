@@ -1,20 +1,21 @@
-### 下载安装UnoCSS
+### 下载安装 UnoCSS
 
-``` bash
+```bash
 npm install unocss
 ```
 
 ### 配置文件
-在项目的根目录下创建uno.config.{js,ts,mjs,mts}文件
 
-``` ts
-import { 
+在项目的根目录下创建 uno.config.{js,ts,mjs,mts}文件
+
+```ts
+import {
 defineConfig,
-presetUno, 
-presetAttributify, 
-presetTypography, 
+presetUno,
+presetAttributify,
+presetTypography,
 presetIcons,
-transformerVariantGroup， 
+transformerVariantGroup，
 transformerAttributifyJsx,
 transformerCompileClass,
 transformerDirectives,
@@ -39,8 +40,8 @@ export default defineConfig({
   //看个人需求添加转换器
   transformers: [
    transformerVariantGroup()，
-   transformerAttributifyJsx(), 
-   transformerCompileClass(), 
+   transformerAttributifyJsx(),
+   transformerCompileClass(),
    transformerDirectives()
   ],
   //以下可以按个人需求添加
@@ -53,8 +54,9 @@ export default defineConfig({
 });
 ```
 
-### 在vite.config.ts中引入一下
-``` ts
+### 在 vite.config.ts 中引入一下
+
+```ts
 //vite.config.ts
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -68,12 +70,12 @@ export default defineConfig(({ command }) => ({
     ],
     //....
   })
-  
+
   //另外webpack5中 webpack.config.js
- const UnoCSS = require('@unocss/webpack').default 
- module.exports = { 
+ const UnoCSS = require('@unocss/webpack').default
+ module.exports = {
      plugins: [UnoCSS()],
-     optimization: { realContentHash: true } 
+     optimization: { realContentHash: true }
  }
 ```
 

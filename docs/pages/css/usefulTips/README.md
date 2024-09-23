@@ -592,3 +592,11 @@ css.support("display: flex"); // true、 false
 ### 格式化 css 属性顺序
 
 [prettier-plugin-style-order](https://www.npmjs.com/package/prettier-plugin-style-order)
+
+### window 端滚动条不占据空间
+
+```css
+body {
+  overflow-y: overlay;
+}
+```

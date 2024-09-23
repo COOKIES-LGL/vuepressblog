@@ -28,6 +28,7 @@ home: false
 - preinstall: 在安装任何包之前运行，包括 npm install 和 npm ci。
 - install: 在安装包之后运行。
 - postinstall: 在安装包之后运行，包括 npm install 和 npm ci。
+- postbuild: 在 build 之后运行，包括 npm build 之后自动运行此命令。
 - preuninstall: 在卸载包之前运行。
 - uninstall: 在卸载包之后运行。
 - postuninstall: 在卸载包之后运行。
