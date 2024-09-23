@@ -193,12 +193,14 @@ Cannot find module '\*'. Did you mean to set the 'moduleResolution' option to 'n
 
 - classic 简单来说这种模块解析策略就是一直递归往上找同名文件，当前目录找不到同名文件就往父级目录找。不过这种策略目前前端界用得不多
 - 相比于 classic 策略的区别在于：
+
   - 递归查找的目录是 node_modules，不是父级文件夹
   - 引入了 package.json，各种配置项尤其是后面会展开说的 exports 字段使得 node 模块解析策略的变得非常复杂
   - 支持文件夹模块，也就是 pkg/index.js，文件夹中包含 index.js，这个文件夹就是一个模块
     [参考资料](https://zhuanlan.zhihu.com/p/621795173)
     [用来检测 npm 的 moduleResolution 是否合理](https://arethetypeswrong.github.io/)
-    :::
+
+:::
 
 ### 模块化 js 如何规避循环引用
 
