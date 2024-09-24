@@ -1,18 +1,18 @@
-``` js
-import React, { useEffect } from 'react';
-import { replaceHost } from './host';
+```js
+import React, { useEffect } from "react";
+import { replaceHost } from "./host";
 
 /**
  * 查询图片状态
  */
 function queryImgState(img: HTMLImageElement) {
   if (!img.complete) {
-    return 'loading';
+    return "loading";
   }
   if (img.naturalHeight > 0) {
-    return 'succ';
+    return "succ";
   }
-  return 'error';
+  return "error";
 }
 
 function retryErrorImg(img: HTMLImageElement) {
@@ -31,14 +31,14 @@ function retryNotCompleteImg(img: HTMLImageElement) {
 }
 
 export function retryImgs(withNotComplete = false) {
-  const imgs = document.querySelectorAll('img');
+  const imgs = document.querySelectorAll("img");
   Array.from(imgs).forEach((img) => {
     if (img.src) {
       switch (queryImgState(img)) {
-        case 'error':
+        case "error":
           retryErrorImg(img);
           break;
-        case 'loading':
+        case "loading":
           withNotComplete && retryNotCompleteImg(img);
           break;
       }
@@ -64,9 +64,9 @@ function ListenOnline() {
     const handler = () => {
       retryImgs();
     };
-    window.addEventListener('online', handler);
+    window.addEventListener("online", handler);
     return () => {
-      window.removeEventListener('online', handler);
+      window.removeEventListener("online", handler);
     };
   }, []);
   return null;
@@ -92,9 +92,9 @@ function ListenBFCacheBack() {
         });
       }
     };
-    window.addEventListener('pageshow', handler);
+    window.addEventListener("pageshow", handler);
     return () => {
-      window.removeEventListener('pageshow', handler);
+      window.removeEventListener("pageshow", handler);
     };
   }, []);
   return null;
@@ -103,14 +103,14 @@ function ListenBFCacheBack() {
 function ListenVisibilityChange() {
   useEffect(() => {
     const handler = () => {
-      if (document.visibilityState === 'visible') {
+      if (document.visibilityState === "visible") {
         // 这个事件可能触发的频繁，所以做个节流
         throttledRetryImgs();
       }
     };
-    document.addEventListener('visibilitychange', handler);
+    document.addEventListener("visibilitychange", handler);
     return () => {
-      document.removeEventListener('visibilitychange', handler);
+      document.removeEventListener("visibilitychange", handler);
     };
   }, []);
   return null;
@@ -122,7 +122,11 @@ interface IProps {
   enableVisibilitychange?: boolean;
 }
 
-export function ImgsRetryGuard({ enableOnline = true, enableBFCacheBack = true, enableVisibilitychange }: IProps) {
+export function ImgsRetryGuard({
+  enableOnline = true,
+  enableBFCacheBack = true,
+  enableVisibilitychange,
+}: IProps) {
   // 监听上线
   return (
     <>
@@ -132,5 +136,4 @@ export function ImgsRetryGuard({ enableOnline = true, enableBFCacheBack = true, 
     </>
   );
 }
-
 ```

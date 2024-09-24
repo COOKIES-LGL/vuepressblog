@@ -62,6 +62,7 @@ echo ${FILENAME%.txt}  # 输出: example
 
 Ctrl + A 要将光标移到当前命令行的开始位置
 Ctrl + E 将光标移动到当前命令行的末尾
+Ctrl + U 清除从光标位置到行首的所有字符
 
 ### cp -r 复制
 

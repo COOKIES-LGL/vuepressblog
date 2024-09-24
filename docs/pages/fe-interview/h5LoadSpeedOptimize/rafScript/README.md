@@ -1,17 +1,16 @@
-``` js
+```js
 /**
  * @file Preload.js
  * @description: 预加载文件
  */
 
-import React from 'react';
+import React from "react";
 
 export default ({ scripts = [] }) =>
-    scripts.map(src => <link rel='preload' href={src} crossOrigin='anonymous' as='script' />);
-
+  scripts.map((src) => <link rel="preload" href={src} crossOrigin="anonymous" as="script" />);
 ```
 
-``` js
+```js
 /**
  * @file requestAnimationFrame.js
  * @description: raf 兼容字符串
@@ -35,25 +34,25 @@ function (callback) {
 };`;
 ```
 
-``` js
+```js
 /**
  * @file RafScript.js
  * @scripts 需要加载的脚步列表
  * @context 设备上下文
  * @description raf 优化 ios 加载
  */
-import React from 'react';
-import Preload from './Preload';
-import { SYSTEM } from './platform-util';
-import { safeRequestAnimationFrameStr } from './requestAnimationFrame';
+import React from "react";
+import Preload from "./Preload";
+import { SYSTEM } from "./platform-util";
+import { safeRequestAnimationFrameStr } from "./requestAnimationFrame";
 
 export default function RafScript({ scripts = [], context }) {
-    return (
-        <>
-            {process.env.NODE_ENV !== 'development' && <Preload scripts={scripts} />}
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: `(function() {
+  return (
+    <>
+      {process.env.NODE_ENV !== "development" && <Preload scripts={scripts} />}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(function() {
     function loadScript(n) {
       for (var e = document.createDocumentFragment(), t = 0; t < n.length; t++) {
         var o = document.createElement("script");
@@ -71,15 +70,14 @@ export default function RafScript({ scripts = [], context }) {
       })
     }
     document.addEventListener('DOMContentLoaded', function () {
-      ${context?.platform?.platform === SYSTEM.IOS ? 'scriptDelayLoad' : 'loadScript'}([${scripts
-                        .map(src => `"${src}"`)
-                        .join(',')}]);
+      ${context?.platform?.platform === SYSTEM.IOS ? "scriptDelayLoad" : "loadScript"}([${scripts
+            .map((src) => `"${src}"`)
+            .join(",")}]);
     });
 }());`,
-                }}
-            />
-        </>
-    );
+        }}
+      />
+    </>
+  );
 }
-
 ```

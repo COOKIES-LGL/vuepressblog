@@ -1,4 +1,4 @@
-``` js
+```js
 import BezierEasing from 'bezier-easing'; // 滚动动态曲线包
 import { getScrollTop } from './dom/scrollUtil';
 import Deferred from './Deferred';
