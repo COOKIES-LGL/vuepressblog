@@ -52,3 +52,7 @@ declare module "*.module.scss" {
 }
 
 ```
+
+**另一种方案**
+
+使用这个插件 css-module-typed 即可

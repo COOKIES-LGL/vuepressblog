@@ -48,6 +48,10 @@ $(document).ready(function () {
 [菜鸟教程](https://www.runoob.com)
 <https://www.runoob.com>
 
+### 徽章
+
+[![npm](https://img.shields.io/npm/v/typescript-plugin-css-modules)](https://www.npmjs.com/package/typescript-plugin-css-modules)
+
 ### 图片
 
 ![RUNOOB 图标](图片地址)  
