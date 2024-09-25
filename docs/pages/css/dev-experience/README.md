@@ -86,3 +86,8 @@ media 属性规定被链接文档将显示在什么设备上，利用这个属�
 ```html
 <link rel="preload" href="common.css" as="style" />
 ```
+
+### purgecss
+
+一个用来删除未使用的 CSS 代码的工具
+[purgecss](https://www.purgecss.cn/)
