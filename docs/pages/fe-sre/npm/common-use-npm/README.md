@@ -91,7 +91,7 @@ react 动画库
 
 ### @loadable/component
 
-应用程序，组件查分懒加载  
+应用程序，组件拆分懒加载  
 Enable Code Splitting in your React application.
 [文档](https://loadable-components.com/)
 

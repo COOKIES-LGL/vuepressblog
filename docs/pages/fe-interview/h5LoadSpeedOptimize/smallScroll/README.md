@@ -133,4 +133,43 @@ export default async function smoothScroll(anchor, scrollOptions?: IScrollOption
     return scrollByRAF(anchor, options);
 }
 
+
+export async function smoothScrollTo(top: number, element?: HTMLElement) {
+    if (typeof top !== 'number') return;
+    if (!isInitedSmoothscroll) {
+        (await import(/* webpackChunkName: "smoothscroll-polyfill" */ 'smoothscroll-polyfill')).polyfill();
+        isInitedSmoothscroll = true;
+    }
+    (element || window).scrollTo({
+        top: top,
+        behavior: 'smooth',
+    });
+}
+
+// copy from uiUtil
+export function setScrollTopInDOM(value, node) {
+    if (node && node !== document.body) {
+        node.scrollTop = value;
+        return node;
+    }
+    if (value === 0) {
+        document.body.scrollTop = 0;
+        (document.documentElement || {}).scrollTop = 0;
+        return null;
+    }
+    document.body.scrollTop = value;
+    if (document.body.scrollTop !== 0) {
+        return document.body;
+    }
+    (document.documentElement || {}).scrollTop = value;
+    if (document.documentElement && document.documentElement.scrollTop !== 0) {
+        return document.documentElement;
+    }
+    return false;
+}
+
 ```
+
+### smoothscroll-polyfill
+
+一个用来补丁 smoothscroll 的 npm 包

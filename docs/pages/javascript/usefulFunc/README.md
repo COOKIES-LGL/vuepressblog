@@ -274,3 +274,32 @@ console.log(info);
   "age": 21
 }
 ```
+
+### 12、千分位格式化金钱
+
+```javascript
+const ThousandNum = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+const money = ThousandNum(20190214);
+// money => "20,190,214"
+```
+
+### 13、检测非空参数
+
+```js
+function IsRequired() {
+  throw new Error("param is required");
+}
+function Func(name = IsRequired()) {
+  console.log("I Love " + name);
+}
+Func(); // "param is required"
+Func("You"); // "I Love You"
+```
+
+### 14、调试模式给所有元素添加边框
+
+```js
+[].forEach.call($$("*"), (dom) => {
+  dom.style.outline = "1px solid #" + (~~(Math.random() * (1 << 24))).toString(16);
+});
+```

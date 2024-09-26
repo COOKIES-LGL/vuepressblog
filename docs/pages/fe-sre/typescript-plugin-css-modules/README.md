@@ -53,6 +53,8 @@ declare module "*.module.scss" {
 
 ```
 
+> 如果样式中使用了@import 引入其他样式文件，导致功能无效,需要配置 tsconfig.json 文件 baseUrl 属性 确保路径正确
+
 **另一种方案**
 
 使用这个插件 css-module-typed 即可
