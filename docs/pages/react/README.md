@@ -8,10 +8,11 @@ sidebar: false
 ### 技术文档列表
 
 - [React-Hook](./hooks) <span style="color:#bbb; float:right">2022-08-10</span>
-- [默认属性组件](./defaultPropHOC) <span style="color:#bbb; float:right">2023-08-10</span>
+- [React 默认属性组件](./defaultPropHOC) <span style="color:#bbb; float:right">2023-08-10</span>
 - [React 常用 npm 包](./npmPackage) <span style="color:#bbb; float:right">2023-09-10</span>
 - [React ssr](./ssr) <span style="color:#bbb; float:right">2023-09-10</span>
 - [React Ts 类型](./react-ts) <span style="color:#bbb; float:right">2023-12-10</span>
+- [React HOC](./react-hoc/) <span style="color:#bbb; float:right">2024-09-10</span>
 - [React Schedule 核心](https://juejin.cn/post/7208222652619800613#heading-5) <span style="color:#bbb; float:right">2023-12-10</span>
 - [React 流式渲染](https://zhuanlan.zhihu.com/p/639505410?utm_id=0) <span style="color:#bbb; float:right">2024-02-09</span>
 - [React 服务端组件](https://sorrycc.com/why-react-server-components/) <span style="color:#bbb; float:right">2023-12-19</span>

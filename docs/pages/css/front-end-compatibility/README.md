@@ -48,13 +48,13 @@ this.value = this.value.replace(/\u2006/g, "");
 ### 6、移动端点透问题
 
 ::: tip
-touchstart 早于 touchend 早于 click。 亦即 click 的触发是有延迟的，这个时间大概在 300ms 左右，也就是说我们 tap 触发之后蒙层隐藏， 此时 click 还没有触发，300ms 之后由于蒙层隐藏，我们的 click 触发到了下面的 a 链接上。
-解决：
+touchstart 早于 touchend 早于 click。 亦即 click 的触发是有延迟的，这个时间大概在 300ms 左右，也就是说我们 tap 触发之后蒙层隐藏， 此时 click 还没有触发，300ms 之后由于蒙层隐藏，我们的 click 触发到了下面的 a 链接上。解决：
 
 - 1、尽量都使用 touch 事件来替换 click 事件。例如用 touchend 事件(推荐)。
 - 2、用 fastclick https://github.com/ftlabs/fastclick
-- 3、用 preventDefault 阻止 a 标签的 click  
-  :::
+- 3、用 preventDefault 阻止 a 标签的 click
+
+:::
 
 ### 7、Android 下取消输入语音按钮
 

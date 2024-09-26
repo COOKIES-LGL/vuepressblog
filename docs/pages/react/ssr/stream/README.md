@@ -39,7 +39,8 @@ SSR —— Server Side Render 即在用户请求页面时，页面的后台服�
 - SSR 环境是静态渲染 —— 即不会有任何 update state 发生，因此也不会执行 `componentDidUpdate` 或类似的生命周期
 - SSR 环境在 Nodejs runtime 执行，不会有 `window`、`document` 等 BOM 或 DOM API，在 Node 环境下运行这些代码会导致**渲染出错**，请确保正确使用 BOM 和 DOM
 - 当 SSR 失败，页面会自动降级到 CSR 渲染，此时 框架 传递给页面组件的 fetch 状态一开始为 `pending`，然后更新为 `resolved`，换句话说，框架也是通过 state 异步传递接口数据的，因此使用接口数据请做好判空校验
-  :::
+
+:::
 
 ## 从 SSR 到 Stream SSR
 

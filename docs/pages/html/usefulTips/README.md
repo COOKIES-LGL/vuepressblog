@@ -79,7 +79,8 @@ _dns-prefetch、preconnect、Preload、prefetch_
 - preconnect 提示最好仅用于最关键的连接。对于其他的，只需使用 `<link rel="dns-prefetch">` 即可节省第一步的时间 DNS 查找
 - Preload 与 prefetch 不同的地方就是它专注于当前的页面，并以高优先级加载资源，
 - Prefetch 专注于下一个页面将要加载的资源并以低优先级加载。同时也要注意 preload 并不会阻塞 window 的 onload 事件。
-  :::
+
+:::
 
 #### 防盗链
 
