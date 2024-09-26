@@ -168,3 +168,7 @@ npm home express
 # npm repo 打开代码仓库
 npm repo react
 ```
+
+### .npmignore
+
+发布 npm 时指定需要上传的文件或者目录。如果你有少数不上传的文件，那可以创建一个.npmignore 文件（类似于.gitignore，但该文件不会上传 npm），去掉你不需要上传的文件

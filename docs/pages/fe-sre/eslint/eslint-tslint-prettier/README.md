@@ -2,9 +2,10 @@
 home: false
 sidebar: false
 ---
-## eslint-tslint-prettier配置
 
-``` JSON
+## eslint-tslint-prettier 配置
+
+```JSON
 // eslint rules 配置
 {
 "rules": {
@@ -190,5 +191,5 @@ sidebar: false
 }
 ```
 
-[编写自定义eslint规则](https://juejin.cn/post/7196517835379900477)
-[编写自定义eslint规则2](https://developer.aliyun.com/article/824999?utm_content=g_1000311627)
+[编写自定义 eslint 规则](https://juejin.cn/post/7196517835379900477)
+[编写自定义 eslint 规则 2](https://developer.aliyun.com/article/824999?utm_content=g_1000311627)

@@ -2,9 +2,10 @@
 home: false
 sidebar: false
 ---
-## eslint-tslint-prettier配置
 
-``` JSON
+## eslint-tslint-prettier 配置
+
+```JSON
 // eslint rules 配置
 {
 {
@@ -37,7 +38,7 @@ sidebar: false
 }
 ```
 
-``` JSON .vscode settings.json
+```JSON .vscode settings.json
 
 {
   "files.eol": "\n",
@@ -87,4 +88,3 @@ sidebar: false
 }
 
 ```
-
