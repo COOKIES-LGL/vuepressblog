@@ -1,4 +1,4 @@
 ---
 home: true
-heroImage: '../images/FE.jpeg'
+heroImage: "../images/FE.jpeg"
 ---

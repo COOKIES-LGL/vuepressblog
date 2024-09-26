@@ -476,6 +476,19 @@ setTimeout(() => {
 [].every((item) => item); // true
 ```
 
+### 清空数组
+
+`arr1.length = 0` 会把引用类型的数组也清空
+
+```javascript
+const arr1 = [1, 2, 3];
+const arr2 = arr1;
+arr1 = [];
+// arr2 = [1, 2, 3]
+arr1.length = 0;
+// arr2 = []
+```
+
 ### 检测浏览器是否支持 sticky
 
 ```typescript

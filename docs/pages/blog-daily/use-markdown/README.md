@@ -61,6 +61,10 @@ $(document).ready(function () {
 **文本加粗**  
 \*\* 正常显示星号 \*\*
 
+### 文本颜色
+
+<font color="green">文字</font>
+
 **复选框**
 
 - [x] 动态表格(已完善)
