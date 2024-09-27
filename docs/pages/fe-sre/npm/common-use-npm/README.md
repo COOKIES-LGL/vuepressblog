@@ -179,3 +179,8 @@ ts-node 在运行时会既会读取 package.json 又会读取 tsconfig.json ，�
 
 React CSS Modules 实现了自动化映射 CSS modules，完美得解决了上述问题，它的原理是扩展了 render 方法，根据 styleName 的值去在关联的 styles 对象中查找相应的 css-module，并给每个 CSS 类赋予一个带有全局唯一名字的本地标识符的类名
 [react-css-modules](https://github.com/gajus/react-css-modules)
+
+### it-cliff
+
+一个自动总结提交信息，生成 changelog 文件的命令行工具。
+[it-cliff](https://github.com/orhun/git-cliff)
