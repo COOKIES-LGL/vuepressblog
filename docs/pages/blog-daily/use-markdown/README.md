@@ -63,7 +63,7 @@ $(document).ready(function () {
 
 ### 文本颜色
 
-<font color="green">文字</font>
+<span style="color: red;">这是红色的文本</span>
 
 **复选框**
 
