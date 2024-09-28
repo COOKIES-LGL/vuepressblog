@@ -124,3 +124,11 @@ git diff <commit1> <commit2> --name-only
 在你上次提交之后，只要其他人往该分支提交给代码，git push --force-with-lease 会拒绝覆盖
 
 [merge rebase 的区别](https://fe.ecool.fun/topic/cfe8f03e-1a05-4c00-baa7-04ae08c8765c?orderBy=updateTime&order=desc&tagId=0)
+
+### git ls-remote
+
+查看仓库是否可达
+
+```bash
+ git ls-remote github.com:****.github.git
+```
