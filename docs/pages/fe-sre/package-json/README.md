@@ -45,3 +45,73 @@ home: false
   "type": "module" // 指定当前包是 ECMAScript 模块。
 }
 ```
+
+### postinstall 写入.gitignore 文件用于本地开发
+
+```bash
+{
+  "postinstall": "node ./scripts/postinstall.js",
+}
+```
+
+```js
+const fs = require("fs");
+const path = require("path");
+const { spawn } = require("child_process");
+
+// 执行 clean
+spawn(process.platform === "win32" ? "npm.cmd" : "npm", ["run", "clean"]);
+
+// 检查 /mock/localConfig.js 文件
+const localConfigPath = path.resolve(__dirname, "../mock/localConfig.js");
+
+const localConfigTemplate = `文件内容`;
+
+if (!fs.existsSync(localConfigPath)) {
+  fs.writeFile(localConfigPath, localConfigTemplate, (err) => {
+    if (err) {
+      console.error(err);
+    }
+  });
+}
+```
+
+### 多版本包检测
+
+```js
+// check-package-lock.js
+const pkgLock = require("./package-lock.json");
+
+const result = {};
+
+const getX = (dependencies) => {
+  Object.keys(dependencies).forEach((pkgName) => {
+    if (pkgName.includes("@natu")) {
+      if (!result[pkgName]) {
+        result[pkgName] = [];
+      }
+      result[pkgName].push(dependencies[pkgName].version);
+      result[pkgName] = [...new Set(result[pkgName])];
+    }
+    if (dependencies[pkgName].dependencies) {
+      getX(dependencies[pkgName].dependencies);
+    }
+  });
+};
+
+getX(pkgLock.dependencies);
+
+const WHITE_PKG = ["@natu/style-base"];
+
+const multiVersionPackages = Object.keys(result).filter(
+  (key) => result[key].length > 1 && !WHITE_PKG.includes(key)
+);
+
+if (multiVersionPackages.length) {
+  multiVersionPackages.forEach((key) => {
+    console.error("多版本包", key, result[key], `请执行 npm list ${key} 查看详情`);
+  });
+
+  throw new Error("package-lock出现多版本包！！！");
+}
+```

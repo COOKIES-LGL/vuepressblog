@@ -35,3 +35,17 @@ function myHoc(WrappedComponent: React.ComponentType<any>) {
 ```
 
 [Hoist-Non-React-Statics](https://github.com/mridgway/hoist-non-react-statics#readme)
+
+### @rc-component/trigger
+
+[@rc-component/trigger](https://github.com/react-component/trigger) 组件适用于多种 Web 应用场景，包括但不限于：
+
+- 工具提示: 在用户悬停或点击某个元素时显示详细信息。
+- 下拉菜单: 在用户操作下拉按钮时显示菜单选项。
+- 对话框: 在用户执行特定操作时弹出对话框进行确认或输入。
+- 上下文菜单: 在用户右键点击时显示自定义菜单。
+
+### use-immer
+
+沉浸式生产者函数管理状态
+[use-immer](https://github.com/immerjs/use-immer#readme)
