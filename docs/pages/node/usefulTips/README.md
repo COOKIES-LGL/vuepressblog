@@ -28,3 +28,13 @@ const __dirname = dirname(__filename);
 console.log(__filename);
 console.log(__dirname);
 ```
+
+### 捕获 SIGINT 信号
+
+```js
+process.on("SIGINT", () => {
+  console.log("捕获到SIGINT信号，执行清理工作...");
+  // 在这里执行清理工作，例如关闭数据库连接、保存数据等
+  process.exit();
+});
+```
