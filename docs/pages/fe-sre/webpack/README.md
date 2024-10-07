@@ -172,6 +172,71 @@ npm create farm@latest
 
 帮助去除未使用的 CSS 代码
 
+### 在 Webpack 中使用 TypeScript 配置
+
+使用 TypeScript 来编写 Webpack 配置文件有以下几个显著优势：
+
+✨ 智能提示：IDE 可以提供准确的代码补全和提示
+🛡️ 类型安全：在编译时就能发现潜在的配置错误
+🔍 更好的可维护性：类型声明即文档，方便团队协作
+🚀 提高开发效率：减少查阅文档的时间
+
+```bash
+# 安装核心依赖
+npm install --save-dev typescript ts-node @types/node @types/webpack
+```
+
+```ts
+// webpack.config.ts
+import * as path from "path";
+import * as webpack from "webpack";
+import "webpack-dev-server";
+
+const config: webpack.Configuration = {
+  mode: "production",
+  entry: "./foo.js",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "foo.bundle.js",
+  },
+};
+
+export default config;
+```
+
+#### 解决模块化问题
+
+在使用 TypeScript 编写 Webpack 配置时，最常见的问题是模块化配置
+
+使用独立的 TypeScript 配置
+
+- 安装依赖：
+
+```bash
+npm install --save-dev --save-exact tsconfig-paths cross-env
+```
+
+- 创建专用配置文件 tsconfig-for-webpack-config.json
+
+```json
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
+```
+
+```bash
+{
+  "scripts": {
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack"
+  }
+}
+```
+
 ### MarkDown 使用指南
 
 - [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>
