@@ -31,3 +31,9 @@ home: false
 - [eslint-plugin-simple-import-sort](./eslint-plugin-simple-import-sort) <span style="color:#bbb; float:right">2021-09-10</span>
 - [eslint 官方规则](https://github.com/eslint/eslint/tree/main/lib/rules)
 - [eslint 官方规则说明](https://eslint.nodejs.cn/docs/latest/rules/prefer-rest-params#google_vignette)
+
+#### 只对工作区变更的文件进行 eslint
+
+```bash
+git status --porcelain | grep -E '^ M ' | cut -c 3- | xargs npx eslint --fix
+```

@@ -411,3 +411,14 @@ const permissions = [
 export type PermissionType = typeof permissions[number];
 // PermissionType;  "system:role:list" | "system:role:create" | "system:role:read" | "system:role:update" | "system:role:delete"
 ```
+
+### get 设置对象 readOnly 属性
+
+```ts
+export const defaultTimes = {
+  /** 获取创建时间范围选择 */
+  get createRange(): [Date, Date] {
+    return [new Date(), new Date()];
+  },
+};
+```
