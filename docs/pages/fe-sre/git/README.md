@@ -132,3 +132,26 @@ git diff <commit1> <commit2> --name-only
 ```bash
  git ls-remote github.com:****.github.git
 ```
+
+#### git ls-files
+
+获取当前目录 git 追踪的文件
+
+```bash
+git ls-files命令用于列出git仓库中的文件
+```
+
+### 获取当前 git 仓库根目录
+
+```bash
+git rev-parse --show-toplevel
+```
+
+### 切换目录到 Git 仓库的根目录
+
+用反引号`或$(...)）将 git rev-parse --show-toplevel 的输出直接作为 cd 命令的参数
+
+```bash
+cd `git rev-parse --show-toplevel`
+cd $(git rev-parse --show-toplevel)
+```

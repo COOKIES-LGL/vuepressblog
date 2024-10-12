@@ -5,5 +5,5 @@
     "source.formatDocument": "explicit",
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": ["vuepress", "Colyseus‌", "guilin"]
+  "cSpell.words": ["vuepress", "Colyseus‌", "guilin", "toplevel"]
 }

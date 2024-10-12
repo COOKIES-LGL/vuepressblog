@@ -88,6 +88,11 @@ Open Graph Image（OG 图像）集合导航站，OG 图像是用于在社交媒�
 在线文案识别，支持中文和英文
 [ocr](https://ocr.plantree.me/ocr)
 
+#### WebChat
+
+开源的浏览器插件，基于 WebRTC，为同一个页面的访问者建立去中心化、无服务器的匿名聊天，可用于任意网站
+[WebChat](https://github.com/molvqingtai/WebChat)
+
 #### Marker
 
 高效的将 PDF 转 markdown 文件

@@ -77,3 +77,15 @@ cp -r source_directory existing_directory
 ```bash
 cp -r source_directory/* existing_directory/
 ```
+
+### | 连接符
+
+在 bash 命令中，管道操作符（|）用于将一个命令的输出作为另一个命令的输入
+
+### xargs
+
+在 bash 命令中，将前面的参数输入给后面的函数
+
+```bash
+git rev-parse --show-toplevel | echo
+```
