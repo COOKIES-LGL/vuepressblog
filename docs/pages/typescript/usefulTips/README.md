@@ -422,3 +422,22 @@ export const defaultTimes = {
   },
 };
 ```
+
+### Parameters、 ReturnType 的使用
+
+> `Parameters<T>` 用于提取函数的参数类型，返回一个元组，元组的元素类型是该函数的参数类型。
+> `ReturnType<T>` 用于提取函数的返回值类型。
+
+```ts
+function example(a: string, b: number): boolean {
+  return b > 0;
+}
+// Parameters 提取参数类型 -> [string, number]
+type ExampleParams = Parameters<typeof example>;
+
+// ReturnType 提取返回值类型 -> boolean
+type ExampleReturn = ReturnType<typeof example>;
+
+const params: ExampleParams[0] = "田本初"; // 函数第一个参数的类型
+const returnValue: ExampleReturn = example(params, 23); // 返回 boolean 类型
+```

@@ -15,6 +15,7 @@ sidebar: false
 - [javascript 正则表达式使用笔记](./regexp) <span style="color:#bbb; float:right">2023-08-10</span>
 - [promise 高级封装](./promise) <span style="color:#bbb; float:right">2023-12-10</span>
 - [lodash 常用方法](./lodash) <span style="color:#bbb; float:right">2024-09-10</span>
+- [项目代码全局 polyfill](https://segmentfault.com/a/1190000043926442)
 
 ### MarkDown 使用指南
 
