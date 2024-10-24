@@ -20,6 +20,7 @@ sidebar: false
 - [bat-cmd 文件](./bat-cmd-file) <span style="color:#bbb; float:right">2024-06-10</span>
 - [Docker](./docker) <span style="color:#bbb; float:right">2023-10-11</span>
 - [Vscode Plugin](./vscode-plugin) <span style="color:#bbb; float:right">2023-10-11</span>
+- [babel](./babel) <span style="color:#bbb; float:right">2024-09-13</span>
 - [浏览器缓存策略一文就够](https://juejin.cn/post/6844903747357769742?utm_source=gold_browser_extension) <span style="color:#bbb; float:right">2023-12-11</span>
 
 ### mac 安装 homebrew
