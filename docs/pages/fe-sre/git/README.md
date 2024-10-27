@@ -155,3 +155,18 @@ git rev-parse --show-toplevel
 cd `git rev-parse --show-toplevel`
 cd $(git rev-parse --show-toplevel)
 ```
+
+### git bisect
+
+git bisect 是一个强大的 git 命令，用于帮助开发者查找导致错误的提交。它通过使用二分查找算法，可以迅速定位到引入错误的提交.
+
+```bash
+git bisect start
+# 开始一个二分查找会话
+git bisect good
+# 告诉git当前提交是好的
+git bisect bad
+# 告诉git当前提交是坏的
+git bisect reset
+# 重置会话
+```
