@@ -184,3 +184,13 @@ React CSS Modules 实现了自动化映射 CSS modules，完美得解决了上�
 
 一个自动总结提交信息，生成 changelog 文件的命令行工具。
 [it-cliff](https://github.com/orhun/git-cliff)
+
+### source-map-explorer
+
+打包体积分析
+
+```bash
+"scripts": {
+  "analyze": "source-map-explorer 'build/static/js/*.js'",
+}
+```

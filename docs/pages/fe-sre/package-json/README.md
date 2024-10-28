@@ -6,8 +6,7 @@ home: false
 
 ### peerDependencies
 
-用于指定当前包所依赖的其他包的版本要求，主要目的是通知用户或工具（如 npm 或 yarn）当前包需要特定版本的依赖包才能正常工作。  
-这些依赖并不会在安装当前包时自动安装，而是需要用户手动安装符合版本要求的依赖。
+用于指定当前包所依赖的其他包的版本要求，主要目的是通知用户或工具（如 npm 或 yarn）当前包需要特定版本的依赖包才能正常工作。 这些依赖并不会在安装当前包时自动安装，而是需要用户手动安装符合版本要求的依赖。
 [对等依赖](https://zhuanlan.zhihu.com/p/666454541)
 
 ### bundledDependencies
@@ -115,3 +114,9 @@ if (multiVersionPackages.length) {
   throw new Error("package-lock出现多版本包！！！");
 }
 ```
+
+### 字段含义说明
+
+- main - 表示 commonjs 文件入口
+- module - 表示 es 文件入口
+- types - 表示 typescript 声明文件入口

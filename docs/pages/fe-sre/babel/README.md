@@ -19,4 +19,4 @@ options 对象内的配置将优先于 `.babelrc` 中的配置。如果两边有
 
 ### MarkDown 使用指南
 
-- [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>
+- [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2023-06-24</span>
