@@ -27,12 +27,6 @@ const chooseCreate = async () => {
   if (templateType === enumTemplateType.routePage) {
     const questions = [
       {
-        type: "confirm",
-        name: "hasButton",
-        message: "需要Button区域吗？",
-        default: true,
-      },
-      {
         type: "input",
         name: "menuName",
         message: "请输入菜单名称",
@@ -56,16 +50,16 @@ const chooseCreate = async () => {
       },
     ];
 
-    const { hasButton, menuName, filePath } = await inquirer.prompt(questions);
+    const { menuName, filePath } = await inquirer.prompt(questions);
 
-    await addNewRoute({ hasButton, menuName, filePath });
+    await addNewRoute({ menuName, filePath });
     return;
   }
 };
 
 // 默认创建 search+table+button
 const quickCreate = async (args) => {
-  await addNewRoute({ hasButton: true, menuName: args[0], filePath: args[1] });
+  await addNewRoute({ menuName: args[0], filePath: args[1] });
 };
 
 async function main() {

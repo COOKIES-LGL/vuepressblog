@@ -22,7 +22,6 @@ sidebar: false
 - [计算机网络](./computer-network) <span style="color:#bbb; float:right">2022-06-30</span>
 - [日常面试记录](./fe-interview) <span style="color:#bbb; float:right">2022-06-30</span>
 - [日常技术随笔](./blog-daily) <span style="color:#bbb; float:right">2022-07-01</span>
-- [Generate Page](./generate-page) <span style="color:#bbb; float:right">2024-06-30</span>
 
 ---
 
