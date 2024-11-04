@@ -90,6 +90,13 @@ console.log(timestampedActivatableUserExample.isActivated);
 
 ```
 
+### @type 配置文件类型提示
+
+```ts
+/** @type {import('rs-pack').RsConfig} */
+export default {};
+```
+
 ### ITypeA 类型的 tag 可以直接点击到 ITag 类型
 
 ```typescript
@@ -440,4 +447,14 @@ type ExampleReturn = ReturnType<typeof example>;
 
 const params: ExampleParams[0] = "田本初"; // 函数第一个参数的类型
 const returnValue: ExampleReturn = example(params, 23); // 返回 boolean 类型
+```
+
+定义一个工具类型来提取 Promise 解析后的类型
+
+```ts
+type PromiseReturnType<T extends (...args: any[]) => Promise<any>> = T extends (
+  ...args: any[]
+) => Promise<infer U>
+  ? U
+  : never;
 ```
