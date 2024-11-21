@@ -170,3 +170,17 @@ git bisect bad
 git bisect reset
 # 重置会话
 ```
+
+### 开启全局配置
+
+```bash
+git config --global --edit
+```
+
+### 配置带参数别名
+
+```bash
+[alias]
+    ac = "!f() { git add . && git commit -m \"$1\"; }; f"
+    acp = "!f() { git add . && git commit -m \"$1\" && git push; }; f"
+```
