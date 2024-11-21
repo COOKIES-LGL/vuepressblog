@@ -180,3 +180,22 @@ npm repo react
   "files": ["dist/", "package.json", "README.md"]
 }
 ```
+
+### npm --filter
+
+使用通配符时匹配批量操作
+
+```bash
+npm install --filter @my/*
+# 安装所有符合 @my/* 模式的包
+npm update --filter react-*
+# 更新所有符合 react-* 模式的包
+npm --filter \"./packages/*\" run build
+# 子包目录执行build
+```
+
+### 给指定的 scope 配置源
+
+```bash
+@afa:registry = https://registry.npmmirror.com
+```
