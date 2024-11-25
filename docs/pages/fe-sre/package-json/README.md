@@ -120,3 +120,8 @@ if (multiVersionPackages.length) {
 - main - 表示 commonjs 文件入口
 - module - 表示 es 文件入口
 - types - 表示 typescript 声明文件入口
+
+### files 与 .npmignore 区别
+
+‌ 如果 files 字段存在 ‌：npm 将只包含 files 字段中指定的文件和目录。此时，.npmignore 文件（如果存在）将仅对 files 字段中指定的文件和目录生效，用于进一步排除其中的某些文件或目录。
+‌ 如果 files 字段不存在 ‌：npm 将默认包含项目根目录下的所有文件和目录，但会排除.npmignore 文件中指定的文件或目录（以及 npm 默认排除的文件，如.git、node_modules 等）。
