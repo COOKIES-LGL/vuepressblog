@@ -263,3 +263,28 @@ resizeObserver.observe(targetElement);
 ### ‌image 和 background-image
 
 ‌image 标签和 background-image 在网页渲染中的顺序是先渲染 image 标签，再渲染 background-image。
+
+### customElements
+
+customElements 是 Web Components 标准的一个重要组成部分，它允许开发者定义自己的 HTML 标签，这些标签具有自定义的行为和样式
+
+```ts
+class MyButton extends HTMLElement {
+  constructor() {
+    super(); // 必须首先调用super()来初始化元素
+    const shadow = this.attachShadow({ mode: "open" }); // 创建一个Shadow DOM
+    // 在Shadow DOM中添加内容...
+  }
+
+  // 可以定义其他方法来处理事件、更新样式等...
+}
+
+customElements.define("my-button", MyButton); // 注册自定义元素
+```
+
+当你定义一个自定义元素时，你可以通过重写类中的特定方法来控制该元素的生命周期。这些方法包括：
+
+- connectedCallback：当元素被插入到 DOM 中时调用。
+- disconnectedCallback：当元素从 DOM 中移除时调用。
+- adoptedCallback：当元素被移动到新的文档时调用。
+- attributeChangedCallback：当元素的属性发生变化时调用。
