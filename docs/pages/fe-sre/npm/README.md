@@ -199,3 +199,13 @@ npm --filter \"./packages/*\" run build
 ```bash
 @afa:registry = https://registry.npmmirror.com
 ```
+
+### 单独限制源
+
+```json
+{
+  "resolutions": {
+    "globby": "npm:@nat/globby@^11.1.0"
+  }
+}
+```

@@ -97,6 +97,8 @@ console.log(timestampedActivatableUserExample.isActivated);
 export default {};
 ```
 
+上面的 @type 是 jsdoc 的语法，也就是 ts 支持的在 js 里声明类型的方式
+
 ### ITypeA 类型的 tag 可以直接点击到 ITag 类型
 
 ```typescript
