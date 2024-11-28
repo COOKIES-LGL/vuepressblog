@@ -10,4 +10,4 @@ sideBar: false
 
 ### MarkDown 使用指南
 
-- [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>
+- [MarkDown](../../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>

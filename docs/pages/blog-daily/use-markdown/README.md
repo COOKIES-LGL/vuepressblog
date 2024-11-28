@@ -117,6 +117,10 @@ A[方形] -->B(圆角)
 这是一个 details 标签，在 IE / Edge 中不生效
 :::
 
+::: details 自定义名称
+这是一个 details 标签，在 IE / Edge 中不生效
+:::
+
 ### vuepress 内置组件
 
 <Badge type="tip" text="标签" vertical="top" />
