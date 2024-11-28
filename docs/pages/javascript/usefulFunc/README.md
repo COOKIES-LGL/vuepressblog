@@ -303,3 +303,33 @@ Func("You"); // "I Love You"
   dom.style.outline = "1px solid #" + (~~(Math.random() * (1 << 24))).toString(16);
 });
 ```
+
+### 模板函数
+
+模板函数是一种特殊的函数调用形式，它允许你定义一个函数来处理模板字符串。这个函数的第一个参数是一个 TemplateStringsArray，它包含了模板字符串中被插值表达式分割成的多个字符串部分。而后续的参数则是这些插值表达式的结果。
+
+```js
+// 定义标记模板函数
+function tag(strings, ...values) {
+  // strings 是一个 TemplateStringsArray
+  console.log(strings); // 输出 TemplateStringsArray
+
+  // 遍历 TemplateStringsArray
+  strings.forEach((str, index) => {
+    console.log(`String part ${index}: ${str}`);
+  });
+
+  // values 是一个包含插值表达式结果的数组
+  console.log(values); // 输出插值表达式的结果数组
+}
+
+// 调用标记模板函数
+const name = "Alice";
+const place = "Wonderland";
+tag`Hello, ${name}! Welcome to ${place}.`;
+// 输出
+// String part 0: Hello,
+// String part 1: ! Welcome to
+// String part 2: .
+// (2) ['Alice', 'Wonderland']
+```
