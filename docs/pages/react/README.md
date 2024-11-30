@@ -18,7 +18,7 @@ sidebar: false
 - [React 服务端组件](https://sorrycc.com/why-react-server-components/) <span style="color:#bbb; float:right">2023-12-19</span>
 - [Vuex、Flux、Redux、Redux-saga、Dva、MobX](https://zhuanlan.zhihu.com/p/53599723) <span style="color:#bbb; float:right">2023-11-10</span>
 - [Recoil](https://juejin.cn/post/7259168207055175739) <span style="color:#bbb; float:right">2023-02-11</span>
-- [mobx 概要梳理](https://article.juejin.cn/post/6914179461957025800) <span style="color:#bbb; float:right">2024-02-10</span>
+- [Mobx 概要梳理](https://article.juejin.cn/post/6914179461957025800) <span style="color:#bbb; float:right">2024-02-10</span>
 - [React Schedule 核心流程图](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/493c087e2fd64e1a8c552f16927192f6~tplv-k3u1fbpfcp-watermark.image?) <span style="color:#bbb; float:right">2023-12-19</span>
 
 - [Schedule 核心流程图](https://zhuanlan.zhihu.com/p/450267610?utm_id=0) <span style="color:#bbb; float:right">2023-12-12</span>

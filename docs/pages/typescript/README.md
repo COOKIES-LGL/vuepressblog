@@ -5,12 +5,12 @@ sidebar: false
 
 [Typescript 工具类型](https://mp.weixin.qq.com/s?__biz=MzU2MTIyNDUwMA==&mid=2247496918&idx=1&sn=1cf004f0a4091e37bfadff5f360c6326&chksm=fc7eba8dcb09339b09a6868c4ef6acfe08d063f3cc17eb3d36986a05221b4a3fedcf8a815475)  
 [Typescript 类型体操](https://www.jianshu.com/p/276a7d596744)  
-[ts 实用小技巧](./usefulTips/README.md)
-[ts 类型推断](./infer/README.md)
-[tsconfig 配置详解](https://juejin.cn/post/7386532770476490761?searchId=2024102911444713AE83BB7609117AF804)
-[reflect-metadata](https://zhuanlan.zhihu.com/p/643674031)  
-[tsconfig moduleResolution](https://juejin.cn/post/7276408879364948028)  
-[详解 tsconfig.json 中的 module、moduleResolution](https://juejin.cn/post/7276408879364948028)
+[Ts 实用小技巧](./usefulTips/README.md)
+[Ts 类型推断](./infer/README.md)
+[Tsconfig 配置详解](https://juejin.cn/post/7386532770476490761?searchId=2024102911444713AE83BB7609117AF804)
+[Reflect-metadata](https://zhuanlan.zhihu.com/p/643674031)  
+[Tsconfig moduleResolution](https://juejin.cn/post/7276408879364948028)  
+[详解 module、moduleResolution](https://juejin.cn/post/7276408879364948028)
 
 ### Partial
 
