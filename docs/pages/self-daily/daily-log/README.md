@@ -22,6 +22,7 @@ sidebar: false
 - [深夜有感](./2024-06-12) <span style="color:#bbb; float:right">2024-06-12</span>
 - [焦虑的等待](./2024-07-05) <span style="color:#bbb; float:right">2024-07-05</span>
 - [和爸妈的上海三日游](./2024-09-15) <span style="color:#bbb; float:right">2024-09-15</span>
+- [收获小学毕业典礼照片](./2024-11-30) <span style="color:#bbb; float:right">2024-11-30</span>
 
 <style>
 @media screen and (min-width: 400px) {
