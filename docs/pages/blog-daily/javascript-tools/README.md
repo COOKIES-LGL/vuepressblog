@@ -5,6 +5,7 @@ sidebar: auto
 ### JS 高级使用技巧
 
 ### ～～向下取整
+
 ```javascript
 Math.floor(4.8) === 4;
 ~~4.9 === 4;
@@ -18,16 +19,16 @@ Math.floor(4.8) === 4;
   // 新打开一个tab标签页并通知其他标签页同步sessionStorage的数据到本标签页
   if (!sessionStorage.length) {
     // 这个调用能触发storage事件，从而达到共享数据的目的
-    localStorage.setItem('syncSessionStorage', Date.now());
+    localStorage.setItem("syncSessionStorage", Date.now());
   }
 
   // 该事件是核心
-  window.addEventListener('storage', function (event) {
-    if (event.key == 'syncSessionStorage') {
+  window.addEventListener("storage", function (event) {
+    if (event.key == "syncSessionStorage") {
       // 已存在的标签页会收到这个事件
-      localStorage.setItem('sessionStorage', JSON.stringify(sessionStorage));
-      localStorage.removeItem('sessionStorage');
-    } else if (event.key == 'sessionStorage' && !sessionStorage.length) {
+      localStorage.setItem("sessionStorage", JSON.stringify(sessionStorage));
+      localStorage.removeItem("sessionStorage");
+    } else if (event.key == "sessionStorage" && !sessionStorage.length) {
       // 新开启的标签页会收到这个事件
       var data = JSON.parse(event.newValue);
       for (key in data) {
@@ -102,7 +103,7 @@ const install = function (vueInstance: VueConstructor, options: any) {
   const instance = new AdModalConstructor({
     i18n: options.i18n,
   });
-  instance.$mount(document.createElement('div'));
+  instance.$mount(document.createElement("div"));
   document.body.appendChild(instance.$el);
   vueInstance.prototype.$adModal = function (base: RegionUrl, to?: string) {
     instance.$data.visible = true;
@@ -111,9 +112,11 @@ const install = function (vueInstance: VueConstructor, options: any) {
   };
 };
 ```
+
 ---
 
-### 虚拟A标签下载
+### 虚拟 A 标签下载
+
 ```javascript
 private download(res: any, fileName: string) {
   const downloadLink = document.createElement('a');
@@ -131,7 +134,8 @@ private download(res: any, fileName: string) {
 
 ---
 
-### blob对象转json
+### blob 对象转 json
+
 ```javascript
 var reader = new FileReader();
 reader.readAsText(res as Blob, 'utf-8');
@@ -199,15 +203,13 @@ const cacheAsync = (promiseGenerator, symbol) => {
 };
 ```
 
-### base64转Blob对象
-``` javascript
+### base64 转 Blob 对象
+
+```javascript
 function base64dataURLtoBlob(dataUrl: string) {
   const char = `"`; //去除首尾双引号
-  dataUrl = dataUrl.replace(
-    new RegExp('^\\' + char + '+|\\' + char + '+$', 'g'),
-    ''
-  );
-  const arr = dataUrl.split(',');
+  dataUrl = dataUrl.replace(new RegExp("^\\" + char + "+|\\" + char + "+$", "g"), "");
+  const arr = dataUrl.split(",");
   const mime = arr[0].match(/:(.*?);/)[1];
   const blobStr = atob(arr[1]);
   let blobStrLength = blobStr.length;
@@ -216,21 +218,19 @@ function base64dataURLtoBlob(dataUrl: string) {
     u8arr[blobStrLength] = blobStr.charCodeAt(blobStrLength);
   }
   return new Blob([u8arr], {
-    type: mime
+    type: mime,
   });
 }
 ```
 
-### base64转file对象
-``` javascript
+### base64 转 file 对象
+
+```javascript
 // base64转file对象
 function base64dataURLtoBlob(dataUrl: string) {
   const char = `"`; //去除首尾双引号
-  dataUrl = dataUrl.replace(
-    new RegExp('^\\' + char + '+|\\' + char + '+$', 'g'),
-    ''
-  );
-  const arr = dataUrl.split(',');
+  dataUrl = dataUrl.replace(new RegExp("^\\" + char + "+|\\" + char + "+$", "g"), "");
+  const arr = dataUrl.split(",");
   const mime = arr[0].match(/:(.*?);/)[1];
   const blobStr = atob(arr[1]);
   let blobStrLength = blobStr.length;
@@ -238,14 +238,15 @@ function base64dataURLtoBlob(dataUrl: string) {
   while (blobStrLength--) {
     u8arr[blobStrLength] = blobStr.charCodeAt(blobStrLength);
   }
-  return new File([u8arr], 'fileName', {
-    type: mime
+  return new File([u8arr], "fileName", {
+    type: mime,
   });
 }
 ```
 
 ### 移除空值
-``` javascript
+
+```javascript
 // qs库应该是axios安装时会自带的  get请求处理数组传递
 const qs = require('qs');
 
@@ -263,10 +264,11 @@ axios.get(url, {
 ```
 
 ### '2018-01-01'和'2018/01/01'是不同的，存在一定时差
-``` javascript
-new Date('2018-01-01');
+
+```javascript
+new Date("2018-01-01");
 // Mon Jan 01 2018 08:00:00 GMT+0800 (中国标准时间)
-new Date('2018/01/01');
+new Date("2018/01/01");
 // Mon Jan 01 2018 00:00:00 GMT+0800 (中国标准时间)
 // 有个北京时间与格林尼治时间的时差
 ```

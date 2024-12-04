@@ -1,9 +1,10 @@
 ### 虚拟列表的原理与实现
 
-前缀知识  工具hooks
+前缀知识 工具 hooks
 
 #### useCreation
-``` javascript
+
+```javascript
 /**
  * useCreation是useMemo或useRef的替代品。useCreation这个钩子增强了useMemo和useRef，让这个钩子可以替换这两个钩子。
  */
@@ -33,28 +34,30 @@ export default useCreation
 ```
 
 #### useEventListener
+
 ```javascript
 /**
  * addEventListener事件绑定的封装
  */
-import { useEffect } from 'react'
+import { useEffect } from "react";
 const useEventListener = (event: string, handler: (...e: any) => void, target: any = window) => {
   useEffect(() => {
-    const targetElement = 'current' in target ? target.current : window
+    const targetElement = "current" in target ? target.current : window;
     const useEventListener = (event: Event) => {
-      return handler(event)
-    }
-    targetElement.addEventListener(event, useEventListener)
+      return handler(event);
+    };
+    targetElement.addEventListener(event, useEventListener);
     return () => {
-      targetElement.removeEventListener(event, useEventListener)
-    }
-  }, [event])
-}
-export default useEventListener
+      targetElement.removeEventListener(event, useEventListener);
+    };
+  }, [event]);
+};
+export default useEventListener;
 ```
 
 #### useReactive
-``` javascript
+
+```javascript
 /**
  * 一种具备响应式的useState
  */
@@ -91,21 +94,23 @@ export default useReactive
 ```
 
 #### useUpdate
-``` javascript
+
+```javascript
 /**
  * 组件强制更新
  */
-import { useCallback, useState } from 'react'
+import { useCallback, useState } from "react";
 const useUpdate = () => {
-  const [, setState] = useState({})
-  return useCallback(() => setState({}), [])
-}
-export default useUpdate
+  const [, setState] = useState({});
+  return useCallback(() => setState({}), []);
+};
+export default useUpdate;
 ```
 
 #### utils
-``` javascript
-import NP from 'number-precision'
+
+```javascript
+import NP from "number-precision";
 /**
  * 二分查找
  * @param list 目标数组
@@ -113,48 +118,50 @@ import NP from 'number-precision'
  * @returns
  */
 export const binarySearch = (list: any[], value: any) => {
-  let start: number = 0
-  let end: number = list.length - 1
-  let tempIndex = null
+  let start: number = 0;
+  let end: number = list.length - 1;
+  let tempIndex = null;
   while (start <= end) {
-    const midIndex = parseInt(String(NP.divide(NP.plus(start, end), 2)), 10)
-    const midValue = list[midIndex].bottom
+    const midIndex = parseInt(String(NP.divide(NP.plus(start, end), 2)), 10);
+    const midValue = list[midIndex].bottom;
     if (midValue === value) {
-      return NP.plus(midIndex, 1) // 相等时返回下一个下标
+      return NP.plus(midIndex, 1); // 相等时返回下一个下标
     } else if (midValue < value) {
-      start = NP.plus(midIndex, 1)
+      start = NP.plus(midIndex, 1);
     } else if (midValue > value) {
       if (tempIndex === null || tempIndex > midIndex) {
-        tempIndex = midIndex
+        tempIndex = midIndex;
       }
-      end = NP.minus(midIndex, 1)
+      end = NP.minus(midIndex, 1);
     }
   }
-  return tempIndex
-}
+  return tempIndex;
+};
 
 export const createScheduler = (callback: () => void, scheduler: (fn: any) => void) => {
-  let ticking = false
+  let ticking = false;
   const update = () => {
-    ticking = false
-    callback()
-  }
+    ticking = false;
+    callback();
+  };
   const requestTick = () => {
     if (!ticking) {
-      scheduler(update)
+      scheduler(update);
     }
-    ticking = true
-  }
-  return requestTick
-}
+    ticking = true;
+  };
+  return requestTick;
+};
 ```
 
 ### 元素不定高度
+
 定高我们只需要手动计算下列表的高度，将值传入就行，但不定高就更复杂，因为你无法计算出每个高度的情况，导致列表的整体高度、偏移量都无法正常的计算。
 预算高度，我们可以假定子列表的高度也就是虚假高度（initItemHeight）,当我们渲染的时候，在更新对应高度，这样就可以解决子列表高度的问题
-我们需要去维护一个公共的高度列表（positions），这个数组将会记录真实的DOM高度信息。
-positions需要记录的信息：
-``` javascript
+我们需要去维护一个公共的高度列表（positions），这个数组将会记录真实的 DOM 高度信息。
+positions 需要记录的信息：
+
+```javascript
 const state = useReactive<any>({
     ...,
     positions: [ //需要记录每一项的高度
@@ -162,34 +169,37 @@ const state = useReactive<any>({
       // bottom        // 底部位置
       // height        // 元素高度
       // dHeight        // 用于判断是否需要改变
-    ], 
+    ],
     initItemHeight: 50, // 预计高度
 })
 ```
 
 需要记录元素的高度，其次可以存入距离顶部和底部的高度，方便后面计算偏移量和列表的整体高度，在设定一个参数（dHeight）判断新的高度与旧的高度是否一样，不一样的话就进行更新。
-其中最重要的就是index，它用来记录子列表真实高度的下标，原因是：在之前的讲解中，我们发现start 和 end的差值实际上是不变的，也就是说，最终渲染的数据，实际上是一个固定值，但里面的子列表高度却是变值,所以我们需要有一个变量来区分数据所对应的高度，所以这个index就变的尤为重要。
-所以在这里我们设置一个ref用来监听子节点node，来获取真实高度,这里我设置id来判断对应的索引。
+其中最重要的就是 index，它用来记录子列表真实高度的下标，原因是：在之前的讲解中，我们发现 start 和 end 的差值实际上是不变的，也就是说，最终渲染的数据，实际上是一个固定值，但里面的子列表高度却是变值,所以我们需要有一个变量来区分数据所对应的高度，所以这个 index 就变的尤为重要。
+所以在这里我们设置一个 ref 用来监听子节点 node，来获取真实高度,这里我设置 id 来判断对应的索引。
 注意预计高度尽量要小点，可以多加载，但不能少，防止渲染不全。
 初始化计算值
-- 初始化positions （Dom挂载前）
-- 根据真实Dom高度刷新positions位置信息
+
+- 初始化 positions （Dom 挂载前）
+- 根据真实 Dom 高度刷新 positions 位置信息
 - 索引的结束位置：end
 - 缓冲个数：bufferCount
 - 需要渲染的节点数量（可视区能渲染几个节点）
 - 列表高度： listHeight
-滚动后计算值
+  滚动后计算值
 - 索引的起始位置：start （二分查找）
 - 索引的结束位置：end
 - 偏移量：currentOffset
 - 重新获取需要渲染的列表数据：data
-- 重新根据真实Dom高度刷新positions位置信息
+- 重新根据真实 Dom 高度刷新 positions 位置信息
 - 重新计算列表高度： listHeight
-注意滚动重新计算positions位置信息和初始计算不一样，可以直接从end下标开始计算因为只有这个子元素高度是变化的。
+  注意滚动重新计算 positions 位置信息和初始计算不一样，可以直接从 end 下标开始计算因为只有这个子元素高度是变化的。
 
 #### 完整代码
-定义HOC
-``` javascript
+
+定义 HOC
+
+```javascript
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useRef } from 'react'
 import { throttle } from 'lodash-es'
@@ -386,8 +396,9 @@ const VirtualListHOC = ({
 export default VirtualListHOC
 ```
 
-使用HOC
-``` javascript
+使用 HOC
+
+```javascript
 import React, { useEffect, useState } from 'react'
 import NP from 'number-precision'
 
@@ -442,26 +453,29 @@ export default Index
 ```
 
 ### 元素动态高度
-不定高度是列表每一项是固定的不定高度，单渲染成真实Dom后高度是固定的，对于动态高度，场景则是渲染成了真实Dom，Dom还会被JS代码或者用户操作修改高度。对于这种场景我们需要增加监听元素高度变化事件，在某个元素发生变化的时候重新计算各种数据。
+
+不定高度是列表每一项是固定的不定高度，单渲染成真实 Dom 后高度是固定的，对于动态高度，场景则是渲染成了真实 Dom，Dom 还会被 JS 代码或者用户操作修改高度。对于这种场景我们需要增加监听元素高度变化事件，在某个元素发生变化的时候重新计算各种数据。
 除了增加监听事件，其它步骤和不定高度一致。
-可以使用ResizeObserve对真实渲染的列表节点进行监听。回调任务放入宏任务事件中进行异步调用，防止阻塞。
+可以使用 ResizeObserve 对真实渲染的列表节点进行监听。回调任务放入宏任务事件中进行异步调用，防止阻塞。
 注意这里我们只需要对渲染的第一个子节点进行对比就行，因为当滚动时如果触发了下标更替，会重新计算所有高度。
 
-``` javascript
-const myObserver = new ResizeObserver(entries => {
-const currentStartHeight = entries[0].target.children[0].clientHeight
-const preStartHeight = Math.round(state.positions[state.start].height)
-if (currentStartHeight !== preStartHeight && preStartHeight !== initItemHeight) {
+```javascript
+const myObserver = new ResizeObserver((entries) => {
+  const currentStartHeight = entries[0].target.children[0].clientHeight;
+  const preStartHeight = Math.round(state.positions[state.start].height);
+  if (currentStartHeight !== preStartHeight && preStartHeight !== initItemHeight) {
     // 对比新旧值
-    createScheduler(setPosition, requestAnimationFrame)()
-}
-})
-myObserver.observe(ref.current)
+    createScheduler(setPosition, requestAnimationFrame)();
+  }
+});
+myObserver.observe(ref.current);
 ```
+
 #### 完整代码
 
-定义hoc
-``` javascript
+定义 hoc
+
+```javascript
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useRef } from 'react'
 import { throttle } from 'lodash-es'
@@ -656,8 +670,9 @@ const VirtualListHOC = ({
 export default VirtualListHOC
 ```
 
-使用HOC
-``` js
+使用 HOC
+
+```js
 import React, { useEffect, useState } from 'react'
 import NP from 'number-precision'
 
