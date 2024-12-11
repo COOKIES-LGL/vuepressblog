@@ -184,6 +184,40 @@ Vue.directive("loading", loadingDirectiive);
 </template>
 ```
 
+### 动态 Watch
+
+**使用场景**
+假设你现在有一个价格 price，在这个价格变化后需要执行一段逻辑。而这个价格是通过后端接口拿到数据后初始化的，而没初始化之前，我是不需要执行这段逻辑的，这时候如果用静态 watch，肯定会让 watch 执行一次，如果在 watch 执行中有一些副作用，那就还要多加一些逻辑判断，而且这次执行是毫无意义的，应当避免它执行，这时候用动态 watch 就再合适不过
+
+```js
+export default {      
+  data() {          
+    return {            
+      a: 1,            
+      unWatch: null,        
+    }    
+  },      
+  mounted() {    
+    this.a = await fetch('./xxx');     
+    this.unWatch = this.$watch(this.a, (newVal, oldVal) => {          
+        console.log('watch执行', oldVal, newVal);        
+    }, {            
+      immediate: true,        
+    })    
+  }
+  beforeDestroy() {          
+    if (this.unWatch) { // 主动销毁watch            
+      this.unWatch();              
+      this.unWatch = null;        
+    }    
+  }  
+}
+```
+
+### Vue.util.defineReactive
+
+vue 提供了一个工具函数 defineReactive,可以把一个数据变成响应式的，也就是数据变化了会刷新页面
+
 ### Vue diff 算法的详细讲解
 
-[vue 的 diff 算法原理 ](https://www.cnblogs.com/wangtong111/p/11198393.html)
+[vue 的 diff 算法原理](https://www.cnblogs.com/wangtong111/p/11198393.html)

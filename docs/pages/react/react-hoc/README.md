@@ -212,3 +212,41 @@ class Index extends React.Component {
   }
 }
 ```
+
+### ReactDOM.createPortal
+
+ReactDOM.createPortal 是 React 提供的一个 API，它允许你将子节点渲染到父组件以外的 DOM 节点中。这个特性在处理模态框、悬浮框、提示框等特殊类型的 UI 元素时非常有用，因为这些元素通常需要在视觉上脱离其逻辑上的父组件，但仍然要保持与 React 应用的状态管理一致。
+
+```tsx
+import ReactDOM from "react-dom";
+ReactDOM.createPortal(child, container);
+```
+
+```tsx
+// 弹窗组件 render 实现
+import React from "react";
+import { render } from "react-dom";
+
+class Popup extends React.Component {
+  constructor() {
+    super();
+    this.state = { count: 0 };
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Popup count: {this.state.count}</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>Increment</button>
+      </div>
+    );
+  }
+}
+
+// 创建全局的DOM节点用于Portal渲染
+const modalRoot = document.createElement("div");
+document.body.appendChild(modalRoot);
+
+// 渲染Popup组件到全局的DOM节点
+render(<Popup />, modalRoot);
+```

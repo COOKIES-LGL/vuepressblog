@@ -2,7 +2,7 @@
 home: false
 ---
 
-## 你好 Vuex
+### Vuex
 
 <style>
 @media screen and (min-width: 400px) {

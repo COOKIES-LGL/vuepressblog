@@ -38,3 +38,7 @@ process.on("SIGINT", () => {
   process.exit();
 });
 ```
+
+### node --inspect
+
+node --inspect 是一个用于启动 Node.js 应用程序并同时开启远程调试功能的命令行选项
