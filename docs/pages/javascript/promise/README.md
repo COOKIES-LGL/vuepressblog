@@ -266,3 +266,64 @@ export default function pPipe(...functions) {
   };
 }
 ```
+
+### Can Cancel Promise
+
+```js
+let isCanceled = false;
+const cancellablePromise = (promise) => {
+  return new Promise((resolve, reject) => {
+    promise
+      .then((value) => {
+        if (isCanceled) {
+          reject({ isCanceled: true, value });
+        } else {
+          resolve(value);
+        }
+      })
+      .catch((error) => {
+        if (isCanceled) {
+          reject({ isCanceled: true, error });
+        } else {
+          reject(error);
+        }
+      });
+  });
+};
+//测试案例
+const p = cancellablePromise(new Promise((res) => setTimeout(() => res("OK"), 3000)));
+setTimeout(() => (isCanceled = true), 1000);
+p.then(console.log).catch(console.error); // 输出错误信息和isCanceled
+```
+
+### 重试 promise
+
+```js
+const retryPromise = async (promiseFn, maxAttempts, interval) => {
+  let attempts = 0;
+  while (attempts < maxAttempts) {
+    try {
+      const result = await promiseFn();
+      return result;
+    } catch (error) {
+      console.error(`Attempt ${attempts + 1} failed:`, error);
+      attempts++;
+      await new Promise((resolve) => setTimeout(resolve, interval));
+    }
+  }
+  throw new Error("Max attempts reached");
+};
+
+const unreliablePromise = () =>
+  new Promise((resolve, reject) => {
+    if (Math.random() < 0.5) {
+      resolve("Success!");
+    } else {
+      reject(new Error("Failed!"));
+    }
+  });
+
+retryPromise(unreliablePromise, 3, 1000)
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```

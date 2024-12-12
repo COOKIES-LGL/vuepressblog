@@ -50,3 +50,21 @@ https://www.npmjs.com/package/cspell
 ### mute-stream 包
 
 [mute-stream](https://www.npmjs.com/package/mute-stream)
+
+### release 443 port
+
+```bash
+#!/bin/bash
+
+PID=$(lsof -i :443 -c node -a -n -P -t)
+
+if [ -n "$PID" ]; then
+  echo "Killing process $PID that is using port 443..."
+  kill -9 $PID
+  echo "Process $PID has been terminated."
+else
+  echo "No process is using port 443."
+fi
+
+echo "Now continue..."
+```
