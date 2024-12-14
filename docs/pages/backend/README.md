@@ -188,6 +188,11 @@ Open Graph Image（OG 图像）集合导航站，OG 图像是用于在社交媒�
 命令行抓取网页，生成 PDF 文件的工具。
 [percollate](https://github.com/danburzo/percollate)
 
+#### FastExcel
+
+基于 Java 语言的 Excel 文件解析工具，可以用来提取数据
+[FastExcel](https://github.com/CodePhiliaX/fastexcel)
+
 #### photopea
 
 [在线 PS](https://www.photopea.com/)
