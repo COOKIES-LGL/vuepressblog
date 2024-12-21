@@ -89,3 +89,6 @@ cp -r source_directory/* existing_directory/
 ```bash
 git rev-parse --show-toplevel | echo
 ```
+### mac 快速复制文件路径
+- 选择你想要复制路径的文件或文件夹。
+- 按下Command + Option + C键，即可快速复制路径到剪贴板。‌

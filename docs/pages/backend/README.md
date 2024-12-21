@@ -11,6 +11,7 @@ sidebar: false
 - [NestJs](./Nestjs) <span style="color:#bbb; float:right">2024-07-10</span>
 - [TypeORM](./TypeORM) <span style="color:#bbb; float:right">2024-07-10</span>
 - [Puppeteer](./Puppeteer) <span style="color:#bbb; float:right">2024-07-10</span>
+- [Puppeteer](./Java) <span style="color:#bbb; float:right">2024-12-10</span>
 
 ### 实用工具
 
