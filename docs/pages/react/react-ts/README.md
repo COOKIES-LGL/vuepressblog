@@ -77,3 +77,26 @@ Children: React.ComponentType<any>
 - 滚轮事件对象：React.WheelEvent<T = Element>
 - 动画事件对象：React.AnimationEvent<T = Element>
 - 过渡事件对象：React.TransitionEvent<T = Element>
+
+#### 直接返回 children prop 是否需要使用花括号？
+
+1、在 JSX 中，如果你想要直接返回 children prop，你需要根据 children 的结构来决定是否需要使用花括号{}
+‌ 如果 children 是一个单一的 React 元素 ‌：
+你可以直接返回它，而不需要额外的花括号。这是因为 JSX 会自动处理单一的 React 元素返回。
+
+```jsx
+const MyComponent = ({ children }) => {
+  // 假设children是一个单一的React元素，如<h1>Hello</h1> 直接返回，不需要花括号
+  return children;
+};
+```
+
+2、如果 children 可能包含多个元素 ‌：
+你需要使用花括号{}来包裹 children，以确保它们被正确地渲染为 JSX 表达式的一部分。这是因为多个元素需要被包裹在一个父元素中（如<div>），或者通过数组/片段的形式来渲染。
+
+```jsx
+const MyComponent = ({ children }) => {
+  // 假设children包含多个元素，如<h1>Hello</h1>和<p>World</p>  使用花括号来确保多个元素被正确渲染
+  return <div>{children}</div>;
+};
+```

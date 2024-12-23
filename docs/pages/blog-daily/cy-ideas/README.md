@@ -20,7 +20,7 @@
 
 [全国实时公交 API](http://bus.wxbus163.cn/app/index.php?i=1&c=entry&do=index&m=mon_yjgz)
 
-[webxmlAPI 平台](http://www.webxml.com.cn/zh_cn/index.aspx#google_vignette)
+[webxml API 平台](http://www.webxml.com.cn/zh_cn/index.aspx#google_vignette)
 
 [聚合 API 平台](https://www.juhe.cn/docs)
 
