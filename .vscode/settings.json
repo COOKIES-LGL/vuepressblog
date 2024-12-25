@@ -5,5 +5,18 @@
     "source.formatDocument": "explicit",
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": ["vuepress", "Colyseus‌", "guilin", "toplevel", "browserslistrc", "npmignore"]
+  "cSpell.words": [
+    "vuepress",
+    "Colyseus‌",
+    "guilin",
+    "toplevel",
+    "browserslistrc",
+    "npmignore",
+    "HMSET",
+    "HGETALL",
+    "sadd",
+    "zadd",
+    "smembers",
+    "ZRANGEBYSCORE"
+  ]
 }
