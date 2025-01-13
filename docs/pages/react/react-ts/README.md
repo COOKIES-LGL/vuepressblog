@@ -43,7 +43,8 @@ type ReactFragment = {} | ReactNodeArray;
 type ReactNode = ReactChild | ReactFragment | ReactPortal | boolean | null | undefined;
 ```
 
-可以看到，ReactNode 是一个联合类型，它可以是 string、number、ReactElement、null、boolean、ReactNodeArray。  
+可以看到，ReactNode 是一个联合类型，它可以是
+`string`、`number`、`ReactElement`、`null`、`boolean`、`ReactNodeArray`  
 由此可知。ReactElement 类型的变量可以直接赋值给 ReactNode 类型的变量，但反过来是不行的.  
 类组件的 render 成员函数会返回 ReactNode 类型的值.
 
