@@ -17,6 +17,7 @@
     "sadd",
     "zadd",
     "smembers",
+    "Oxlint",
     "ZRANGEBYSCORE"
   ]
 }
