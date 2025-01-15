@@ -1,5 +1,9 @@
 ## 性能优化清单
 
+### 优化总览
+
+<img :src="$withBase('./pages-assets/performance.png')" class="show-small-in-center">
+
 **_ 经典的 H5 页面加载包含以下过程： _**
 
 - webview 初始化

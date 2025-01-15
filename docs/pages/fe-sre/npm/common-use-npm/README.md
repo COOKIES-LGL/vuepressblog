@@ -194,3 +194,7 @@ React CSS Modules 实现了自动化映射 CSS modules，完美得解决了上�
   "analyze": "source-map-explorer 'build/static/js/*.js'",
 }
 ```
+
+### @11ty/eleventy
+
+静态网站生成器 [官网](https://www.11ty.dev/)

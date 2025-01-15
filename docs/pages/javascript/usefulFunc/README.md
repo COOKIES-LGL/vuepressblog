@@ -333,3 +333,48 @@ tag`Hello, ${name}! Welcome to ${place}.`;
 // String part 2: .
 // (2) ['Alice', 'Wonderland']
 ```
+
+### runWithRetry 失败重试函数
+
+```js
+interface Options {
+  retries?: number
+  interval?: number
+  exponentialBackoff?: boolean
+}
+
+const DEFAULT_OPTIONS = {
+  retries: 3,
+  interval: 500,
+  exponentialBackoff: true
+}
+
+export default function runWithRetry<R>(fn: () => Promise<R>, options?: Options) {
+  const innerOptions = {
+    ...DEFAULT_OPTIONS,
+    ...options
+  }
+
+  const { retries, interval, exponentialBackoff } = innerOptions
+  return new Promise<R>((resolve, reject) => {
+    fn()
+      .then(res => {
+        resolve(res)
+      })
+      .catch(error => {
+        if (retries === 0) {
+          reject(error)
+          return
+        }
+
+        setTimeout(() => {
+          runWithRetry(fn, {
+            retries: retries - 1,
+            interval: exponentialBackoff ? interval * 2 : interval
+          }).then(resolve, reject)
+        }, interval)
+      })
+  })
+}
+
+```
