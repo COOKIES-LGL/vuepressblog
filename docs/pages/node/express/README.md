@@ -154,3 +154,8 @@ app.listen(3000, () => {
   </body>
 </html>
 ```
+
+### tsoa
+
+tsoa 是一个集成了 OpenAPI 编译器的框架，可以使用 TypeScript 构建 Node.js 服务器端应用程序。它可以在运行时针对 express、hapi、koa 等更多框架。tsoa 应用程序默认是类型安全的，并且可以无缝处理运行时验证。
+[tsoa](https://tsoa-community.github.io/docs/examples.html)

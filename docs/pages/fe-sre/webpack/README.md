@@ -237,6 +237,10 @@ npm install --save-dev --save-exact tsconfig-paths cross-env
 }
 ```
 
+### purgecss-webpack-plugin 移除无用的 class 样式
+
+通过 purgecss-webpack-plugin，可以识别没有用到的 class，将其从 css 文件中 treeShaking 掉，需要配合 mini-css-extract-plugin 一起使用
+
 ### MarkDown 使用指南
 
 - [MarkDown](../../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>

@@ -235,3 +235,14 @@ npm --filter \"./packages/*\" run build
   }
 }
 ```
+
+### run-s
+
+用于顺序执行多个在 `package.json` 文件的 `scripts` 部分定义的脚本命令
+
+```bash
+{
+  "test": "run-s test:*",
+  # 执行test前缀的所有命令
+}
+```

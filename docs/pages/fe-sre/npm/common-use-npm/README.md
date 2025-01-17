@@ -198,3 +198,12 @@ React CSS Modules 实现了自动化映射 CSS modules，完美得解决了上�
 ### @11ty/eleventy
 
 静态网站生成器 [官网](https://www.11ty.dev/)
+
+### ‌nyc
+
+nyc npm 包是一个用于 JavaScript 项目的测试覆盖率工具
+[官网](https://istanbul.js.org/)
+
+### require-all
+
+是一个在 Node.js 环境中使用的 npm 包，它的主要功能是递归地加载指定目录下的所有模块，并将它们注册到给定的对象上。这样，你就可以很方便地一次性引入多个模块，而不需要一个一个地 require 它们

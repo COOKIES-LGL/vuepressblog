@@ -18,6 +18,7 @@
     "zadd",
     "smembers",
     "Oxlint",
-    "ZRANGEBYSCORE"
+    "ZRANGEBYSCORE",
+    "tsoa"
   ]
 }
