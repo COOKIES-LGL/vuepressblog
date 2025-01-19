@@ -460,3 +460,7 @@ type PromiseReturnType<T extends (...args: any[]) => Promise<any>> = T extends (
   ? U
   : never;
 ```
+
+### & 交叉类型
+
+如果合并的接口类型中具有同名属性，且类型不同，则合并后类型为 never
