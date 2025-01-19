@@ -11,7 +11,8 @@ sidebar: false
 - [NestJs](./Nestjs) <span style="color:#bbb; float:right">2024-07-10</span>
 - [TypeORM](./TypeORM) <span style="color:#bbb; float:right">2024-07-10</span>
 - [Puppeteer](./Puppeteer) <span style="color:#bbb; float:right">2024-07-10</span>
-- [Puppeteer](./Java) <span style="color:#bbb; float:right">2024-12-10</span>
+- [Java](./Java) <span style="color:#bbb; float:right">2024-12-10</span>
+- [TerminalCommands](./TerminalCommands) <span style="color:#bbb; float:right">2024-12-10</span>
 
 ### 实用工具
 
@@ -311,3 +312,8 @@ Open Graph Image（OG 图像）集合导航站，OG 图像是用于在社交媒�
 
 网站图标 Favicon 的在线生成工具
 [favicon](https://favicon.io/favicon-converter/)
+
+#### anyVoice
+
+AI 声音克隆
+[anyVoice](https://anyvoice.net/zh/ai-voice-cloning)

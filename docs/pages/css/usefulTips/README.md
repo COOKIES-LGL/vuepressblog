@@ -600,3 +600,10 @@ body {
   overflow-y: overlay;
 }
 ```
+
+### line-break: anywhere
+
+```css
+word-break: break-all  // 换行不了标点符号
+line-break: anywhere // 加上这个
+```
