@@ -161,3 +161,14 @@ find . -type f -name "*.txt" | xargs grep "keyword"
 ```bash
 # find [搜索路径] [查找条件] [处理动作]
 ```
+
+### telnet
+
+‌Telnet 命令主要用于通过 TCP/IP 协议远程登录到其他计算机或设备，执行相应的命令操作
+
+- 远程登录
+- 测试端口连接
+
+```bash
+# telnet [主机名] [端口号]
+```

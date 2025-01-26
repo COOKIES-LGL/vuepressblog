@@ -8,10 +8,10 @@ Vscode 插件是一个由 HTML、CSS、JS、图片等资源组成的压缩包,�
 
 开发 vscode 插件需要本地环境安装了 node.js 和 git，然后借助脚手架 yomen 和 generator-code 来快速生成项目框架
 
-```shell
-// 安装yomen generator-code
+```bash
+# 安装yomen generator-code
 npm install yo generator-code
-// 根据提示选择配置，快速生成项目框架，
+# 根据提示选择配置，快速生成项目框架，
 yo code
 ```
 

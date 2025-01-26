@@ -14,7 +14,7 @@ sidebar: false
 - [Vue](./vue) <span style="color:#bbb; float:right">2021-06-10</span>
 - [React](./react) <span style="color:#bbb; float:right">2023-06-13</span>
 - [React Native](./react-native) <span style="color:#bbb; float:right">2023-06-14</span>
-- [Typescript](./typescript) <span style="color:#bbb; float:right">2021-06-15</span>
+- [Typescript](./typescript) <span style="color:#bbb; float:right">2022-06-15</span>
 - [Node](./node) <span style="color:#bbb; float:right">2021-06-30</span>
 - [Backend Full stack](./backend) <span style="color:#bbb; float:right">2023-07-13</span>
 - [前端前沿技术](./frontier-technology) <span style="color:#bbb; float:right">2021-08-30</span>

@@ -317,3 +317,8 @@ Open Graph Image（OG 图像）集合导航站，OG 图像是用于在社交媒�
 
 AI 声音克隆
 [anyVoice](https://anyvoice.net/zh/ai-voice-cloning)
+
+#### Audiblez
+
+这个工具可以将 Epub 电子书转成有声书，支持中文
+[Audiblez](https://github.com/santinic/audiblez)

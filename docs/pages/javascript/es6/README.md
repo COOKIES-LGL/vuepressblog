@@ -275,3 +275,11 @@ interface IExample extends AbstractParent{
 ::: tips
 类是无法直接使用 extends 继承接口的，只能使用 implements 去实现接口
 :::
+
+### ??=
+
+```js
+let a;
+a ??= 121;
+console.log(a); // 输出 121，因为a之前是undefined
+```
