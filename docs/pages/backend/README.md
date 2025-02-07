@@ -322,3 +322,13 @@ AI 声音克隆
 
 这个工具可以将 Epub 电子书转成有声书，支持中文
 [Audiblez](https://github.com/santinic/audiblez)
+
+#### MultiPost
+
+一个开源的浏览器插件，一键发布内容到多个平台（知乎、微博、小红书、抖音）
+[MultiPost](https://github.com/leaper-one/MultiPost-Extension)
+
+#### Dual-Link QR Code Generator
+
+生成包含两个 URL 的二维码，不同角度扫描，返回的 URL 不一样
+[Dual-Link QR Code Generator](https://github.com/zacharyreese/DualQRCode)

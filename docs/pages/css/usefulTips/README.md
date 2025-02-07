@@ -604,6 +604,23 @@ body {
 ### line-break: anywhere
 
 ```css
-word-break: break-all  // 换行不了标点符号
-line-break: anywhere // 加上这个
+word-break: break-all
+/* 换行不了标点符号 */
+line-break: anywhere
+/* 加上这个 */
+```
+
+### aspect-ratio
+
+属性允许你轻松控制元素的宽高比。比如，可以让一个元素的高度是宽度的一半
+
+```html
+<style>
+  .box {
+    width: 100px;
+    aspect-ratio: 1/2;
+    background: red;
+  }
+</style>
+<div class="box"></div>
 ```
