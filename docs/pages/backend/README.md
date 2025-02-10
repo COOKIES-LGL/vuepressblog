@@ -332,3 +332,8 @@ AI 声音克隆
 
 生成包含两个 URL 的二维码，不同角度扫描，返回的 URL 不一样
 [Dual-Link QR Code Generator](https://github.com/zacharyreese/DualQRCode)
+
+#### Lighthouse
+
+前端多项指标跑分和优化
+[Lighthouse](https://juejin.cn/post/6965744691979485197?searchId=2025021015342423979315CC762D2BDF04)

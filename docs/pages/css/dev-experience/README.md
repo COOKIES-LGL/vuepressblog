@@ -42,6 +42,16 @@ sidebar: false
 }
 ```
 
+#### font-display：swap
+
+来告诉浏览器字体文本立即使用系统字体，等自定义字体准备好再替换。可以避免 FOIT
+
+```css
+@font-face {
+  font-display：swap
+}
+```
+
 #### position：sticky 无效的原因
 
 - 缺少 top、left、right 或 bottom 属性：为了使 position: sticky 生效，你需要指定至少一个定位属性（如 top、left、right 或 bottom），以定义元素在何时开始粘性定位。
