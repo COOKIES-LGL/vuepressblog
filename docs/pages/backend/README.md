@@ -13,6 +13,7 @@ sidebar: false
 - [Puppeteer](./Puppeteer) <span style="color:#bbb; float:right">2024-07-10</span>
 - [Java](./Java) <span style="color:#bbb; float:right">2024-12-10</span>
 - [TerminalCommands](./TerminalCommands) <span style="color:#bbb; float:right">2024-12-10</span>
+- [Technical selection](./TerminalSelection) <span style="color:#bbb; float:right">2025-02-10</span>
 
 ### 实用工具
 
