@@ -19,6 +19,7 @@
     "smembers",
     "Oxlint",
     "ZRANGEBYSCORE",
-    "tsoa"
+    "tsoa",
+    "srcset"
   ]
 }

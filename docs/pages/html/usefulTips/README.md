@@ -288,3 +288,15 @@ customElements.define("my-button", MyButton); // 注册自定义元素
 - disconnectedCallback：当元素从 DOM 中移除时调用。
 - adoptedCallback：当元素被移动到新的文档时调用。
 - attributeChangedCallback：当元素的属性发生变化时调用。
+
+### img 标签的 srcset、sizes 属性
+
+响应式页面中经常用到根据屏幕密度设置不同的图片。这时就用到了 img 标签的 srcset 属性。srcset 属性用于设置不同屏幕密度下，img 会自动加载不同的图片。用法如下：
+
+```html
+<img
+  src="image-128.png"
+  srcset="image-128.png 128w, image-256.png 256w, image-512.png 512w"
+  sizes="(max-width: 360px) 340px, 128px"
+/>
+```

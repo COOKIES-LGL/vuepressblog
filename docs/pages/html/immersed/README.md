@@ -49,3 +49,7 @@ export function hideKeyboard() {
   isInput(document.activeElement) && document.activeElement.blur();
 }
 ```
+
+### 解决 z-index 失效
+
+手机端 iOS 13 系统中，-webkit-overflow-scrolling:touch 也会使 z-index 失效，将 touch 换成 unset

@@ -624,3 +624,15 @@ line-break: anywhere
 </style>
 <div class="box"></div>
 ```
+
+### 设置高度等于宽度的盒子样式
+
+```css
+.square-box {
+  width: 50%; /* 或者任何你想要的宽度 */
+  height: 0;
+  padding-top: 100%; /* 这将创建一个高度等于宽度的盒子 */
+  position: relative; /* 这允许我们在盒子内部定位内容 */
+  /* 其他样式，如border、background-color等 */
+}
+```
