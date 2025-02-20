@@ -283,3 +283,37 @@ let a;
 a ??= 121;
 console.log(a); // 输出 121，因为a之前是undefined
 ```
+
+### 实参和形参获取
+
+```js
+function foo(b, c, d) {
+  console.log("实参的长度为：" + arguments.length);
+}
+console.log("形参的长度为：" + foo.length);
+foo(1);
+// 形参的长度为：3
+// 实参的长度为：1
+```
+
+### 多次 bind 是无效的，绑定的是第一个 bind 的对象。
+
+### 有些情况下 new 的构造函数后带括号和不带括号的情况一致
+
+```js
+function Parent() {
+  this.num = 1;
+}
+console.log(new Parent()); //输出Parent对象：{num:1}
+console.log(new Parent()); //输出Parent对象：{num:1}
+```
+
+### 数组转 map
+
+```js
+const pairs = new Map([
+  [")", "("],
+  ["]", "["],
+  ["}", "{"],
+]);
+```

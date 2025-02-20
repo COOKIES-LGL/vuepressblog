@@ -1041,6 +1041,22 @@ st.update(1, 2);
 console.log(st.sumRange(0, 2)); // 8
 ```
 
+### 翻转二叉树
+
+```js
+// 递归交换左右子树的值
+var invertTree = function (root) {
+  if (root === null) {
+    return null;
+  }
+  const left = invertTree(root.left);
+  const right = invertTree(root.right);
+  root.left = right;
+  root.right = left;
+  return root;
+};
+```
+
 ### [最大最小堆](./MinMaxHeap)
 
 ### [DFS&BFS 深度广度优先遍历](./DFSBFS)

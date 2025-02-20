@@ -406,7 +406,7 @@ type MenuEnumType = ValueOf<typeof menuAsConst>;
 const env: MenuEnumType = menuAsConst.home;
 ```
 
-### 数组转转联合类型
+### 数组转联合类型
 
 ```ts
 const permissions = [
