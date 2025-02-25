@@ -2,7 +2,7 @@
 home: false
 ---
 
-## 高频使用的 NPM 包
+## 高频使用的 npm 包
 
 ### depcheck
 
@@ -16,9 +16,9 @@ home: false
 
 > npm install -g yargs
 
-### copy-dir 拷贝文件夹
+### copy-dir
 
-在 Node.js 中拷贝文件夹并不简单，需要用到递归，这里推荐使用开源库 copy-dir 来实现拷贝文件。
+拷贝文件夹，在 Node.js 中拷贝文件夹并不简单，需要用到递归，这里推荐使用开源库 copy-dir 来实现拷贝文件。
 
 ### minimist
 
@@ -95,11 +95,15 @@ react 动画库
 Enable Code Splitting in your React application.
 [文档](https://loadable-components.com/)
 
-### generator-eslint 自定义 eslint 规则生成器
+### generator-eslint
+
+自定义 eslint 规则生成器
 
 [generator-eslint](https://github.com/eslint/generator-eslint)
 
-### markdown-it 一个快速、灵活的 markdown 引擎
+### markdown-it
+
+一个快速、灵活的 markdown 引擎
 
 [markdown 中文文档](https://markdown-it.docschina.org/)
 
@@ -211,3 +215,24 @@ nyc npm 包是一个用于 JavaScript 项目的测试覆盖率工具
 ### eclint
 
 eclint 是一个用于检查和修复文件格式以符合 EditorConfig 规范的工具。EditorConfig 是一种配置文件，旨在帮助开发者在不同编辑器和 IDE（集成开发环境）之间保持一致编码风格。
+
+### dotenv
+
+应用程序的入口文件中引入 dotenv，并调用 dotenv.config()方法加载环境变量。
+以将配置信息从代码中分离出来，存储在一个单独的.env 文件中 .env 文件通常不应该被提交到版本控制系统中，尤其是在包含敏感信息（如生产环境的 API 密钥）的情况下。可以将.env 文件添加到.gitignore 文件中，以防止敏感信息泄露。
+
+```js
+require("dotenv").config();
+```
+
+之后，你就可以在应用程序中使用 process.env 来访问这些环境变量了，如 process.env.DB_HOST 和 process.env.DB_USER
+
+### throng
+
+它的主要作用是实现进程管理，特别是在需要运行多个工作进程（worker processes）的场景中。可以帮助开发者轻松地启动和管理多个进程，以确保应用程序能够充分利用多核 CPU 资源，提高性能和吞吐量。
+
+- 自动启动和管理多个进程 ‌：throng 可以根据可用的 CPU 核心数自动启动相应数量的工作进程。当某个进程崩溃时，throng 会自动重启它，以确保应用程序的稳定性和可用性。
+
+- 负载均衡 ‌：通过运行多个工作进程，throng 可以帮助实现负载均衡，将任务分配给不同的进程处理，从而提高整体处理效率。
+- ‌ 简化进程管理 ‌：throng 提供了一个简单的 API 来启动和管理多个进程，使得开发者无需编写复杂的进程管理代码。
+- 支持集群模式 ‌：在 Node.js 中，throng 可以与 cluster 模块配合使用，以实现更高效的进程间通信和负载均衡。
