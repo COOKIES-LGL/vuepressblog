@@ -23,6 +23,12 @@ sidebar: false
 - [React-router 快速入门](https://segmentfault.com/a/1190000014294604) <span style="color:#bbb; float:right">2023-11-10</span>
 - [React 思想](https://react.iamkasong.com/preparation/idea.html#react-%E7%90%86%E5%BF%B5) <span style="color:#bbb; float:right">2023-12-10</span>
 
+### Fiber 架构
+
+[React Fiber 架构:关于 Fiber 树的一切](https://zhuanlan.zhihu.com/p/525244896)  
+[React Fiber 架构:自底向上盘一盘 Scheduler](https://zhuanlan.zhihu.com/p/538378360)  
+[React Fiber 架构:“更新”到底是个啥](https://zhuanlan.zhihu.com/p/546865854)
+
 ### 开启 BFCache
 
 BFCache（Back-Forward Cache）是浏览器的一种机制，在 Safari 和 Chrome 中都得到了很好的支持，它利用内存缓存来存储用户访问过的页面状态。  
