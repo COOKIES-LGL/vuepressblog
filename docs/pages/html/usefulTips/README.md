@@ -300,3 +300,56 @@ customElements.define("my-button", MyButton); // 注册自定义元素
   sizes="(max-width: 360px) 340px, 128px"
 />
 ```
+
+### ‌SSE（Server-Sent Events）流式传输
+
+- 单向通信
+- 基于 HTTP 协议，使用普通的 HTTP 请求（GET 方法）。
+- 服务器响应头需设置为 Content-Type: text/event-stream。
+- 受同源策略限制
+
+### EventSource
+
+EventSource 是 HTML5 提供的一种用于接收服务器推送事件的 API，通常用于实现服务器向客户端实时推送数据。它基于 HTTP 协议，
+**基本用法**
+
+创建 EventSource 对象：
+通过指定服务器端的 URL 来创建一个 EventSource 对象。
+
+```js
+const eventSource = new EventSource("https://example.com/events");
+```
+
+监听消息事件：
+通过监听 message 事件来接收服务器推送的数据。
+
+```js
+eventSource.onmessage = function (event) {
+  console.log("Received data:", event.data);
+};
+```
+
+监听自定义事件：
+如果服务器发送的是自定义事件，可以使用 addEventListener 来监听。
+
+```js
+eventSource.addEventListener("customEvent", function (event) {
+  console.log("Custom event data:", event.data);
+});
+```
+
+处理错误：
+可以通过监听 error 事件来处理连接错误。
+
+```js
+eventSource.onerror = function (event) {
+  console.error("EventSource failed:", event);
+};
+```
+
+关闭连接：
+当你不再需要接收事件时，可以关闭连接。
+
+```js
+eventSource.close();
+```

@@ -16,3 +16,12 @@ sidebar: false
 同步更新足够高效：在大多数场景下，Vue 的同步批量更新不会导致主线程卡顿（除非组件树异常复杂）。
 设计取舍：Vue 选择简化开发者体验，通过编译时优化（如静态提升）和运行时优化（如 Proxy 响应式）规避性能瓶颈。
 <img :src="$withBase('./images/daily-blog/vue-diff-react1.png')" class="show-in-center">
+
+### 跨域知识点
+
+跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了
+OPTIONS 请求次数过多也会损耗性能，所以要尽量减少 OPTIONS 请求，可以让服务器在请求返回头部添加
+
+```js
+Access-Control-Max-Age: Number // 数字 单位是秒
+```

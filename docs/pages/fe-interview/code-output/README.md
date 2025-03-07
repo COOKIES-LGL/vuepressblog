@@ -38,6 +38,10 @@ var b = 10;
 
 ### promise return 一个 pending 的 promise 可以中断后续流程
 
+### async 函数中 await 的 new Promise 要是被 reject 后面的代码不会执行
+
+### .then 函数中的参数期待的是函数，如果不是函数的话会发生透传
+
 ```javascript
 Promise.resolve("2")
   .finally(() => {
