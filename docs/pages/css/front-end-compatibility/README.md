@@ -12,7 +12,7 @@ function formatTimeStamp(time) {
 }
 ```
 
-### 2、input 框聚焦，ios 出现 outline 或者阴影，安卓显示正常
+### 2、input 框聚焦，IOS 出现 outline 或者阴影，安卓显示正常
 
 ```css
 input:focus {
@@ -26,10 +26,13 @@ input: {
 ### 3、input 的 placeholder 属性会使文本位置偏上
 
 ```css
-line-height: （和input框的高度一样高）---pc端解决方法 line-height：normal ---移动端解决方法;
+input {
+  line-height: 100px; /*（和input框的高度一样高） ---pc端解决方法 */
+  line-height: normal; /* ---移动端解决方法; */
+}
 ```
 
-### 4、ios 设置 input 按钮样式会被默认样式覆盖
+### 4、IOS 设置 input 按钮样式会被默认样式覆盖
 
 ```css
 input,
@@ -39,7 +42,7 @@ textarea {
 }
 ```
 
-### 5、iOS 系统中，中文输入法输入英文时，字母之间可能会出现一个六分之一空格
+### 5、IOS 系统中，中文输入法输入英文时，字母之间可能会出现一个六分之一空格
 
 ```javascript
 this.value = this.value.replace(/\u2006/g, "");
@@ -64,7 +67,7 @@ input::-webkit-input-speech-button {
 }
 ```
 
-### 8、ios Android 监听键盘弹起事件
+### 8、IOS、 Android 监听键盘弹起事件
 
 ```js
 if (window.visualViewport) {
@@ -118,14 +121,14 @@ window.addEventListener("focusout", function () {
 });
 
 //input输入框弹起软键盘的解决方案。
-var bfscrolltop = document.body.scrollTop;
+var bfScrollTop = document.body.scrollTop;
 $("input")
   .focus(function () {
     document.body.scrollTop = document.body.scrollHeight;
     //console.log(document.body.scrollTop);
   })
   .blur(function () {
-    document.body.scrollTop = bfscrolltop;
+    document.body.scrollTop = bfScrollTop;
     //console.log(document.body.scrollTop);
   });
 ```

@@ -82,15 +82,13 @@ body {
 ::: tip
 hyphens 告知浏览器在换行时如何使用连字符连接单词。可以完全阻止使用连字符，也可以控制浏览器什么时候使用，或者让浏览器决定什么时候使用。
 hyphens: none | manual | auto
+overflow-wrap: 允许单词内换行，但不插入连字符仅调整换行位置 ‌
 :::
 
 ### column count
 
-::: tip
-使用列属性为文本元素制作漂亮的列布局。
-:::
-
 ```css
+/* 使用列属性为文本元素制作漂亮的列布局。 */
 p {
   column-count: 3;
   column-gap: 5rem;
@@ -98,7 +96,7 @@ p {
 }
 ```
 
-### 一些使用限制
+### 一些使用限制记录
 
 ::: tip
 1、textContent innerText 都可以用来获取元素内文本,但 textContent 可以获取隐藏但元素. 一般使用 textContent  
@@ -107,18 +105,17 @@ p {
 4、tr、无法设置 padding td 、无法设置 margin  
 :::
 
-### attr() css 实现 tooltip
+### css 利用 attr() 实现 tooltip
 
-我本打算为我的站点添加 tooltip 的功能，但是发现需要引入一个插件，这就引入了不必要的东西，让我的站点看起来臃肿。
-感谢的是，可以使用 attr() 来避免这种情况。  
-attr() 属性工作的方式很简单，我逐步解析一下：
+我本打算为我的站点添加 tooltip 的功能，但是发现需要引入一个插件，这就引入了不必要的东西，让项目看起来臃肿。
+可以使用 attr() 来避免这种情况。 attr() 属性工作的方式很简单，我逐步解析一下：
 
 1、我们使用 tooltip class 去标志哪个元素需要展示 tooltip 信息。
 然后为该元素添加你喜欢的样式，这个方便演示，我们使用了 dotted border-bottom 的样式。  
 2、接下来，我们创建一个 :before 伪元素，它将包含内容 content，指向特定的 attr()。这里指 attr(tooltip-data)。  
 3、接着，我们会创建一个 :hover 伪类，当用户鼠标移动道元素上时，它将设置 opacity 为 1。
 
-此外，你可以包含自定义的样式。这取决于你设定的 tooltp 的数据，你也许需要调整其宽度或者边距。一旦你设定了 tooltip-data attr() 类，你可以在你设计的其他部分应用 [参考链接 ](https://juejin.cn/post/7089997204252786702)
+此外，你可以包含自定义的样式。这取决于你设定的 tooltip 的数据，你也许需要调整其宽度或者边距。一旦你设定了 tooltip-data attr() 类，你可以在你设计的其他部分应用
 
 ```html
 <html>
@@ -193,10 +190,16 @@ attr() 属性工作的方式很简单，我逐步解析一下：
 
 drop-shadow 的工作方式是，其遵循给给定图片的 Alpha 通道。因此阴影是基于图片的内部形状，而不是显示在图片外面。
 
-### :checked 伪类
+### checked 伪类
 
 我们使用 checkbox 输入类型，加上一个 :checked 伪类。
 当 :checked 返回 true 的情况时，我们使用 transform 属性更改状态。
+
+```css
+:checked {
+  transform: scale(1.2);
+}
+```
 
 ### 将自身的高度设置成自身的宽度
 
@@ -222,7 +225,7 @@ button:hover {
 然后添加监听 transitionend 方法
 
 ```javascript
-// GlobalEventHandlers.ontransitionend - Web API 接口参考 | MDN (mozilla.org)
+// GlobalEventHandlers.ontransitionend
 el.addEventListener("transitionend", () => {
   // 具体逻辑
 });

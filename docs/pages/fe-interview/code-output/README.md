@@ -53,7 +53,7 @@ console.log(members); // [{ name: "Lydia" }]
 
 #### async 函数中 await 的 new Promise 要是没有返回值的话则不执行后面的内容
 
-#### .then 函数中的参数期待的是函数，如果不是函数的话会发生透传
+#### .then .catch 函数中的参数期待的是函数，如果不是函数的话会发生值透传
 
 #### .then 返回任意一个非 promise 的值都会被包裹成 promise 对象
 
@@ -74,6 +74,10 @@ console.log(members); // [{ name: "Lydia" }]
 #### async 函数中 await 的 new Promise 要是被 reject 后面的代码不会执行
 
 #### .then 函数中的参数期待的是函数，如果不是函数的话会发生透传
+
+#### promise.then 如果写了二个参数 后面的 catch 无法捕获到 promise 的 reject 错误
+
+#### promise.then 如果写了二个参数，如果第一个参数错误 后面的 catch 可以捕获到第一个参数的错误
 
 ```javascript
 Promise.resolve("2")

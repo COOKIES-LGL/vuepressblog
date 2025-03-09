@@ -7,8 +7,8 @@ sidebar: false
 
 ### 技术文档列表
 
-- [CSS 实用小技巧](./usefulTips) <span style="color:#bbb; float:right">2021-05-10</span>
-- [IOS Android 兼容性整理](./front-end-compatibility) <span style="color:#bbb; float:right">2023-05-10</span>
+- [CSS 实用技巧](./usefulTips) <span style="color:#bbb; float:right">2022-05-10</span>
+- [IOS、Android 兼容性整理](./front-end-compatibility) <span style="color:#bbb; float:right">2023-05-10</span>
 - [浅尝 UnoCSS](./UnoCSS)<span style="color:#bbb; float:right">2024-06-10</span>
 - [日常开发经验](./dev-experience) <span style="color:#bbb; float:right">2023-06-10</span>
 

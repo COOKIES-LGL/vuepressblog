@@ -1,5 +1,9 @@
 [WebWorker 阮一峰](https://www.ruanyifeng.com/blog/2018/07/web-worker.html)
 
+‌Dedicated Worker（专用线程） 仅当前页面可访问 ‌
+
+‌‌Shared Worker（共享线程）同源下多页面共享同一实例 ‌
+
 **新建 worker.js**
 
 ```js
