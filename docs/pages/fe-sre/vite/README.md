@@ -108,12 +108,12 @@ config.output = {
 
 ### ‌import.meta
 
-- ‌import.meta.url‌：返回当前模块的 URL 路径 ‌2。
-- import.meta.scriptElement‌：在浏览器中，返回加载模块的`<script>`元素 ‌2。
-- import.meta.hot‌：在支持模块热更新（HMR）的环境中，如 Vite 和 Webpack，提供处理热更新的逻辑 ‌1。
-- import.meta.env‌：用于读取环境变量，常见于 Vite 和 Rollup 等工具中 ‌2。
-- import.meta.dir‌：提供当前文件的目录路径 ‌3。
-- import.meta.file‌：提供当前文件的名称 ‌3。
-- import.meta.path‌：提供当前文件的绝对路径 ‌3。
-- ‌import.meta.main‌：指示当前文件是否是入口点文件 ‌3。
+- ‌import.meta.url‌：返回当前模块的 URL 路径。
+- import.meta.scriptElement‌：在浏览器中，返回加载模块的`<script>`元素。
+- import.meta.hot‌：在支持模块热更新（HMR）的环境中，如 Vite 和 Webpack，提供处理热更新的逻辑。
+- import.meta.env‌：用于读取环境变量，常见于 Vite 和 Rollup 等工具中。
+- import.meta.dir‌：提供当前文件的目录路径。
+- import.meta.file‌：提供当前文件的名称。
+- import.meta.path‌：提供当前文件的绝对路径。
+- ‌import.meta.main‌：指示当前文件是否是入口点文件。
 - ‌import.meta.resolve‌：用于解析模块导入符号的绝对路径 ‌

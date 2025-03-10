@@ -5,7 +5,7 @@ sidebar: false
 
 ## typescript-plugin-css-modules 配置
 
-### [npm 地址](https://www.npmjs.com/package/typescript-plugin-css-modules)
+[npm 地址](https://www.npmjs.com/package/typescript-plugin-css-modules)
 
 让你在 vscode 中，cssModule 能拥有 typeScript 一样的智能提示。
 
@@ -43,7 +43,7 @@ declare module "*.module.scss" {
 }
 ```
 
-// 如果未生效 在项目中新建 setting.json 文件 加入如下配置
+如果未生效 在项目中新建 setting.json 文件 加入如下配置
 
 ```JSON .vscode settings.json
 {

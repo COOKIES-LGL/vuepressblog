@@ -147,7 +147,7 @@ lerna bootstrap --hoist
 假设要升级 moduleA 和 moduleB 都依赖的 lodash 版本，不必依次到各子 package 下升级，可以借助 lerna-update-wizard 这个包来做
 
 ```bash
-// 根目录执行
+# 根目录执行
 npm install --save-dev lerna-update-wizard
 ```
 

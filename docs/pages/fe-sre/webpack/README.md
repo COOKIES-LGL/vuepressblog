@@ -2,7 +2,7 @@
 home: false
 ---
 
-## webpack 使用笔记
+### webpack 使用笔记
 
 Webpack 在构建过程中会触发一系列的生命周期事件，开发者可以针对这些事件进行相应的处理或插件化。下面是 Webpack 的主要生命周期事件：
 
@@ -27,7 +27,7 @@ Webpack 在构建过程中会触发一系列的生命周期事件，开发者可
 [webpack5 的新增特性](https://blog.csdn.net/qq_17175013/article/details/119769033)
 [Https 启动服务](https://blog.osvlabs.com/?p=582)
 
-### 动态匹配配置信息
+#### 动态匹配配置信息
 
 如果要根据 webpack.config.js 中的 mode 变量更改打包行为，则必须将配置导出为函数，而不是导出对象：
 
@@ -47,7 +47,7 @@ module.exports = (env, argv) => {
 };
 ```
 
-### webpack 的热更新原理
+#### webpack 的热更新原理
 
 ```m
 面试官比较想听到的是工作流程和关键点，非“流水账”式的源码分析。我认为可以这样的介绍：
@@ -70,7 +70,7 @@ webpack-dev-server 主要包含了三个部分：
 
 ```
 
-### 编写插件在指定插件后执行
+#### 编写插件在指定插件后执行
 
 ```javascript
 class MyCustomPlugin {
@@ -97,7 +97,7 @@ module.exports = {
 请注意，afterPlugins 钩子是在所有插件都应用之后触发的，因此你可以在这个钩子中执行代码，确保它在其他插件之后执行。  
 如果你需要更精确地控制，可能需要查看特定插件的文档，看看它们提供的钩子，并选择最适合你需求的钩子。
 
-### Tapable 事件机制
+#### Tapable 事件机制
 
 Tapable 是一个类似于 Node.js 中的 EventEmitter 的库，但它更专注于自定义事件的触发和处理。  
 通过 Tapable 我们可以注册自定义事件，然后在适当的时机去执行自定义事件。  
@@ -135,7 +135,7 @@ syncHook.call("那兔前端");
 - callAsync：当我们用 callAsync 方法来调用 hook 时，第二个参数是一个回调函数，回调函数的参数是执行任务的最后一个返回值
 - promise：当我们用 promise 方法来调用 hook 时，需要使用 then 来处理执行结果，参数是执行任务的最后一个返回值。
 
-### webpack 插件 webpack.ProvidePlugin
+#### webpack 插件 webpack.ProvidePlugin
 
 项目中用到的变量/函数/库或工具，只要配置后就可以在任何地方使用了
 
@@ -155,7 +155,7 @@ module.exports = {
 };
 ```
 
-### Farm 新一代构建工具
+#### Farm 新一代构建工具
 
 ::: tip
 Farm 是一个非常快的基于 Rust 的 Web 构建工具，类似 webpack 和 vite，但更快。
@@ -168,11 +168,11 @@ npm create farm@latest
 
 :::
 
-### purgecss-webpack-plugin
+#### purgecss-webpack-plugin
 
 帮助去除未使用的 CSS 代码
 
-### 在 Webpack 中使用 TypeScript 配置
+#### 在 Webpack 中使用 TypeScript 配置
 
 使用 TypeScript 来编写 Webpack 配置文件有以下几个显著优势：
 
@@ -237,10 +237,10 @@ npm install --save-dev --save-exact tsconfig-paths cross-env
 }
 ```
 
-### purgecss-webpack-plugin 移除无用的 class 样式
+#### purgecss-webpack-plugin 移除无用的 class 样式
 
 通过 purgecss-webpack-plugin，可以识别没有用到的 class，将其从 css 文件中 treeShaking 掉，需要配合 mini-css-extract-plugin 一起使用
 
-### MarkDown 使用指南
+#### MarkDown 使用指南
 
 - [MarkDown](../../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>

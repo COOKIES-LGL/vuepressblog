@@ -2,22 +2,22 @@
 home: false
 ---
 
-## package.json 知识点
+### package.json 知识点
 
-### peerDependencies
+#### peerDependencies
 
 用于指定当前包所依赖的其他包的版本要求，主要目的是通知用户或工具（如 npm 或 yarn）当前包需要特定版本的依赖包才能正常工作。 这些依赖并不会在安装当前包时自动安装，而是需要用户手动安装符合版本要求的依赖。
 [对等依赖](https://zhuanlan.zhihu.com/p/666454541)
 
-### bundledDependencies
+#### bundledDependencies
 
 用于指定一组包，这些包应该与你的包一起打包分发。这些包会被包含在你的包的发布版本中，这样，当其他开发者安装你的包时，他们也会得到这些依赖包的副本。
 
-### optionalDependencies
+#### optionalDependencies
 
 用于指定一组包，这些包是可选的依赖。这些依赖在安装过程中会被尝试安装，但如果安装失败，npm 或 yarn 不会将此作为错误处理，而是继续安装其他依赖。
 
-### package.json 的脚本勾子
+#### package.json 的脚本勾子
 
 在 package.json 文件中，你可以定义多种脚本钩子 `（scripts）`，这些脚本钩子可以在特定的 npm 事件发生时自动执行。以下是一些常见的脚本钩子：
 
@@ -45,7 +45,7 @@ home: false
 }
 ```
 
-### postinstall 写入.gitignore 文件用于本地开发
+#### postinstall 写入.gitignore 文件用于本地开发
 
 ```bash
 {
@@ -75,7 +75,7 @@ if (!fs.existsSync(localConfigPath)) {
 }
 ```
 
-### 多版本包检测
+#### 多版本包检测
 
 ```js
 // check-package-lock.js
@@ -115,13 +115,13 @@ if (multiVersionPackages.length) {
 }
 ```
 
-### 字段含义说明
+#### 字段含义说明
 
 - main - 表示 commonjs 文件入口
 - module - 表示 es 文件入口
 - types - 表示 typescript 声明文件入口
 
-### files 与 .npmignore 区别
+#### files 与 .npmignore 区别
 
-‌ 如果 files 字段存在 ‌：npm 将只包含 files 字段中指定的文件和目录。此时，.npmignore 文件（如果存在）将仅对 files 字段中指定的文件和目录生效，用于进一步排除其中的某些文件或目录。
+‌> 如果 files 字段存在 ‌：npm 将只包含 files 字段中指定的文件和目录。此时，.npmignore 文件（如果存在）将仅对 files 字段中指定的文件和目录生效，用于进一步排除其中的某些文件或目录。
 ‌ 如果 files 字段不存在 ‌：npm 将默认包含项目根目录下的所有文件和目录，但会排除.npmignore 文件中指定的文件或目录（以及 npm 默认排除的文件，如.git、node_modules 等）。
