@@ -226,3 +226,19 @@ document.addEventListener("click", function (evt) {
   const isClickedOutside = !ele.contains(evt.target);
 });
 ```
+
+### Array.from() 参数
+
+`Array.from(arrayLike[, mapFn[, thisArg]])`
+
+```js
+// 例：指定 this 对象
+const obj = { factor: 2 };
+Array.from(
+  [1, 2],
+  function (x) {
+    return x * this.factor;
+  },
+  obj
+); // [2, 4]
+```

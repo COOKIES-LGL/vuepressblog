@@ -48,7 +48,7 @@ alternate 是交替、替换，标识链接有替换内容
 <link rel="prefetch" href="https://xxx.com/" />
 ```
 
-### httpEquiv 设置缓存
+#### httpEquiv 设置缓存
 
 ```html
 <meta httpEquiv="Cache-Control" content="no-cache" />
@@ -59,7 +59,7 @@ alternate 是交替、替换，标识链接有替换内容
 因为不是所有的代理服务器都会尊重 HTML 中的缓存控制指令。因此，在生产环境中，通常建议在服务器端配置正确的 HTTP 响应头来控制缓存。
 :::
 
-### 实用 HTML 属性
+#### 实用 HTML 属性
 
 ```html
 <!-- HTML中的Spellcheck属性是用于指定元素是否启用拼写检查的属性。 -->
@@ -70,7 +70,7 @@ alternate 是交替、替换，标识链接有替换内容
 <img src="./src/img.png" onerror="()=> {console.log('发生错误')}" />
 ```
 
-### 预加载的几个属性
+#### 预加载的几个属性
 
 ::: tip
 _dns-prefetch、preconnect、Preload、prefetch_
@@ -87,7 +87,7 @@ _dns-prefetch、preconnect、Preload、prefetch_
 - rel="noreferrer"
 - rel="noopener"
 
-### crossorigin
+#### crossorigin
 
 - anonymous - 执行跨源请求。不发送凭据
 - 加载了具有 crossorigin 属性的跨域 js 脚本，这样就可以获取到 user.com/index.js 中的具体错误信息了。
@@ -97,15 +97,15 @@ _dns-prefetch、preconnect、Preload、prefetch_
 <script src="user.com/index.js" crossorigin></script>
 ```
 
-### Script error.
+#### Script error.
 
 浏览器只允许同域下的脚本捕获具体的错误信息。其它脚本只知道发生了一个错误，而不知具体发生了什么错误
 
-### integrity
+#### integrity
 
 integrity 的作用有：避免由【托管在 CDN 的资源被篡改】而引入的 XSS 风险
 
-### http-equiv
+#### http-equiv
 
 HTML 页面中的 `<a>` 标签 会 自动启用 DNS 提前解析 来提升网站性能，但是在使用 https 协议的网站中失效，可通过设置以下方式进行打开
 
@@ -113,7 +113,7 @@ HTML 页面中的 `<a>` 标签 会 自动启用 DNS 提前解析 来提升网站
 <meta http-equiv="x-dns-prefetch-control" content="on" />
 ```
 
-### 上传预览图片
+#### 上传预览图片
 
 ```javascript
 // window.URL.createObjectURL
@@ -133,7 +133,7 @@ function imgChange(img) {
 }
 ```
 
-### 标签页通信-BroadcastChannel
+#### 标签页通信-BroadcastChannel
 
 ::: tip
 BroadcastChannel 只能在相同的源（origin）下工作, 不需要使用 BroadcastChannel 实例时，通过 close() 方法手动关闭频道，以便释放资源
@@ -147,7 +147,7 @@ channel.addEventListener("message", (event) => {
 channel.postMessage("Hello, other windows!");
 ```
 
-### a 标签下载
+#### a 标签下载
 
 ::: tip
 download 设置文件名 跨域情况下，download 将不会起作用.  
@@ -174,7 +174,7 @@ function downloadFile(fileUrl, fileName) {
 }
 ```
 
-### script 标签特性
+#### script 标签特性
 
 1、当 script 同时存在行内代码和外部文件引用时，则只会下载外部文件而去忽略行内代码  
 2、浏览器在解析行内脚本的过程中，看到字符串`</script>`，会将其当成结束的`</script>`标签。目前测试下来只有这个标签作为字符串才会出现。解决就是使用转义字符\,将`</script>`转义成`<\/script>`
@@ -190,7 +190,7 @@ function downloadFile(fileUrl, fileName) {
 
 3、如果页面是通过 https 协议启动的，那么 src 只能使用 https 协议，如果页面是 http 协议启动那么 https/http 协议都可以使用
 
-### `<script>`标签的 nonce 属性
+#### `<script>`标签的 nonce 属性
 
 在 HTML 中，`<script>`标签的 nonce 属性是用于指定一个随机数（nonce），这个随机数与内容安全策略（Content Security Policy, CSP）配合使用，以确保脚本的安全执行。CSP 是一种安全特性，用于定义哪些源的内容可以被网页使用，以防止跨站脚本攻击（XSS）。
 
@@ -222,7 +222,7 @@ script-src
 
 > nonce 值应该是随机生成的，并且对于每个请求都是唯一的，以防止攻击者预测或重用 nonce 值。
 
-### ResizeObserver
+#### ResizeObserver
 
 ```javascript
 // ResizeObserver 观察 DOM 元素大小的变化
@@ -241,7 +241,7 @@ const targetElement = document.querySelector(".resize-me");
 resizeObserver.observe(targetElement);
 ```
 
-### nofollow、external
+#### nofollow、external
 
 - nofollow：会告诉搜索引擎忽略这个链接，阻止搜索引擎对该页面进行追踪，从而避免权重分散
 - external：会告诉搜索引擎这是一个外部链接，非本站的链接
@@ -251,7 +251,7 @@ resizeObserver.observe(targetElement);
 <a rel="external" href="http://www.baidu.com/">百度</a>
 ```
 
-### HTML details 标签
+#### HTML details 标签
 
 ```html
 <details>
@@ -260,11 +260,14 @@ resizeObserver.observe(targetElement);
 </details>
 ```
 
-### ‌image 和 background-image
+#### ‌image 和 background-image
 
-‌image 标签和 background-image 在网页渲染中的顺序是先渲染 image 标签，再渲染 background-image。
+‌image 标签和 background-image 在网页渲染中的顺序是先渲染 image 标签，再渲染 background-image。‌
 
-### customElements
+- image 可能阻塞后续内容渲染 ‌
+- background-image 不阻塞文档渲染 ‌‌、天然支持按需加载
+
+#### customElements
 
 customElements 是 Web Components 标准的一个重要组成部分，它允许开发者定义自己的 HTML 标签，这些标签具有自定义的行为和样式
 
@@ -289,7 +292,7 @@ customElements.define("my-button", MyButton); // 注册自定义元素
 - adoptedCallback：当元素被移动到新的文档时调用。
 - attributeChangedCallback：当元素的属性发生变化时调用。
 
-### img 标签的 srcset、sizes 属性
+#### img 标签的 srcset、sizes 属性
 
 响应式页面中经常用到根据屏幕密度设置不同的图片。这时就用到了 img 标签的 srcset 属性。srcset 属性用于设置不同屏幕密度下，img 会自动加载不同的图片。用法如下：
 
@@ -301,14 +304,14 @@ customElements.define("my-button", MyButton); // 注册自定义元素
 />
 ```
 
-### ‌SSE（Server-Sent Events）流式传输
+#### ‌SSE（Server-Sent Events）流式传输
 
 - 单向通信
 - 基于 HTTP 协议，使用普通的 HTTP 请求（GET 方法）。
 - 服务器响应头需设置为 Content-Type: text/event-stream。
 - 受同源策略限制
 
-### EventSource
+#### EventSource
 
 EventSource 是 HTML5 提供的一种用于接收服务器推送事件的 API，通常用于实现服务器向客户端实时推送数据。它基于 HTTP 协议，
 **基本用法**
@@ -353,3 +356,13 @@ eventSource.onerror = function (event) {
 ```js
 eventSource.close();
 ```
+
+#### input 标签 capture 属性
+
+capture 属性用于指定文件上传控件中媒体拍摄的方式可选值：
+
+- user 前置
+- environment 后置
+- camera 相机
+- camcorder 摄像机
+- microphone 录音
