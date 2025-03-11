@@ -117,3 +117,18 @@ media 属性规定被链接文档将显示在什么设备上，利用这个属�
 
 - 宽度： 对于大多数块级元素，其宽度由父元素决定，通常无需设置 width: 100%。只有当元素脱离文档流（如 position: absolute）时，才需设置 width: 100%。
 - 高度： 元素的高度通常由内容撑开。如果需要使高度由父元素决定，则需设置 height: 100%。
+
+### html 元素继承 box-sizing
+
+这样的好处在于他不会覆盖其他组件的 box-sizing 值，又无需为每一个元素重复设置 box-sizing:border-box;
+
+```css
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+```

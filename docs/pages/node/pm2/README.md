@@ -16,6 +16,12 @@ pm2 start app.js --watch   # 实时监控 app.js 的方式启动，当app.js文�
 pm2 start /website/api-service/ecosystem.config.js # 按照ecosystem.config.js文件启动
 ```
 
+- 清除日志
+
+```bash
+pm2 flush
+```
+
 - 查看进程
 
 ```bash

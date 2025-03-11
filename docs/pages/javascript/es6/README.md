@@ -317,3 +317,12 @@ const pairs = new Map([
   ["}", "{"],
 ]);
 ```
+
+### 解构赋值默认值触发条件
+
+仅在值为 undefined 时生效
+
+```js
+const { status = "pending" } = { status: null }; // null
+const { status = "pending" } = { status: undefined }; // 'pending'
+```

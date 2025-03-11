@@ -58,19 +58,19 @@ ordering
 
 ordering=['order_date']
 
-## 按订单升序排列
+### 按订单升序排列
 
 ordering=['-order_date']
 
-## 按订单降序排列，-表示降序
+### 按订单降序排列，-表示降序
 
 ordering=['?order_date']
 
-## 随机排序，？表示随机
+### 随机排序，？表示随机
 
 ordering = ['-pub_date', 'author']
 
-## 对 pub_date 降序,然后对 author 升序
+### 对 pub_date 降序,然后对 author 升序
 
 需要注意的是:不论你使用了多少个字段排序, admin 只使用第一个字段
 

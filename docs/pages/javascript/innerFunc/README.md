@@ -242,3 +242,19 @@ Array.from(
   obj
 ); // [2, 4]
 ```
+
+### setInterval 的修正延迟时间
+
+```js
+let lastTime = Date.now();
+function loop() {
+  const now = Date.now();
+  const drift = now - lastTime - 1000; // 误差计算
+  console.log(`本次误差：${drift}ms`);
+  // 执行业务逻辑（如更新倒计时）
+  lastTime = now;
+  // 动态调整延迟（1000ms - 误差补偿）
+  setTimeout(loop, 1000 - drift);
+}
+loop(); // 启动循环
+```

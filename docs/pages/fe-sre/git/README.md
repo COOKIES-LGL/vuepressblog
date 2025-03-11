@@ -133,7 +133,7 @@ git diff <commit1> <commit2> --name-only
  git ls-remote github.com:****.github.git
 ```
 
-#### git ls-files
+### git ls-files
 
 获取当前目录 git 追踪的文件
 
@@ -183,4 +183,12 @@ git config --global --edit
 [alias]
     ac = "!f() { git add . && git commit -m \"$1\"; }; f"
     acp = "!f() { git add . && git commit -m \"$1\" && git push; }; f"
+```
+
+### 迁移仓库，同时保留原有的提交记录和分支
+
+```bash
+git clone 仓库地址
+cd 项目
+git push --mirror 新的仓库地址
 ```
