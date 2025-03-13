@@ -11,19 +11,19 @@ home: false
 
 ### 切换账户
 
-```Bash
+```bash
 ssh-add ~/.ssh/private // 后面的路径是指定的配置文件
 ```
 
 ### 忽略大小写
 
-```Bash
+```bash
 git config core.ignorecase false
 ```
 
 ### 更新分支名
 
-```Bash
+```bash
 git branch -m oldBranch newBranch
 git push --delete origin oldBranch
 
@@ -33,7 +33,7 @@ git branch --set-upstream-to origin/newBranch
 
 ### 优雅回退
 
-```Bash
+```bash
 git reset --soft：软回溯，回退 commit 的同时保留修改内容。
 git cherry-pick：复制 commit。
 git revert：撤销 commit 的修改内容。
@@ -42,13 +42,13 @@ git reflog：记录了 commit 的历史操作。
 
 ### 仓库分支合并
 
-```Bash
+```bash
 git merge master -m 'merge master' --allow-unrelated-histories //  把两段不相干的 分支进行强行合并
 ```
 
 ### 意外提交大小写文件到远程仓库
 
-```Bash
+```bash
  git config core.ignorecase false
  git rm --cached src/biz/**[需要删除的文件路径] -r
  git add .
@@ -61,11 +61,9 @@ git merge master -m 'merge master' --allow-unrelated-histories //  把两段不�
 项目都会添加 .gitignore 文件但有时会发现，规则不生效。原因是 .gitignore 只能忽略那些原来没有被 track 的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore 是无效的。
 那么解决方法就是先把本地缓存删除（改变成未 track 状态），然后再提交。
 
-```Bash
+```bash
 git rm -r --cached .
-
 git add .
-
 git commit -m 'update .gitignore'
 ```
 

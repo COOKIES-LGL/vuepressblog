@@ -79,6 +79,8 @@ console.log(members); // [{ name: "Lydia" }]
 
 #### promise.then 如果写了二个参数，如果第一个参数错误 后面的 catch 可以捕获到第一个参数的错误
 
+#### async 函数时不使用 await async 函数内的 await 异步逻辑正常执行，外层按同步代码执行不会等待
+
 ```javascript
 Promise.resolve("2")
   .finally(() => {
