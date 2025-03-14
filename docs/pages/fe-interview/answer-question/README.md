@@ -25,3 +25,9 @@ OPTIONS 请求次数过多也会损耗性能，所以要尽量减少 OPTIONS 请
 ```js
 Access-Control-Max-Age: Number // 数字 单位是秒
 ```
+
+### 为啥 React 在 componentDidCatch 上报错误
+
+- getDerivedStateFromError 在渲染阶段被调用，
+- componentDidCatch 在提交阶段执行
+- React 通过 getDerivedStateFromError 和 componentDidCatch 的分离设计，实现了错误处理中状态更新与副作用执行的解耦，既保证了渲染阶段的稳定性。
