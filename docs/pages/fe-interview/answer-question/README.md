@@ -31,3 +31,11 @@ Access-Control-Max-Age: Number // 数字 单位是秒
 - getDerivedStateFromError 在渲染阶段被调用，
 - componentDidCatch 在提交阶段执行
 - React 通过 getDerivedStateFromError 和 componentDidCatch 的分离设计，实现了错误处理中状态更新与副作用执行的解耦，既保证了渲染阶段的稳定性。
+
+### common.js 和 es6 中模块引入的区别
+
+- 1、CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
+- 2、CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
+- 3、CommonJs 是单个值导出，ES6 Module 可以导出多个
+- 4、CommonJs 是动态语法可以写在判断里，ES6 Module 静态语法只能写在顶层
+- 5、CommonJs 的 this 是当前模块，ES6 Module 的 this 是 undefined

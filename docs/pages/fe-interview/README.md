@@ -15,7 +15,7 @@ sidebar: false
 - [实现一个简易的 recoil](./recoil-demo) <span style="color:#bbb; float:right">2023-07-10</span>
 - [H5 页面性能优化](./h5-load-speed-optimize) <span style="color:#bbb; float:right">2023-04-10</span>
 - [常见开发错误](./devError) <span style="color:#bbb; float:right">2023-06-10</span>
-- [代码输出](./code-output) <span style="color:#bbb; float:right">2023-06-10</span>
+- [代码输出](./code-output) <span style="color:#bbb; float:right">2024-06-10</span>
 
 ### MarkDown 使用指南
 
