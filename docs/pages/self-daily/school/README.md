@@ -11,7 +11,7 @@ sidebar: false
 - [高二[八班]](./class8) <span style="color:#bbb; float:right">2021-12-08</span>
 - [高三[八班]](./class8) <span style="color:#bbb; float:right">2022-01-08</span>
 - [真心英雄](./class21) <span style="color:#bbb; float:right">2022-02-08</span>
-- [计算机科学与工程[五班]](./class5) <span style="color:#bbb; float:right">2022-03-08</span>
+- [计算机科学与工程[五班]](./university5) <span style="color:#bbb; float:right">2022-03-08</span>
 
 <style>
 @media screen and (min-width: 400px) {
