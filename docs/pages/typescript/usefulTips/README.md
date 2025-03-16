@@ -42,7 +42,7 @@ function TimesTamped<TBase extends Constructor>(Base: TBase) {
 }
 
 // 添加属性和方法的混合例子
-function Activatable<TBase extends Constructor>(Base: TBase) {
+function ActivateAble<TBase extends Constructor>(Base: TBase) {
   return class extends Base {
     isActivated = false;
     activate() {
@@ -63,8 +63,8 @@ class User {
 }
 // 添加 TimesTamped 的 User
 const TimestampedUser = TimesTamped(User);
-// Tina TimesTamped 和 Activatable 的类
-const TimestampedActivatableUser = TimesTamped(Activatable(User));
+// Tina TimesTamped 和 ActivateAble 的类
+const TimestampedActivateAbleUser = TimesTamped(ActivateAble(User));
 
 //////////
 // 使用组合类
@@ -72,9 +72,9 @@ const TimestampedActivatableUser = TimesTamped(Activatable(User));
 const timestampedUserExample = new TimestampedUser();
 console.log(timestampedUserExample.timestamp);
 
-const timestampedActivatableUserExample = new TimestampedActivatableUser();
-console.log(timestampedActivatableUserExample.timestamp);
-console.log(timestampedActivatableUserExample.isActivated);
+const timestampedActivateAbleUserExample = new TimestampedActivateAbleUser();
+console.log(timestampedActivateAbleUserExample.timestamp);
+console.log(timestampedActivateAbleUserExample.isActivated);
 ```
 
 ### 添加废弃注解
@@ -137,6 +137,18 @@ reg.lastIndex; // 0
 {
   compilerOption: {
     ignoreDeprecations："5.0"
+  }
+}
+```
+
+### tsconfig.json 忽略下标 any 隐式错误
+
+```json
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "5.0",
+    "suppressImplicitAnyIndexErrors": true, // 低于 5.5 版本
+    "noImplicitAny": false //  版本都支持
   }
 }
 ```
@@ -286,7 +298,6 @@ type Split<S extends string> = S extends `/${infer L}/${infer R}`
   : S extends `/${infer L}`
   ? L
   : never;
-
 // 2， 提取含:的参数
 type PickParams<T extends string> = T extends `:${infer P}` ? P : never;
 
