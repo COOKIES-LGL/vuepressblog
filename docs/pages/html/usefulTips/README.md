@@ -366,3 +366,8 @@ capture 属性用于指定文件上传控件中媒体拍摄的方式可选值：
 - camera 相机
 - camcorder 摄像机
 - microphone 录音
+
+#### DOMContentLoaded
+
+- 具有 async 特性（attribute）的脚本不会阻塞 DOMContentLoaded，稍后 我们会讲到。
+- 使用 document.createElement('script') 动态生成并添加到网页的脚本也不会阻塞 DOMContentLoaded。s

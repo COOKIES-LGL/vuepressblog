@@ -258,3 +258,7 @@ function loop() {
 }
 loop(); // 启动循环
 ```
+
+### Object.is 与 ===
+
+Object.is() 是 JavaScript 中用于精确比较两个值是否相同的方法，与 ===（严格相等运算符）类似，但在处理特殊值（如 NaN 和 -0）时有区别
