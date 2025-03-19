@@ -262,3 +262,45 @@ loop(); // 启动循环
 ### Object.is 与 ===
 
 Object.is() 是 JavaScript 中用于精确比较两个值是否相同的方法，与 ===（严格相等运算符）类似，但在处理特殊值（如 NaN 和 -0）时有区别
+
+### Object.create 的应用场景
+
+‌1、共享方法/属性
+
+```js
+const carPrototype = {
+  drive() {
+    console.log("Driving...");
+  },
+};
+const car1 = Object.create(carPrototype);
+const car2 = Object.create(carPrototype);
+car1.drive(); // 所有实例共享 drive 方法
+```
+
+2、定义属性特性 ‌：通过第二个参数 propertiesObject
+
+```js
+const obj = Object.create(null, {
+  id: { value: 1, writable: false },
+  name: { value: "Alice", enumerable: true },
+});
+```
+
+3、原型链注入
+
+```js
+const base = {
+  log() {
+    console.log("Base log");
+  },
+};
+const extended = Object.create(base, {
+  debug: {
+    value() {
+      console.log("Debug mode");
+    },
+  },
+});
+extended.debug(); // 新增方法
+```

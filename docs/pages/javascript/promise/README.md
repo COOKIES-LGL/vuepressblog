@@ -340,3 +340,24 @@ arr.reduce((p, x) => {
   });
 }, Promise.resolve());
 ```
+
+### 中断调用链
+
+当函数返回一个新 Promise 对象时, 对象保持“pending”状态时，原 Promise 链将会中止执行.
+
+```js
+Promise.resolve()
+  .then(() => {
+    console.log("then 1");
+    return new Promise(() => {});
+  })
+  .then(() => {
+    console.log("then 2");
+  })
+  .then(() => {
+    console.log("then 3");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+```
