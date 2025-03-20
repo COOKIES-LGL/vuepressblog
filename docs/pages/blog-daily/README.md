@@ -13,8 +13,10 @@ sidebar: false
 - [Webpack4 to webpack5](./webpack-four-to-five) <span style="color:#bbb; float:right">2024-07-12</span>
 - [Localhost debug live code](./live-code-debug) <span style="color:#bbb; float:right">2022-01-12</span>
 - [customer eslint rules](./eslint-custom-rules) <span style="color:#bbb; float:right">2023-05-22</span>
-- [Vitest test](https://zhuanlan.zhihu.com/p/638154319) <span style="color:#bbb; float:right">2023-06-12</span>
 - [Generate Page](./generate-page) <span style="color:#bbb; float:right">2024-06-30</span>
+- [Vitest test](https://zhuanlan.zhihu.com/p/638154319) <span style="color:#bbb; float:right">2023-06-12</span>
+- [Pnpm workspace](./pnpm-monorepo) <span style="color:#bbb; float:right">2025-01-08</span>
+
 - [代理开发解决最新版 chrome sameSite 问题](./use-test-dev-for-chrome) <span style="color:#bbb; float:right">2022-06-12</span>
 - [解决前端的竞态问题](./solve-fe-complete-question) <span style="color:#bbb; float:right">2023-05-12</span>
 - [虚拟列表原理与实现](./virtual-list) <span style="color:#bbb; float:right">2024-01-08</span>

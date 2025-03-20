@@ -47,11 +47,11 @@ packages:
 
 可以在 play 目录中运行我们写好的组件，相当于一个测试环境，在开发的时候可以知道效果是否达到预期；
 还需要一个组件说明文档的项目目录：docs;
-packages 目录则是所有组件的项目目录了，在 packages 目录中又可以放很多包的项目目录，比如，组件包目录：components、主题包目录：theme-chalk、工具包目录：utils 等。然后每一个包目录里面也需要一个 package.json 文件进行声明这是一个 NPM 包目录。所以我们需要进入每个包目录进行初始一个 package.json 文件。以 components 包为例，我们进入到 components 目录底下初始化一个 package.json 文件，更改包名：@elemnet-plus/components。文件内容如下：
+packages 目录则是所有组件的项目目录了，在 packages 目录中又可以放很多包的项目目录，比如，组件包目录：components、主题包目录：theme-chalk、工具包目录：utils 等。然后每一个包目录里面也需要一个 package.json 文件进行声明这是一个 NPM 包目录。所以我们需要进入每个包目录进行初始一个 package.json 文件。以 components 包为例，我们进入到 components 目录底下初始化一个 package.json 文件，更改包名：@element-plus/components。文件内容如下：
 
 ```json
 {
-  "name": "@elemnet-plus/components",
+  "name": "@element-plus/components",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -64,7 +64,7 @@ packages 目录则是所有组件的项目目录了，在 packages 目录中又�
 }
 ```
 
-其他两个的包名则分别为：@elemnet-plus/theme-chalk 和 @elemnet-plus/utils，创建过程同上。
+其他两个的包名则分别为：@element-plus/theme-chalk 和 @element-plus/utils，创建过程同上。
 至此我们一个初步搭建的项目目录结构如下：
 
 ```json
@@ -82,15 +82,15 @@ packages 目录则是所有组件的项目目录了，在 packages 目录中又�
 ```
 
 仓库项目内的包相互调用
-@elemnet-plus/components、
-@elemnet-plus/theme-chalk、
-@elemnet-plus/utils 这几个包要互相进行调用呢，就需要把它们安装到仓库根目录下的 node_modules 目录中。
+@element-plus/components、
+@element-plus/theme-chalk、
+@element-plus/utils 这几个包要互相进行调用呢，就需要把它们安装到仓库根目录下的 node_modules 目录中。
 然后我们在根目录下进行安装操作。
 
 ```bash
-pnpm install @elemnet-plus/components -w
-pnpm install @elemnet-plus/theme-chalk -w
-pnpm install @elemnet-plus/utils -w
+pnpm install @element-plus/components -w
+pnpm install @element-plus/theme-chalk -w
+pnpm install @element-plus/utils -w
 ```
 
 -w 表示安装到共公模块的 packages.json 中，也就是根目录下的 packages.json。
@@ -99,9 +99,9 @@ pnpm install @elemnet-plus/utils -w
 ```json
 {
   "dependencies": {
-    "@elemnet-plus/components": "workspace:*",
-    "@elemnet-plus/theme-chalk": "workspace:*",
-    "@elemnet-plus/utils": "workspace:*"
+    "@element-plus/components": "workspace:*",
+    "@element-plus/theme-chalk": "workspace:*",
+    "@element-plus/utils": "workspace:*"
   }
 }
 ```

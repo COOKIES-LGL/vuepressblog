@@ -104,3 +104,7 @@ SOURCE path/to/yourFile.sql;
 ```bash
 mysql -u username -p myDataBase < path/to/yourFile.sql
 ```
+
+### mysqldump
+
+通过灵活的 SQL 脚本生成能力，满足从全库到表级的数据备份需求，结合参数优化可平衡性能与一致性，是 MySQL 日常运维的核心工具 。

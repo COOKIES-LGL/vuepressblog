@@ -20,6 +20,7 @@
     "Oxlint",
     "ZRANGEBYSCORE",
     "tsoa",
-    "srcset"
+    "srcset",
+    "mysqldump"
   ]
 }
