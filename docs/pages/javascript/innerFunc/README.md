@@ -304,3 +304,15 @@ const extended = Object.create(base, {
 });
 extended.debug(); // 新增方法
 ```
+
+### toLocaleString
+
+```js
+var num = 123456789;
+//格式化千分位输出
+num.toLocaleString();
+//格式化为千分位带$符号输出
+num.toLocaleString("en-US", { style: "currency", currency: "USD" });
+//格式化为带￥符号输出
+num.toLocaleString("zh-Hans-CN", { style: "currency", currency: "CNY" });
+```
