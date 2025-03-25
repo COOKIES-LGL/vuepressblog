@@ -8,7 +8,7 @@ home: false
 
 ### React Scheduler 使用 MessageChannel 的原因
 
-:::tip
+::: tip
 React Scheduler 使用 MessageChannel 的原因为：生成宏任务，实现：  
 将主线程还给浏览器，以便浏览器更新页面。  
 浏览器更新页面后继续执行未完成的任务。

@@ -32,7 +32,7 @@ SSR —— Server Side Render 即在用户请求页面时，页面的后台服�
 
 因此，SSR 模式下主要提升点在首屏时间，对可交互时间提升有限。
 
-:::tip CSR 与 SSR 在代码层面的差异
+::: tip CSR 与 SSR 在代码层面的差异
 
 - SSR 环境下不会执行包括 `useEffect` `useLayoutEffect` 在内的副作用 hooks
 - SSR 环境下不会执行 `componentDidMount` 生命周期
