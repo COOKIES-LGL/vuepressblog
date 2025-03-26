@@ -259,9 +259,9 @@ function loop() {
 loop(); // 启动循环
 ```
 
-### Object.is 与 ===
+### `Object.is` 与 ===
 
-Object.is() 是 JavaScript 中用于精确比较两个值是否相同的方法，与 ===（严格相等运算符）类似，但在处理特殊值（如 NaN 和 -0）时有区别
+`Object.is()` 是 JavaScript 中用于精确比较两个值是否相同的方法，与 ===（严格相等运算符）类似，但在处理特殊值（如 NaN 和 -0）时有区别
 
 ### Object.create 的应用场景
 
@@ -305,7 +305,7 @@ const extended = Object.create(base, {
 extended.debug(); // 新增方法
 ```
 
-### toLocaleString
+### toLocaleString 千分位格式化
 
 ```js
 var num = 123456789;
@@ -316,3 +316,8 @@ num.toLocaleString("en-US", { style: "currency", currency: "USD" });
 //格式化为带￥符号输出
 num.toLocaleString("zh-Hans-CN", { style: "currency", currency: "CNY" });
 ```
+
+### 中断循环
+
+every 在碰到 return false 的时候，中止循环。
+some 在碰到 return true 的时候，中止循环
