@@ -98,6 +98,38 @@ function deepClone(oldObject, map = new WeakMap()) {
 }
 ```
 
+**方式二**
+
+```js
+// WeakMap是JavaScript中的一种内置数据结构，它是一种特殊的映射（Map），用于存储键值对
+// 与普通的Map不同，WeakMap的键必须是对象
+function deepClone(obj, hash = new WeakMap()) {
+  // 如果是null 或者 undefined 不进行拷贝操作
+  if (obj === null) return obj;
+
+  const oldObjectType = typeof obj;
+  if (oldObjectType === "[object Symbol]") {
+    return Symbol(oldObject.description);
+  }
+  if (obj instanceof Date) return new Date(obj);
+  if (obj instanceof RegExp) return new RegExp(obj);
+  // 判断是否是对象，不是对象（普通值或者是函数）不需要拷贝
+  if (typeof obj !== "object") return obj;
+  // 是对象的话要进行深拷贝
+  if (hash.get(obj)) return hash.get(obj);
+  let cloneObj = new obj.constructor();
+  // 找到的是所属原型上的constructor,而原型上的constructor指向的是当前类本身
+  hash.set(obj, cloneObj);
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      // 实现递归拷贝
+      cloneObj[key] = deepClone(obj[key], hash);
+    }
+  }
+  return cloneObj;
+}
+```
+
 ### 手写 new
 
 首先创一个新的空对象。

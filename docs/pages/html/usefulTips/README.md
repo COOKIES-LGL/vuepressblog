@@ -105,6 +105,15 @@ _dns-prefetch、preconnect、Preload、prefetch_
 
 integrity 的作用有：避免由【托管在 CDN 的资源被篡改】而引入的 XSS 风险
 
+```html
+<!-- integrity="<算法>-<Base64编码的哈希值>" -->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1P"
+  crossorigin="anonymous"
+></script>
+```
+
 #### http-equiv
 
 HTML 页面中的 `<a>` 标签 会 自动启用 DNS 提前解析 来提升网站性能，但是在使用 https 协议的网站中失效，可通过设置以下方式进行打开
