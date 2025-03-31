@@ -214,6 +214,17 @@ export default {      
 }
 ```
 
+### Vue 父子组件生命周期执行顺序
+
+- 挂载阶段
+  父 beforeCreate → 父 created → 父 beforeMount →  
+  子 beforeCreate → 子 created → 子 beforeMount → 子 mounted →  
+  父 mounted
+- 更新阶段
+  父 beforeUpdate → 子 beforeUpdate → 子 updated → 父 updated
+- 销毁阶段
+  父 beforeDestroy → 子 beforeDestroy → 子 destroyed → 父 destroyed
+
 ### Vue.util.defineReactive
 
 vue 提供了一个工具函数 defineReactive,可以把一个数据变成响应式的，也就是数据变化了会刷新页面

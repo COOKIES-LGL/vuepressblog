@@ -165,3 +165,13 @@ export function usePersistFn<T extends (...args: any[]) => any>(fn: T) {
 Redux 可以做到分离，但 useReducer+useContext 不能。另外 Redux 有 thunk 之类的中间件支持 async action，而 useReducer 没有，还得用其他库。
 useContext+useReducer 说白了就是项目很小，只有少部分祖孙组件间需要共享状态时才会使用的一个简易共享方案。真正较复杂的情况那必然还是用 Redux。
 :::
+
+### react 父子组件生命周期执行顺序
+
+1、useLayoutEffect‌：是同步执行的，遵循 ‌ 父组件优先 ‌ 的嵌套顺序（父 → 子）‌。
+2、‌useEffect‌：是异步执行的，遵循 ‌ 子组件优先 ‌ 的队列顺序（子 → 父）‌。
+
+##### 类组件与函数组件的区别 ‌
+
+1、类组件的 componentDidMount 和 componentDidUpdate 均为父组件优先 ‌。
+2、函数组件的 useEffect 为子组件优先，需特别注意两者的差异 ‌。
