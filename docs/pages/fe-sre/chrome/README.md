@@ -1,5 +1,6 @@
 ---
 home: false
+sidebar: false
 ---
 
 ## chrome 模糊知识汇总
@@ -30,3 +31,24 @@ sessionStorage 不能在多个窗口或标签页之间共享数据，但是当�
 chrome://version/
 # 用于查看可执行文件路径和版本信息
 ```
+
+### ‌ 快速打开无痕窗口
+
+⌘/Ctrl + Shift + N
+
+### 快速左右 tab 切换
+
+⌘ + Option + →
+⌘ + Option + ←
+
+### 快速新建窗口
+
+⌘ + T
+
+### 快速关闭窗口
+
+⌘ + W
+
+### 快速打开关闭检查
+
+⌘ + Option + I
