@@ -39,4 +39,4 @@ vscode 查找变量的全局引用可以按住 shift + option + fn + f12
 
 ### MarkDown 使用指南
 
-- [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>
+- [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2023-06-24</span>

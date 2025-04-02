@@ -112,8 +112,8 @@ lerna add lodash
 假设 moduleA 自己依赖 jquery，moduleB 自己依赖 zepto
 
 ```bash
-lerna add jquery --scope=@fengyinchao/modulea
-lerna add zepto --scope=@fengyinchao/moduleb
+lerna add jquery --scope=@na/moduleA
+lerna add zepto --scope=@na/moduleB
 ```
 
 #### 卸载包
@@ -121,7 +121,7 @@ lerna add zepto --scope=@fengyinchao/moduleb
 给 moduleA 移除一个依赖 husky
 
 ```bash
-lerna exec --scope=@fengyinchao/modulea npm uninstall husky
+lerna exec --scope=@na/moduleA npm uninstall husky
 ```
 
 #### 重新安装依赖
