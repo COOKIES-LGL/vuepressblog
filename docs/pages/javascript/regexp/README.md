@@ -29,3 +29,46 @@ export const getRegion = (): 'eu' | 'us' => {
   return location?.host?.match(reg)?.[1] as any // settle-search-us.com 会获取到us地区
 }
 ```
+
+### 正则标记位
+
+- g 全局搜索。
+- i 不区分大小写搜索。
+- m 多行搜索。
+- s 允许 . 匹配换行符。
+
+### 贪婪模式、懒惰模式
+
+**贪婪模式**
+正则默认是贪婪模式,会尽可能匹配更多字符，直至无法满足后续匹配条件为止 ‌
+
+```js
+const string = "12345";
+const reg = /(\d{1,3})(\d{1,3})/;
+console.log(string.match(reg));
+// 其中，前面的\d{1,3}匹配的是"123"，后面的\d{1,3}匹配的是"45"
+```
+
+**懒惰模式**
+
+惰性量词就是在贪婪量词后面加个问号。表示尽可能少的匹配
+
+```js
+var string = "12345";
+var regex = /(\d{1,3}?)(\d{1,3})/;
+console.log(string.match(regex));
+// => ["1234", "1", "234", index: 0, input: "12345"]
+// 其中\d{1,3}?只匹配到一个字符"1"，而后面的\d{1,3}匹配了"234"
+```
+
+### 分组
+
+在()内使用|达到或的效果，如(abc | xxx)可以匹配 abc 或者 xxx
+
+反向引用，巧用$分组捕获
+
+```js
+let str = "John Smith";
+// 交换名字和姓氏
+console.log(str.replace(/(john) (smith)/i, "$2, $1")); // Smith, John
+```
