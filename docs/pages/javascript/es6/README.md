@@ -326,3 +326,9 @@ const pairs = new Map([
 const { status = "pending" } = { status: null }; // null
 const { status = "pending" } = { status: undefined }; // 'pending'
 ```
+
+### ??=、 ||=、&&= 运算符
+
+- ??= 左侧为 null 或 undefined 赋值
+- ||= 左侧为 false、0、NaN、""、null、undefined 赋值
+- &&= 左侧为 true 赋值
