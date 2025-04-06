@@ -763,3 +763,79 @@ get(object, 'a[0]["b"]["c"]');
 //=> 10086
 get(object, "a[100].b.c", 10086);
 ```
+
+### 实现 Compile 函数
+
+```js
+function compile(template) {
+  const regex = /\{\{([^}]+)\}\}/g;
+  return function (data) {
+    return template.replace(regex, (match, path) => {
+      const keys = path.trim().split(".");
+      return keys.reduce((obj, key) => obj?.[key], data) || "";
+    });
+  };
+}
+
+// 使用示例
+const template = "Hello, {{user.name}}! Age: {{age}}";
+const render = compile(template);
+console.log(render({ user: { name: "Alice" }, age: 25 }));
+// 输出: "Hello, Alice! Age: 25"
+```
+
+### 树形菜单渲染
+
+输出可交互的树形菜单，点击父节点时切换子节点的显示状态。
+
+```js
+const treeData = [
+  {
+    id: 1,
+    parent_id: 0,
+    name: "北京",
+    children: [
+      {
+        id: 3,
+        parent_id: 1,
+        name: "海淀区",
+        children: [],
+      },
+      {
+        id: 4,
+        parent_id: 1,
+        name: "朝阳区",
+        children: [],
+      },
+    ],
+  },
+];
+// 递归创建树节点
+function createTreeNode(node, parentElement) {
+  const div = document.createElement("div");
+  div.className = "tree-node";
+  div.textContent = node.name;
+
+  // 点击事件：切换子节点显隐
+  div.onclick = function () {
+    const childrenDiv = parentElement.querySelector(".children");
+    if (childrenDiv) {
+      childrenDiv.style.display = childrenDiv.style.display === "none" ? "block" : "none";
+    }
+  };
+
+  parentElement.appendChild(div);
+
+  // 递归处理子节点
+  if (node.children?.length) {
+    const childrenDiv = document.createElement("div");
+    childrenDiv.className = "children";
+    node.children.forEach((child) => createTreeNode(child, childrenDiv));
+    parentElement.appendChild(childrenDiv);
+  }
+}
+
+// 渲染根节点
+const treeElement = document.getElementById("tree");
+treeData.forEach((node) => createTreeNode(node, treeElement));
+```
