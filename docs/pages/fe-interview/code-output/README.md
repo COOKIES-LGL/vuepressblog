@@ -104,6 +104,13 @@ Promise.resolve()
   });
 ```
 
+#### reduce 如果没有传入初始值，则第一次执行回调函数时，prev 的值为数组中的第一个值，cur 的值为数组中的第二个值。
+
+```js
+[1, 2, 3, 4].reduce((x, y) => console.log(x, y));
+// 1 2 and undefined 3 and undefined 4
+```
+
 #### 实现 Promise.all 失败之后依然可以往下执行
 
 ```javascript
