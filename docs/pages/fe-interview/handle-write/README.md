@@ -784,6 +784,32 @@ console.log(render({ user: { name: "Alice" }, age: 25 }));
 // 输出: "Hello, Alice! Age: 25"
 ```
 
+### lodash get 函数实现
+
+正则表达式 /$(\d+)$/g 会匹配字符串中的 ‌ 方括号包裹的数字，[数字] 转换为 .数字（如 `` → .0
+
+```js
+function myGet(obj, path, defaultValue) {
+  // 统一处理路径格式：将字符串路径转为数组（如 'a.b.c' → ['a', 'b', '0', 'c']）
+  const pathArray = Array.isArray(path)
+    ? path
+    : path
+        .replace(/$(\d+)$/g, ".$1")
+        .split(".")
+        .filter(Boolean);
+
+  let result = obj;
+  for (const key of pathArray) {
+    // 若中途遇到 null/undefined 或非对象，返回默认值
+    if (result == null || typeof result !== "object") {
+      return defaultValue;
+    }
+    result = result[key];
+  }
+  return result === undefined ? defaultValue : result;
+}
+```
+
 ### 树形菜单渲染
 
 输出可交互的树形菜单，点击父节点时切换子节点的显示状态。
