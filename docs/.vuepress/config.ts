@@ -23,7 +23,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
       {
         text: "个人简历",
-        link: "/images/resume-latest.html",
+        link: "/images/resume-latest-new.html",
       },
       // {
       //   text: '导航中心',
