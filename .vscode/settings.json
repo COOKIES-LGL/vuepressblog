@@ -21,6 +21,8 @@
     "ZRANGEBYSCORE",
     "tsoa",
     "srcset",
-    "mysqldump"
+    "mysqldump",
+    "Echart",
+    "Temu"
   ]
 }
