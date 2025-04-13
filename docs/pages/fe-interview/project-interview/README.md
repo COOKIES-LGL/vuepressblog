@@ -24,7 +24,7 @@ script 加载 js 走服务器响应的缓存策略。
 fetch 加载 js 如果请求 header 有缓存策略会影响到响应的缓存策略。
 但请求头的设置确实可以影响缓存的使用方式和策略。如果请求头设置了 Cache-Control: no-cache，即使响应头指示资源可以被缓存，客户端也可能会选择不直接使用缓存的响应，而是向服务器发送请求进行验证 ‌
 
-### js-code-shift
+### jscodeshift
 
 ### polyfill-service
 

@@ -23,6 +23,7 @@
     "srcset",
     "mysqldump",
     "Echart",
-    "Temu"
+    "Temu",
+    "jscodeshift"
   ]
 }

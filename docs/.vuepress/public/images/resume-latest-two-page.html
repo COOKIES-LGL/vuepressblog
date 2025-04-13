@@ -681,7 +681,7 @@
 												负责卖家教育中心(SEH)的开发工作，支持了项目Vue2.0的SSR改造，页面首屏时间到达500ms左右，排查了内存泄漏问题解决服务器重启问题。进行了webpack4到5的升级改造，优化打包速度、体积。</span>
 										</td>
 										<td class="exp_b"><span class="gray_right">*
-												负责页面性能监控平台(PAP)的维护工作，一百多个内部项目已接入，为页面性能优化提供数据支撑。</span>
+												负责页面性能监控平台(PAP)的维护工作，一百多个内部项目接入，为页面性能优化提供数据支撑。</span>
 										</td>
 									</tr>
 								</tbody>
@@ -776,7 +776,8 @@
 										</td>
 										<td class="exp_1">
 											<p class="gray_right" class="area_text">
-												<b>简介:</b>支持快速定位到选中的npm包、浏览器打开npm包。
+												<b>简介:</b>：此项目是用户页面性能数据上报分析平台，包含SDK、SDK-BE、PAP-Management、PAP-Management-BE、四部分，BE使用
+												Express框架，数据聚合使用了Elastic，图表展示使用了Echart。整个平台对宿主项目的资源加载、页面渲染、自定义埋点等耗时进行统计分析。
 											</p>
 										</td>
 									</tr>
@@ -786,16 +787,14 @@
 							<table>
 								<tbody>
 									<tr class="info_list">
-										<td class="exp_title"><span>Polyfill Service</span></td>
-										<td class="exp_1"><span class="gray_right">* Vue、Webpack、SSR、SEO、H5、Nginx</span>
+										<td class="exp_title"><span>Vscode Market</span></td>
+										<td class="exp_1"><span class="gray_right">* Webpack、H5、github</span>
 										</td>
 										<td class="exp_1">
 											<p class="gray_right" class="area_text">
-												<b>简介:</b>支持相互转化commonJs与esModule模块的代码
+												<b>简介:</b>支持公司级部署私有的vscode插件市场，方便内部插件的安装、更新管理。
 											</p>
 										</td>
-										<td class="exp_1"><span>项目地址：<span /><a href="https://seller.shopee.sg/edu"
-													target="_blank">https://seller.shopee.sg/edu</a></td>
 									</tr>
 								</tbody>
 							</table>
@@ -811,8 +810,10 @@
 												<b>简介:</b>用来检测出项目中未使用的导出和文件。
 											</p>
 										</td>
-										<td class="exp_1"><span>项目地址：<span /><a href="https://seller.shopee.sg/edu"
-													target="_blank">https://seller.shopee.sg/edu</a></td>
+										<td class="exp_1"><span>包地址：<span /><a
+													href="https://www.npmjs.com/package/dead-code-plugin"
+													target="_blank">https://www.npmjs.com/package/dead-code-plugin</a>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -820,12 +821,13 @@
 							<table>
 								<tbody>
 									<tr class="info_list">
-										<td class="exp_title"><span>jscodeshift(自动化重构工具)</span></td>
+										<td class="exp_title"><span>jscodeshift-cli(自动化重构工具)</span></td>
 										<td class="exp_1"><span class="gray_right">* Babel、Bash、Jest</span>
 										</td>
 										<td class="exp_1">
 											<p class="gray_right" class="area_text">
-												<b>简介:</b>基于 AST(抽象语法树)实现代码的批量转换。
+												<b>简介:</b>基于jscodeshift通过AST(抽象语法树)实现代码的批量转换。支持代码风格统一，比如批量增加try
+												catch、规范React组件、移除冗余代码等。
 											</p>
 										</td>
 									</tr>
