@@ -24,6 +24,8 @@
     "mysqldump",
     "Echart",
     "Temu",
-    "jscodeshift"
+    "jscodeshift",
+    "Multirepo",
+    "Antv"
   ]
 }
