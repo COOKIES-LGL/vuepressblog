@@ -17,6 +17,7 @@ sidebar: false
 - [Vitest test](https://zhuanlan.zhihu.com/p/638154319) <span style="color:#bbb; float:right">2023-06-12</span>
 - [Pnpm workspace](./pnpm-monorepo) <span style="color:#bbb; float:right">2025-01-08</span>
 
+- [Kafka 与 Elasticsearch 集成解析](./kafka-elastic-search) <span style="color:#bbb; float:right">2025-01-18</span>
 - [代理开发解决最新版 chrome sameSite 问题](./use-test-dev-for-chrome) <span style="color:#bbb; float:right">2022-06-12</span>
 - [解决前端的竞态问题](./solve-fe-complete-question) <span style="color:#bbb; float:right">2023-05-12</span>
 - [虚拟列表原理与实现](./virtual-list) <span style="color:#bbb; float:right">2024-01-08</span>
