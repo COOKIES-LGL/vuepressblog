@@ -40,10 +40,30 @@ fetch 加载 js 如果请求 header 有缓存策略会影响到响应的缓存�
 
 1、vue ssr 改造
 2、内存泄露问题排查流程
-3、站点 SEO 流程
+3、站点 SEO 流程 （‌https://search.google.com/search-console/）
 4、大文件分片上传、断点续传
 5、六方格、大圈盘活动页开发要点
 6、webpack5、新特性
 7、webpack 优化
 8、eslint stylelint 自定义规则编写
 9、PAP 项目理解
+
+### 常见性能指标获取
+
+```js
+window.onload = function () {
+  setTimeout(() => {
+    const t = performance.timing;
+    // DNS查询耗时
+    console.log("DNS耗时:", t.domainLookupEnd - t.domainLookupStart);
+    // TCP连接耗时
+    console.log("TCP耗时:", t.connectEnd - t.connectStart);
+    // 白屏时间（首字节到达前）
+    console.log("白屏时间:", t.responseStart - t.navigationStart);
+    // DOM解析完成时间
+    console.log("页面总加载时间:", t.domInteractive - t.navigationStart);
+    // 页面完全加载时间
+    console.log("页面总加载时间:", t.loadEventEnd - t.navigationStart);
+  });
+};
+```

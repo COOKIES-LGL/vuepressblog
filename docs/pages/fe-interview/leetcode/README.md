@@ -155,6 +155,14 @@ function merge(left, right) {
 }
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 console.log(mergeSort(arr));
+// 方式2;
+function merge(left, right) {
+  const res = [];
+  while (left.length && right.length) {
+    res.push(left <= right ? left.shift() : right.shift()); // 按序合并‌:ml-citation{ref="3,4" data="citationList"}
+  }
+  return [...res, ...left, ...right]; // 合并剩余元素‌:ml-citation{ref="3,4" data="citationList"}
+}
 ```
 
 ### 插入排序

@@ -2,7 +2,6 @@
 home: false
 ---
 
-- [React Schedule 核心流程图](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/493c087e2fd64e1a8c552f16927192f6~tplv-k3u1fbpfcp-watermark.image?) <span style="color:#bbb; float:right">2023-12-19</span>
 - [React Schedule 核心](https://juejin.cn/post/7208222652619800613#heading-5) <span style="color:#bbb; float:right">2023-12-10</span>
 - [Schedule 核心流程图](https://zhuanlan.zhihu.com/p/450267610?utm_id=0) <span style="color:#bbb; float:right">2023-12-12</span>
 

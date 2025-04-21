@@ -85,7 +85,8 @@ title: 架构与降级
 
 支持 `downgrade` 配置对特定版本进行降级
 
-:::caution 注意
+:::tip
+注意
 BApp 4.5.2 以下版本不支持 SSR，因此在创建项目模版时，已经默认生成了 downgrade 配置。
 :::
 

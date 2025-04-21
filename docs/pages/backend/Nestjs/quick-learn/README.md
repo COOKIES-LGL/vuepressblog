@@ -1104,7 +1104,7 @@ import { User } from "./entities/user.entity";
 export class UserModule {}
 ```
 
-::: tips
+::: tip
 "实体类" 是数据库的表在 Nest 中的描述  
 :::
 

@@ -397,6 +397,13 @@ void 0 === undefined;
 // undefined不是一个关键字，这玩意儿是全局变量的一个属性
 ```
 
+### void 后加函数
+
+```javascript
+// 明确忽略函数返回值
+void alert("执行弹窗"); // 明确表示不关心 alert 的返回值
+```
+
 ### 中文首字母排序
 
 ```javascript

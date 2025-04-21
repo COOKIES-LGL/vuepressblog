@@ -433,7 +433,7 @@ import puppeteer from "puppeteer";
 })();
 ```
 
-::: tips
+::: tip
 在处理拦截到的请求前要调用 isInterceptResolutionHandled() 或 interceptResolutionState() 检查请求的状态，处理过的请求被再次处理会引发 Request is already handled! 异常
 :::
 

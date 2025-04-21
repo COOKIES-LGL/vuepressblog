@@ -10,13 +10,13 @@ sidebar: false
 - [CSS Advanced skills](./css) <span style="color:#bbb; float:right">2021-06-30</span>
 - [HTML Advanced skills](./html) <span style="color:#bbb; float:right">2021-06-30</span>
 - [Javascript Advanced skills](./javascript) <span style="color:#bbb; float:right">2021-06-30</span>
-- [Redis Elastic](./redis-kafaka-elastic) <span style="color:#bbb; float:right">2021-06-20</span>
 - [Vue](./vue) <span style="color:#bbb; float:right">2021-06-10</span>
 - [React](./react) <span style="color:#bbb; float:right">2023-06-13</span>
 - [React Native](./react-native) <span style="color:#bbb; float:right">2023-06-14</span>
 - [Typescript](./typescript) <span style="color:#bbb; float:right">2022-06-15</span>
 - [Node](./node) <span style="color:#bbb; float:right">2021-06-30</span>
 - [Backend Full stack](./backend) <span style="color:#bbb; float:right">2023-07-13</span>
+- [Redis Elastic](./redis-kafaka-elastic) <span style="color:#bbb; float:right">2023-06-20</span>
 - [前端前沿技术](./frontier-technology) <span style="color:#bbb; float:right">2021-08-30</span>
 - [前端基础设施](./fe-sre) <span style="color:#bbb; float:right">2021-06-30</span>
 - [计算机网络](./computer-network) <span style="color:#bbb; float:right">2022-06-30</span>
