@@ -37,6 +37,25 @@ BFCache（Back-Forward Cache）是浏览器的一种机制，在 Safari 和 Chro
 它不是 HTTP 意义上的“缓存”，不是“磁盘缓存”意义上的“缓存”，而是将解码资源保存在内存中，以便在多个网页之间共享。  
 [被忽略的缓存-BFCache](https://cloud.tencent.com/developer/article/2350456?areaId=106001)
 
+### React 渲染性能优化
+
+React 渲染性能优化的三个方向，其实也适用于其他软件开发领域，这三个方向分别是:
+
+- 减少计算的量。 -> 对应到 React 中就是减少渲染的节点 或者 降低组件渲染的复杂度
+- 利用缓存。-> 对应到 React 中就是如何避免重新渲染，利用函数式编程的 memo 方式来避免组件重新渲染
+- 精确重新计算的范围。 对应到 React 中就是绑定组件和状态关系, 精确判断更新的'时机'和'范围'. 只重新渲染'脏'的组件，或者说降低渲染范围
+
+### React diff
+
+diff 三个假设提升 diff 效率
+1、假设一：不同类型的节点元素会有不同的形态
+2、假设二：节点不会进行跨父节点移动
+3、假设三：用户会给每个子节点提供一个 key，标记它们“是同一个”
+
+- 只有父节点相互复用，才会触发子节点 Diffing，所以跨父节点的移动是铁定 Diffing 不到的
+- 复用的条件是 key 和 type 都相同，所以 key 能提升复用率
+- Diffing 过程中会把结果（操作时 effectTag 标记 Placement 还是 Update 还是 Deletion）以 Effect 的形式挂到节点上
+
 ### MarkDown 使用指南
 
 - [MarkDown](../blog-daily/use-markdown) <span style="color:#bbb; float:right">2021-06-24</span>

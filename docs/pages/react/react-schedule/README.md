@@ -117,3 +117,36 @@ performWorkUntilDeadline();
 - `利用缓存` 对应到 React 中就是如何避免重新渲染，利用函数式编程的 memo 方式来避免组件重新渲染。
 
 - `精确重新计算的范围` 对应到 React 中就是绑定组件和状态关系, 精确判断更新的'时机'和'范围'. 只重新渲染'脏'的组件，或者说降低渲染范围,不要滥用 Context。
+
+### react 更新遍历
+
+react 遍历是分内外两层循环，深度优先遍历，
+Fiber 树是边创建边遍历的，每个节点都经历了「创建、Diffing、收集副作用（要改哪些节点）」的过程。其中，创建、Diffing 要自上而下，因为有父才有子；收集副作用要自下而上最终收集到根节点
+：：：tip
+整个遍历由 performUnitOfWork 发起，为深度优先遍历
+从根节点开始，循环调 beginWork 向下爬树（黄色箭头，每个箭头表示一次调用）
+到达叶子节点（beginWork 爬不下去）后，调 completeUnitOfWork 向上爬到下一个未遍历过的节点，也就是第一个出现的祖先兄弟节点（绿色箭头，每个箭头表示一次调用）
+：：：
+beginWork 负责创建、Diffing，completeUnitOfWork 负责收集副作用
+
+- requestAnimationFrame 的作用：
+  对齐浏览器渲染周期，优化任务执行时机；
+  提供时间切片的时间基准。
+- MessageChannel 的作用：
+  通过宏任务分片实现任务中断与恢复,在浏览器事件循环中插入任务分片，确保主线程能及时响应高优先级事件
+
+#### shouldYieldToHost 计算逻辑
+
+‌1、帧时间阈值设定 ‌
+浏览器每帧的渲染周期通常为 16.6ms（对应 60Hz 刷新率），React 默认将每帧的 ‌ 允许执行时间 ‌ 设置为 5ms，剩余时间预留给浏览器渲染和其他任务。
+通过 requestAnimationFrame 获取当前帧的起始时间 frameTime，并计算截止时间 deadline = frameTime + 5ms57。
+
+‌2、实时时间对比 ‌
+在任务执行过程中，通过 performance.now() 或 Date.now() 获取当前时间 currentTime。
+若 currentTime >= deadline，表示当前帧的可用时间已耗尽，shouldYieldToHost 返回 true，触发任务中断 15。
+
+二、‌ 优先级影响中断阈值 ‌
+不同优先级的差异 ‌
+React 定义了多种任务优先级（如 ImmediatePriority、UserBlockingPriority 等），不同优先级对应不同的时间切片阈值。
+高优先级任务可能允许更长的执行时间（如 10ms）；
+低优先级任务可能被严格限制（如 3ms）

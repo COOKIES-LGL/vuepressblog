@@ -139,3 +139,14 @@ html {
 
 - 典型场景 ‌：网站首页或专题页的全屏背景图，滚动时背景保持静止，提升沉浸感
 - 固定水印/装饰性图案
+
+### animation-play-state
+
+```css
+/* 悬浮暂停动画 */
+&:hover {
+  .scrollText {
+    animation-play-state: paused;
+  }
+}
+```
